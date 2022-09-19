@@ -1,5 +1,6 @@
 import { CheckboxAction } from "../../../interfaces";
 
+// Called from CompoundTypes.tsx
 const updateIncludedTypes = (checkboxAction: CheckboxAction, includedTypes: string[], setIncludedTypes: (arg0: string[]) => void): void => {
     if (checkboxAction.addId.length > 0) {
         let updatedTypes: string[] = [...includedTypes, checkboxAction.addId];

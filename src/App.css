@@ -1,0 +1,37 @@
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-left-center {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.med-gap {
+  gap: 0.5rem;
+}
+
+.sm-radius {
+  border-radius: 0.75rem;
+}
+
+.title {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: large;
+}
+
+.sm-text {
+  font-size: small;
+}

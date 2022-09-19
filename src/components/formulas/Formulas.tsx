@@ -2,7 +2,7 @@ import { useState } from "react";
 import CompoundOptions from "../forms/CompoundOptions"
 
 // Called from App.tsx
-const Naming = () => {
+const Formulas = () => {
     let [includedCompoundTypes, setIncludedCompoundTypes] = useState<string[]>(["main"]);
     let [includedIonTypes, setIncludedIonTypes] = useState<string[]>(["main"]);
 
@@ -14,4 +14,4 @@ const Naming = () => {
     )
 }
 
-export default Naming;
+export default Formulas;

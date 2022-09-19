@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { CheckboxAction } from "../../interfaces";
 import handleCheckboxChange from "./helpers/handleCheckboxChange";
+import { CheckboxAction } from "../../interfaces";
 
 interface CheckboxProps {
     value: string;
@@ -8,6 +8,7 @@ interface CheckboxProps {
     setCheckboxAction(stateValue: CheckboxAction): void;
 }
 
+// Called from CompoundTypes.tsx
 const Checkbox = ({value, label, setCheckboxAction}: CheckboxProps) => {
     let [event, setEvent] = useState<React.ChangeEvent<HTMLInputElement>>({} as React.ChangeEvent<HTMLInputElement>);
 
@@ -18,15 +19,15 @@ const Checkbox = ({value, label, setCheckboxAction}: CheckboxProps) => {
     }, [event, setCheckboxAction])
 
     return (
-        <div>
+        <div className="flex-left-center">
             <input 
                 type="checkbox" 
                 name={value} 
                 value={value} 
                 onChange={setEvent}
-                defaultChecked={value === "main"}
+                defaultChecked={value === "main" || value === "ionic"}
             />
-            <label htmlFor={value}>{label}</label>
+            <label className="sm-text" htmlFor={value}>{label}</label>
         </div>
     )
 }
