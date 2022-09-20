@@ -1,4 +1,4 @@
-import Checklist from "../forms/Checklist";
+import Checklist from "./Checklist";
 import { compoundTypes, ionTypes } from "../../configurations/inputLabels";
 import { CompoundOptionsProps } from "../../interfaces";
 

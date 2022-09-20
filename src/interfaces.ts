@@ -21,3 +21,17 @@ export interface CompoundOptionsProps {
     includedIonTypes: string[];
     setIncludedIonTypes: (arg0: string[]) => void;
 }
+
+export interface MenuLink {
+    path: string;
+    label: string;
+}
+
+export interface NavDropdownMenuProps {
+    title: string;
+    options: MenuLink[];
+}
+
+export interface NavMenuProps {
+    path: string[];
+}

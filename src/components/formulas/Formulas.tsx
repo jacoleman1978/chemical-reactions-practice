@@ -3,7 +3,7 @@ import CompoundOptions from "../forms/CompoundOptions"
 
 // Called from App.tsx
 const Formulas = () => {
-    let [includedCompoundTypes, setIncludedCompoundTypes] = useState<string[]>(["main"]);
+    let [includedCompoundTypes, setIncludedCompoundTypes] = useState<string[]>(["ionic"]);
     let [includedIonTypes, setIncludedIonTypes] = useState<string[]>(["main"]);
 
     return (
