@@ -33,7 +33,7 @@ export interface NavDropdownMenuProps {
 }
 
 export interface NavMenuProps {
-    path: string[];
+    path: string;
 }
 
 export interface Description {

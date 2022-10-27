@@ -1,3 +1,8 @@
+.App {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .flex-center-center {
   display: flex;
   justify-content: center;

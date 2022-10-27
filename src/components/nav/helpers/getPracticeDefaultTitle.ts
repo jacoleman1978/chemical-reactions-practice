@@ -1,15 +1,13 @@
-const getPracticeDefaultTitle = (path: string[]): string => {
-    if (path[0] === "compounds") {
-        if (path[1] === "naming") {
-            return "Naming Compounds"
-        } else if (path[1] === "formulas") {
-            return "Formulas of Compounds"
-        }
-    } else if (path[0] === "balancing") {
+const getPracticeDefaultTitle = (path: string): string => {
+    if (path === "naming") {
+        return "Naming Compounds"
+    } else if (path === "formulas") {
+        return "Formulas of Compounds"
+    } else if (path === "balancing") {
         return "Balancing Equations"
-    } else if (path[0] === "reactiontypes") {
+    } else if (path === "reaction-types") {
         return "Reaction Types"
-    } else if (path[0] === "predictingproducts") {
+    } else if (path === "predictingproducts") {
         return "Predicting Products"
     } 
     

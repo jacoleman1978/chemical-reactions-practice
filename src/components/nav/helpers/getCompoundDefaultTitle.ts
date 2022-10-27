@@ -1,4 +1,5 @@
-const getCompoundDefaultTitle = (path: string[]): string => {
+// Not used
+const getCompoundDefaultTitle = (path: string): string => {
     if (path[2] === "ionic") {
         return "Ionic"
     } else if (path[2] === "acids") {

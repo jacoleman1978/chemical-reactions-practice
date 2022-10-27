@@ -1,7 +1,6 @@
 import TypeDescription from "./TypeDescription";
 import { TypesContainerProps } from "../../interfaces";
 import { Description } from "../../interfaces";
-import { title } from "process";
 
 const TypesContainer = ({types}: TypesContainerProps) => {
 

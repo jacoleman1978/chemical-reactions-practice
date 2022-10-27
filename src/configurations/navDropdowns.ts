@@ -1,23 +1,23 @@
 import { MenuLink } from "../interfaces" 
 
 export const practiceTypes: MenuLink[] = [
-    {path: "/compounds/naming/ionic", label: "Naming Compounds"},
-    {path: "/compounds/formulas/ionic", label: "Formulas of Compounds"},
+    {path: "/naming", label: "Naming Compounds"},
+    {path: "/formulas", label: "Formulas of Compounds"},
     {path: "/balancing", label: "Balancing Equations"},
-    {path: "/reactiontypes", label: "Reaction Types"},
-    {path: "/predictingproducts", label: "Predicting Products"}
+    {path: "/reaction-types", label: "Reaction Types"},
+    {path: "/predicting-products", label: "Predicting Products"}
 ]
 
 export const namingCompoundTypes: MenuLink[] = [
-    {path: "/compounds/naming/ionic", label: "Ionic"},
-    {path: "/compounds/naming/acids", label: "Acids"},
-    {path: "/compounds/naming/molecular", label: "Molecular"},
-    {path: "/compounds/naming/mixed", label: "Mixed"}
+    {path: "/naming/ionic", label: "Ionic"},
+    {path: "/naming/acids", label: "Acids"},
+    {path: "/naming/molecular", label: "Molecular"},
+    {path: "/naming/mixed", label: "Mixed"}
 ]
 
 export const formulaCompoundTypes: MenuLink[] = [
-    {path: "/compounds/formulas/ionic", label: "Ionic"},
-    {path: "/compounds/formulas/acids", label: "Acids"},
-    {path: "/compounds/formulas/molecular", label: "Molecular"},
-    {path: "/compounds/formulas/mixed", label: "Mixed"}
+    {path: "/formulas/ionic", label: "Ionic"},
+    {path: "/formulas/acids", label: "Acids"},
+    {path: "/formulas/molecular", label: "Molecular"},
+    {path: "/formulas/mixed", label: "Mixed"}
 ]
