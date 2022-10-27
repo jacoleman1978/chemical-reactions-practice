@@ -35,3 +35,21 @@ export interface NavDropdownMenuProps {
 export interface NavMenuProps {
     path: string[];
 }
+
+export interface Description {
+    title: string;
+    path: string;
+    description: string;
+}
+
+export interface PracticeTypeProps {
+    type: string;
+}
+
+export interface TitleProps {
+    title: string;
+}
+
+export interface TypesContainerProps {
+    types: Description[];
+}

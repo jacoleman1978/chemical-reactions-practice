@@ -11,6 +11,7 @@
 }
 
 .flex-column {
+  display: flex;
   flex-direction: column;
 }
 
@@ -34,4 +35,12 @@
 
 .sm-text {
   font-size: small;
+}
+
+a:pointer {
+  cursor: pointer;
+}
+
+.no-underline {
+  text-decoration: none;
 }
