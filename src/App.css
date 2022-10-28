@@ -72,3 +72,8 @@ h1 {
 .subheading {
   font-size: large;
 }
+
+.subheading:hover {
+  cursor: pointer;
+  color: red;
+}
