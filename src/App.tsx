@@ -15,7 +15,7 @@ function App() {
   let { pathname } = useLocation();
   
   return (
-    <div className="App">
+    <div className="App flex-center-center flex-column">
       <NavMenu path={pathname.substring(1)} />
         <Routes>
           <Route path='/' element={<PracticeType />} /> 

@@ -12,7 +12,7 @@ const Naming = () => {
     const compoundTypes = generalCompoundTypes.map((compoundType): Description => {return {...compoundType, path: pathname + compoundType.path}});
 
     return (
-        <div className="flex-center-center flex-column">
+        <div className="flex-column">
             <Title title="Naming Compounds Practice" />
             <ul><li>Ionic: Compounds composed of ions, species with full charges</li></ul>
             <div className="lg-left-margin">

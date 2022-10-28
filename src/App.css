@@ -15,6 +15,12 @@
   align-items: center;
 }
 
+.flex-around-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -52,4 +58,8 @@ a:pointer {
 
 .no-underline {
   text-decoration: none;
+}
+
+.full-width {
+  width: 100%;
 }
