@@ -72,3 +72,10 @@ export interface InstructionsListProps {
     label: string;
     instructionsList: string[];
 }
+
+export interface Ion {
+    name: string,
+    symbol: string,
+    charge: number,
+    isPolyatomic: boolean,
+}
