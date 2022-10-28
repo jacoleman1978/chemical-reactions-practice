@@ -74,8 +74,20 @@ export interface InstructionsListProps {
 }
 
 export interface Ion {
-    name: string,
-    symbol: string,
+    ionName: string,
+    ionSymbol: string,
     charge: number,
     isPolyatomic: boolean,
+}
+
+export interface Compound {
+    cation: Ion,
+    anion: Ion,
+    compoundName: string,
+    compoundFormula: string,
+}
+
+export interface CompoundSubscripts {
+    first: number,
+    second: number,
 }

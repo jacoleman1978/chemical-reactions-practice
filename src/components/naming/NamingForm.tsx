@@ -1,15 +1,16 @@
-import NamingQuestionGroup from "./NamingQuestionGroup";
 import { SyntheticEvent } from "react";
 import { Form, Button } from "react-bootstrap";
+import NamingQuestionGroup from "./NamingQuestionGroup";
+import { NamingPracticeProps } from "../../interfaces";
 
-const NamingForm = () => {
+const NamingForm = ({type}: NamingPracticeProps) => {
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
     }
 
     return (
         <Form onSubmit={(event) => handleSubmit(event)}>
-            <NamingQuestionGroup />
+            <NamingQuestionGroup type={type} />
             <Button variant="primary" type="submit">
                 Check Answers
             </Button>

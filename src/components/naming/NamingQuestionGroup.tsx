@@ -1,9 +1,10 @@
 import NamingQuestion from "./NamingQuestion";
+import { NamingPracticeProps } from "../../interfaces";
 
-const NamingQuestionGroup = () => {
+const NamingQuestionGroup = ({type}: NamingPracticeProps) => {
     return (
         <div>
-            <NamingQuestion />
+            <NamingQuestion type={type} />
         </div>
     )
 }

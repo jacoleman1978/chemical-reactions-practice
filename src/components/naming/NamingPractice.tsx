@@ -15,7 +15,7 @@ const NamingPractice = ({type}: NamingPracticeProps) => {
         <div>
             <Title title={title} />
             <InstructionsList label="Background and Instructions:" instructionsList={instructionsList} />
-            <NamingForm />
+            <NamingForm type={type}/>
         </div>
     )
 }
