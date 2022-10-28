@@ -42,14 +42,14 @@ export interface Description {
     description: string;
 }
 
-export interface PracticeTypeProps {
-    type: string;
-}
-
 export interface TitleProps {
     title: string;
 }
 
 export interface TypesContainerProps {
     types: Description[];
+}
+
+export interface NamingPracticeProps {
+    type: string;
 }

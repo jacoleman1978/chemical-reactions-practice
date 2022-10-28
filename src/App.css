@@ -28,6 +28,10 @@
   gap: 0.5rem;
 }
 
+.lg-left-margin {
+  margin-left: 2rem;
+}
+
 .sm-radius {
   border-radius: 0.75rem;
 }
