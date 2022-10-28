@@ -14,7 +14,6 @@ const NavMenu = ({path}: NavMenuProps) => {
         namingTitle = getCompoundDefaultTitle(pathParts);
     }
     
-
     return (
         <Navbar>
             <Navbar.Brand href="/">Home</Navbar.Brand>

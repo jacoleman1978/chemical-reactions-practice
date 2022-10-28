@@ -45,7 +45,7 @@
 .title {
   font-weight: bold;
   text-decoration: underline;
-  font-size: large;
+  font-size: x-large;
 }
 
 .sm-text {
@@ -62,4 +62,13 @@ a:pointer {
 
 .full-width {
   width: 100%;
+}
+
+h1 {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.subheading {
+  font-size: large;
 }

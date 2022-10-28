@@ -67,3 +67,8 @@ export interface CompoundDescription {
     molecular: string,
     mixed: string,
 }
+
+export interface InstructionsListProps {
+    label: string;
+    instructionsList: string[];
+}

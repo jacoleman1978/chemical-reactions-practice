@@ -1,19 +1,20 @@
 import { Description } from "../interfaces";
 import { compoundDescriptions } from "./compoundDescriptions";
+import { compoundTitles } from "./compoundTitles";
 
 export const generalCompoundTypes: Description[] = [
     {
-        title: "Acids",
+        title: compoundTitles.acids,
         path: "/acids",
         description: compoundDescriptions.acids,
     },
     {
-        title: "Molecular",
+        title: compoundTitles.molecular,
         path: "/molecular",
         description: compoundDescriptions.molecular,
     },
     {
-        title: "Mixed",
+        title: compoundTitles.mixed,
         path: "/mixed",
         description: compoundDescriptions.mixed,
     },
