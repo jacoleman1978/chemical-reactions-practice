@@ -1,19 +1,20 @@
-import { Description } from "../interfaces"
+import { Description } from "../interfaces";
+import { compoundDescriptions } from "./compoundDescriptions";
 
 export const generalCompoundTypes: Description[] = [
     {
         title: "Acids",
         path: "/acids",
-        description: "Compounds starting with hydrogen, other than water and hydrogen disulfide",
+        description: compoundDescriptions.acids,
     },
     {
         title: "Molecular",
         path: "/molecular",
-        description: "Compounds with only nonmetals",
+        description: compoundDescriptions.molecular,
     },
     {
         title: "Mixed",
         path: "/mixed",
-        description: "Compounds of all the different types",
+        description: compoundDescriptions.mixed,
     },
 ]

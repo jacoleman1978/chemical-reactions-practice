@@ -53,3 +53,17 @@ export interface TypesContainerProps {
 export interface NamingPracticeProps {
     type: string;
 }
+
+export interface IonicDescription {
+    main: string,
+    transition: string,
+    polyatomic: string,
+    mixed: string,
+}
+
+export interface CompoundDescription {
+    ionic: IonicDescription,
+    acids: string,
+    molecular: string,
+    mixed: string,
+}

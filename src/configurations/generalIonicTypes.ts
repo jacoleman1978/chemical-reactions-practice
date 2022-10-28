@@ -1,24 +1,25 @@
-import { Description } from "../interfaces"
+import { Description } from "../interfaces";
+import { compoundDescriptions } from "./compoundDescriptions";
 
 export const generalIonicTypes: Description[] = [
     {
         title: "Main Group, Binary",
         path: "/ionic/main",
-        description: "Compounds with monoatomic ions with only one possible oxidation state",
+        description: compoundDescriptions.ionic.main,
     },
     {
         title: "Transition Metals",
         path: "/ionic/transition",
-        description: "Compounds with cations with more than one oxidation state",
+        description: compoundDescriptions.ionic.transition,
     },
     {
         title: "Polyatomic Ions",
         path: "/ionic/polyatomic",
-        description: "Compounds with complex ions constructed from more than one atom",
+        description: compoundDescriptions.ionic.polyatomic,
     },
     {
         title: "Mixed",
         path: "/ionic/mixed",
-        description: "Ionic compounds of all the different types",
+        description: compoundDescriptions.ionic.mixed,
     },
 ]
