@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SubTitle from "./SubTitle";
 import { InstructionsListProps } from "../../interfaces";
 
 const InstructionsList = ({label, instructionsList}: InstructionsListProps) => {
@@ -10,7 +11,8 @@ const InstructionsList = ({label, instructionsList}: InstructionsListProps) => {
 
     return (
         <>
-            <h2 className="subheading" onClick={handleToggle}>{label}</h2>
+            <SubTitle displayToggle={displayToggle} handleToggle={handleToggle} label={label} />
+            
             <ul>
                 {displayToggle && instructionsList.map((bullet: string, i: number) => <li key={"instruction" + i}>{bullet}</li>)}
             </ul>

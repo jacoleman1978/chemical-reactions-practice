@@ -91,3 +91,9 @@ export interface CompoundSubscripts {
     first: number,
     second: number,
 }
+
+export interface SubtitleProps {
+    displayToggle: boolean;
+    handleToggle: () => void;
+    label: string;
+}

@@ -4,7 +4,7 @@ import { Compound } from "../../interfaces";
 
 const NamingQuestion = ({type}: NamingPracticeProps) => {
     const compound: Compound = makeIonicCompound(type);
-
+    console.log(compound)
     return (
         <div>
             Question

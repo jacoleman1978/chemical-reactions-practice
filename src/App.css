@@ -38,6 +38,14 @@
   margin-left: 2rem;
 }
 
+.no-padding {
+  padding: 0rem;
+}
+
+.no-bottom-margin {
+  margin-bottom: 0rem;
+}
+
 .sm-radius {
   border-radius: 0.75rem;
 }
@@ -75,5 +83,20 @@ h1 {
 
 .subheading:hover {
   cursor: pointer;
-  color: red;
+  color: blue;
+}
+
+.toggle-btn {
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 0.5px;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem
+}
+
+.toggle-btn:hover {
+  background-color: lightslategray;
 }
