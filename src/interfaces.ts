@@ -75,7 +75,7 @@ export interface InstructionsListProps {
 
 export interface Ion {
     ionName: string,
-    ionSymbol: string,
+    ionSymbol: (string | number)[],
     charge: number,
     isPolyatomic: boolean,
 }
@@ -85,6 +85,7 @@ export interface Compound {
     anion: Ion,
     compoundName: string,
     compoundFormula: string,
+    formulaParts: FormulaParts,
 }
 
 export interface CompoundSubscripts {
@@ -96,4 +97,19 @@ export interface SubtitleProps {
     displayToggle: boolean;
     handleToggle: () => void;
     label: string;
+}
+
+export interface FormulaParts {
+    firstPart: (string | number)[],
+    firstSubscript: string,
+    secondPart: (string | number)[],
+    secondSubscript: string,
+}
+
+export interface CompoundLabelProps {
+    formulaParts: FormulaParts;
+}
+
+export interface FormattedIonProps {
+    formulaParts: (string | number)[];
 }

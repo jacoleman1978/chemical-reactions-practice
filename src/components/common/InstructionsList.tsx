@@ -3,7 +3,7 @@ import SubTitle from "./SubTitle";
 import { InstructionsListProps } from "../../interfaces";
 
 const InstructionsList = ({label, instructionsList}: InstructionsListProps) => {
-    const [displayToggle, setDisplayToggle] = useState(true);
+    const [displayToggle, setDisplayToggle] = useState<boolean>(true);
 
     const handleToggle = () => {
         setDisplayToggle(displayToggle => !displayToggle);

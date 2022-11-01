@@ -1,7 +1,5 @@
 import { findCompoundSubscripts } from "./findCompoundSubscripts";
-import { Ion } from "../../../interfaces";
-import { Compound } from "../../../interfaces";
-import { CompoundSubscripts } from "../../../interfaces";
+import { Ion, Compound, CompoundSubscripts, FormulaParts } from "../../../interfaces";
 import { makeCationList } from "./makeCationList";
 import { makeAnionList } from "./makeAnionList";
 import { getRandomIon } from "./getRandomIon";
@@ -18,7 +16,9 @@ export const makeIonicCompound = (type: string): Compound => {
 
     const compoundName: string = `${cation.ionName} ${anion.ionName}`;
 
-    const compoundFormula: string = makeCompoundFormula(cation, anion);
+    const formulaParts: FormulaParts = makeCompoundFormula(cation, anion);
 
-    return {cation, anion, compoundName, compoundFormula}
+    const compoundFormula: string = formulaParts.firstPart.join("") + formulaParts.firstSubscript + formulaParts.secondPart.join("") + formulaParts.secondSubscript;
+
+    return {cation, anion, compoundName, compoundFormula, formulaParts}
 }

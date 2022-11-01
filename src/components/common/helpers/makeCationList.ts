@@ -7,7 +7,7 @@ export const makeCationList = (type: string): Ion[] => {
     if (type === "ionic-main") {
         return [...mainGroupCations]
     } else if (type === "ionic-transition") {
-        return [...transitionMetalCations]
+        return [...transitionMetalCations, ...mainGroupCations]
     } else if (type === "ionic-polyatomic") {
         return [...polyatomicCations]
     } else if (type === "ionic-mixed") {
