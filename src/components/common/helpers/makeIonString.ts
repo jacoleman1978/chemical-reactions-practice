@@ -1,18 +1,12 @@
-export const makeIonString = (ion: string): string => {
+export const makeIonString = (ion: (string | number)[]): string => {
     let ionString: string = "";
 
-    if (/\d/.test(ion)) {
-        while (ion.length > 0) {
-            let char: string = ion.substring(1);
-    
-            if (char.match(/\d/)) {
-                ionString += `/${char}/`;
-            } else {
-                ionString += char;
-            }
+    for (let part of ion) {
+        if (/\d/.test(part.toString())) {
+            ionString += `/${part}/`;
+        } else {
+            ionString += part
         }
-    } else {
-        ionString = ion;
     }
 
     return ionString

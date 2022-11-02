@@ -13,7 +13,7 @@ const FormulasPractice = ({type}: PracticeProps) => {
     const instructionsList: string[] = getCompoundInstructions(type, formulasInstructions);
 
     return (
-        <div className="full-width">
+        <div>
             <Title title={title} />
             <InstructionsList label="Background and Instructions:" instructionsList={instructionsList} />
             <FormulasQuestionGroup type={type}/>

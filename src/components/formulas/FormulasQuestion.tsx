@@ -1,5 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
+import DisplayUsersFormula from "./DisplayUsersFormula";
 import { QuestionProps, Compound } from "../../interfaces";
 import { makeIonicCompound } from "../common/helpers/makeIonicCompound";
 
@@ -40,6 +41,7 @@ const FormulasQuestion = ({type, morePracticeToggle}: QuestionProps) => {
                     value={userAnswer}
                 />
             </div>
+            <DisplayUsersFormula usersFormula={userAnswer} />
         </div>
     )
 }

@@ -23,7 +23,6 @@ const NamingQuestionGroup = ({type}: QuestionGroupProps) => {
                     More Practice
                 </Button>
             </div>
-            
         </div>
     )
 }
