@@ -1,9 +1,9 @@
 import { useEffect, useState, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import NamingQuestion from "./NamingQuestion";
-import { NamingQuestionGroupProps } from "../../interfaces";
+import { QuestionGroupProps } from "../../interfaces";
 
-const NamingQuestionGroup = ({type}: NamingQuestionGroupProps) => {
+const NamingQuestionGroup = ({type}: QuestionGroupProps) => {
     const [questionsDisplay, setQuestionsDisplay] = useState<ReactElement[]>([]);
     const [morePracticeToggle, setMorePracticeToggle] = useState<boolean>(false);
 

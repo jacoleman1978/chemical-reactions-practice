@@ -1,10 +1,10 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 import CompoundLabel from "../forms/CompoundLabel";
-import { NamingQuestionProps, Compound, FormulaParts } from "../../interfaces";
+import { QuestionProps, Compound, FormulaParts } from "../../interfaces";
 import { makeIonicCompound } from "../common/helpers/makeIonicCompound";
 
-const NamingQuestion = ({type, morePracticeToggle}: NamingQuestionProps) => {
+const NamingQuestion = ({type, morePracticeToggle}: QuestionProps) => {
     const [formulaParts, setFormulaParts] = useState<FormulaParts>({
         firstPart: [],
         firstSubscript: "",

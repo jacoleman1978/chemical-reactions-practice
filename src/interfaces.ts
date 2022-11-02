@@ -50,7 +50,7 @@ export interface TypesContainerProps {
     types: Description[];
 }
 
-export interface NamingPracticeProps {
+export interface PracticeProps {
     type: string;
 }
 
@@ -114,11 +114,11 @@ export interface FormattedIonProps {
     formulaParts: (string | number)[];
 }
 
-export interface NamingQuestionGroupProps {
+export interface QuestionGroupProps {
     type: string;
 }
 
-export interface NamingQuestionProps {
+export interface QuestionProps {
     type: string;
     morePracticeToggle: boolean;
 }

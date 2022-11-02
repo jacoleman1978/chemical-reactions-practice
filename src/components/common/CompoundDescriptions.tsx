@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom';
-import Title from "../common/Title";
-import TypesContainer from "../common/TypesContainer";
+import Title from "./Title";
+import TypesContainer from "./TypesContainer";
 import { Description } from '../../interfaces';
 import { generalIonicTypes } from "../../configurations/generalIonicTypes";
 import { generalCompoundTypes } from "../../configurations/generalCompoundTypes";
 
 // Called from App.tsx
-const Naming = () => {
+const CompoundDescriptions = () => {
     let { pathname } = useLocation();
     const ionicTypes = generalIonicTypes.map((ionicType): Description => {return {...ionicType, path: pathname + ionicType.path}});
     const compoundTypes = generalCompoundTypes.map((compoundType): Description => {return {...compoundType, path: pathname + compoundType.path}});
@@ -23,4 +23,4 @@ const Naming = () => {
     )
 }
 
-export default Naming;
+export default CompoundDescriptions;
