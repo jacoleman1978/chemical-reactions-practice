@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
-import CompoundLabel from "../forms/CompoundLabel";
+import CompoundFormula from "../forms/CompoundFormula";
 import { QuestionProps, Compound, FormulaParts } from "../../interfaces";
 import { makeIonicCompound } from "../common/helpers/makeIonicCompound";
 
@@ -35,7 +35,7 @@ const NamingQuestion = ({type, morePracticeToggle}: QuestionProps) => {
 
     return (
         <div className="grid-naming med-gap">
-            <CompoundLabel formulaParts={formulaParts} />
+            <CompoundFormula formulaParts={formulaParts} />
             <div>
                 <Form.Control 
                     style={formStyle}
@@ -44,9 +44,7 @@ const NamingQuestion = ({type, morePracticeToggle}: QuestionProps) => {
                     onChange={handleUserAnswer}
                     value={userAnswer}
                 />
-                
             </div>
-            
         </div>
     )
 }

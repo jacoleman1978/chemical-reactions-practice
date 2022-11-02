@@ -120,7 +120,7 @@ export interface FormulaParts {
     secondSubscript: string,
 }
 
-export interface CompoundLabelProps {
+export interface CompoundFormulaProps {
     formulaParts: FormulaParts;
 }
 

@@ -1,7 +1,7 @@
 import FormattedIon from "../common/FormattedIon";
-import { CompoundLabelProps } from "../../interfaces"
+import { CompoundFormulaProps } from "../../interfaces"
 
-const CompoundLabel = ({formulaParts}: CompoundLabelProps) => {
+const CompoundFormula = ({formulaParts}: CompoundFormulaProps) => {
     return (
         <div className="flex-right-center">
             <FormattedIon formulaParts={formulaParts.firstPart}/>
@@ -12,4 +12,4 @@ const CompoundLabel = ({formulaParts}: CompoundLabelProps) => {
     )
 }
 
-export default CompoundLabel;
+export default CompoundFormula;

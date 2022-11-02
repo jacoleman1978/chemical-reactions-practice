@@ -111,6 +111,11 @@ h1 {
   grid-template-columns: 1fr 5fr 1fr;
 }
 
+.grid-formulas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .flex-right-center {
   display: flex;
   justify-content: right;
