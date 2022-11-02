@@ -68,6 +68,20 @@ export interface CompoundDescription {
     mixed: string,
 }
 
+export interface IonicInstructions {
+    main: string[],
+    transition: string[],
+    polyatomic: string[],
+    mixed: string[],
+}
+
+export interface CompoundInstructions {
+    ionic: IonicInstructions,
+    acids: string[],
+    molecular: string[],
+    mixed: string[],
+}
+
 export interface InstructionsListProps {
     label: string;
     instructionsList: string[];

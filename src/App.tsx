@@ -15,8 +15,9 @@ function App() {
   let { pathname } = useLocation();
   
   return (
-    <div className="App flex-center-center flex-column">
+    <div className="App">
       <NavMenu path={pathname.substring(1)} />
+      <div className="flex-left-center full-width">
         <Routes>
           <Route path='/' element={<PracticeType />} /> 
           <Route path='/naming' element={<CompoundDescriptions />} />
@@ -39,7 +40,7 @@ function App() {
           <Route path='/reaction-types' element={<ReactionTypes />} />
           <Route path='/predicting-products' element={<PredictingProducts />} />
         </Routes>
-
+      </div>
     </div>
   );
 }

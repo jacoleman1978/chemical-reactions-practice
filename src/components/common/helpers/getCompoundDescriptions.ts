@@ -1,6 +1,6 @@
 import { CompoundDescription } from "../../../interfaces";
 
-export const getNamingData = (type: string, namingData: CompoundDescription): string => {
+export const getCompoundDescriptions = (type: string, namingData: CompoundDescription): string => {
     if (type === 'ionic-main') {
         return namingData.ionic.main
     } else if (type === 'ionic-transition') {

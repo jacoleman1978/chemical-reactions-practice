@@ -11,9 +11,13 @@ const CompoundDescriptions = () => {
     const ionicTypes = generalIonicTypes.map((ionicType): Description => {return {...ionicType, path: pathname + ionicType.path}});
     const compoundTypes = generalCompoundTypes.map((compoundType): Description => {return {...compoundType, path: pathname + compoundType.path}});
 
+    
+
     return (
         <div className="flex-column">
-            <Title title="Naming Compounds Practice" />
+
+            {(pathname === "/naming" && <Title title="Naming Compounds Practice" />)}
+            {(pathname === "/formulas" && <Title title="Writing Compound Formulas Practice" />)}
             <ul><li>Ionic: Compounds composed of ions, species with full charges</li></ul>
             <div className="lg-left-margin">
                 <TypesContainer types={ionicTypes} />
