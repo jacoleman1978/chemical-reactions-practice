@@ -1,37 +1,52 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 import CompoundLabel from "../forms/CompoundLabel";
-import { Ion, NamingPracticeProps, Compound } from "../../interfaces";
+import { NamingQuestionProps, Compound, FormulaParts } from "../../interfaces";
 import { makeIonicCompound } from "../common/helpers/makeIonicCompound";
 
-const NamingQuestion = ({type}: NamingPracticeProps) => {
-    const [compound, setCompound] = useState<Compound>({
-        cation: {} as Ion,
-        anion: {} as Ion,
-        compoundName: "",
-        compoundFormula: "",
-        formulaParts: {
-            firstPart: [],
-            firstSubscript: "",
-            secondPart: [],
-            secondSubscript: ""
-        }
+const NamingQuestion = ({type, morePracticeToggle}: NamingQuestionProps) => {
+    const [formulaParts, setFormulaParts] = useState<FormulaParts>({
+        firstPart: [],
+        firstSubscript: "",
+        secondPart: [],
+        secondSubscript: ""
     });
     const [compoundName, setCompoundName] = useState<string>("");
 
+    const [userAnswer, setUserAnswer] = useState<string>("");
+    const handleUserAnswer = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.target.value === compoundName) {
+            setFormStyle({backgroundColor: "palegreen"})
+        } else {
+            setFormStyle({backgroundColor: "lightpink"})
+        }
+        setUserAnswer(event.target.value);
+    }
+
+    const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
+
     useEffect(() => {
-        setCompound(makeIonicCompound(type));
-    }, [type])
+        const ionicCompound: Compound = makeIonicCompound(type);
+        setFormulaParts(ionicCompound.formulaParts);
+        setCompoundName(ionicCompound.compoundName);
+        setUserAnswer("");
+        setFormStyle({backgroundColor: "lightpink"})
+    }, [type, morePracticeToggle])
 
     return (
-        <div className="flex-left-center med-gap">
-            <CompoundLabel formulaParts={compound.formulaParts} />
-            <Form.Control 
-                required
-                type="text"
-                aria-describedby="compound name"
-                onChange={(e) => setCompoundName(e.target.value)}
-            />
+        <div className="grid-naming med-gap">
+            <CompoundLabel formulaParts={formulaParts} />
+            <div>
+                <Form.Control 
+                    style={formStyle}
+                    type="text"
+                    aria-describedby="compound name"
+                    onChange={handleUserAnswer}
+                    value={userAnswer}
+                />
+                
+            </div>
+            
         </div>
     )
 }

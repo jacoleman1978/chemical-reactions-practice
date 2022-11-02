@@ -113,3 +113,12 @@ export interface CompoundLabelProps {
 export interface FormattedIonProps {
     formulaParts: (string | number)[];
 }
+
+export interface NamingQuestionGroupProps {
+    type: string;
+}
+
+export interface NamingQuestionProps {
+    type: string;
+    morePracticeToggle: boolean;
+}

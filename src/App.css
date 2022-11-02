@@ -100,3 +100,14 @@ h1 {
 .toggle-btn:hover {
   background-color: lightslategray;
 }
+
+.grid-naming {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+}
+
+.flex-right-center {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}

@@ -1,6 +1,6 @@
 import Title from "../common/Title";
 import InstructionsList from "../common/InstructionsList";
-import NamingForm from "./NamingForm";
+import NamingQuestionGroup from "./NamingQuestionGroup";
 import { NamingPracticeProps } from "../../interfaces";
 import { getNamingData } from "./helpers/getNamingData";
 import { compoundTitles } from "../../configurations/compoundTitles";
@@ -15,7 +15,7 @@ const NamingPractice = ({type}: NamingPracticeProps) => {
         <div>
             <Title title={title} />
             <InstructionsList label="Background and Instructions:" instructionsList={instructionsList} />
-            <NamingForm type={type}/>
+            <NamingQuestionGroup type={type}/>
         </div>
     )
 }

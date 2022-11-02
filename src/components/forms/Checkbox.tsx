@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import handleCheckboxChange from "./helpers/handleCheckboxChange";
 import { CheckboxAction } from "../../interfaces";
 
@@ -10,7 +10,7 @@ interface CheckboxProps {
 
 // Called from CompoundTypes.tsx
 const Checkbox = ({value, label, setCheckboxAction}: CheckboxProps) => {
-    let [event, setEvent] = useState<React.ChangeEvent<HTMLInputElement>>({} as React.ChangeEvent<HTMLInputElement>);
+    let [event, setEvent] = useState<ChangeEvent<HTMLInputElement>>({} as ChangeEvent<HTMLInputElement>);
 
     useEffect(() => {
         if (event.hasOwnProperty("target")) {
