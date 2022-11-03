@@ -1,22 +1,18 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
-import CompoundFormula from "../forms/CompoundFormula";
-import { Compound, FormulaParts } from "../../interfaces";
+import DisplayUsersFormula from "./DisplayUsersFormula";
+import { Compound } from "../../interfaces";
 import { makeIonicCompound } from "../common/helpers/makeIonicCompound";
 import { convertToAcid } from "../common/helpers/convertToAcid";
 
-const AcidNamingQuestion = ({morePracticeToggle}: {morePracticeToggle: boolean}) => {
+const AcidFormulasQuestion = ({morePracticeToggle}: {morePracticeToggle: boolean}) => {
     const [acidName, setAcidName] = useState<string>("");
-    const [formulaParts, setFormulaParts] = useState<FormulaParts>({
-        firstPart: [],
-        firstSubscript: "",
-        secondPart: [],
-        secondSubscript: ""
-    });
+    const [acidFormula, setAcidFormula] = useState<string>("");
+    const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
 
     const [userAnswer, setUserAnswer] = useState<string>("");
     const handleUserAnswer = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.value === acidName) {
+        if (event.target.value === acidFormula) {
             setFormStyle({backgroundColor: "palegreen"})
         } else {
             setFormStyle({backgroundColor: "lightpink"})
@@ -24,17 +20,20 @@ const AcidNamingQuestion = ({morePracticeToggle}: {morePracticeToggle: boolean})
         setUserAnswer(event.target.value);
     }
 
-    const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
-
     useEffect(() => {
         let compound: Compound = makeIonicCompound("acids");
         compound = convertToAcid(compound);
+        setAcidFormula(compound.compoundFormula);
         setAcidName(compound.compoundName);
-        setFormulaParts(compound.formulaParts);
+        setUserAnswer("");
+        setFormStyle({backgroundColor: "lightpink"})
     }, [morePracticeToggle])
+
     return (
-        <div className="grid-naming med-gap">
-            <CompoundFormula formulaParts={formulaParts} />
+        <div className="grid-formulas med-gap">
+            <div className="flex-right-center">
+                {acidName}
+            </div>
             <div>
                 <Form.Control 
                     style={formStyle}
@@ -44,8 +43,9 @@ const AcidNamingQuestion = ({morePracticeToggle}: {morePracticeToggle: boolean})
                     value={userAnswer}
                 />
             </div>
+            <DisplayUsersFormula usersFormula={userAnswer} />
         </div>
     )
 }
 
-export default AcidNamingQuestion;
+export default AcidFormulasQuestion;

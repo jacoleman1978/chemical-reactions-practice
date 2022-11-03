@@ -13,7 +13,7 @@ const NamingQuestionGroup = ({type}: QuestionGroupProps) => {
 
         while (newQuestions.length < 10) {
             if (type.includes("ionic")) {
-                newQuestions = [...newQuestions, <NamingQuestion key={`question-${newQuestions.length}`} type={type} morePracticeToggle={morePracticeToggle}/>]
+                newQuestions = [...newQuestions, <NamingQuestion key={`question-${newQuestions.length}`} type={type} morePracticeToggle={morePracticeToggle}/>];
             } else if (type === "acids") {
                 newQuestions = [...newQuestions, <AcidNamingQuestion key={`question-${newQuestions.length}`} morePracticeToggle={morePracticeToggle} />];
             }      

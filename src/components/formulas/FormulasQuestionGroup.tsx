@@ -1,6 +1,7 @@
 import { useEffect, useState, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import FormulasQuestion from "./FormulasQuestion";
+import AcidFormulasQuestion from "./AcidFormulasQuestion";
 import { QuestionGroupProps } from "../../interfaces";
 
 const FormulasQuestionGroup = ({type}: QuestionGroupProps) => {
@@ -10,9 +11,11 @@ const FormulasQuestionGroup = ({type}: QuestionGroupProps) => {
     useEffect(() => {
         let newQuestions: ReactElement[] = [];
 
-        if (type.includes("ionic")) {
-            while (newQuestions.length < 10) {
-                newQuestions = [...newQuestions, <FormulasQuestion key={`question-${newQuestions.length}`} type={type} morePracticeToggle={morePracticeToggle}/>]
+        while (newQuestions.length < 10) {
+            if (type.includes("ionci")) {
+                newQuestions = [...newQuestions, <FormulasQuestion key={`question-${newQuestions.length}`} type={type} morePracticeToggle={morePracticeToggle}/>];
+            } else if (type === "acids") {
+                newQuestions = [...newQuestions, <AcidFormulasQuestion key={`question-${newQuestions.length}`} morePracticeToggle={morePracticeToggle} />];
             }
         }
         
