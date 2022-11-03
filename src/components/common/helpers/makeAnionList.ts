@@ -1,6 +1,7 @@
 import { Ion } from "../../../interfaces";
 import { mainGroupAnions } from "../../../configurations/ions/mainGroupAnions";
 import { polyatomicAnions } from "../../../configurations/ions/polyatomicAnions";
+import { acidAnions } from "../../../configurations/ions/acidAnions";
 
 export const makeAnionList = (type: string): Ion[] => {
     if (type === "ionic-main") {
@@ -11,6 +12,8 @@ export const makeAnionList = (type: string): Ion[] => {
         return [...polyatomicAnions]
     } else if (type === "ionic-mixed" || type === "mixed") {
         return [...mainGroupAnions, ...polyatomicAnions]
+    } else if (type === "acids") {
+        return [...acidAnions]
     }
 
     return []

@@ -12,6 +12,14 @@ export const makeCationList = (type: string): Ion[] => {
         return [...polyatomicCations, ...mainGroupCations]
     } else if (type === "ionic-mixed") {
         return [...mainGroupCations, ...transitionMetalCations, ...polyatomicCations]
+    } else if (type === "acids") {
+        let hydrogenIon: Ion = {
+            ionName: "hydrogen",
+            ionSymbol: ["H"],
+            charge: 1,
+            isPolyatomic: false,
+        }
+        return [hydrogenIon]
     }
 
     return []

@@ -9,9 +9,13 @@ const FormulasQuestionGroup = ({type}: QuestionGroupProps) => {
 
     useEffect(() => {
         let newQuestions: ReactElement[] = [];
-        while (newQuestions.length < 10) {
-            newQuestions = [...newQuestions, <FormulasQuestion key={`question-${newQuestions.length}`} type={type} morePracticeToggle={morePracticeToggle}/>]
+
+        if (type.includes("ionic")) {
+            while (newQuestions.length < 10) {
+                newQuestions = [...newQuestions, <FormulasQuestion key={`question-${newQuestions.length}`} type={type} morePracticeToggle={morePracticeToggle}/>]
+            }
         }
+        
         setQuestionsDisplay(newQuestions);
 
     }, [morePracticeToggle, type])
