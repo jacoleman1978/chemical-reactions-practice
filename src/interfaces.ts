@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export interface CheckboxAction {
     addId: string;
     removeId: string;
@@ -130,9 +132,32 @@ export interface FormattedIonProps {
 
 export interface QuestionGroupProps {
     type: string;
+
 }
 
 export interface QuestionProps {
-    type: string;
     morePracticeToggle: boolean;
+    compoundName: string;
+    compoundFormula: string;
+    formulaParts: FormulaParts;
+    practiceType: string;
+}
+
+export interface CompoundsPracticeProps {
+    type: string;
+    practiceType: string;
+}
+
+export interface NamingQuestionProps {
+    formulaParts: FormulaParts;
+    formStyle: {backgroundColor: string};
+    handleUserAnswer: (event: ChangeEvent<HTMLInputElement>) => void;
+    userAnswer: string;
+}
+
+export interface FormulasQuestionProps {
+    compoundName: string;
+    formStyle: {backgroundColor: string};
+    handleUserAnswer: (event: ChangeEvent<HTMLInputElement>) => void;
+    userAnswer: string;
 }

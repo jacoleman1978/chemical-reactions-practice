@@ -5,15 +5,15 @@ import { Routes, Route } from 'react-router-dom';
 import NavMenu from './components/nav/NavMenu';
 import PracticeType from './components/common/PracticeType';
 import CompoundDescriptions from './components/common/CompoundDescriptions';
-import NamingPractice from './components/naming/NamingPractice';
-import FormulasPractice from './components/formulas/FormulasPractice';
+import CompoundsPractice from './components/compounds/CompoundsPractice';
 import BalancingEquations from './components/balancing-equations/BalancingEquations';
 import ReactionTypes from './components/reaction-types/ReactionTypes';
 import PredictingProducts from './components/predicting-products/PredictingProducts';
 
 function App() {
   let { pathname } = useLocation();
-  
+  const practiceType: string = pathname.split("/")[1];
+
   return (
     <div className="App">
       <NavMenu path={pathname.substring(1)} />
@@ -21,21 +21,21 @@ function App() {
         <Routes>
           <Route path='/' element={<PracticeType />} /> 
           <Route path='/naming' element={<CompoundDescriptions />} />
-          <Route path='/naming/ionic/main' element={<NamingPractice type={"ionic-main"} />} />
-          <Route path='/naming/ionic/transition' element={<NamingPractice type={"ionic-transition"} />} />
-          <Route path='/naming/ionic/polyatomic' element={<NamingPractice type={"ionic-polyatomic"} />} />
-          <Route path='/naming/ionic/mixed' element={<NamingPractice type={"ionic-mixed"} />} />
-          <Route path='/naming/acids' element={<NamingPractice type={"acids"} />} />
-          <Route path='/naming/molecular' element={<NamingPractice type={"molecular"} />} />
-          <Route path='/naming/mixed' element={<NamingPractice type={"mixed"} />} />
+          <Route path='/naming/ionic/main' element={<CompoundsPractice type={"ionic-main"} practiceType={practiceType} />} />
+          <Route path='/naming/ionic/transition' element={<CompoundsPractice type={"ionic-transition"} practiceType={practiceType} />} />
+          <Route path='/naming/ionic/polyatomic' element={<CompoundsPractice type={"ionic-polyatomic"} practiceType={practiceType} />} />
+          <Route path='/naming/ionic/mixed' element={<CompoundsPractice type={"ionic-mixed"} practiceType={practiceType} />} />
+          <Route path='/naming/acids' element={<CompoundsPractice type={"acids"} practiceType={practiceType} />} />
+          <Route path='/naming/molecular' element={<CompoundsPractice type={"molecular"} practiceType={practiceType} />} />
+          <Route path='/naming/mixed' element={<CompoundsPractice type={"mixed"} practiceType={practiceType} />} />
           <Route path='/formulas' element={<CompoundDescriptions />} />
-          <Route path='/formulas/ionic/main' element={<FormulasPractice type={"ionic-main"} />} />
-          <Route path='/formulas/ionic/transition' element={<FormulasPractice type={"ionic-transition"} />} />
-          <Route path='/formulas/ionic/polyatomic' element={<FormulasPractice type={"ionic-polyatomic"} />} />
-          <Route path='/formulas/ionic/mixed' element={<FormulasPractice type={"ionic-mixed"} />} />
-          <Route path='/formulas/acids' element={<FormulasPractice type={"acids"} />} />
-          <Route path='/formulas/molecular' element={<FormulasPractice type={"molecular"} />} />
-          <Route path='/formulas/mixed' element={<FormulasPractice type={"mixed"} />} />
+          <Route path='/formulas/ionic/main' element={<CompoundsPractice type={"ionic-main"} practiceType={practiceType} />} />
+          <Route path='/formulas/ionic/transition' element={<CompoundsPractice type={"ionic-transition"} practiceType={practiceType} />} />
+          <Route path='/formulas/ionic/polyatomic' element={<CompoundsPractice type={"ionic-polyatomic"} practiceType={practiceType} />} />
+          <Route path='/formulas/ionic/mixed' element={<CompoundsPractice type={"ionic-mixed"} practiceType={practiceType} />} />
+          <Route path='/formulas/acids' element={<CompoundsPractice type={"acids"} practiceType={practiceType} />} />
+          <Route path='/formulas/molecular' element={<CompoundsPractice type={"molecular"} practiceType={practiceType} />} />
+          <Route path='/formulas/mixed' element={<CompoundsPractice type={"mixed"} practiceType={practiceType} />} />
           <Route path='/balancing' element={<BalancingEquations />} />
           <Route path='/reaction-types' element={<ReactionTypes />} />
           <Route path='/predicting-products' element={<PredictingProducts />} />

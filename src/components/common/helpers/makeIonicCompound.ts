@@ -4,6 +4,7 @@ import { makeAnionList } from "./makeAnionList";
 import { getRandomIon } from "./getRandomIon";
 import { makeFormulaParts } from "./makeFormulaParts";
 import { makeFormulaString } from "./makeFormulaString";
+import { convertToAcid } from "./convertToAcid";
 
 export const makeIonicCompound = (type: string): Compound => {
     // Get the list of ions appropriate to the compound type
@@ -20,5 +21,11 @@ export const makeIonicCompound = (type: string): Compound => {
 
     const compoundFormula: string = makeFormulaString(formulaParts);
 
-    return {cation, anion, compoundName, compoundFormula, formulaParts}
+    let compound: Compound = {cation, anion, compoundName, compoundFormula, formulaParts};
+
+    if (type === "acids") {
+        compound = convertToAcid(compound);
+    }
+
+    return compound
 }
