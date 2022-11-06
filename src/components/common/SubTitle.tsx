@@ -1,5 +1,7 @@
-import { SubtitleProps } from "../../interfaces";
+import { SubtitleProps } from "./configurations/interfaces";
 
+// Makes the Subtitle and the '+' or '-' clickable to toggle the instructions display
+// Called from /common/InstructionsList.tsx
 const SubTitle = ({displayToggle, handleToggle, label}: SubtitleProps) => {
     return (
         <div className="flex-left-center med-gap" onClick={handleToggle}>

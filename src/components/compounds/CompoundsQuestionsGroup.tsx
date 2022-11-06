@@ -1,8 +1,8 @@
 import { useEffect, useState, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import CompoundsQuestion from "./CompoundsQuestion";
-import { CompoundsPracticeProps, Compound } from "../../interfaces";
-import { makeIonicCompound } from "../common/helpers/makeIonicCompound";
+import { CompoundsPracticeProps, Compound } from "./configurations/interfaces";
+import { makeIonicCompound } from "./helpers/makeIonicCompound";
 
 
 const CompoundsQuestionsGroup = ({type, practiceType}: CompoundsPracticeProps) => {

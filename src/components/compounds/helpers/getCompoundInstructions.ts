@@ -1,5 +1,4 @@
-import { formulasInstructions } from "../../../configurations/formulasInstructions";
-import { namingInstructions } from "../../../configurations/namingInstructions";
+import { formulasInstructions, namingInstructions } from "../configurations/compoundInstructions"
 import { CompoundInstructions } from "../../../interfaces";
 
 export const getCompoundInstructions = (type: string, practiceType: string): string[] => {

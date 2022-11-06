@@ -1,4 +1,6 @@
-const AdditionalFormulasInstruction = ({practiceType}: {practiceType: string}) => {
+import { PracticeType } from "../common/configurations/types";
+
+const AdditionalFormulasInstruction = ({practiceType}: {practiceType: PracticeType}) => {
     if (practiceType !== "formulas") {
         return <></>
     }

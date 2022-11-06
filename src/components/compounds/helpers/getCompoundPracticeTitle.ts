@@ -1,5 +1,5 @@
 import { getCompoundDescriptions } from "./getCompoundDescriptions";
-import { compoundTitles } from "../../../configurations/compoundTitles";
+import { compoundTitles } from "../configurations/compoundTitles";
 
 export const getCompoundPracticeTitle = (type: string, practiceType: string): string => {
     let title: string = "";

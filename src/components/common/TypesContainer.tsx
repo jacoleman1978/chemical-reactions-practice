@@ -1,9 +1,9 @@
 import TypeDescription from "./TypeDescription";
-import { TypesContainerProps } from "../../interfaces";
-import { Description } from "../../interfaces";
+import { Description } from "./configurations/interfaces";
 
-const TypesContainer = ({types}: TypesContainerProps) => {
-
+// Displays the list of hyperlinked types with brief descriptions of the type
+// Called from /common/PracticeType.tsx
+const TypesContainer = ({types}: {types: Description[]}) => {
     return (
         <ul className="flex-column med-gap">
             {types.map((type: Description) => {

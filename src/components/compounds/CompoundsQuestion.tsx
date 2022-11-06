@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import NamingQuestion from "./NamingQuestion";
 import FormulasQuestion from "./FormulasQuestion";
-import { QuestionProps } from "../../interfaces";
+import { QuestionProps } from "./configurations/interfaces";
 
 const CompoundsQuestion = ({morePracticeToggle, compoundName, compoundFormula, formulaParts, practiceType}: QuestionProps) => {
     const [userAnswer, setUserAnswer] = useState<string>("");

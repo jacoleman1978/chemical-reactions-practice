@@ -2,9 +2,9 @@ import Title from "../common/Title";
 import InstructionsList from "../common/InstructionsList";
 import CompoundsQuestionsGroup from "./CompoundsQuestionsGroup";
 import AdditionalFormulasInstruction from "./AdditionalFormulasInstruction";
-import { CompoundsPracticeProps } from "../../interfaces";
 import { getCompoundInstructions } from "./helpers/getCompoundInstructions";
 import { getCompoundPracticeTitle } from "./helpers/getCompoundPracticeTitle";
+import { CompoundsPracticeProps } from "./configurations/interfaces";
 
 const CompoundsPractice = ({type, practiceType}: CompoundsPracticeProps) => {
     const title: string = getCompoundPracticeTitle(type, practiceType);

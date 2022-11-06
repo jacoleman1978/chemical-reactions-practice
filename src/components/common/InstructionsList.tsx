@@ -1,13 +1,11 @@
-import { useState } from "react";
 import SubTitle from "./SubTitle";
-import { InstructionsListProps } from "../../interfaces";
+import { useToggle } from "../../customHooks/useToggle";
+import { InstructionsListProps } from "./configurations/interfaces"
 
+// Displays the label as a subtitle with a clickable '+' or '-' to toggle the passed in instructionsList
+// Called from /compounds/CompoundsPractice.tsx
 const InstructionsList = ({label, instructionsList}: InstructionsListProps) => {
-    const [displayToggle, setDisplayToggle] = useState<boolean>(false);
-
-    const handleToggle = () => {
-        setDisplayToggle(displayToggle => !displayToggle);
-    }
+    const [displayToggle, handleToggle] = useToggle();
 
     return (
         <>

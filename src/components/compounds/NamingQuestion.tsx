@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
-import CompoundFormula from "../forms/CompoundFormula";
-import { NamingQuestionProps } from "../../interfaces";
+import CompoundFormula from "./CompoundFormula";
+import { NamingQuestionProps } from "./configurations/interfaces";
 
 const NamingQuestion = ({formulaParts, formStyle, handleUserAnswer, userAnswer}: NamingQuestionProps) => {
     return (

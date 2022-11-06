@@ -1,18 +1,15 @@
 import { Navbar, Nav } from "react-bootstrap";
 import NavDropdownMenu from "./NavDropdownMenu";
-import { NavMenuProps } from "../../interfaces";
-import { practiceTypes, namingCompoundTypes, formulaCompoundTypes } from "../../configurations/navDropdowns";
+import { PracticeType } from "../common/configurations/types";
 
-const NavMenu = ({path}: NavMenuProps) => {
-    const pathParts: string[] = path.split("/");
-    
+// Called from App.tsx
+const NavMenu = ({practiceType}: {practiceType: PracticeType}) => {
     return (
         <Navbar>
             <Navbar.Brand href="/">Home</Navbar.Brand>
             <Nav variant="pills">
-                <NavDropdownMenu key="practice-types" title={"Practice Type"} options={practiceTypes} />
-                {pathParts[0] === "naming" &&  <NavDropdownMenu key="naming-types" title={"Compound Type"} options={namingCompoundTypes} />}
-                {pathParts[0] === "formulas" &&  <NavDropdownMenu key="formulas-types" title={"Compound Type"} options={formulaCompoundTypes} />}
+                <NavDropdownMenu key="practice-types" practiceType={"main"} />
+                {practiceType !== "" && <NavDropdownMenu key="naming-types" practiceType={practiceType} />}
             </Nav>
         </Navbar>
     )
