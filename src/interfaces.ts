@@ -6,42 +6,17 @@ export interface MenuLink {
     label: string;
 }
 
-export interface IonicDescription {
-    main: string,
-    transition: string,
-    polyatomic: string,
-    mixed: string,
-}
-
-export interface CompoundDescription {
-    ionic: IonicDescription,
-    acids: string,
-    molecular: string,
-    mixed: string,
-}
-
-export interface IonicInstructions {
-    main: string[],
-    transition: string[],
-    polyatomic: string[],
-    mixed: string[],
-}
-
-export interface CompoundInstructions {
-    ionic: IonicInstructions,
-    acids: string[],
-    molecular: string[],
-    mixed: string[],
-}
 
 
 
 
 
-export interface CompoundSubscripts {
-    first: number,
-    second: number,
-}
+
+
+
+
+
+
 
 
 
