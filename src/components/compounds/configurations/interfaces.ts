@@ -1,5 +1,4 @@
-import { ChangeEvent } from "react";
-import { PracticeType, Type } from "../../common/configurations/types";
+import { PracticeType, CompoundType } from "../../common/configurations/types";
 import { CationCharge, AnionCharge, FirstSubscript, SecondSubscript } from "./types";
 
 export interface FormulaParts {
@@ -16,7 +15,7 @@ export interface QuestionProps {
 }
 
 export interface CompoundsPracticeProps {
-    type: Type;
+    compoundType: CompoundType;
     practiceType: PracticeType;
 }
 

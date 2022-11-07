@@ -7,12 +7,12 @@ import { makeCompoundList } from "./helpers/makeCompoundList";
 
 // Generates and displays a list of CompoundsQuestions display componenets of Compound objects
 // Called from /compounds/CompoundsPractice.tsx
-const CompoundsQuestionsGroup = ({type, practiceType}: CompoundsPracticeProps) => {
+const CompoundsQuestionsGroup = ({compoundType, practiceType}: CompoundsPracticeProps) => {
     const [questionsDisplay, setQuestionsDisplay] = useState<ReactElement[]>([]);
     const [toggleFlag, handleToggle] = useToggle();
 
     useEffect(() => {
-        let compoundsList: Compound[] = makeCompoundList(type);
+        let compoundsList: Compound[] = makeCompoundList(compoundType);
         let newQuestions: ReactElement[];
 
         newQuestions = compoundsList.map((compound, i) => {
@@ -28,7 +28,7 @@ const CompoundsQuestionsGroup = ({type, practiceType}: CompoundsPracticeProps) =
 
         setQuestionsDisplay(newQuestions);
 
-    }, [toggleFlag, type, practiceType])
+    }, [toggleFlag, compoundType, practiceType])
 
     return (
         <div className="flex-column med-gap">

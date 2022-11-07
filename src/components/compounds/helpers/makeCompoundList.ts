@@ -1,20 +1,20 @@
 import { makeIonicCompound } from "./makeIonicCompound";
 import { Compound } from "../configurations/interfaces";
 import { GenerateQuantity } from "../configurations/types";
-import { Type } from "../../common/configurations/types";
+import { CompoundType } from "../../common/configurations/types";
 
 /**
  * Generate and return an array of Compound objects of a given compound type
- * @param type A compound type of type literal Type
+ * @param compoundType A compound type of type literal Type
  * @returns An array of Compound objects
  */
 
-export const makeCompoundList = (type: Type): Compound[] => {
+export const makeCompoundList = (compoundType: CompoundType): Compound[] => {
     let numberOfQuestions: GenerateQuantity = 10;
 
-    if (type === "ionic-mixed") {
+    if (compoundType === "ionic-mixed") {
         numberOfQuestions = 15;
-    } else if (type === "mixed") {
+    } else if (compoundType === "mixed") {
         numberOfQuestions = 20;
     }
 
@@ -22,7 +22,7 @@ export const makeCompoundList = (type: Type): Compound[] => {
     let formulasList: string[] = [];
 
     while (compoundsList.length < numberOfQuestions) {
-        let newCompound: Compound = makeIonicCompound(type);
+        let newCompound: Compound = makeIonicCompound(compoundType);
 
         // Only add unique newCompound to compoundsList
         if (!formulasList.includes(newCompound.compoundFormula)) {

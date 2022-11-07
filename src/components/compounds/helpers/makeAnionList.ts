@@ -1,29 +1,29 @@
 import { Ion } from "../configurations/interfaces";
-import { Type } from "../../common/configurations/types";
+import { CompoundType } from "../../common/configurations/types";
 import { mainGroupAnions } from "../configurations/ions/mainGroupAnions";
 import { polyatomicAnions } from "../configurations/ions/polyatomicAnions";
 import { acidAnions } from "../configurations/ions/acidAnions";
 
 /**
  * Generates an array of anions depending on the ionic type passed in.
- * @param type The type of compound practice as a type of Type
+ * @param compoundType The type of compound practice as a type of Type
  * @returns An array of anions of type Ion
  */
 
-export const makeAnionList = (type: Type): Ion[] => {
-    if (type === "ionic-main") {
+export const makeAnionList = (compoundType: CompoundType): Ion[] => {
+    if (compoundType === "ionic-main") {
         return [...mainGroupAnions]
 
-    } else if (type === "ionic-transition") {
+    } else if (compoundType === "ionic-transition") {
         return [...mainGroupAnions]
 
-    } else if (type === "ionic-polyatomic") {
+    } else if (compoundType === "ionic-polyatomic") {
         return [...polyatomicAnions]
 
-    } else if (type === "ionic-mixed" || type === "mixed") {
+    } else if (compoundType === "ionic-mixed" || compoundType === "mixed") {
         return [...mainGroupAnions, ...polyatomicAnions]
 
-    } else if (type === "acids") {
+    } else if (compoundType === "acids") {
         return [...acidAnions]
 
     } 
