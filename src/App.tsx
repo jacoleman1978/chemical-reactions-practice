@@ -2,7 +2,7 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
-import NavMenu from './components/nav/NavMenu';
+import NavMenus from './components/nav/NavMenus';
 import PracticeTypes from './components/common/PracticeTypes';
 import CompoundDescriptions from './components/compounds/CompoundDescriptions';
 import CompoundsPractice from './components/compounds/CompoundsPractice';
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavMenu practiceType={practiceType} />
+      <NavMenus practiceType={practiceType} />
       <div className="flex-left-center full-width">
         <Routes>
           <Route path='/' element={<PracticeTypes />} /> 

@@ -1,4 +1,4 @@
-import { MenuLink } from "../../../interfaces" 
+import { MenuLink } from "./interfaces" 
 
 export const practiceTypes: MenuLink[] = [
     {path: "/naming", label: "Naming Compounds"},

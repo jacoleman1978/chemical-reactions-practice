@@ -2,8 +2,9 @@ import { Navbar, Nav } from "react-bootstrap";
 import NavDropdownMenu from "./NavDropdownMenu";
 import { PracticeType } from "../common/configurations/types";
 
+// Displays the navbar menus
 // Called from App.tsx
-const NavMenu = ({practiceType}: {practiceType: PracticeType}) => {
+const NavMenus = ({practiceType}: {practiceType: PracticeType}) => {
     return (
         <Navbar>
             <Navbar.Brand href="/">Home</Navbar.Brand>
@@ -15,4 +16,4 @@ const NavMenu = ({practiceType}: {practiceType: PracticeType}) => {
     )
 }
 
-export default NavMenu;
+export default NavMenus;

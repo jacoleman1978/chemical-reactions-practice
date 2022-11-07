@@ -1,4 +1,4 @@
-import { FormattedIonProps } from "../../interfaces"
+import { FormattedIonProps } from "./configurations/interfaces"
 
 // Uses the formulaParts from the Compound object to format the display of the ion
 // Called from /compounds/CompoundFormula.tsx

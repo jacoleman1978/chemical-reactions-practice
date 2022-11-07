@@ -81,3 +81,7 @@ export interface CompoundInstructions {
     molecular: string[],
     mixed: string[],
 }
+
+export interface FormattedIonProps {
+    formulaParts: (string | number)[];
+}

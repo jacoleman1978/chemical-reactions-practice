@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UseToggle } from "../types";
+import { UseToggle } from "./configurations/types";
 
 /**
  * 

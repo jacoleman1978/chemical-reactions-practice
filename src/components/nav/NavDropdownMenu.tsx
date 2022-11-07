@@ -1,10 +1,12 @@
 import { NavDropdown } from "react-bootstrap";
 import { getNavDropdownTitle } from "./helpers/getNavDropdownTitle";
 import { getNavDropdownOptions } from "./helpers/getNavDropdownOptions";
-import { MenuLink } from "../../interfaces";
+import { MenuLink } from "./configurations/interfaces";
+import { PracticeType } from "../common/configurations/types";
 
-// Called from /nav/NavMenu.tsx
-const NavDropdownMenu = ({practiceType}: {practiceType: string}) => {
+// Populates the options for the navbar dropdown menus
+// Called from /nav/NavMenus.tsx
+const NavDropdownMenu = ({practiceType}: {practiceType: PracticeType}) => {
     const navDropdownTitle: string = getNavDropdownTitle(practiceType);
     const navDropdownOptions: MenuLink[] = getNavDropdownOptions(practiceType);
 
