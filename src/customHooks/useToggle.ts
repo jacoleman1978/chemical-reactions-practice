@@ -3,14 +3,14 @@ import { UseToggle } from "../types";
 
 /**
  * 
- * @returns displayToggle as a boolean and handleToggle as a void function to change displayToggle
+ * @returns toggleFlag as a boolean and handleToggle as a void function to change toggleFlag
  */
 export const useToggle = (): UseToggle => {
-    const [displayToggle, setDisplayToggle] = useState<boolean>(false);
+    const [toggleFlag, setToggleFlag] = useState<boolean>(false);
 
     const handleToggle = (): void => {
-        setDisplayToggle(displayToggle => !displayToggle);
+        setToggleFlag(toggleFlag => !toggleFlag);
     }
 
-    return [displayToggle, handleToggle]
+    return [toggleFlag, handleToggle]
 }

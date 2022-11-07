@@ -1,5 +1,7 @@
 import { FormattedIonProps } from "../../interfaces"
 
+// Uses the formulaParts from the Compound object to format the display of the ion
+// Called from /compounds/CompoundFormula.tsx
 const FormattedIon = ({formulaParts}: FormattedIonProps) => {
     const formattedIon = formulaParts.map((part, i) => {
         let symbols: string = "";

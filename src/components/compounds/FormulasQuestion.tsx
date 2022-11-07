@@ -1,8 +1,12 @@
+import { ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 import DisplayUsersFormula from "./DisplayUsersFormula";
-import { FormulasQuestionProps } from "../../interfaces";
+import { FormulasQuestionProps } from "./configurations/interfaces";
 
-const FormulasQuestion = ({compoundName, formStyle, handleUserAnswer, userAnswer}: FormulasQuestionProps) => {
+// Displays the name of the compound for which the user must write the formula in the input field
+// The input field's background color will change to a light green when the answer is correct.
+// Called from /compound/CompoundsQuestion.tsx
+const FormulasQuestion = ({formStyle, handleUserAnswer, compoundName, userAnswer}: FormulasQuestionProps) => {
     return (
         <div className="grid-formulas med-gap">
             <div className="flex-right-center">
@@ -13,7 +17,7 @@ const FormulasQuestion = ({compoundName, formStyle, handleUserAnswer, userAnswer
                     style={formStyle}
                     type="text"
                     aria-describedby="compound name"
-                    onChange={handleUserAnswer}
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
                     value={userAnswer}
                 />
             </div>

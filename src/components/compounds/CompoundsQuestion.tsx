@@ -1,35 +1,36 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
 import NamingQuestion from "./NamingQuestion";
 import FormulasQuestion from "./FormulasQuestion";
+import { updateInputBackgroundColor } from "./helpers/updateInputBackgorundColor";
 import { QuestionProps } from "./configurations/interfaces";
 
-const CompoundsQuestion = ({morePracticeToggle, compoundName, compoundFormula, formulaParts, practiceType}: QuestionProps) => {
+// Displays the question based on practiceType.
+// Resets the question when the toggleFlag is updated.
+// The input field's background color is updated depending on the correctness of the answer.
+// Called from /compounds/CompoundsQuestionsGroup.tsx
+const CompoundsQuestion = ({toggleFlag, compound, practiceType}: QuestionProps) => {
     const [userAnswer, setUserAnswer] = useState<string>("");
-    const handleUserAnswer = (event: ChangeEvent<HTMLInputElement>) => {
-        if (practiceType === "naming" && event.target.value === compoundName) {
-            setFormStyle({backgroundColor: "palegreen"})
-        } else if (practiceType === "formulas" && event.target.value === compoundFormula) {
-            setFormStyle({backgroundColor: "palegreen"})
-        } else {
-            setFormStyle({backgroundColor: "lightpink"})
-        }
-        setUserAnswer(event.target.value);
-    }
-
     const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
 
     useEffect(() => {
         setUserAnswer("");
         setFormStyle({backgroundColor: "lightpink"})
-    }, [morePracticeToggle])
+    }, [toggleFlag])
 
-    return (
-        <>
-            {practiceType === "naming" ? <NamingQuestion formulaParts={formulaParts} formStyle={formStyle} handleUserAnswer={handleUserAnswer} userAnswer={userAnswer} /> : <></>}
+    const handleUserAnswer = (answer: string) => {
+        setFormStyle(updateInputBackgroundColor(answer, compound, practiceType))
+        setUserAnswer(answer);
+    }
 
-            {practiceType === "formulas" ? <FormulasQuestion compoundName={compoundName} formStyle={formStyle} handleUserAnswer={handleUserAnswer} userAnswer={userAnswer} /> : <></>}
-        </>
-    )
+    if (practiceType === "naming") {
+        return <NamingQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} formulaParts={compound.formulaParts} userAnswer={userAnswer} />
+
+    } else if (practiceType === "formulas") {
+        return <FormulasQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compound.compoundName} userAnswer={userAnswer} />
+    } else {
+        return <></>
+    }
+
 }
 
 export default CompoundsQuestion;

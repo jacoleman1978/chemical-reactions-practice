@@ -25,7 +25,8 @@ export const makeAnionList = (type: Type): Ion[] => {
 
     } else if (type === "acids") {
         return [...acidAnions]
-    }
+
+    } 
 
     return []
 }

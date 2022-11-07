@@ -1,3 +1,5 @@
+// Formats and displays the user's compound formula from FormualasQuestion
+// Called from /compounds/FormulasQuestion.tsx
 const DisplayUsersFormula = ({usersFormula}: {usersFormula: string}) => {
     let formulaParts: string[] = [];
 

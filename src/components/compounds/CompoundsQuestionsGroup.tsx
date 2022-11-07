@@ -1,49 +1,40 @@
-import { useEffect, useState, ReactElement } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import CompoundsQuestion from "./CompoundsQuestion";
+import { useToggle } from "../../customHooks/useToggle";
 import { CompoundsPracticeProps, Compound } from "./configurations/interfaces";
-import { makeIonicCompound } from "./helpers/makeIonicCompound";
+import { makeCompoundList } from "./helpers/makeCompoundList";
 
-
+// Generates and displays a list of CompoundsQuestions display componenets of Compound objects
+// Called from /compounds/CompoundsPractice.tsx
 const CompoundsQuestionsGroup = ({type, practiceType}: CompoundsPracticeProps) => {
     const [questionsDisplay, setQuestionsDisplay] = useState<ReactElement[]>([]);
-    const [morePracticeToggle, setMorePracticeToggle] = useState<boolean>(false);
+    const [toggleFlag, handleToggle] = useToggle();
 
     useEffect(() => {
-        let newQuestions: ReactElement[] = [];
+        let compoundsList: Compound[] = makeCompoundList(type);
+        let newQuestions: ReactElement[];
 
-        let compoundsList: Compound[] = [];
-        let formulasList: string[] = [];
-        while (compoundsList.length < 10) {
-            let newCompound: Compound = makeIonicCompound(type);
-
-            if (!formulasList.includes(newCompound.compoundFormula)) {
-                compoundsList = [...compoundsList, newCompound];
-                formulasList = [...formulasList, newCompound.compoundFormula];
-            }
-        }
-        
         newQuestions = compoundsList.map((compound, i) => {
             const passedInProps = {
                 key:`question-${i}`, 
-                morePracticeToggle, 
-                compoundName:compound.compoundName, 
-                compoundFormula:compound.compoundFormula, 
-                formulaParts:compound.formulaParts,
-                practiceType: practiceType
+                toggleFlag, 
+                compound,
+                practiceType
             }
 
             return <CompoundsQuestion {...passedInProps} />
         })
-        
+
         setQuestionsDisplay(newQuestions);
-    }, [morePracticeToggle, type])
+
+    }, [toggleFlag, type, practiceType])
 
     return (
         <div className="flex-column med-gap">
             {questionsDisplay}
             <div className="flex-center-center">
-                <Button variant="primary" className="flex-center-center" onClick={() => setMorePracticeToggle(!morePracticeToggle)}>
+                <Button variant="primary" className="flex-center-center" onClick={handleToggle}>
                     More Practice
                 </Button>
             </div>

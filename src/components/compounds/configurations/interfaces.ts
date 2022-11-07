@@ -10,10 +10,8 @@ export interface FormulaParts {
 }
 
 export interface QuestionProps {
-    morePracticeToggle: boolean;
-    compoundName: string;
-    compoundFormula: string;
-    formulaParts: FormulaParts;
+    toggleFlag: boolean;
+    compound: Compound;
     practiceType: PracticeType;
 }
 
@@ -38,9 +36,16 @@ export interface Compound {
 }
 
 export interface NamingQuestionProps {
-    formulaParts: FormulaParts;
     formStyle: {backgroundColor: string};
-    handleUserAnswer: (event: ChangeEvent<HTMLInputElement>) => void;
+    handleUserAnswer: (arg0: string) => void;
+    formulaParts: FormulaParts;
+    userAnswer: string;
+}
+
+export interface FormulasQuestionProps {
+    formStyle: {backgroundColor: string};
+    handleUserAnswer: (arg0: string) => void;
+    compoundName: string;
     userAnswer: string;
 }
 

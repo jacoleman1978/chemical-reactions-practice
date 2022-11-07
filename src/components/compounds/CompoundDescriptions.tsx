@@ -5,13 +5,14 @@ import { Description } from '../common/configurations/interfaces';
 import { generalIonicTypes } from "./configurations/generalIonicTypes";
 import { generalCompoundTypes } from "./configurations/generalCompoundTypes";
 
+// Describes the different compound types for "naming" and "formulas" practiceTypes
 // Called from App.tsx
 const CompoundDescriptions = () => {
     let { pathname } = useLocation();
-    const ionicTypes = generalIonicTypes.map((ionicType): Description => {return {...ionicType, path: pathname + ionicType.path}});
-    const compoundTypes = generalCompoundTypes.map((compoundType): Description => {return {...compoundType, path: pathname + compoundType.path}});
 
-    
+    const ionicTypes = generalIonicTypes.map((ionicType): Description => {return {...ionicType, path: pathname + ionicType.path}});
+
+    const compoundTypes = generalCompoundTypes.map((compoundType): Description => {return {...compoundType, path: pathname + compoundType.path}});
 
     return (
         <div className="flex-column">
