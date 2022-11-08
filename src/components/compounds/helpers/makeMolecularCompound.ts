@@ -13,7 +13,11 @@ import { FormulaParts, MolecularCompound, FirstMolecularElement, SecondMolecular
 export const makeMolecularCompound = (): MolecularCompound => {
     // Randomly get an individual molecular element
     const firstElementPart: FirstMolecularElement = getRandomFirstMolecularPart();
-    const secondElementPart: SecondMolecularElement = getRandomSecondMolecularPart();
+    let secondElementPart: SecondMolecularElement = getRandomSecondMolecularPart();
+
+    while (firstElementPart.elementSymbol === secondElementPart.elementSymbol) {
+        secondElementPart = getRandomSecondMolecularPart();
+    }
 
     const formulaParts: FormulaParts = makeMolecularFormulaParts(firstElementPart, secondElementPart);
 

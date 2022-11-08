@@ -4,21 +4,6 @@ export const firstMolecularPart: FirstMolecularElement[] = [
     {
         formulaName: "carbon",
         elementSymbol: "C",
-        oxidationState: 1,
-    },
-    {
-        formulaName: "carbon",
-        elementSymbol: "C",
-        oxidationState: 2,
-    },
-    {
-        formulaName: "carbon",
-        elementSymbol: "C",
-        oxidationState: 3,
-    },
-    {
-        formulaName: "carbon",
-        elementSymbol: "C",
         oxidationState: 4,
     },
     {
@@ -80,11 +65,6 @@ export const firstMolecularPart: FirstMolecularElement[] = [
         formulaName: "chlorine",
         elementSymbol: "Cl",
         oxidationState: 7,
-    },
-    {
-        formulaName: "germanium",
-        elementSymbol: "Ge",
-        oxidationState: 2,
     },
     {
         formulaName: "germanium",
@@ -179,11 +159,6 @@ export const firstMolecularPart: FirstMolecularElement[] = [
 ]
 
 export const secondMolecularPart: SecondMolecularElement[] = [
-    {
-        formulaName: "hydride",
-        elementSymbol: "H",
-        oxidationState: -1,
-    },
     {
         formulaName: "nitride",
         elementSymbol: "N",
