@@ -20,7 +20,7 @@ export const makeAnionList = (compoundType: CompoundType): Ion[] => {
     } else if (compoundType === "ionic-polyatomic") {
         return [...polyatomicAnions]
 
-    } else if (compoundType === "ionic-mixed" || compoundType === "mixed") {
+    } else if (compoundType === "ionic-mixed") {
         return [...mainGroupAnions, ...polyatomicAnions]
 
     } else if (compoundType === "acids") {

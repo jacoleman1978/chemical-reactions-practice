@@ -5,6 +5,7 @@ import { useToggle } from "../../customHooks/useToggle";
 import { CompoundsPracticeProps, Compound, MolecularCompound } from "./configurations/interfaces";
 import { makeCompoundList } from "./helpers/makeCompoundList";
 import { makeMolecularCompoundList } from "./helpers/makeMolecularCompoundList";
+import { makeRandomCompoundList } from "./helpers/makeRandomCompoundList";
 
 // Generates and displays a list of CompoundsQuestions display componenets of Compound objects
 // Called from /compounds/CompoundsPractice.tsx
@@ -20,6 +21,9 @@ const CompoundsQuestionsGroup = ({compoundType, practiceType}: CompoundsPractice
         if (compoundType === "molecular") {
             compoundsList = makeMolecularCompoundList();
 
+        } else if (compoundType === "mixed") {
+            compoundsList = makeRandomCompoundList();
+            
         } else {
             compoundsList = makeCompoundList(compoundType);
         }
