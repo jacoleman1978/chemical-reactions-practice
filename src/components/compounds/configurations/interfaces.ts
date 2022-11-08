@@ -10,7 +10,9 @@ export interface FormulaParts {
 
 export interface QuestionProps {
     toggleFlag: boolean;
-    compound: Compound;
+    compoundName: string;
+    compoundFormula: string;
+    formulaParts: FormulaParts;
     practiceType: PracticeType;
 }
 
@@ -26,12 +28,15 @@ export interface Ion {
     isPolyatomic: boolean,
 }
 
-export interface Compound {
-    cation: Ion,
-    anion: Ion,
+export interface MolecularCompound {
     compoundName: string,
     compoundFormula: string,
     formulaParts: FormulaParts,
+}
+
+export interface Compound extends MolecularCompound {
+    cation: Ion,
+    anion: Ion,
 }
 
 export interface NamingQuestionProps {

@@ -2,8 +2,9 @@ import { useState, useEffect, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import CompoundsQuestion from "./CompoundsQuestion";
 import { useToggle } from "../../customHooks/useToggle";
-import { CompoundsPracticeProps, Compound } from "./configurations/interfaces";
+import { CompoundsPracticeProps, Compound, MolecularCompound } from "./configurations/interfaces";
 import { makeCompoundList } from "./helpers/makeCompoundList";
+import { makeMolecularCompoundList } from "./helpers/makeMolecularCompoundList";
 
 // Generates and displays a list of CompoundsQuestions display componenets of Compound objects
 // Called from /compounds/CompoundsPractice.tsx
@@ -12,14 +13,24 @@ const CompoundsQuestionsGroup = ({compoundType, practiceType}: CompoundsPractice
     const [toggleFlag, handleToggle] = useToggle();
 
     useEffect(() => {
-        let compoundsList: Compound[] = makeCompoundList(compoundType);
         let newQuestions: ReactElement[];
+
+        let compoundsList: (MolecularCompound | Compound)[];
+
+        if (compoundType === "molecular") {
+            compoundsList = makeMolecularCompoundList();
+
+        } else {
+            compoundsList = makeCompoundList(compoundType);
+        }
 
         newQuestions = compoundsList.map((compound, i) => {
             const passedInProps = {
                 key:`question-${i}`, 
                 toggleFlag, 
-                compound,
+                compoundName: compound.compoundName,
+                compoundFormula: compound.compoundFormula,
+                formulaParts: compound.formulaParts,
                 practiceType
             }
 

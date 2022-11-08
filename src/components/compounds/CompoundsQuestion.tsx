@@ -8,7 +8,7 @@ import { QuestionProps } from "./configurations/interfaces";
 // Resets the question when the toggleFlag is updated.
 // The input field's background color is updated depending on the correctness of the answer.
 // Called from /compounds/CompoundsQuestionsGroup.tsx
-const CompoundsQuestion = ({toggleFlag, compound, practiceType}: QuestionProps) => {
+const CompoundsQuestion = ({toggleFlag, compoundName, compoundFormula, formulaParts, practiceType}: QuestionProps) => {
     const [userAnswer, setUserAnswer] = useState<string>("");
     const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
 
@@ -18,15 +18,16 @@ const CompoundsQuestion = ({toggleFlag, compound, practiceType}: QuestionProps) 
     }, [toggleFlag])
 
     const handleUserAnswer = (answer: string) => {
-        setFormStyle(updateInputBackgroundColor(answer, compound, practiceType))
+        setFormStyle(updateInputBackgroundColor(answer, compoundName, compoundFormula, practiceType))
         setUserAnswer(answer);
     }
 
     if (practiceType === "naming") {
-        return <NamingQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} formulaParts={compound.formulaParts} userAnswer={userAnswer} />
+        return <NamingQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} formulaParts={formulaParts} userAnswer={userAnswer} />
 
     } else if (practiceType === "formulas") {
-        return <FormulasQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compound.compoundName} userAnswer={userAnswer} />
+        return <FormulasQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compoundName} userAnswer={userAnswer} />
+
     } else {
         return <></>
     }

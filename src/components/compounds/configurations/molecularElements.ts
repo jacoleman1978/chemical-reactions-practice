@@ -185,26 +185,6 @@ export const secondMolecularPart: SecondMolecularElement[] = [
         oxidationState: -1,
     },
     {
-        formulaName: "carbide",
-        elementSymbol: "C",
-        oxidationState: -1,
-    },
-    {
-        formulaName: "carbide",
-        elementSymbol: "C",
-        oxidationState: -2,
-    },
-    {
-        formulaName: "carbide",
-        elementSymbol: "C",
-        oxidationState: -3,
-    },
-    {
-        formulaName: "carbide",
-        elementSymbol: "C",
-        oxidationState: -4,
-    },
-    {
         formulaName: "nitride",
         elementSymbol: "N",
         oxidationState: -3,
