@@ -1,5 +1,5 @@
 import { PracticeType, CompoundType } from "../../common/configurations/types";
-import { CationCharge, AnionCharge, FirstSubscript, SecondSubscript } from "./types";
+import { CationCharge, AnionCharge, FirstSubscript, SecondSubscript, PosMolecularOxStates, NegMolecularOxStates } from "./types";
 
 export interface FormulaParts {
     firstPart: (string | number)[],
@@ -83,4 +83,17 @@ export interface CompoundInstructions {
 
 export interface FormattedIonProps {
     formulaParts: (string | number)[];
+}
+
+export interface MolecularElements {
+    formulaName: string,
+    elementSymbol: string,
+}
+
+export interface FirstMolecularElement extends MolecularElements {
+    oxidationState: PosMolecularOxStates,
+}
+
+export interface SecondMolecularElement extends MolecularElements {
+    oxidationState: NegMolecularOxStates,
 }
