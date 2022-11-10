@@ -7,7 +7,7 @@ import PracticeTypes from './components/common/PracticeTypes';
 import CompoundDescriptions from './components/compounds/CompoundDescriptions';
 import CompoundsPractice from './components/compounds/CompoundsPractice';
 import BalancingEquations from './components/balancing-equations/BalancingEquations';
-import ReactionTypes from './components/reaction-types/ReactionTypes';
+import ReactionTypesPractice from './components/reaction-types/ReactionTypesPractice';
 import PredictingProducts from './components/predicting-products/PredictingProducts';
 import { CompoundType, PracticeType } from './components/common/configurations/types';
 
@@ -38,7 +38,7 @@ function App() {
           <Route path='/formulas/molecular' element={<CompoundsPractice compoundType={"molecular"} practiceType={practiceType} />} />
           <Route path='/formulas/mixed' element={<CompoundsPractice compoundType={"mixed"} practiceType={practiceType} />} />
           <Route path='/balancing' element={<BalancingEquations />} />
-          <Route path='/reaction-types' element={<ReactionTypes />} />
+          <Route path='/reaction-types' element={<ReactionTypesPractice />} />
           <Route path='/predicting-products' element={<PredictingProducts />} />
         </Routes>
       </div>
