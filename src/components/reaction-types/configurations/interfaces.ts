@@ -1,4 +1,6 @@
 import { ReactElement } from "react";
+import { StateOfMatter } from "./types";
+import { Compound } from "../../compounds/configurations/interfaces";
 import { ReactionType } from "../../common/configurations/types";
 
 export interface InformationDisplay {
@@ -53,4 +55,54 @@ export interface SolubilityCations {
 export interface ReactionTypeMenuOption {
     reactionType: ReactionType,
     optionTitle: string,
+}
+
+export interface Element {
+    elementName: string,
+    elementSymbol: string,
+    isDiatomic: boolean,
+    state: StateOfMatter,
+}
+
+export interface BalancingData {
+    initialCationQty: number,
+    initialAnionQty: number,
+    totalCationQty: number,
+    totalAnionQty: number,
+}
+
+export interface EquationElement {
+    element: Element,
+    coefficient: number,
+    balancingData: BalancingData,
+    formulaParts: {
+        elementSymbol: string,
+        subscript: string,
+    },
+}
+
+export interface EquationCompound {
+    compound: Compound,
+    coefficient: number,
+    state: StateOfMatter,
+    balancingData: BalancingData,
+}
+
+export interface DecompositionReaction {
+    type: ReactionType,
+    reactantOne: EquationCompound,
+    productOne: EquationElement,
+    productTwo: EquationElement,
+}
+
+export interface MakeDecompProductsReturn {
+    productOne: EquationElement,
+    productTwo: EquationElement,
+}
+
+export interface BalancingTable {
+    [member: string]: {
+        qtyReactants: number,
+        qtyProducts: number,
+    }
 }

@@ -9,7 +9,7 @@ const ReactionTypesPractice = () => {
     const [toggleFlag, handleToggle] = useToggle();
     
     return (
-        <div>
+        <div className="full-width">
             <div className="flex-left-center med-gap" onClick={handleToggle}>
                 <Title title={"Reaction Types"} />
                 <button className="toggle-btn">{(toggleFlag ? "-" : "+")}</button>

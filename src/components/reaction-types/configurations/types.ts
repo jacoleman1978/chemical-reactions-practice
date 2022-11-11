@@ -1,0 +1,1 @@
+export type StateOfMatter = "s" | "l" | "g" | "aq";

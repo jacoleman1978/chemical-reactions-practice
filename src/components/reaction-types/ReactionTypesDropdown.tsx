@@ -1,8 +1,9 @@
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { reactionTypeMenuOptions } from "./configurations/reactionTypeMenuOptions";
 import { ReactionTypeMenuOption } from "./configurations/interfaces";
 
+// Called from /reaction-types/ReactionTypesQuestion.tsx
 const ReactionTypesDropdown = () => {
     const [selectedType, setSelectedType] = useState<string>("");
 
