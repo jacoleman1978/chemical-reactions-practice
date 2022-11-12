@@ -1,10 +1,10 @@
-import { makeReactant } from "./makeReactant";
+import { makeReactant } from "../../helpers/makeReactant";
 import { makeDecompProducts } from "./makeDecompProducts";
 import { makeDecompBalancingTable } from "./makeDecompBalancingTable";
-import { isBalanced } from "./isBalanced";
+import { isBalanced } from "../../helpers/isBalanced";
 import { updateDecompReactant } from "./updateDecompReactant";
 import { updateDecompProduct } from "./updateDecompProduct";
-import { DecompositionReaction, EquationCompound, BalancingTable } from "../configurations/interfaces";
+import { DecompositionReaction, EquationCompound, BalancingTable } from "../../configurations/interfaces";
 
 export const makeDecompEquation = (): DecompositionReaction => {
     let reactant: EquationCompound = makeReactant("decomposition");

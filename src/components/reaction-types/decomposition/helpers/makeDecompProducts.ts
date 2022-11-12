@@ -1,6 +1,6 @@
-import { ionNameToElement } from "../configurations/elements";
-import { EquationElement, Element, MakeDecompProductsReturn } from "../configurations/interfaces";
-import { Compound } from "../../compounds/configurations/interfaces";
+import { ionNameToElement } from "../../configurations/elements";
+import { EquationElement, Element, MakeDecompProductsReturn } from "../../configurations/interfaces";
+import { Compound } from "../../../compounds/configurations/interfaces";
 
 export const makeDecompProducts = (compound: Compound): MakeDecompProductsReturn => {
     const [cationName, anionName] = compound.compoundName.split(" ");

@@ -1,5 +1,5 @@
 import { makeDecompEquation } from "./makeDecompEquation";
-import { DecompositionReaction } from "../configurations/interfaces";
+import { DecompositionReaction } from "../../configurations/interfaces";
 
 export const makeDecompEqnList = () => {
     let equationsList: DecompositionReaction[] = [];

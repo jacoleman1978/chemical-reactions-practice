@@ -1,4 +1,4 @@
-import { EquationCompound, BalancingTable } from "../configurations/interfaces";
+import { EquationCompound, BalancingTable } from "../../configurations/interfaces";
 
 export const updateDecompReactant = (balancingTable: BalancingTable, reactant: EquationCompound): [BalancingTable, EquationCompound] => {
     let coefficient: number = reactant.coefficient + 1;

@@ -1,4 +1,4 @@
-import { EquationElement, BalancingTable } from "../configurations/interfaces";
+import { EquationElement, BalancingTable } from "../../configurations/interfaces";
 
 export const updateDecompProduct = (balancingTable: BalancingTable, product: EquationElement, elementKey: string): [BalancingTable, EquationElement] => {
     let coefficient: number = product.coefficient + 1;

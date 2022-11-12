@@ -1,7 +1,7 @@
 import { useState, useEffect, ReactElement } from "react";
 import { Button } from "react-bootstrap";
-import ReactionTypesQuestion from "./ReactionTypesQuestion";
-import { makeDecompEqnList } from "./helpers/makeDecompEqnList";
+import DecompQuestion from "./decomposition/DecompQuestion";
+import { makeDecompEqnList } from "./decomposition/helpers/makeDecompEqnList";
 import { DecompositionReaction } from "./configurations/interfaces";
 import { useToggle } from "../../customHooks/useToggle";
 
@@ -15,7 +15,7 @@ const ReactionTypesQuestionsGroup = () => {
       let equationsList: DecompositionReaction[] = makeDecompEqnList();
 
       newQuestions = equationsList.map((equation, i) => {
-        return <ReactionTypesQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation} />
+        return <DecompQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation} />
       })
 
       setQuestionsDisplay(newQuestions)

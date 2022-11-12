@@ -1,7 +1,7 @@
 import CompoundFormula from "../compounds/CompoundFormula";
 import { EquationCompound } from "./configurations/interfaces";
 
-const DisplayReactants = ({reactants}: {reactants: EquationCompound[]}) => {
+const DisplayReactantCompounds = ({reactants}: {reactants: EquationCompound[]}) => {
 
   return (
     <div className="flex-left-center med-gap">
@@ -19,4 +19,4 @@ const DisplayReactants = ({reactants}: {reactants: EquationCompound[]}) => {
     </div>
   )
 }
-export default DisplayReactants;
+export default DisplayReactantCompounds;

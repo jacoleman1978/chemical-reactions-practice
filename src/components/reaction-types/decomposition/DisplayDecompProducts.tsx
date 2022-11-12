@@ -1,7 +1,7 @@
-import DisplayElement from "./DisplayElement";
-import { EquationElement } from "./configurations/interfaces";
+import DisplayElement from "../DisplayElement";
+import { EquationElement } from "../configurations/interfaces";
 
-const DisplayProducts = ({products}: {products: EquationElement[]}) => {
+const DisplayDecompProducts = ({products}: {products: EquationElement[]}) => {
 
   return (
     <div className="flex-left-center med-gap">
@@ -19,4 +19,4 @@ const DisplayProducts = ({products}: {products: EquationElement[]}) => {
     </div>
   )
 }
-export default DisplayProducts;
+export default DisplayDecompProducts;

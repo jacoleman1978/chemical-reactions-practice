@@ -1,4 +1,4 @@
-import { BalancingTable, EquationCompound, EquationElement } from "../configurations/interfaces";
+import { BalancingTable, EquationCompound, EquationElement } from "../../configurations/interfaces";
 
 export const makeDecompBalancingTable = (reactant: EquationCompound, productOne: EquationElement, productTwo: EquationElement): BalancingTable => {
     const [cation, anion]: string[] = reactant.compound.compoundName.split(" ");
