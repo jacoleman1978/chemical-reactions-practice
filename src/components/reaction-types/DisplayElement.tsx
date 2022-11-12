@@ -1,5 +1,7 @@
 import { EquationElement } from "./configurations/interfaces";
 
+// Formats the atomic or molecular element for display
+// Called from /decomposition/DisplayDecompProducts.tsx
 const DisplayElement = ({element}: {element: EquationElement}) => {
   return (
     <div>

@@ -1,8 +1,9 @@
 import CompoundFormula from "../compounds/CompoundFormula";
 import { EquationCompound } from "./configurations/interfaces";
 
+// Displays one or more reactant EquationCompounds with right arrow
+// Called from /decomposition/DecompQuestion.tsx
 const DisplayReactantCompounds = ({reactants}: {reactants: EquationCompound[]}) => {
-
   return (
     <div className="flex-left-center med-gap">
       {

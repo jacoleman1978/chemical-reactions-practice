@@ -1,4 +1,4 @@
-import { makeReactant } from "../../helpers/makeReactant";
+import { makeDecompCombCompound } from "../../helpers/makeDecompCombCompound";
 import { makeDecompProducts } from "./makeDecompProducts";
 import { makeDecompBalancingTable } from "./makeDecompBalancingTable";
 import { isBalanced } from "../../helpers/isBalanced";
@@ -6,8 +6,12 @@ import { updateDecompReactant } from "./updateDecompReactant";
 import { updateDecompProduct } from "./updateDecompProduct";
 import { DecompositionReaction, EquationCompound, BalancingTable } from "../../configurations/interfaces";
 
+/**
+ * Generates a random, balanced DecompositionReaction object
+ * @returns DecompositionReaction object
+ */
 export const makeDecompEquation = (): DecompositionReaction => {
-    let reactant: EquationCompound = makeReactant("decomposition");
+    let reactant: EquationCompound = makeDecompCombCompound();
 
     let {productOne, productTwo} = makeDecompProducts(reactant.compound);
 

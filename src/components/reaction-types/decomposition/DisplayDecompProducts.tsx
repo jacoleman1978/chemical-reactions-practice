@@ -1,8 +1,9 @@
 import DisplayElement from "../DisplayElement";
 import { EquationElement } from "../configurations/interfaces";
 
+// Container to display decomposition products
+// Called from /decomposition/DecompQuestion.tsx
 const DisplayDecompProducts = ({products}: {products: EquationElement[]}) => {
-
   return (
     <div className="flex-left-center med-gap">
       {

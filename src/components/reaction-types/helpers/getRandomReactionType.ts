@@ -1,4 +1,9 @@
 import { ReactionType } from "../../common/configurations/types";
+
+/**
+ * Generates a reaction type using weighted values and a randomly generated number
+ * @returns ReactionType type literal
+ */
 export const getRandomReactionType = (): ReactionType => {
     const randomNumber: number = Math.random();
 

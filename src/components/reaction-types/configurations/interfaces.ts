@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { StateOfMatter } from "./types";
-import { Compound } from "../../compounds/configurations/interfaces";
+import { Compound, MolecularCompound } from "../../compounds/configurations/interfaces";
 import { ReactionType } from "../../common/configurations/types";
 
 export interface InformationDisplay {
@@ -88,6 +88,13 @@ export interface EquationCompound {
     balancingData: BalancingData,
 }
 
+export interface EquationMolecCompound {
+    compound: MolecularCompound,
+    coefficient: number,
+    state: StateOfMatter,
+    balancingData: BalancingData,
+}
+
 export interface DecompositionReaction {
     type: ReactionType,
     reactantOne: EquationCompound,
@@ -98,6 +105,56 @@ export interface DecompositionReaction {
 export interface MakeDecompProductsReturn {
     productOne: EquationElement,
     productTwo: EquationElement,
+}
+
+export interface CombustionReaction {
+    type: ReactionType,
+    reactantOne: EquationMolecCompound,
+    reactantTwo: EquationElement,
+    productOne: EquationMolecCompound,
+    productTwo: EquationMolecCompound,
+}
+
+export interface MakeCombustProductsReturn {
+    productOne: EquationMolecCompound,
+    productTwo: EquationMolecCompound,
+}
+
+export interface SRReaction {
+    type: ReactionType,
+    reactantOne: EquationCompound,
+    reactantTwo: EquationElement,
+    productOne: EquationCompound,
+    productTwo: EquationElement,
+}
+
+export interface MakeSRProductsReturn {
+    productOne: EquationCompound,
+    productTwo: EquationElement,
+}
+
+export interface DRReaction {
+    type: ReactionType,
+    reactantOne: EquationCompound,
+    reactantTwo: EquationCompound,
+    productOne: EquationCompound,
+    productTwo: EquationCompound,
+}
+
+export interface MakeDRProductsReturn {
+    productOne: EquationCompound,
+    productTwo: EquationCompound,
+}
+
+export interface CombinationReaction {
+    type: ReactionType,
+    reactantOne: EquationElement,
+    reactantTwo: EquationElement,
+    productOne: EquationCompound,
+}
+
+export interface MakeCombProductsReturn {
+    productOne: EquationCompound,
 }
 
 export interface BalancingTable {

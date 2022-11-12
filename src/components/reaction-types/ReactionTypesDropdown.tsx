@@ -3,7 +3,8 @@ import { Form } from "react-bootstrap";
 import { reactionTypeMenuOptions } from "./configurations/reactionTypeMenuOptions";
 import { ReactionTypeMenuOption, RxnTypeDropdownProps } from "./configurations/interfaces";
 
-// Called from /reaction-types/ReactionTypesQuestion.tsx
+// Dropdown selector for reaction types. Background changes depending on selected answer
+// Called from /decomposition/DecompQuestion.tsx
 const ReactionTypesDropdown = ({toggleFlag, reactionType}: RxnTypeDropdownProps) => {
     const [selectedType, setSelectedType] = useState<string>("");
     const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
@@ -19,7 +20,7 @@ const ReactionTypesDropdown = ({toggleFlag, reactionType}: RxnTypeDropdownProps)
         } else {
           setFormStyle({backgroundColor: "lightpink"})
         }
-    }, [selectedType])
+    }, [selectedType, reactionType])
 
   return (
     <Form.Select style={formStyle} aria-label={"Select Reaction Type"} value={selectedType} onChange={(event) => {setSelectedType(event.target.value)}}>

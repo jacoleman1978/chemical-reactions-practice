@@ -2,6 +2,11 @@ import { ionNameToElement } from "../../configurations/elements";
 import { EquationElement, Element, MakeDecompProductsReturn } from "../../configurations/interfaces";
 import { Compound } from "../../../compounds/configurations/interfaces";
 
+/**
+ * Generates MakeDecomProductsReturn object from the passed in 'compound', making the EquationElement products
+ * @param compound Compound object
+ * @returns MakeDecompProductsReturn object, {productOne: EquationElement, productTwo: EquationElement}
+ */
 export const makeDecompProducts = (compound: Compound): MakeDecompProductsReturn => {
     const [cationName, anionName] = compound.compoundName.split(" ");
 
