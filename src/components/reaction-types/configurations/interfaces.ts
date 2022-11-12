@@ -106,3 +106,8 @@ export interface BalancingTable {
         qtyProducts: number,
     }
 }
+
+export interface RxnTypeDropdownProps {
+    toggleFlag: boolean,
+    reactionType: ReactionType
+}

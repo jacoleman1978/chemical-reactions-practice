@@ -14,7 +14,7 @@ const CompoundsQuestion = ({toggleFlag, compoundName, compoundFormula, formulaPa
 
     useEffect(() => {
         setUserAnswer("");
-        setFormStyle({backgroundColor: "lightpink"})
+        setFormStyle({backgroundColor: "lightpink"});
     }, [toggleFlag])
 
     const handleUserAnswer = (answer: string) => {
