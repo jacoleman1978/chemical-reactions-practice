@@ -8,8 +8,8 @@ export const reactionTypesInfo: InformationDisplay[] = [
         example: () => {
             return (
                 <ul>
-                     <li>
-                        {'AB --> x A + y B'} 
+                     <li className="flex-left-center med-gap">
+                        {'AB'}<i className="fa-solid fa-arrow-right-long"></i>{'A + B'}
                      </li>
                 </ul>
             )
@@ -22,9 +22,12 @@ export const reactionTypesInfo: InformationDisplay[] = [
         example: () => {
             return (
                 <ul>
-                    <li>
-                        C<sub>x</sub>H<sub>y</sub>O<sub>z</sub>{' + O'}<sub>2</sub> {' --> H'}
-                        <sub>2</sub> {'O + CO'}<sub>2</sub>
+                    <li className="flex-left-center med-gap">
+                        <div className="flex-left-center">C<sub>x</sub>H<sub>y</sub>O<sub>z</sub></div>+
+                        <div>O<sub>2</sub></div>
+                        <i className="fa-solid fa-arrow-right-long"></i>
+                        <div className="flex-left-center">H<sub>2</sub>O</div> {'+'} 
+                        <div className="flex-left-center">CO<sub>2</sub></div>
                     </li>
                 </ul>
             )
@@ -37,14 +40,25 @@ export const reactionTypesInfo: InformationDisplay[] = [
         example: () => {
             return (
                 <ul>
-                    <li>
-                        {'AB'}<sub>{'(aq)'}</sub> {' + C'}<sub>{'(s)'}</sub> {' --> CB'} {' + A'}
+                    <li className="flex-left-center med-gap">
+                        <div className="flex-left-center">AB<sub>{'(aq)'}</sub></div>+
+                        <div className="flex-left-center">C<sub>{'(s)'}</sub></div>
+                        <i className="fa-solid fa-arrow-right-long"></i>
+                        <div>CB</div>+
+                        <div>A</div>
                     </li>
-                    <li>
-                        AB<sub>{'(aq)'}</sub>{' + C --> CB + A'}
+                    <li className="flex-left-center med-gap">
+                        <div className="flex-left-center">AB<sub>{'(aq)'}</sub></div>+
+                        <div>C</div>
+                        <i className="fa-solid fa-arrow-right-long"></i>
+                        <div>CB</div>+
+                        <div>A</div>
                     </li>
-                    <li>
-                        AB<sub>{'(aq)'}</sub>{' + C --> No Reaction'} 
+                    <li className="flex-left-center med-gap">
+                        <div className="flex-left-center">AB<sub>{'(aq)'}</sub></div>+
+                        <div>C</div>
+                        <i className="fa-solid fa-arrow-right-long"></i>
+                        {'No Reaction'} 
                     </li>
                 </ul>
             )
@@ -57,8 +71,12 @@ export const reactionTypesInfo: InformationDisplay[] = [
         example: () => {
             return (
                 <ul>
-                    <li>
-                        AB<sub>{'(aq)'}</sub>{' + CD'}<sub>{'(aq)'}</sub> {' --> AD + CB'}
+                    <li className="flex-left-center med-gap">
+                        <div className="flex-left-center">AB<sub>{'(aq)'}</sub></div>+
+                        <div className="flex-left-center">CD<sub>{'(aq)'}</sub></div>
+                        <i className="fa-solid fa-arrow-right-long"></i>
+                        <div>AD</div>+
+                        <div>BC</div>
                     </li>
                 </ul>
             )
@@ -71,8 +89,11 @@ export const reactionTypesInfo: InformationDisplay[] = [
         example: () => {
             return (
                 <ul>
-                    <li>
-                        {'A + B --> AB'}
+                    <li className="flex-left-center med-gap">
+                        <div>A</div>+
+                        <div>B</div>
+                        <i className="fa-solid fa-arrow-right-long"></i>
+                        <div>AB</div>
                     </li>
                 </ul>
             )

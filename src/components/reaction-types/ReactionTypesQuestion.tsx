@@ -5,8 +5,6 @@ import { DecompositionReaction } from "./configurations/interfaces";
 
 // Called from /reaction-types/ReactionTypesQuestionsGroup.tsx
 const ReactionTypesQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DecompositionReaction}) => {
-
-  console.log(equation)
   return (
     <div className="grid-equations med-gap">
       <ReactionTypesDropdown />

@@ -11,7 +11,7 @@ const DisplayReactants = ({reactants}: {reactants: EquationCompound[]}) => {
             <div key={`reactant-${i}`}  className="flex-left-center med-gap">
               {(reactant.coefficient > 1 ? `${reactant.coefficient} ` : "")}
               <CompoundFormula formulaParts={reactant.compound.formulaParts} />
-              {(i < reactants.length - 1 ? " + ": " --> ")}
+              {(i < reactants.length - 1 ? " + ": <i className="fa-solid fa-arrow-right-long"></i>)}
             </div>
           )
         })
