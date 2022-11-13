@@ -1,6 +1,6 @@
 import ReactionTypesDropdown from "../ReactionTypesDropdown";
-import DisplayReactantCompounds from "../DisplayReactantCompounds";
-import DisplayDecompProducts from "./DisplayDecompProducts";
+import DisplayIonicCompounds from "../DisplayIonicCompounds";
+import DisplayElements from "../DisplayElements";
 import { DecompositionReaction } from "../configurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed decomposition reaction
@@ -10,8 +10,9 @@ const DecompQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: 
     <div className="grid-equations med-gap">
       <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={equation.type}/>
       <div className="flex-left-center med-gap">
-        <DisplayReactantCompounds reactants={[equation.reactantOne]} />
-        <DisplayDecompProducts products={[equation.productOne, equation.productTwo]} />
+        <DisplayIonicCompounds compounds={[equation.reactantOne]} />
+        <i className="fa-solid fa-arrow-right-long"></i>
+        <DisplayElements elements={[equation.productOne, equation.productTwo]} />
       </div>
     </div>
   )

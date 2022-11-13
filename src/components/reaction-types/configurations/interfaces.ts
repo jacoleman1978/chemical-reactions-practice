@@ -157,6 +157,11 @@ export interface MakeCombProductsReturn {
     productOne: EquationCompound,
 }
 
+export interface MakeCombReactantsReturn {
+    reactantOne: EquationElement,
+    reactantTwo: EquationElement,
+}
+
 export interface BalancingTable {
     [member: string]: {
         qtyReactants: number,

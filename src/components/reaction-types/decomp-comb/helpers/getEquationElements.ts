@@ -1,18 +1,18 @@
 import { ionNameToElement } from "../../configurations/elements";
-import { EquationElement, Element, MakeDecompProductsReturn } from "../../configurations/interfaces";
+import { EquationElement, Element } from "../../configurations/interfaces";
 import { Compound } from "../../../compounds/configurations/interfaces";
 
 /**
- * Generates MakeDecomProductsReturn object from the passed in 'compound', making the EquationElement products
+ * gets EquationElement objects from a Compound object
  * @param compound Compound object
- * @returns MakeDecompProductsReturn object, {productOne: EquationElement, productTwo: EquationElement}
+ * @returns [elementOne, elementTwo] as EquationElement[]
  */
-export const makeDecompProducts = (compound: Compound): MakeDecompProductsReturn => {
+export const getEquationElements = (compound: Compound): EquationElement[] => {
     const [cationName, anionName] = compound.compoundName.split(" ");
 
     const cationElement: Element = ionNameToElement[cationName];
-    
-    const productOne: EquationElement = {
+
+    const elementOne: EquationElement = {
         element: cationElement,
         coefficient: 1,
         balancingData: {
@@ -29,7 +29,7 @@ export const makeDecompProducts = (compound: Compound): MakeDecompProductsReturn
 
     const anionElement: Element = ionNameToElement[anionName];
 
-    const productTwo: EquationElement = {
+    const elementTwo: EquationElement = {
         element: anionElement,
         coefficient: 1,
         balancingData: {
@@ -44,5 +44,5 @@ export const makeDecompProducts = (compound: Compound): MakeDecompProductsReturn
         }
     }
 
-    return {productOne, productTwo}
+    return [elementOne, elementTwo]
 };

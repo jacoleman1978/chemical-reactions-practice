@@ -1,12 +1,12 @@
-import { makeIonicCompound } from "../../compounds/helpers/makeIonicCompound";
-import { EquationCompound } from "../configurations/interfaces";
-import { Compound } from "../../compounds/configurations/interfaces";
+import { makeIonicCompound } from "../../../compounds/helpers/makeIonicCompound";
+import { EquationCompound } from "../../configurations/interfaces";
+import { Compound } from "../../../compounds/configurations/interfaces";
 
 /**
  * Randomly generates a EquationCompound object for decomposition reactant or combination product
  * @returns EquationCompound object
  */
-export const makeDecompCombCompound = (): EquationCompound => {
+export const makeEquationCompound = (): EquationCompound => {
     const randomChoice: boolean = Boolean(Math.round(Math.random()));
     const randomCompound: Compound = (randomChoice ? makeIonicCompound("ionic-main"): makeIonicCompound("ionic-transition"));
 
