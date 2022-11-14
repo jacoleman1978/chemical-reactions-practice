@@ -17,7 +17,7 @@ export const makeDecompCombEquation = (reactionType: ("decomposition" | "combina
 
     let [elementOne, elementTwo] = getEquationElements(compound.compound);
 
-    let balancingTable: BalancingTable = makeDecompCombBalancingTable(reactionType,compound, elementOne, elementTwo);
+    let balancingTable: BalancingTable = makeDecompCombBalancingTable(reactionType, compound, elementOne, elementTwo);
 
     const [cation, anion]: string[] = compound.compound.compoundName.split(" ");
 

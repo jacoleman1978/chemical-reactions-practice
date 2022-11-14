@@ -109,10 +109,10 @@ export interface MakeDecompProductsReturn {
 
 export interface CombustionReaction {
     type: ReactionType,
-    reactantOne: EquationMolecCompound,
-    reactantTwo: EquationElement,
-    productOne: EquationMolecCompound,
-    productTwo: EquationMolecCompound,
+    hydrocarbon: Hydrocarbon,
+    o2: CombustionEquationOxygen,
+    h2o: CombustionEquationProduct,
+    co2: CombustionEquationProduct,
 }
 
 export interface MakeCombustProductsReturn {
@@ -172,4 +172,36 @@ export interface BalancingTable {
 export interface RxnTypeDropdownProps {
     toggleFlag: boolean,
     reactionType: ReactionType
+}
+
+export interface CombustionBalancingData {
+    currentCQty: number,
+    currentHQty: number,
+    currentOQty: number
+}
+
+export interface Hydrocarbon {
+    compoundFormula: string,
+    carbonSubscript: string,
+    hydrogenSubscript: string,
+    hasOxygen: boolean
+    oxygenSubscript?: string,
+    coefficient: number,
+    balancingData: CombustionBalancingData
+}
+
+export interface CombustionEquationProduct {
+    compoundName: string,
+    compoundFormula: string,
+    coefficient: number,
+    balancingData: CombustionBalancingData,
+}
+
+export interface CombustionEquationOxygen {
+    elementName: string,
+    elementSymbol: string,
+    isDiatomic: boolean,
+    state: StateOfMatter,
+    coefficient: number,
+    balancingData: CombustionBalancingData,
 }

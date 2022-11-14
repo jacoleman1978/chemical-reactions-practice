@@ -1,20 +1,20 @@
 import ReactionTypesDropdown from "../ReactionTypesDropdown";
 import DisplayIonicCompounds from "../DisplayIonicCompounds";
 import DisplayElements from "../DisplayElements";
-import { CombinationReaction } from "../configurations/interfaces";
+import { DecompositionReaction } from "../configurations/interfaces";
 
-// Container for the dropdown reaction types menu and displayed combination reaction
+// Container for the dropdown reaction types menu and displayed decomposition reaction
 // Called from /reaction-types/ReactionTypesQuestionsGroup.tsx
-const CombQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: CombinationReaction}) => {
+const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DecompositionReaction}) => {
   return (
     <div className="grid-equations med-gap">
       <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={equation.type}/>
       <div className="flex-left-center med-gap">
-        <DisplayElements elements={[equation.reactantOne, equation.reactantTwo]} />
+        <DisplayIonicCompounds compounds={[equation.reactantOne]} />
         <i className="fa-solid fa-arrow-right-long"></i>
-        <DisplayIonicCompounds compounds={[equation.productOne]} />
+        <DisplayElements elements={[equation.productOne, equation.productTwo]} />
       </div>
     </div>
   )
 }
-export default CombQuestion
+export default DecompositionQuestion

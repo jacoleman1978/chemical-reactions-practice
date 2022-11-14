@@ -12,6 +12,9 @@ export const makeEquationsList = (): RxnTypeList[] => {
 
         if (reactionType === "decomposition" || reactionType === "combination") {
             equationsList = [...equationsList, makeRandomEquation(reactionType)];
+            
+        } else if ( reactionType === "combustion") {
+            equationsList = [...equationsList, makeRandomEquation(reactionType)];
         }
     }
 

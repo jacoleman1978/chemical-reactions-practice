@@ -1,8 +1,9 @@
 import { useState, useEffect, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import { makeEquationsList } from "./helpers/makeEquationsList";
-import DecompQuestion from "./decomp-comb/DecompQuestion";
-import CombQuestion from "./decomp-comb/CombQuestion";
+import DecompositionQuestion from "./decomp-comb/DecompositionQuestion";
+import CombustionQuestion from "./combustion/CombustionQuestion";
+import CombinationQuestion from "./decomp-comb/CombinationQuestion";
 import { useToggle } from "../../customHooks/useToggle";
 import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./configurations/interfaces";
 import { RxnTypeList } from "../common/configurations/types";
@@ -18,9 +19,11 @@ const ReactionTypesQuestionsGroup = () => {
 
       newQuestions = equationsList.map((equation, i) => {
         if (equation.type === "decomposition") {
-            return <DecompQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DecompositionReaction} />
+            return <DecompositionQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DecompositionReaction} />
+        } else if (equation.type === "combustion") {
+            return <CombustionQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as CombustionReaction} />
         } else if (equation.type === "combination") {
-            return <CombQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as CombinationReaction} />
+            return <CombinationQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as CombinationReaction} />
         } else {
             return <></>
         }
