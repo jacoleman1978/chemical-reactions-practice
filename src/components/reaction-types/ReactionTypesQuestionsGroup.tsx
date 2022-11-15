@@ -3,16 +3,14 @@ import { Button } from "react-bootstrap";
 import { makeEquationsList } from "./helpers/makeEquationsList";
 import DecompositionQuestion from "./decomp-comb/DecompositionQuestion";
 import CombustionQuestion from "./combustion/CombustionQuestion";
+import DRQuestion from "./double-replacement/DRQuestion";
 import CombinationQuestion from "./decomp-comb/CombinationQuestion";
 import { useToggle } from "../../customHooks/useToggle";
 import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./configurations/interfaces";
 import { RxnTypeList } from "../common/configurations/types";
 
-import { makeRandomReactants } from "./double-replacement/helpers/makeRandomReactants";
-
 // Called from /reaction-types/ReactionTypesPractice.tsx
 const ReactionTypesQuestionsGroup = () => {
-  console.log(makeRandomReactants(true))
     const [questionsDisplay, setQuestionsDisplay] = useState<ReactElement[]>([]);
     const [toggleFlag, handleToggle] = useToggle();
 
@@ -25,10 +23,14 @@ const ReactionTypesQuestionsGroup = () => {
             return <DecompositionQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DecompositionReaction} />
         } else if (equation.type === "combustion") {
             return <CombustionQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as CombustionReaction} />
+        } else if (equation.type === "double-replacement") {
+            return <DRQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DRReaction} />
+        } else if (equation.type === "dr-no-reaction") {
+            return <DRQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DRReaction} />
         } else if (equation.type === "combination") {
             return <CombinationQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as CombinationReaction} />
         } else {
-            return <></>
+            return <div key={`equation-${i}`}></div>
         }
         
       })

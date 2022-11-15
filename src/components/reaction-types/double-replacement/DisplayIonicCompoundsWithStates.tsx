@@ -1,9 +1,9 @@
-import CompoundFormula from "../compounds/CompoundFormula";
-import { EquationCompound } from "./configurations/interfaces";
+import CompoundFormulaWithStates from "./CompoundFormulaWithStates";
+import { EquationCompound } from "../configurations/interfaces";
 
 // Displays one or more compound EquationCompounds with right arrow
 // Called from /decomposition/DecompQuestion.tsx
-const DisplayIonicCompounds = ({compounds}: {compounds: EquationCompound[]}) => {
+const DisplayIonicCompoundsWithStates = ({compounds}: {compounds: EquationCompound[]}) => {
   const displayStates: boolean = compounds.length > 1;
   
   return (
@@ -13,7 +13,7 @@ const DisplayIonicCompounds = ({compounds}: {compounds: EquationCompound[]}) => 
           return (
             <div key={`compound-${i}`}  className="flex-left-center med-gap">
               {(compound.coefficient > 1 ? `${compound.coefficient} ` : "")}
-              <CompoundFormula formulaParts={compound.compound.formulaParts} />
+              <CompoundFormulaWithStates formulaParts={compound.compound.formulaParts} state={compound.state} />
               {(i < compounds.length - 1 ? " + ": "")}
             </div>
           )
@@ -22,4 +22,4 @@ const DisplayIonicCompounds = ({compounds}: {compounds: EquationCompound[]}) => 
     </div>
   )
 }
-export default DisplayIonicCompounds;
+export default DisplayIonicCompoundsWithStates;

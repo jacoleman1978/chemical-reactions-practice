@@ -7,12 +7,14 @@ import { isBalanced } from "../../helpers/isBalanced";
 import { balanceIon } from "./balanceIon";
 import { getRandomListMember } from "../../../common/helpers/getRandomListMember";
 import { drCations, drAnions } from "../../configurations/doubleReplacementIons";
-import { DRReactantPair, EquationCompound } from "../../configurations/interfaces";
+import { DRReactantPair, EquationCompound, DRReaction} from "../../configurations/interfaces";
 import { Ion, Compound } from "../../../compounds/configurations/interfaces";
 import { RxnTypeList } from "../../../common/configurations/types";
 
-export const makeRandomReactants = (isSuccessful: boolean): RxnTypeList => {
+export const makeDREquation = (isSuccessful: boolean): DRReaction => {
     // Pick random cation for the first compound with corresponding solubility lists
+    const reactionType: ("double-replacement" | "dr-no-reaction") = (isSuccessful ? "double-replacement" : "dr-no-reaction")
+
     let firstCationName: string = getRandomCationName();
 
     let firstSolubleAnionList: string[] = [];
@@ -64,7 +66,6 @@ export const makeRandomReactants = (isSuccessful: boolean): RxnTypeList => {
 
         } else {
             secondUnsuccessfulPairs = [...secondUnsuccessfulPairs, reactantPair];
-
         }
     }
 
@@ -78,7 +79,7 @@ export const makeRandomReactants = (isSuccessful: boolean): RxnTypeList => {
         let secondLength: number = secondSuccessfulPairs.length;
 
         if ( firstLength === 0 && secondLength === 0) {
-            return makeRandomReactants(true);
+            //return makeDREquation(true);
 
         } else {
             let allSuccessfulPairs = [...firstSuccessfulPairs, ...secondSuccessfulPairs];
@@ -90,10 +91,11 @@ export const makeRandomReactants = (isSuccessful: boolean): RxnTypeList => {
         let secondLength: number = secondUnsuccessfulPairs.length;
 
         if (firstLength === 0 && secondLength === 0) {
-            return makeRandomReactants(false);
+            //return makeDREquation(false);
 
         } else {
             let allUnsuccessfulPairs = [...firstUnsuccessfulPairs, ...secondUnsuccessfulPairs];
+            console.log(allUnsuccessfulPairs);
 
             selectedIonPair = getRandomListMember(allUnsuccessfulPairs);
         }
@@ -111,20 +113,13 @@ export const makeRandomReactants = (isSuccessful: boolean): RxnTypeList => {
     if (selectedIonPair.cationName === firstCationName) {
         secondReactant.anionName = selectedIonPair.anionName;
         
-        if (isSuccessful) {
-            firstReactant.anionName = getRandomListMember(firstSolubleAnionList);
-        } else {
-            firstReactant.anionName = getRandomListMember(firstInsolubleAnionList);
-        }
+        firstReactant.anionName = getRandomListMember(firstSolubleAnionList);
 
     } else if (selectedIonPair.cationName === secondCationName) {
         firstReactant.anionName = selectedIonPair.anionName;
 
-        if (isSuccessful) {
-            secondReactant.anionName = getRandomListMember(secondSolubleAnionList);
-        } else {
-            secondReactant.anionName = getRandomListMember(secondInsolubleAnionList)
-        }
+        secondReactant.anionName = getRandomListMember(secondSolubleAnionList);
+
     }
 
     const firstCation: Ion = {...drCations[firstReactant.cationName]};
@@ -154,7 +149,5 @@ export const makeRandomReactants = (isSuccessful: boolean): RxnTypeList => {
         [balancingTable, reactantTwoEC, productOneEC] = balanceIon(balancingTable, secondAnion.ionName, reactantTwoEC, productOneEC);
     }
 
-    console.table(balancingTable)
-
-    return {type: "double-replacement", reactantOne: reactantOneEC, reactantTwo: reactantTwoEC, productOne: productOneEC, productTwo: productTwoEC}
+    return {type: reactionType, reactantOne: reactantOneEC, reactantTwo: reactantTwoEC, productOne: productOneEC, productTwo: productTwoEC}
 };
