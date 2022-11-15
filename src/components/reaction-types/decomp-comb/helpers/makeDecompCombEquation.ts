@@ -2,7 +2,7 @@ import { makeEquationCompound } from "./makeEquationCompound";
 import { getEquationElements } from "./getEquationElements";
 import { makeDecompCombBalancingTable } from "./makeDecompCombBalancingTable";
 import { isBalanced } from "../../helpers/isBalanced";
-import { updateCompoundCoefficient } from "./updateCompoundCoefficient";
+import { updateCompoundCoefficient } from "../../helpers/updateCompoundCoefficient";
 import { updateElementCoefficient } from "./updateElementCoefficient";
 import { DecompositionReaction, CombinationReaction, EquationCompound, BalancingTable } from "../../configurations/interfaces";
 import { RxnTypeList } from "../../../common/configurations/types";
@@ -25,14 +25,14 @@ export const makeDecompCombEquation = (reactionType: ("decomposition" | "combina
 
     while (!isBalanced(balancingTable, elementKeys)) {
         if (balancingTable[cation].qtyReactants < balancingTable[cation].qtyProducts) {
-            [balancingTable, compound] = updateCompoundCoefficient(balancingTable, compound);
+            [balancingTable, compound] = updateCompoundCoefficient(balancingTable, compound, true);
 
         } else if (balancingTable[cation].qtyProducts < balancingTable[cation].qtyReactants) {
             [balancingTable, elementOne] = updateElementCoefficient(balancingTable, elementOne, cation);
         }
 
         if (balancingTable[anion].qtyReactants < balancingTable[anion].qtyProducts) {
-            [balancingTable, compound] = updateCompoundCoefficient(balancingTable, compound);
+            [balancingTable, compound] = updateCompoundCoefficient(balancingTable, compound, true);
             
         } else if (balancingTable[anion].qtyProducts < balancingTable[anion].qtyReactants) {
             [balancingTable, elementTwo] = updateElementCoefficient(balancingTable, elementTwo, anion);

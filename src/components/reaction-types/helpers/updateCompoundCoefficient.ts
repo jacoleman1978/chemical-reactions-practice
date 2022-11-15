@@ -1,4 +1,4 @@
-import { EquationCompound, BalancingTable } from "../../configurations/interfaces";
+import { EquationCompound, BalancingTable } from "../configurations/interfaces";
 
 /**
  * Updates the 'elementKey' property of 'balancingTable' by incrementing the compound coefficient and modifying the corresponding quantity values.
@@ -6,7 +6,7 @@ import { EquationCompound, BalancingTable } from "../../configurations/interface
  * @param compound EquationCompound object
  * @returns [balancingTable: BalancingTable, compound: EquationCompound]
  */
-export const updateCompoundCoefficient = (balancingTable: BalancingTable, compound: EquationCompound): [BalancingTable, EquationCompound] => {
+export const updateCompoundCoefficient = (balancingTable: BalancingTable, compound: EquationCompound, isReactant: boolean = true): [BalancingTable, EquationCompound] => {
     let coefficient: number = compound.coefficient + 1;
     let initialCatQty: number = compound.balancingData.initialCationQty;
     let initialAnQty: number = compound.balancingData.initialAnionQty;
@@ -19,8 +19,14 @@ export const updateCompoundCoefficient = (balancingTable: BalancingTable, compou
 
     const [cation, anion]: string[] = compound.compound.compoundName.split(" ");
 
-    balancingTable[cation].qtyReactants = updatedCatQty;
-    balancingTable[anion].qtyReactants = updatedAnQty;
+    if (isReactant) {
+        balancingTable[cation].qtyReactants = updatedCatQty;
+        balancingTable[anion].qtyReactants = updatedAnQty;
+    } else {
+        balancingTable[cation].qtyProducts = updatedCatQty;
+        balancingTable[anion].qtyProducts = updatedAnQty;
+    }
+
     
     return [balancingTable, compound]
 };

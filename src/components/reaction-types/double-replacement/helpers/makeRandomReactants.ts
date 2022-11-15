@@ -1,9 +1,17 @@
 import { getRandomCationName } from "./getRandomCationName";
 import { makeAnionSolubilityLists } from "./makeAnionSolubilityLists";
+import { makeDREquationCompound } from "./makeDREquationCompound";
+import { makeDRBalancingTable } from "./makeDRBalancingTable";
+import { makeCompoundObjects } from "../../helpers/makeCompoundObjects";
+import { isBalanced } from "../../helpers/isBalanced";
+import { balanceIon } from "./balanceIon";
 import { getRandomListMember } from "../../../common/helpers/getRandomListMember";
-import { DRReactantPair } from "../../configurations/interfaces";
+import { drCations, drAnions } from "../../configurations/doubleReplacementIons";
+import { DRReactantPair, EquationCompound } from "../../configurations/interfaces";
+import { Ion, Compound } from "../../../compounds/configurations/interfaces";
+import { RxnTypeList } from "../../../common/configurations/types";
 
-export const makeRandomReactants = (isSuccessful: boolean): DRReactantPair[] => {
+export const makeRandomReactants = (isSuccessful: boolean): RxnTypeList => {
     // Pick random cation for the first compound with corresponding solubility lists
     let firstCationName: string = getRandomCationName();
 
@@ -119,5 +127,34 @@ export const makeRandomReactants = (isSuccessful: boolean): DRReactantPair[] => 
         }
     }
 
-    return [firstReactant, secondReactant]
+    const firstCation: Ion = {...drCations[firstReactant.cationName]};
+    const firstAnion: Ion = {...drAnions[firstReactant.anionName]};
+    const secondCation: Ion = {...drCations[secondReactant.cationName]};
+    const secondAnion: Ion = {...drAnions[secondReactant.anionName]};
+
+    const reactantOne: Compound = makeCompoundObjects(firstCation, firstAnion);
+    const reactantTwo: Compound = makeCompoundObjects(secondCation, secondAnion);
+    const productOne: Compound = makeCompoundObjects(firstCation, secondAnion);
+    const productTwo: Compound = makeCompoundObjects(secondCation, firstAnion);
+
+    let reactantOneEC: EquationCompound = makeDREquationCompound(reactantOne);
+    let reactantTwoEC: EquationCompound = makeDREquationCompound(reactantTwo);
+    let productOneEC: EquationCompound = makeDREquationCompound(productOne);
+    let productTwoEC: EquationCompound = makeDREquationCompound(productTwo);
+
+    let [balancingTable, balancingTableKeys] = makeDRBalancingTable(reactantOneEC, reactantTwoEC, productOneEC, productTwoEC);
+
+    while (!isBalanced(balancingTable, balancingTableKeys)) {
+        [balancingTable, reactantOneEC, productOneEC] = balanceIon(balancingTable, firstCation.ionName, reactantOneEC, productOneEC);
+
+        [balancingTable, reactantOneEC, productTwoEC] = balanceIon(balancingTable, firstAnion.ionName, reactantOneEC, productTwoEC);
+    
+        [balancingTable, reactantTwoEC, productTwoEC] = balanceIon(balancingTable, secondCation.ionName, reactantTwoEC, productTwoEC);
+    
+        [balancingTable, reactantTwoEC, productOneEC] = balanceIon(balancingTable, secondAnion.ionName, reactantTwoEC, productOneEC);
+    }
+
+    console.table(balancingTable)
+
+    return {type: "double-replacement", reactantOne: reactantOneEC, reactantTwo: reactantTwoEC, productOne: productOneEC, productTwo: productTwoEC}
 };
