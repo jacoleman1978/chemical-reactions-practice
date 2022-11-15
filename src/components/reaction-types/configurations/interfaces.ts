@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { StateOfMatter } from "./types";
-import { Compound, MolecularCompound } from "../../compounds/configurations/interfaces";
+import { Compound, Ion, MolecularCompound } from "../../compounds/configurations/interfaces";
 import { ReactionType } from "../../common/configurations/types";
 
 export interface InformationDisplay {
@@ -19,37 +19,12 @@ export interface ActivitySeries {
 }
 
 export interface SolubilityAnions {
-    fluoride: boolean,
-    chloride: boolean,
-    bromide: boolean,
-    iodide: boolean,
-    chlorate: boolean,
-    hydroxide: boolean,
-    sulfite: boolean,
-    sulfate: boolean,
-    carbonate: boolean,
-    nitrite: boolean,
-    nitrate: boolean,
-    phosphate: boolean,
-    acetate: boolean,
-    chromate: boolean,
+    [member: string]: boolean,
+
 }
 
 export interface SolubilityCations {
-    ammonium: SolubilityAnions,
-    lithium: SolubilityAnions,
-    sodium: SolubilityAnions,
-    potassium: SolubilityAnions,
-    magnesium: SolubilityAnions,
-    calcium: SolubilityAnions,
-    barium: SolubilityAnions,
-    iron: SolubilityAnions,
-    copper: SolubilityAnions,
-    silver: SolubilityAnions,
-    zinc: SolubilityAnions,
-    lead: SolubilityAnions,
-    aluminum: SolubilityAnions,
-    mercury: SolubilityAnions,
+    [member: string]: SolubilityAnions,
 }
 
 export interface ReactionTypeMenuOption {
@@ -204,4 +179,13 @@ export interface CombustionEquationOxygen {
     state: StateOfMatter,
     coefficient: number,
     balancingData: CombustionBalancingData,
+}
+
+export interface DRReactantPair {
+    cationName: string,
+    anionName: string,
+}
+
+export interface DRIons {
+    [member: string]: Ion,
 }

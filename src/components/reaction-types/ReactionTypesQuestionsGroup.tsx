@@ -8,8 +8,11 @@ import { useToggle } from "../../customHooks/useToggle";
 import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./configurations/interfaces";
 import { RxnTypeList } from "../common/configurations/types";
 
+import { makeRandomReactants } from "./double-replacement/helpers/makeRandomReactants";
+
 // Called from /reaction-types/ReactionTypesPractice.tsx
 const ReactionTypesQuestionsGroup = () => {
+  console.log(makeRandomReactants(true))
     const [questionsDisplay, setQuestionsDisplay] = useState<ReactElement[]>([]);
     const [toggleFlag, handleToggle] = useToggle();
 
