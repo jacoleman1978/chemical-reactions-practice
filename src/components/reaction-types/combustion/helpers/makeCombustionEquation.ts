@@ -1,8 +1,6 @@
 import { makeRandomHydrocarbon } from "./makeRandomHydrocarbon";
 import { makeCombustionBalancingTable } from "./makeCombustionBalancingTable";
-import { balanceCarbon } from "./balanceCarbon";
-import { balanceHydrogen } from "./balanceHydrogen";
-import { balanceOxygen } from "./balanceOxygen";
+import { balanceCarbon, balanceHydrogen, balanceOxygen } from "./balanceElements";
 import { combustionCompounds, oxygenGas } from "../../configurations/combustion";
 import { CombustionReaction, Hydrocarbon, CombustionEquationOxygen, CombustionEquationProduct, BalancingTable } from "../../configurations/interfaces";
 

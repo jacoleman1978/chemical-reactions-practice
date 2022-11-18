@@ -1,5 +1,4 @@
-import DisplayHydrocarbon from "./DisplayHydrocarbon";
-import DisplayOxygenGas from "./DisplayOxygenGas";
+import DisplayCombustionReactants from "./DisplayCombustionReactants";
 import DisplayCombustionProducts from "./DisplayCombustionProducts";
 import ReactionTypesDropdown from "../ReactionTypesDropdown";
 import { CombustionReaction } from "../configurations/interfaces";
@@ -11,8 +10,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
     <div className="grid-equations med-gap">
         <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={equation.type}/>
         <div className="flex-left-center med-gap">
-            <DisplayHydrocarbon hydrocarbon={equation.hydrocarbon} />
-            <DisplayOxygenGas oxygenCoefficient={equation.o2.coefficient} />
+            <DisplayCombustionReactants hydrocarbon={equation.hydrocarbon} hydrocarbonCoefficient={equation.hydrocarbon.coefficient} o2Coefficient={equation.o2.coefficient} />
             <i className="fa-solid fa-arrow-right-long"></i>
             <DisplayCombustionProducts h2oCoefficient={equation.h2o.coefficient} co2Coefficient={equation.co2.coefficient} />
         </div>

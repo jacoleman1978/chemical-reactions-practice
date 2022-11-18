@@ -1,6 +1,4 @@
-import { getRandomCSubscript } from "./getRandomCSubscript";
-import { calculateHSubscript } from "./calculateHSubscript";
-import { getRandomOSubscript } from "./getRandomOSubscript";
+import { getRandomCSubscript, calculateHSubscript, getRandomOSubscript } from "./hydrocarbonSubscripts";
 import { makeHydrocarbonFormula } from "./makeHydrocarbonFormula";
 import { Hydrocarbon } from "../../configurations/interfaces";
 
