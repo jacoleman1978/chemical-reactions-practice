@@ -1,5 +1,5 @@
-import { Hydrocarbon } from "../configurations/interfaces";
-import { StateOfMatter } from "../configurations/types";
+import { Hydrocarbon } from "./configurations/interfaces";
+import { StateOfMatter } from "./configurations/types";
 
 // Displays the coefficient and formula for they hydrocarbon in a combustion reaction
 // Called from /combustion/CombustionQuestion.tsx

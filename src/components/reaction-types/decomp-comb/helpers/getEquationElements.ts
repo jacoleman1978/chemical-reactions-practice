@@ -8,10 +8,12 @@ import { Compound } from "../../../compounds/configurations/interfaces";
  * @returns [elementOne, elementTwo] as EquationElement[]
  */
 export const getEquationElements = (compound: Compound): EquationElement[] => {
+    // Gets the Element object for each ion from the compound
     const [cationName, anionName] = compound.compoundName.split(" ");
-
     const cationElement: Element = ionNameToElement[cationName];
+    const anionElement: Element = ionNameToElement[anionName];
 
+    // Creates the EquationElement object that comes from the cationElement of the compound
     const elementOne: EquationElement = {
         element: cationElement,
         coefficient: 1,
@@ -27,8 +29,7 @@ export const getEquationElements = (compound: Compound): EquationElement[] => {
         }
     }
 
-    const anionElement: Element = ionNameToElement[anionName];
-
+    // Creates the EquationElement object that comes from the anionElement of the compound
     const elementTwo: EquationElement = {
         element: anionElement,
         coefficient: 1,

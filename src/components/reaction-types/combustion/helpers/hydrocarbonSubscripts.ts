@@ -2,7 +2,6 @@
  * Uses a weighted table to return the carbon subscript in the hydrocarbon MolecularCompound used for combustion reactions
  * @returns The subscript for carbon as a number
  */
-
  export const getRandomCSubscript = (): number => {
     const randomNumber: number = Math.random();
 
@@ -34,7 +33,6 @@
  * @param carbonSubscript An integer, number type
  * @returns An integer, number type, indicating the hydrogen subscript
  */
-
  export const calculateHSubscript = (carbonSubscript: number): number => {
     // Uses degrees of unsaturation in the hydrocarbon to calculate the needed hydrogens
     const zeroDegUnsat: number = 2 * carbonSubscript + 2;

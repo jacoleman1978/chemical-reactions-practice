@@ -1,5 +1,5 @@
-import { FormulaParts } from "../../compounds/configurations/interfaces";
-import { StateOfMatter } from "../configurations/types";
+import { FormulaParts } from "../compounds/configurations/interfaces";
+import { StateOfMatter } from "./configurations/types";
 
 const DisplayMolecularFormula = ({formulaParts, state}: {formulaParts: FormulaParts, state: StateOfMatter}) => {
     const {firstPart, firstSubscript, secondPart, secondSubscript} = formulaParts;

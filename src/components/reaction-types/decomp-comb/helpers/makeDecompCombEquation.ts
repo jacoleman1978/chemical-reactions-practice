@@ -13,16 +13,18 @@ import { RxnTypeList } from "../../../common/configurations/types";
  * @returns DecompositionReaction or CombinationReaction object
  */
 export const makeDecompCombEquation = (reactionType: ("decomposition" | "combination")): RxnTypeList => {
+    // Make a random ionic compound EquationCompound object and the corresponsing EquationElements
     let compound: EquationCompound = makeEquationCompound();
-
     let [elementOne, elementTwo] = getEquationElements(compound.compound);
 
+    // Make the BalancingTable object to use to check whether or not an equation is balanced
     let balancingTable: BalancingTable = makeDecompCombBalancingTable(reactionType, compound, elementOne, elementTwo);
 
+    // Make the keys for the BalancingTable object from the ion names of the EquationCompound object
     const [cation, anion]: string[] = compound.compound.compoundName.split(" ");
-
     const elementKeys: string[] = [cation, anion];
 
+    // If the equation is not balanced, continue to increment the coefficients for the reactant or product containing a specific element with the least quantity
     while (!isBalanced(balancingTable, elementKeys)) {
         if (balancingTable[cation].qtyReactants < balancingTable[cation].qtyProducts) {
             [balancingTable, compound] = updateCompoundCoefficient(balancingTable, compound, true);
@@ -39,6 +41,7 @@ export const makeDecompCombEquation = (reactionType: ("decomposition" | "combina
         }
     }
 
+    // Create and return the DecompositionReaction or CombinationReaction object depending on the "reactionType"
     if (reactionType === "decomposition") {
         return {type: "decomposition", reactantOne: compound, productOne: elementOne, productTwo: elementTwo} as DecompositionReaction
 

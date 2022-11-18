@@ -90,11 +90,6 @@ export interface CombustionReaction {
     co2: CombustionEquationProduct,
 }
 
-export interface MakeCombustProductsReturn {
-    productOne: EquationMolecCompound,
-    productTwo: EquationMolecCompound,
-}
-
 export interface SRReaction {
     type: ReactionType,
     reactantOne: EquationCompound,
