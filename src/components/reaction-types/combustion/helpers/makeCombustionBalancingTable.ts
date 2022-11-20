@@ -2,7 +2,7 @@ import { BalancingTable, Hydrocarbon } from "../../configurations/interfaces";
 
 /**
  * Creates the BalancingTable object used while balancing combustion reactions
- * @param hydrocarbon : Hydrocarbon object
+ * @param hydrocarbon Hydrocarbon object
  * @returns BalancingTable object for balancing combustion reactions
  */
 export const makeCombustionBalancingTable = (hydrocarbon: Hydrocarbon): BalancingTable => {

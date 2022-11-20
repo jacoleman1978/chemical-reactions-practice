@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { StateOfMatter } from "./types";
-import { Compound, Ion, MolecularCompound } from "../../compounds/configurations/interfaces";
+import { Compound, FormulaParts, Ion, MolecularCompound } from "../../compounds/configurations/interfaces";
 import { ReactionType } from "../../common/configurations/types";
 
 export interface InformationDisplay {
@@ -183,4 +183,13 @@ export interface DRReactantPair {
 
 export interface DRIons {
     [member: string]: Ion,
+}
+
+export interface SolubilityPairs {
+    solublePairs: DRReactantPair[],
+    insolublePairs: DRReactantPair[],
+}
+
+export interface CombustionFormulaParts {
+    [member: string]: FormulaParts
 }
