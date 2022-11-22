@@ -10,12 +10,16 @@ export interface InformationDisplay {
     example: () => ReactElement,
 }
 
-export interface ActivitySeries {
+export interface ActivitySeriesElement {
     elementSymbol: string,
-    elementName: string,
+    ionName: string,
     possibleCharges: number[],
     priority: number,
     isTransitionMetal: boolean,
+}
+
+export interface ActivitySeries {
+    [member: string]: ActivitySeriesElement,
 }
 
 export interface SolubilityAnions {

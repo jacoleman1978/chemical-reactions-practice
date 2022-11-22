@@ -98,12 +98,6 @@ export const transitionMetalCations: Ion[] = [
         isPolyatomic: false,
     },
     {
-        ionName: "nickel(III)",
-        ionSymbol: ["Ni"],
-        charge: 3,
-        isPolyatomic: false,
-    },
-    {
         ionName: "scandium(III)",
         ionSymbol: ["Sc"],
         charge: 3,
