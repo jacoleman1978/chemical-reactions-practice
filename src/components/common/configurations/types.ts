@@ -12,6 +12,8 @@ export type PTGroup = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14
 
 export type PTPeriod = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
-export type PossibleCharges = -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+export type PossiblePositiveCharges = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+
+export type PossibleNegativeCharges = -4 | -3 | -2 | -1;
 
 export type StateOfMatter = "s" | "l" | "g" | "aq";

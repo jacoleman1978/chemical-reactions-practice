@@ -1,11 +1,27 @@
 import { PracticeType, CompoundType } from "../../common/configurations/types";
-import { CationCharge, AnionCharge, FirstSubscript, SecondSubscript, PosMolecularOxStates, NegMolecularOxStates } from "./types";
+import { CationCharge, AnionCharge, FirstSubscript, SecondSubscript, PosMolecularOxStates, NegMolecularOxStates, PolyatomicIonCharge } from "./types";
+import { BooleanDict } from "../../common/configurations/interfaces";
 
 export interface FormulaParts {
     firstPart: (string | number)[],
     firstSubscript: string,
     secondPart: (string | number)[],
     secondSubscript: string,
+}
+
+export interface PolyatomicIon {
+    readonly ionFormula: string,
+    readonly ionParts: (string | number)[],
+    readonly ionName: string,
+    readonly charge: PolyatomicIonCharge,
+    readonly solubilityTable?: BooleanDict,
+    readonly molarMass: number,
+    quantityInReactants?: number,
+    quantityInProducts?: number,
+}
+
+export interface PolyatomicIonData {
+    [member: string]: PolyatomicIon,
 }
 
 export interface QuestionProps {
