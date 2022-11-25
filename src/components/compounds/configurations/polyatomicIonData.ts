@@ -1,15 +1,15 @@
 import { PolyatomicIonData } from "./interfaces";
 
 // Polyatomic anions
-export const acidPolyatomicAnions: string[] = ["acetate", "cyanide", "hypobromite", "bromite", "bromate", "perbromate", "hypochlorite", "chlorite", "chlorate", "perchlorate", "hypoiodite", "iodite", "iodate", "periodate", "nitrite", "nitrate", "carbonate", "oxalate", "chromate", "dichromate", "selenite", "selenate", "sulfite", "sulfate", "tellurite", "tellurate", "arsenite", "arsenate", "phosphite", "phosphate"];
+export const acidPolyatomicAnions: readonly string[] = ["acetate", "cyanide", "hypobromite", "bromite", "bromate", "perbromate", "hypochlorite", "chlorite", "chlorate", "perchlorate", "hypoiodite", "iodite", "iodate", "periodate", "nitrite", "nitrate", "carbonate", "oxalate", "chromate", "dichromate", "selenite", "selenate", "sulfite", "sulfate", "tellurite", "tellurate", "arsenite", "arsenate", "phosphite", "phosphate"];
 
 // Polyatomic ions
-export const polyatomicAnions: string[] = [...acidPolyatomicAnions, "bicarbonate", "permanganate", "hydroxide", "bisulfite", "bisulfate", "thiocyanate", "persulfate"];
-export const polyatomicCations: string[] = ["ammonium"];
+export const polyatomicAnions: readonly string[] = [...acidPolyatomicAnions, "bicarbonate", "permanganate", "hydroxide", "bisulfite", "bisulfate", "thiocyanate", "persulfate"];
+export const polyatomicCations: readonly string[] = ["ammonium"];
 
 // Polyatomic ions on solubility table - double replacement reactions
-export const drPolyatomicAnions: string[] = ["chlorate", "hydroxide", "sulfite", "sulfate", "carbonate", "nitrite", "nitrate", "phosphate", "acetate", "chromate"];
-export const drPolyatomicCations: string[] = ["ammonium"]
+export const drPolyatomicAnions: readonly string[] = ["chlorate", "hydroxide", "sulfite", "sulfate", "carbonate", "nitrite", "nitrate", "phosphate", "acetate", "chromate"];
+export const drPolyatomicCations: readonly string[] = ["ammonium"];
 
 export const polyatomicIonData: PolyatomicIonData = {
     ammonium: {
