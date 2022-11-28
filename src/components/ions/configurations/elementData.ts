@@ -59,9 +59,10 @@ export const elementData: ElementData = {
     H: {
         elementSymbol: "H",
         elementName: "hydrogen",
-        anionName: "hydride",
+        ionName: "hydride",
         possiblePositiveCharges: [1],
         possibleNegativeCharges: [-1],
+        charge: 1,
         electronegativity: 2.1,
         needsRomanNumerals: false,
         activitySeriesPriority: 800,
@@ -71,7 +72,9 @@ export const elementData: ElementData = {
     Li: {
         elementSymbol: "Li",
         elementName: "lithium",
+        ionName: "lithium",
         possiblePositiveCharges: [1],
+        charge: 1,
         needsRomanNumerals: false,
         solubilityTable: {
             fluoride: false,
@@ -95,9 +98,10 @@ export const elementData: ElementData = {
     C: {
         elementSymbol: "C",
         elementName: "carbon",
-        anionName: "carbide",
+        ionName: "carbide",
         possiblePositiveCharges: [4],
         possibleNegativeCharges: [-4],
+        charge: 4,
         electronegativity: 2.5,
         needsRomanNumerals: false,
         stateOfMatter: "s",
@@ -106,9 +110,10 @@ export const elementData: ElementData = {
     N: {
         elementSymbol: "N",
         elementName: "nitrogen",
-        anionName: "nitride",
+        ionName: "nitride",
         possiblePositiveCharges: [5],
         possibleNegativeCharges: [-3],
+        charge: -3,
         electronegativity: 3.0,
         needsRomanNumerals: false,
         stateOfMatter: "g",
@@ -117,18 +122,22 @@ export const elementData: ElementData = {
     O: {
         elementSymbol: "O",
         elementName: "oxygen",
-        anionName: "oxide",
+        ionName: "oxide",
         possibleNegativeCharges: [-2],
+        charge: -2,
         electronegativity: 3.5,
+        needsRomanNumerals: false,
         stateOfMatter: "g",
         molarMass: 16.00,
     },
     F: {
         elementSymbol: "F",
         elementName: "fluorine",
-        anionName: "fluoride",
+        ionName: "fluoride",
         possibleNegativeCharges: [-1],
+        charge: -1,
         electronegativity: 4.0,
+        needsRomanNumerals: false,
         activitySeriesPriority: 4,
         solubilityTable: {
             rubidium: true, 
@@ -153,7 +162,9 @@ export const elementData: ElementData = {
     Na: {
         elementSymbol: "Na",
         elementName: "sodium",
+        ionName: "sodium",
         possiblePositiveCharges: [1],
+        charge: 1,
         needsRomanNumerals: false,
         solubilityTable: {
             fluoride: true,
@@ -177,7 +188,9 @@ export const elementData: ElementData = {
     Mg: {
         elementSymbol: "Mg",
         elementName: "magnesium",
+        ionName: "magnesium",
         possiblePositiveCharges: [2],
+        charge: 2,
         needsRomanNumerals: false,
         activitySeriesPriority: 910,
         solubilityTable: {
@@ -202,7 +215,9 @@ export const elementData: ElementData = {
     Al: {
         elementSymbol: "Al",
         elementName: "aluminum",
+        ionName: "aluminum",
         possiblePositiveCharges: [3],
+        charge: 3,
         needsRomanNumerals: false,
         activitySeriesPriority: 900,
         solubilityTable: {
@@ -227,7 +242,9 @@ export const elementData: ElementData = {
     Si: {
         elementSymbol: "Si",
         elementName: "silicon",
+        ionName: "silicon",
         possiblePositiveCharges: [4],
+        charge: 4,
         needsRomanNumerals: false,
         stateOfMatter: "s",
         molarMass: 28.09,
@@ -235,9 +252,10 @@ export const elementData: ElementData = {
     P: {
         elementSymbol: "P",
         elementName: "phosphorus",
-        anionName: "phosphide",
+        ionName: "phosphide",
         possiblePositiveCharges: [3, 5],
         possibleNegativeCharges: [-3],
+        charge: -3,
         electronegativity: 2.1,
         needsRomanNumerals: false,
         stateOfMatter: "s",
@@ -246,9 +264,10 @@ export const elementData: ElementData = {
     S: {
         elementSymbol: "S",
         elementName: "sulfur",
-        anionName: "sulfide",
+        ionName: "sulfide",
         possiblePositiveCharges: [6],
         possibleNegativeCharges: [-2],
+        charge: -2,
         electronegativity: 2.5,
         needsRomanNumerals: false,
         stateOfMatter: "s",
@@ -257,9 +276,10 @@ export const elementData: ElementData = {
     Cl: {
         elementSymbol: "Cl",
         elementName: "chlorine",
-        anionName: "chloride",
+        ionName: "chloride",
         possiblePositiveCharges: [1, 3],
         possibleNegativeCharges: [-1],
+        charge: -1,
         electronegativity: 3.0,
         needsRomanNumerals: false,
         activitySeriesPriority: 3,
@@ -286,7 +306,9 @@ export const elementData: ElementData = {
     K: {
         elementSymbol: "K",
         elementName: "potassium",
+        ionName: "potassium",
         possiblePositiveCharges: [1],
+        charge: 1,
         needsRomanNumerals: false,
         solubilityTable: {
             fluoride: true,
@@ -310,7 +332,9 @@ export const elementData: ElementData = {
     Ca: {
         elementSymbol: "Ca",
         elementName: "calcium",
+        ionName: "calcium",
         possiblePositiveCharges: [2],
+        charge: 2,
         needsRomanNumerals: false,
         solubilityTable: {
             fluoride: false,
@@ -334,6 +358,7 @@ export const elementData: ElementData = {
     Sc: {
         elementSymbol: "Sc",
         elementName: "scandium",
+        ionName: "scandium",
         possiblePositiveCharges: [3],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -342,6 +367,7 @@ export const elementData: ElementData = {
     Ti: {
         elementSymbol: "Ti",
         elementName: "titanium",
+        ionName: "titanium",
         possiblePositiveCharges: [2, 4],
         needsRomanNumerals: true,
         activitySeriesPriority: 890,
@@ -351,6 +377,7 @@ export const elementData: ElementData = {
     V: {
         elementSymbol: "V",
         elementName: "vanadium",
+        ionName: "vanadium",
         possiblePositiveCharges: [3, 5],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -359,6 +386,7 @@ export const elementData: ElementData = {
     Cr: {
         elementSymbol: "Cr",
         elementName: "chromium",
+        ionName: "chromium",
         possiblePositiveCharges: [3, 5, 6],
         needsRomanNumerals: true,
         activitySeriesPriority: 860,
@@ -368,6 +396,7 @@ export const elementData: ElementData = {
     Mn: {
         elementSymbol: "Mn",
         elementName: "manganese",
+        ionName: "manganese",
         possiblePositiveCharges: [3, 5, 7],
         needsRomanNumerals: true,
         activitySeriesPriority: 880,
@@ -377,6 +406,7 @@ export const elementData: ElementData = {
     Fe: {
         elementSymbol: "Fe",
         elementName: "iron",
+        ionName: "iron",
         possiblePositiveCharges: [2, 3],
         needsRomanNumerals: true,
         activitySeriesPriority: 850,
@@ -402,6 +432,7 @@ export const elementData: ElementData = {
     Co: {
         elementSymbol: "Co",
         elementName: "cobalt",
+        ionName: "cobalt",
         possiblePositiveCharges: [2, 3],
         needsRomanNumerals: true,
         activitySeriesPriority: 840,
@@ -411,6 +442,7 @@ export const elementData: ElementData = {
     Ni: {
         elementSymbol: "Ni",
         elementName: "nickel",
+        ionName: "nickel",
         possiblePositiveCharges: [2],
         needsRomanNumerals: true,
         activitySeriesPriority: 830,
@@ -420,6 +452,7 @@ export const elementData: ElementData = {
     Cu: {
         elementSymbol: "Cu",
         elementName: "copper",
+        ionName: "copper",
         possiblePositiveCharges: [1, 2],
         needsRomanNumerals: true,
         activitySeriesPriority: 790,
@@ -445,7 +478,9 @@ export const elementData: ElementData = {
     Zn: {
         elementSymbol: "Zn",
         elementName: "zinc",
+        ionName: "zinc",
         possiblePositiveCharges: [2],
+        charge: 2,
         needsRomanNumerals: false,
         activitySeriesPriority: 870,
         solubilityTable: {
@@ -470,7 +505,9 @@ export const elementData: ElementData = {
     Ge: {
         elementSymbol: "Ge",
         elementName: "germanium",
+        ionName: "germanium",
         possiblePositiveCharges: [4],
+        charge: 4,
         needsRomanNumerals: false,
         stateOfMatter: "s",
         molarMass: 72.63,
@@ -478,9 +515,10 @@ export const elementData: ElementData = {
     As: {
         elementSymbol: "As",
         elementName: "arsenic",
-        anionName: "arsenide",
+        ionName: "arsenide",
         possiblePositiveCharges: [3, 5],
         possibleNegativeCharges: [-3],
+        charge: -3,
         electronegativity: 2.0,
         needsRomanNumerals: false,
         stateOfMatter: "s",
@@ -489,9 +527,10 @@ export const elementData: ElementData = {
     Se: {
         elementSymbol: "Se",
         elementName: "selenium",
-        anionName: "selenide",
+        ionName: "selenide",
         possiblePositiveCharges: [4],
         possibleNegativeCharges: [-2],
+        charge: -2,
         electronegativity: 2.4,
         needsRomanNumerals: false,
         stateOfMatter: "s",
@@ -500,9 +539,10 @@ export const elementData: ElementData = {
     Br: {
         elementSymbol: "Br",
         elementName: "bromine",
-        anionName: "bromide",
+        ionName: "bromide",
         possiblePositiveCharges: [1, 3, 5],
         possibleNegativeCharges: [-1],
+        charge: -1,
         electronegativity: 2.8,
         needsRomanNumerals: false,
         activitySeriesPriority: 2,
@@ -529,6 +569,7 @@ export const elementData: ElementData = {
     Kr: {
         elementSymbol: "Kr",
         elementName: "krypton",
+        ionName: "krypton",
         possiblePositiveCharges: [2],
         needsRomanNumerals: false,
         stateOfMatter: "g",
@@ -537,7 +578,9 @@ export const elementData: ElementData = {
     Rb: {
         elementSymbol: "Rb",
         elementName: "rubidium",
+        ionName: "rubidium",
         possiblePositiveCharges: [1],
+        charge: 1,
         needsRomanNumerals: false,
         solubilityTable: {
             fluoride: true,
@@ -561,7 +604,9 @@ export const elementData: ElementData = {
     Sr: {
         elementSymbol: "Sr",
         elementName: "strontium",
+        ionName: "strontium",
         possiblePositiveCharges: [2],
+        charge: 2,
         needsRomanNumerals: false,
         stateOfMatter: "s",
         molarMass: 87.62,
@@ -569,6 +614,7 @@ export const elementData: ElementData = {
     Mo: {
         elementSymbol: "Mo",
         elementName: "molybdenum",
+        ionName: "molybdenum",
         possiblePositiveCharges: [4, 6],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -577,6 +623,7 @@ export const elementData: ElementData = {
     Ru: {
         elementSymbol: "Ru",
         elementName: "ruthenium",
+        ionName: "ruthenium",
         possiblePositiveCharges: [3, 4, 6, 8],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -585,6 +632,7 @@ export const elementData: ElementData = {
     Pd: {
         elementSymbol: "Pd",
         elementName: "palladium",
+        ionName: "palladium",
         possiblePositiveCharges: [2, 4],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -593,7 +641,9 @@ export const elementData: ElementData = {
     Ag: {
         elementSymbol: "Ag",
         elementName: "silver",
+        ionName: "silver",
         possiblePositiveCharges: [1],
+        charge: 1,
         needsRomanNumerals: false,
         activitySeriesPriority: 780,
         solubilityTable: {
@@ -618,7 +668,9 @@ export const elementData: ElementData = {
     Cd: {
         elementSymbol: "Cd",
         elementName: "cadmium",
+        ionName: "cadmium",
         possiblePositiveCharges: [2],
+        charge: 2, 
         needsRomanNumerals: false,
         stateOfMatter: "s",
         molarMass: 112.41,
@@ -626,6 +678,7 @@ export const elementData: ElementData = {
     Sn: {
         elementSymbol: "Sn",
         elementName: "tin",
+        ionName: "tin",
         possiblePositiveCharges: [2, 4],
         needsRomanNumerals: true,
         activitySeriesPriority: 820,
@@ -635,7 +688,7 @@ export const elementData: ElementData = {
     Te: {
         elementSymbol: "Te",
         elementName: "tellurium",
-        anionName: "telluride",
+        ionName: "telluride",
         possiblePositiveCharges: [4],
         electronegativity: 2.1,
         needsRomanNumerals: false,
@@ -645,9 +698,10 @@ export const elementData: ElementData = {
     I: {
         elementSymbol: "I",
         elementName: "iodine",
-        anionName: "iodide",
+        ionName: "iodide",
         possiblePositiveCharges: [5],
         possibleNegativeCharges: [-1],
+        charge: -1,
         electronegativity: 2.5,
         needsRomanNumerals: false,
         activitySeriesPriority: 1,
@@ -674,6 +728,7 @@ export const elementData: ElementData = {
     Xe: {
         elementSymbol: "Xe",
         elementName: "xenon",
+        ionName: "xenon",
         possiblePositiveCharges: [2, 4, 6],
         electronegativity: 0,
         needsRomanNumerals: false,
@@ -683,7 +738,9 @@ export const elementData: ElementData = {
     Cs: {
         elementSymbol: "Cs",
         elementName: "cesium",
+        ionName: "cesium",
         possiblePositiveCharges: [1],
+        charge: 1,
         needsRomanNumerals: false,
         solubilityTable: {
             fluoride: true,
@@ -707,7 +764,9 @@ export const elementData: ElementData = {
     Ba: {
         elementSymbol: "Ba",
         elementName: "barium",
+        ionName: "barium",
         possiblePositiveCharges: [2],
+        charge: 2,
         needsRomanNumerals: false,
         solubilityTable: {
             fluoride: false,
@@ -731,6 +790,7 @@ export const elementData: ElementData = {
     W: {
         elementSymbol: "W",
         elementName: "tungsten",
+        ionName: "tungsten",
         possiblePositiveCharges: [4, 5, 6],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -739,6 +799,7 @@ export const elementData: ElementData = {
     Re: {
         elementSymbol: "Re",
         elementName: "rhenium",
+        ionName: "rhenium",
         possiblePositiveCharges: [3, 4, 5, 7],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -747,6 +808,7 @@ export const elementData: ElementData = {
     Os: {
         elementSymbol: "Os",
         elementName: "osmium",
+        ionName: "osmium",
         possiblePositiveCharges: [4, 6, 8],
         needsRomanNumerals: true,
         stateOfMatter: "s",
@@ -755,6 +817,7 @@ export const elementData: ElementData = {
     Pt: {
         elementSymbol: "Pt",
         elementName: "platinum",
+        ionName: "platinum",
         possiblePositiveCharges: [2, 4],
         needsRomanNumerals: true,
         activitySeriesPriority: 760,
@@ -764,6 +827,7 @@ export const elementData: ElementData = {
     Au: {
         elementSymbol: "Au",
         elementName: "gold",
+        ionName: "gold",
         possiblePositiveCharges: [1, 3],
         needsRomanNumerals: true,
         activitySeriesPriority: 0,
@@ -773,6 +837,7 @@ export const elementData: ElementData = {
     Hg: {
         elementSymbol: "Hg",
         elementName: "mercury",
+        ionName: "mercury",
         possiblePositiveCharges: [2],
         needsRomanNumerals: true,
         activitySeriesPriority: 770,
@@ -798,6 +863,7 @@ export const elementData: ElementData = {
     Pb: {
         elementSymbol: "Pb",
         elementName: "lead",
+        ionName: "lead",
         possiblePositiveCharges: [2, 4],
         needsRomanNumerals: true,
         activitySeriesPriority: 810,

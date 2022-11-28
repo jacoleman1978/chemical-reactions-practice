@@ -8,12 +8,14 @@ export type ReactionType = "decomposition" | "combustion" | "single-replacement"
 
 export type RxnTypeList = DecompositionReaction | CombustionReaction | SRReaction | DRReaction | CombinationReaction;
 
-export type PTGroup = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18;
+export type ReactionTypeList = DecompositionReaction | CombustionReaction | SRReaction | DRReaction | CombinationReaction;
 
-export type PTPeriod = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export type PolyatomicIonCharge = -3 | -2 | -1 | 1;
 
 export type PossiblePositiveCharges = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 export type PossibleNegativeCharges = -4 | -3 | -2 | -1;
 
-export type StateOfMatter = "s" | "l" | "g" | "aq";
+export type StateOfMatter = "s" | "l" | "g" | "aq" | "";
+
+export type FormulaParts = (string | number)[];

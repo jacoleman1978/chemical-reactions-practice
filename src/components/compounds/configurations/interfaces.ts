@@ -1,4 +1,4 @@
-import { PracticeType, CompoundType } from "../../common/configurations/types";
+import { PracticeType, CompoundType, StateOfMatter } from "../../common/configurations/types";
 import { CationCharge, AnionCharge, FirstSubscript, SecondSubscript, PosMolecularOxStates, NegMolecularOxStates, PolyatomicIonCharge } from "./types";
 import { BooleanDict } from "../../common/configurations/interfaces";
 
@@ -22,6 +22,20 @@ export interface PolyatomicIon {
 
 export interface PolyatomicIonData {
     [member: string]: PolyatomicIon,
+}
+
+export interface IonicCompound {
+    compoundName: string,
+    compoundFormula: string,
+    cationFormula: string,
+    cationSubscript: number,
+    anionFormula: string,
+    anionSubscript: number,
+    state?: StateOfMatter,
+    molarMass?: number,
+    coefficient?: number,
+    activitySeriesPriority?: number,
+    solubilityTable?: BooleanDict,
 }
 
 export interface QuestionProps {

@@ -1,21 +1,6 @@
-import { PossiblePositiveCharges, PossibleNegativeCharges, StateOfMatter, FormulaParts} from "./types";
+import { PossiblePositiveCharges, PossibleNegativeCharges } from "./types";
+import { StateOfMatter, FormulaParts } from "../../common/configurations/types";
 
-export interface Description {
-    title: string;
-    path: string;
-    description: string;
-}
-
-export interface InstructionsListProps {
-    label: string;
-    instructionsList: string[];
-}
-
-export interface SubtitleProps {
-    displayToggle: boolean;
-    handleToggle: () => void;
-    label: string;
-}
 export interface BooleanDict {
     [member: string]: boolean,
 }
@@ -81,15 +66,4 @@ export interface Ion {
 
 export interface PolyatomicIonData {
     [member: string]: Ion,
-}
-
-export interface IonicCompound {
-    compoundName: string,
-    compoundFormula: string,
-    formulaParts: FormulaParts,
-    cation: Ion,
-    anion: Ion,
-    molarMass: number,
-    state?: StateOfMatter,
-    coefficient?: number,
 }
