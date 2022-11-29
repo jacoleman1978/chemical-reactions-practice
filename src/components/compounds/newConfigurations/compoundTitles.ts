@@ -1,4 +1,4 @@
-import { CompoundDescription } from "./interfaces"
+import { CompoundDescription } from "../configurations/interfaces"
 
 export const compoundTitles: CompoundDescription = {
     ionic: {

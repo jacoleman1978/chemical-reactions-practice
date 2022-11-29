@@ -32,7 +32,7 @@ export const getRandomCation = (compoundType: CompoundType): Ion => {
     // Use main group cations for "ionic-main"
     if (compoundType === "ionic-main") {
         const elementSymbol: string = getRandomListMember([...mainGroupCations]);
-    
+
         return makeNewIon(elementSymbol)
 
     // Get a random charge and transition metal for "ionic-transition"

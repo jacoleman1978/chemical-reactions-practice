@@ -19,7 +19,7 @@ export const makeNewIon = (elementKey: string): Ion => {
         isPolyatomic: false,
         molarMass: element.molarMass,
     };
-    
+
     // If the "Element" object has data in the "activitySeriesPriority" property, add it to the "Ion" object
     if (element.hasOwnProperty("activitySeriesPriority")) {
         ion["activitySeriesPriority"] = element.activitySeriesPriority;

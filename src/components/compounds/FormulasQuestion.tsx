@@ -1,7 +1,13 @@
 import { ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 import DisplayUsersFormula from "./DisplayUsersFormula";
-import { FormulasQuestionProps } from "./configurations/interfaces";
+
+interface FormulasQuestionProps {
+    formStyle: {backgroundColor: string};
+    handleUserAnswer: (arg0: string) => void;
+    compoundName: string;
+    userAnswer: string;
+}
 
 // Displays the name of the compound for which the user must write the formula in the input field
 // The input field's background color will change to a light green when the answer is correct.

@@ -20,13 +20,13 @@ export const makeCompoundList = (compoundType: CompoundType, numberOfQuestions: 
             currentCompoundType = getRandomCompoundType();
         }
 
-        if (compoundType === "molecular") {
+        if (currentCompoundType === "molecular") {
             newCompound = makeRandomMolecularCompound();
 
         } else {
-            newCompound = makeRandomIonicCompound(compoundType);
+            newCompound = makeRandomIonicCompound(currentCompoundType);
         }
-
+        
         // Only add unique newCompound to compoundsList
         if (!formulasList.includes(newCompound.compoundFormula)) {
             compoundsList = [...compoundsList, newCompound];

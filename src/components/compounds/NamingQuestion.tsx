@@ -1,7 +1,14 @@
 import { ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
-import CompoundFormula from "./CompoundFormula";
-import { NamingQuestionProps } from "./configurations/interfaces";
+import DisplayFormula from "./DisplayFormula";
+import { FormulaParts } from "../common/configurations/types";
+
+interface NamingQuestionProps {
+    formStyle: {backgroundColor: string};
+    handleUserAnswer: (arg0: string) => void;
+    formulaParts: FormulaParts;
+    userAnswer: string;
+}
 
 // Displays the formula of the compound the user must name in the input field
 // The input field's background color will change to a light green when the answer is correct.
@@ -9,7 +16,7 @@ import { NamingQuestionProps } from "./configurations/interfaces";
 const NamingQuestion = ({formStyle, handleUserAnswer, formulaParts, userAnswer}: NamingQuestionProps) => {
     return (
         <div className="grid-naming med-gap">
-            <CompoundFormula formulaParts={formulaParts} />
+            <DisplayFormula formulaParts={formulaParts} />
             <div>
                 <Form.Control 
                     style={formStyle}

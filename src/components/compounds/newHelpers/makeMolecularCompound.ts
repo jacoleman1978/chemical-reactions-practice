@@ -1,6 +1,6 @@
 import { getRandomListMember } from "../../common/helpers/getRandomListMember";
 import { findCompoundSubscripts } from "./findCompoundSubscripts";
-import { diatomicElements, molecularByOxState, elementData } from "../../ions/configurations/elementData";
+import { diatomicElements, molecularByOxState, molecularByElectronegativity, elementData } from "../../ions/configurations/elementData";
 import { MolecularPart, MolecularCompound } from "../newConfigurations/interfaces";
 import { Element, MolecularElement } from "../../ions/configurations/interfaces";
 import { PossiblePositiveCharges, PossibleNegativeCharges, MolecularOxStates, GreekPrefixes } from "../../ions/configurations/types";
@@ -82,28 +82,28 @@ const getRandomFirstMolecularPart = (): MolecularPart => {
 }
 
 /**
- * Randomly select the second element of the molecular compound, using a weighted list of elements sorted by negative oxidation states of nonmetals.
- * @param firstSymbol The element symbol of the "firstMolecularPart" as a string
- * @returns "MolecularPart" object for the second element of the molecular compound, which must be different than the firstSymbol
+ * Randomly select the second element of the molecular compound, using the "molecularByElectronegativity" dictionary.
+ * @param firstPart The "MolecularPart" object of the "firstMoleclarPart"
+ * @returns "MolecularPart" object for the second element of the molecular compound, which must be different than the firstPart
  */
-const getRandomSecondMolecularPart = (firstSymbol: string): MolecularPart => {
-    let elementSymbol: string = firstSymbol;
+const getRandomSecondMolecularPart = (firstPart: MolecularPart): MolecularPart => {
+    let elementSymbol: string = getRandomListMember(molecularByElectronegativity[firstPart.elementSymbol]);
+    let firstPartOxState = firstPart.oxState;
     let oxState: number = -1;
+    let element: Element = elementData[elementSymbol];
 
-    while (elementSymbol === firstSymbol) {
-        let randomNumber: number = Math.random();
+    if (element.possibleNegativeCharges !== undefined) {
+        let possibleOxStates: PossibleNegativeCharges[] = element.possibleNegativeCharges;
 
-        if (randomNumber < 0.4) {
-            elementSymbol = getRandomListMember(molecularByOxState.negOne);
-            oxState = -1;
-    
-        } else if (randomNumber < 0.7) {
-            elementSymbol = getRandomListMember(molecularByOxState.negTwo);
-            oxState = -2;
-    
+        if (possibleOxStates.length === 1) {
+            oxState = possibleOxStates[0];
+
         } else {
-            elementSymbol = getRandomListMember(molecularByOxState.negThree);
-            oxState = -3;
+            oxState = getRandomListMember(possibleOxStates);
+
+            while (-oxState > firstPartOxState) {
+                oxState = getRandomListMember(possibleOxStates);
+            }
         }
     }
 
@@ -165,7 +165,7 @@ const makeNewMolecularElement = (elementPart: MolecularPart, subscript: number, 
 const makeMolecularElements = (): {firstMolecularElement: MolecularElement, secondMolecularElement: MolecularElement} => {
         // Get two random nonmetal elements 
         const firstElementPart: MolecularPart = getRandomFirstMolecularPart();
-        const secondElementPart: MolecularPart = getRandomSecondMolecularPart(firstElementPart.elementSymbol);
+        const secondElementPart: MolecularPart = getRandomSecondMolecularPart(firstElementPart);
     
         // Determine the subscripts for the compound
         let { first, second } = findCompoundSubscripts(firstElementPart.oxState as PossiblePositiveCharges, secondElementPart.oxState as PossibleNegativeCharges);
@@ -181,7 +181,7 @@ const makeMolecularElements = (): {firstMolecularElement: MolecularElement, seco
         }
     
         let firstMolecularElement: MolecularElement = makeNewMolecularElement(firstElementPart, first, false);
-        let secondMolecularElement: MolecularElement = makeNewMolecularElement(secondElementPart, second, false);
+        let secondMolecularElement: MolecularElement = makeNewMolecularElement(secondElementPart, second, true);
 
         return {firstMolecularElement, secondMolecularElement}
 }

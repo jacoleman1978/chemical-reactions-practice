@@ -18,7 +18,7 @@ export const acidMainGroupCations: readonly string[] = ["H"];
 export const acidMainGroupAnions: readonly string[] = [...halogens];
 
 // Mixed cations
-export const mixedCations: readonly string[] = [...mainGroupCations, ... transitionMetalCations];
+export const mixedCations: readonly string[] = [...mainGroupCations, ...transitionMetalCations];
 
 // On solubility table - double replacement ions
 export const drCations: readonly string[] = ["Li", "Na", "Mg", "Al", "K", "Ca", "Fe", "Cu", "Zn", "Rb", "Ag", "Cs", "Ba", "Hg", "Pb"];
@@ -53,6 +53,26 @@ export const molecularByOxState: MolecularByOxState = {
     negOne: ["H", ...halogens],
     negTwo: ["O", "S", "Se"],
     negThree: ["N", "P", "As"],
+}
+
+// Elements for molecular compounds by electronegativity
+export const molecularByElectronegativity: {[member: string]: string[]} = {
+    "Kr": ["Cl", "O", "F"],
+    "Xe": ["Cl", "O", "F"],
+    "Si": ["C", "H", "S", "I", "Br", "Cl", "O", "F"],
+    "C": ["H", "Se", "S", "N", "I", "Br", "Cl", "O", "F"],
+    "As": ["H", "I", "Br", "Cl", "O", "F"],
+    "P": ["H", "Se", "S", "I", "Br", "Cl", "O", "F"],
+    "H": ["S", "O"],
+    "Ge": ["H", "Se", "S", "N", "I", "Br", "Cl", "O", "F"],
+    "Te": ["I", "Br", "Cl", "O", "F"],
+    "Se": ["I", "Br", "Cl", "O", "F"],
+    "S": ["I", "Br", "Cl", "O", "F"],
+    "N": ["I", "Br", "Cl", "O", "F"],
+    "I": ["Br", "Cl", "O", "F"],
+    "Br": ["Cl", "O", "F"],
+    "Cl": ["O", "F"],
+    "O": ["F"],
 }
 
 export const elementData: ElementData = {
@@ -101,7 +121,7 @@ export const elementData: ElementData = {
         ionName: "carbide",
         possiblePositiveCharges: [4],
         possibleNegativeCharges: [-4],
-        charge: 4,
+        charge: -4,
         electronegativity: 2.5,
         needsRomanNumerals: false,
         stateOfMatter: "s",

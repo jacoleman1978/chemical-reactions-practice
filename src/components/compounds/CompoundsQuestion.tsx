@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import NamingQuestion from "./NamingQuestion";
 import FormulasQuestion from "./FormulasQuestion";
-import { updateInputBackgroundColor } from "./helpers/updateInputBackgorundColor";
-import { QuestionProps } from "./configurations/interfaces";
+import { updateInputBackgroundColor } from "./newHelpers/updateInputBackgorundColor";
+import { FormulaParts, PracticeType } from "../common/configurations/types";
+
+interface QuestionProps {
+    toggleFlag: boolean;
+    compoundName: string;
+    compoundFormula: string;
+    formulaParts: FormulaParts;
+    practiceType: PracticeType;
+}
 
 // Displays the question based on practiceType.
 // Resets the question when the toggleFlag is updated.

@@ -1,5 +1,5 @@
 import { getCompoundDescriptions } from "./getCompoundDescriptions";
-import { compoundTitles } from "../configurations/compoundTitles";
+import { compoundTitles } from "../newConfigurations/compoundTitles";
 import { CompoundType, PracticeType } from "../../common/configurations/types";
 
 /**

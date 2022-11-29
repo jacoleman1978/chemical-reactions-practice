@@ -1,32 +1,35 @@
 import { useState, useEffect, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import CompoundsQuestion from "./CompoundsQuestion";
+import { makeCompoundList } from "./newHelpers/makeCompoundList";
 import { useToggle } from "../../customHooks/useToggle";
-import { CompoundsPracticeProps, Compound, MolecularCompound } from "./configurations/interfaces";
-import { makeCompoundList } from "./helpers/makeCompoundList";
-import { makeMolecularCompoundList } from "./helpers/makeMolecularCompoundList";
-import { makeRandomCompoundList } from "./helpers/makeRandomCompoundList";
+import { IonicCompound, MolecularCompound } from "./newConfigurations/interfaces";
+import { CompoundType, PracticeType, GenerateQuantity } from "../common/configurations/types";
+
+interface CompoundsPracticeProps {
+    compoundType: CompoundType;
+    practiceType: PracticeType;
+}
 
 // Generates and displays a list of CompoundsQuestions display componenets of Compound objects
 // Called from /compounds/CompoundsPractice.tsx
-const CompoundsQuestionsGroup = ({compoundType, practiceType}: CompoundsPracticeProps) => {
+const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeProps) => {
     const [questionsDisplay, setQuestionsDisplay] = useState<ReactElement[]>([]);
     const [toggleFlag, handleToggle] = useToggle();
 
     useEffect(() => {
-        let newQuestions: ReactElement[];
+        let numberOfQuestions: GenerateQuantity = 10;
 
-        let compoundsList: (MolecularCompound | Compound)[];
-
-        if (compoundType === "molecular") {
-            compoundsList = makeMolecularCompoundList();
+        if (compoundType === "ionic-mixed") {
+            numberOfQuestions = 15;
 
         } else if (compoundType === "mixed") {
-            compoundsList = makeRandomCompoundList();
-            
-        } else {
-            compoundsList = makeCompoundList(compoundType);
+            numberOfQuestions = 15;
         }
+
+        let newQuestions: ReactElement[];
+
+        let compoundsList: (IonicCompound | MolecularCompound)[] = makeCompoundList(compoundType, numberOfQuestions)
 
         newQuestions = compoundsList.map((compound, i) => {
             const passedInProps = {
@@ -57,4 +60,4 @@ const CompoundsQuestionsGroup = ({compoundType, practiceType}: CompoundsPractice
     )
 }
 
-export default CompoundsQuestionsGroup;
+export default CompoundsQuestionGroup;
