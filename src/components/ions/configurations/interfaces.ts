@@ -1,4 +1,4 @@
-import { PossiblePositiveCharges, PossibleNegativeCharges } from "./types";
+import { PossiblePositiveCharges, PossibleNegativeCharges, MolecularOxStates, GreekPrefixes } from "./types";
 import { StateOfMatter, FormulaParts } from "../../common/configurations/types";
 
 export interface BooleanDict {
@@ -18,8 +18,7 @@ export interface Element {
     readonly solubilityTable?: BooleanDict,
     readonly stateOfMatter: StateOfMatter,
     readonly molarMass: number,
-    quantityInReactants?: number,
-    quantityInProducts?: number,
+    subscript?: number,
 }
 
 export interface ElementData {
@@ -61,7 +60,17 @@ export interface Ion {
     subscript?: number,
     activitySeriesPriority?: number,
     solubilityTable?: BooleanDict,
-    
+}
+
+export interface MolecularElement {
+    elementSymbol: string,
+    elementName: string,
+    anionName: string,
+    isDiatomic: boolean,
+    oxState: MolecularOxStates,
+    molarMass: number,
+    subscript: number,
+    greekPrefix: GreekPrefixes,
 }
 
 export interface PolyatomicIonData {

@@ -44,7 +44,7 @@ export const transitionMetalsByCharge: TMMetalsByCharge = {
 export const molecularByOxState: MolecularByOxState = {
     allPositive: ["Cl", "Br", "Xe", "P", "As", "C", "Si", "Ge", "Se", "Te", "N", "I", "S"],
     plusOne: ["Cl", "Br"],
-    plusTwo: ["Xe"],
+    plusTwo: ["Kr", "Xe"],
     plusThree: ["P", "Cl", "As", "Br"],
     plusFour: ["C", "Si", "Ge", "Se", "Te", "Xe"],
     plusFive: ["N", "P", "As", "Br", "I"],
