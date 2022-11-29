@@ -7,15 +7,26 @@ import { PossibleNegativeCharges, PossiblePositiveCharges } from "../../ions/con
 import { CompoundType, FormulaParts } from "../../common/configurations/types";
 
 /**
- * Generates an "IonicCompound" object of the appropriate "CompoundType"
- * @param compoundType CompoundType type literal
+ * Generates a random "IonicCompound" object of the passed in "CompoundType"
+ * @param compoundType "CompoundType" type literal
  * @returns "IonicCompound" object
  */
-export const makeIonicCompound = (compoundType: CompoundType): IonicCompound => {
+export const makeRandomIonicCompound = (compoundType: CompoundType): IonicCompound => {
     // Get random ions appropriate for the "compoundType"
     const cation: Ion = getRandomCation(compoundType);
     const anion: Ion = getRandomAnion(compoundType);
 
+    return makeIonicCompound(compoundType, cation, anion)
+};
+
+/**
+ * Generates an "IonicCompound" object using the passed in cation and anion "Ion" objects
+ * @param compoundType "CompoundType" type literal
+ * @param cation "Ion" object of a cation
+ * @param anion "Ion" object of a anion
+ * @returns "IonicCompound" object
+ */
+export const makeIonicCompound = (compoundType: CompoundType, cation: Ion, anion: Ion): IonicCompound => {
     // Determine the subscripts for the compound
     const { first, second } = findCompoundSubscripts(cation.charge as PossiblePositiveCharges, anion.charge as PossibleNegativeCharges);
     cation.subscript = first;
