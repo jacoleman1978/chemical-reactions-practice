@@ -19,3 +19,5 @@ export type PossibleNegativeCharges = -4 | -3 | -2 | -1;
 export type StateOfMatter = "s" | "l" | "g" | "aq" | "";
 
 export type FormulaParts = (string | number)[];
+
+export type GenerateQuantity = 1 | 5 | 10 | 15 | 20;
