@@ -10,10 +10,9 @@ import { IonicCompound } from "../../compounds/newConfigurations/interfaces";
  */
 export const updateCompoundCoefficient = (balancingTable: BalancingTable, compound: IonicCompound, isReactant: boolean = true): [BalancingTable, IonicCompound] => {
     let coefficient: number = compound.coefficient + 1;
-    let initialCatQty: number = compound.cation.subscript;
-    let initialAnQty: number = compound.anion.subscript;
-    let updatedCatQty: number = coefficient * initialCatQty;
-    let updatedAnQty: number = coefficient * initialAnQty;
+
+    let updatedCatQty: number = coefficient * compound.cation.subscript;
+    let updatedAnQty: number = coefficient * compound.anion.subscript;
 
     compound.coefficient = coefficient;
 
@@ -27,7 +26,6 @@ export const updateCompoundCoefficient = (balancingTable: BalancingTable, compou
         balancingTable[cationKey].qtyProducts = updatedCatQty;
         balancingTable[anionKey].qtyProducts = updatedAnQty;
     }
-
     
     return [balancingTable, compound]
 };

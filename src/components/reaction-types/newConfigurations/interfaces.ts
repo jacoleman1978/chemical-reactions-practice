@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { MolecularElement } from "../../ions/configurations/interfaces";
+import { Ion, MolecularElement } from "../../ions/configurations/interfaces";
 import { IonicCompound, MolecularCompound } from "../../compounds/newConfigurations/interfaces";
 import { ReactionType, FormulaParts, StateOfMatter } from "../../common/configurations/types";
 
@@ -24,7 +24,6 @@ export interface EquationElement {
     compoundName: string,
     compoundFormula: string,
     formulaParts: FormulaParts,
-    element: MolecularElement,
     molarMass: number,
     state: StateOfMatter,
     coefficient: number,
@@ -74,4 +73,23 @@ export interface BalancingTable {
         qtyReactants: number,
         qtyProducts: number,
     }
+}
+
+export interface SolubilityLists {
+    solubleIons: string [],
+    insolubleIons: string [],
+}
+
+export interface SortedCationSolubilityTable extends SolubilityLists {
+    cation: Ion,
+}
+
+export interface DRAnionsWithCation {
+    firstCation: Ion,
+    firstAnion: Ion,
+    secondAnion: Ion,
+}
+
+export interface DRIons extends DRAnionsWithCation {
+    secondCation: Ion,
 }

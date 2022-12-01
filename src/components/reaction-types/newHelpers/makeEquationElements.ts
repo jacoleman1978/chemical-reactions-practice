@@ -23,7 +23,6 @@ const makeEquationElement = (element: Element): EquationElement => {
         compoundName: element.elementName,
         compoundFormula: element.elementSymbol,
         formulaParts: (diatomicElements.includes(element.elementSymbol) ? [element.elementSymbol, 2]: [element.elementSymbol]),
-        element: element,
         molarMass: element.molarMass,
         state: element.stateOfMatter,
         coefficient: 1,

@@ -4,7 +4,7 @@ import { findCompoundSubscripts } from "./findCompoundSubscripts";
 import { IonicCompound } from "../newConfigurations/interfaces";
 import { Ion } from "../../ions/configurations/interfaces";
 import { PossibleNegativeCharges, PossiblePositiveCharges } from "../../ions/configurations/types";
-import { CompoundType, FormulaParts } from "../../common/configurations/types";
+import { CompoundType, FormulaParts, StateOfMatter } from "../../common/configurations/types";
 
 /**
  * Generates a random "IonicCompound" object of the passed in "CompoundType"
@@ -13,8 +13,8 @@ import { CompoundType, FormulaParts } from "../../common/configurations/types";
  */
 export const makeRandomIonicCompound = (compoundType: CompoundType): IonicCompound => {
     // Get random ions appropriate for the "compoundType"
-    const cation: Ion = getRandomCation(compoundType);
-    const anion: Ion = getRandomAnion(compoundType);
+    const cation: Ion = {...getRandomCation(compoundType)};
+    const anion: Ion = {...getRandomAnion(compoundType)};
 
     return makeIonicCompound(compoundType, cation, anion)
 };
@@ -26,7 +26,10 @@ export const makeRandomIonicCompound = (compoundType: CompoundType): IonicCompou
  * @param anion "Ion" object of a anion
  * @returns "IonicCompound" object
  */
-export const makeIonicCompound = (compoundType: CompoundType, cation: Ion, anion: Ion): IonicCompound => {
+export const makeIonicCompound = (compoundType: CompoundType, cationToCopy: Ion, anionToCopy: Ion): IonicCompound => {
+    let cation: Ion = {...cationToCopy};
+    let anion: Ion = {...anionToCopy};
+
     // Determine the subscripts for the compound
     const { first, second } = findCompoundSubscripts(cation.charge as PossiblePositiveCharges, anion.charge as PossibleNegativeCharges);
     cation.subscript = first;
@@ -34,6 +37,18 @@ export const makeIonicCompound = (compoundType: CompoundType, cation: Ion, anion
 
     // Generate the "FormulaParts", adding in "(" or ")" as appropriate
     let formulaParts: FormulaParts = [...makeFormulaParts(cation), ...makeFormulaParts(anion)];
+
+    let state: StateOfMatter = "s";
+
+    // If the ions have the "solubilityTable" properties present, use them to determine the "state".
+    if (cation.solubilityTable !== undefined && anion.solubilityTable !== undefined) {
+        if (anion.isPolyatomic) {
+            state = (cation.solubilityTable[anion.ionName] ? "aq" : "s");
+
+        } else {
+            state = (cation.solubilityTable[anion.ionFormula] ? "aq" : "s")
+        }
+    }
 
     // Make the "IonicCompound" object, formatting the name and formula as needed
     let compound: IonicCompound = {
@@ -44,12 +59,7 @@ export const makeIonicCompound = (compoundType: CompoundType, cation: Ion, anion
         anion: anion,
         molarMass: cation.molarMass + anion.molarMass,
         coefficient: 1,
-        state: "s",
-    }
-
-    // If both "Ion" objects have data in the "solubilityTable" property, use the "solubilityTable" "BooleanDict" to determine the state of the compound in water
-    if (cation.solubilityTable !== undefined && anion.solubilityTable !== undefined) {
-        compound["state"] = (cation.solubilityTable[anion.ionName] ? "aq" : "s");
+        state: state,
     }
 
     return compound
@@ -160,8 +170,6 @@ const makeFormulaParts = (ion: Ion): FormulaParts => {
 
         return formulaParts
     }
-
-    return formulaParts
 };
 
 /**

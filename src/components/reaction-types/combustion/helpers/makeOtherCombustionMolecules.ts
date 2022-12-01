@@ -12,7 +12,6 @@ export const makeOxygenGas = (): EquationElement => {
         compoundName: "oxygen",
         compoundFormula: "O/2/",
         formulaParts: ["O", 2],
-        element: oxygenElement,
         molarMass: 32.00,
         state: "g",
         coefficient: 1,

@@ -13,9 +13,9 @@ import { ReactionType } from "../../../common/configurations/types";
 export const makeDecompCombBalancingTable = (reactionType: ReactionType, compound: IonicCompound, elementOne: EquationElement, elementTwo: EquationElement): BalancingTable => {
     // Determines the total number atoms of cation type for the [cation] key
     // Whether the number is assigned to reactants or products depends on the "reactionType"
-    let cationElement: number = elementOne.element.subscript;
+    let cationElement: number = elementOne.subscript;
     let cationInCompound: number = compound.cation.subscript;
-    let anionElement: number = elementTwo.element.subscript;
+    let anionElement: number = elementTwo.subscript;
     let anionInCompound: number = compound.anion.subscript;
 
     let balancingTable: BalancingTable = {} as BalancingTable;

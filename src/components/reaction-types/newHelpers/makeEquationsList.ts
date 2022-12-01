@@ -1,6 +1,6 @@
 import { makeDecompCombEquation } from "../decomp-combination/helpers/makeDecompCombEquation";
-//import { makeCombustionEquation } from "../combustion/helpers/makeCombustionEquation";
-//import { makeDREquation } from "../double-replacement/helpers/makeDREquation";
+import { makeCombustionEquation } from "../combustion/helpers/makeCombustionEquation";
+import { makeDREquation } from "../double-replacement/helpers/makeDREquation";
 import { ReactionType, ReactionTypeList } from "../../common/configurations/types";
 
 export const makeEquationsList = (): ReactionTypeList[] => {
@@ -14,18 +14,17 @@ export const makeEquationsList = (): ReactionTypeList[] => {
         if (reactionType === "decomposition") {
             equationsList = [...equationsList, makeDecompCombEquation("decomposition")];
             
-        // } else if (reactionType === "combustion") {
-        //     equationsList = [...equationsList, makeCombustionEquation()];
+        } else if (reactionType === "combustion") {
+            equationsList = [...equationsList, makeCombustionEquation()];
 
-        // } else if (reactionType === "double-replacement") {
-        //     equationsList = [...equationsList, makeDREquation(true)];
+        } else if (reactionType === "double-replacement") {
+            equationsList = [...equationsList, makeDREquation(false)];
 
-        // } else if (reactionType === "dr-no-reaction") {
-        //     equationsList = [...equationsList, makeDREquation(false)];
+        } else if (reactionType === "dr-no-reaction") {
+            equationsList = [...equationsList, makeDREquation(true)];
 
         } else if (reactionType === "combination") {
             equationsList = [...equationsList, makeDecompCombEquation("combination")];
-
         }
     }
 

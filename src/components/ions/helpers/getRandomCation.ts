@@ -1,6 +1,7 @@
 import { getRandomListMember } from "../../common/helpers/getRandomListMember";
 import { makeNewIon } from "./makeNewIon";
 import { mainGroupCations, transitionMetalsByCharge, elementData } from "../configurations/elementData";
+import { integerToRomanNumeral } from "../configurations/integerToRomanNumeral";
 import { polyatomicCations, polyatomicIonData } from "../configurations/polyatomicIonData";
 import { Element, Ion } from "../configurations/interfaces";
 import { PossiblePositiveCharges } from "../configurations/types";
@@ -96,18 +97,6 @@ const getRandomTMCation = (): Ion => {
 
     // Get the "Element" object for the transition metal from the "elementData" dictionary
     let element: Element = {...elementData[metal]};
-
-    // Dictionary to convert transitionmetal charges to their Roman Numerals
-    const integerToRomanNumeral: {[member: string]: string} = {
-        "1": "(I)",
-        "2": "(II)",
-        "3": "(III)",
-        "4": "(IV)",
-        "5": "(V)",
-        "6": "(VI)",
-        "7": "(VII)",
-        "8": "(VIII)",
-    }
 
     // Create the Ion object for the transition metal cation
     let cation: Ion = {
