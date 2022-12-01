@@ -1,8 +1,8 @@
 import { makeRandomHydrocarbon } from "./makeHydrocarbon";
 import { makeOxygenGas, makeWaterVapor, makeCarbonDioxide } from "./makeOtherCombustionMolecules";
 import { balanceCombustionEquation } from "./balanceCombustionEquation";
-import { CombustionReaction, EquationElement } from "../../newConfigurations/interfaces";
-import { MolecularCompound } from "../../../compounds/newConfigurations/interfaces";
+import { CombustionReaction, EquationElement } from "../../configurations/interfaces";
+import { MolecularCompound } from "../../../compounds/configurations/interfaces";
 
 /**
  * Randomly generates a balanced CombustionReaction object

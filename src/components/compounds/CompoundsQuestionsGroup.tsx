@@ -1,9 +1,9 @@
 import { useState, useEffect, ReactElement } from "react";
 import { Button } from "react-bootstrap";
 import CompoundsQuestion from "./CompoundsQuestion";
-import { makeCompoundList } from "./newHelpers/makeCompoundList";
+import { makeCompoundList } from "./helpers/makeCompoundList";
 import { useToggle } from "../../customHooks/useToggle";
-import { IonicCompound, MolecularCompound } from "./newConfigurations/interfaces";
+import { IonicCompound, MolecularCompound } from "./configurations/interfaces";
 import { CompoundType, PracticeType, GenerateQuantity } from "../common/configurations/types";
 
 interface CompoundsPracticeProps {

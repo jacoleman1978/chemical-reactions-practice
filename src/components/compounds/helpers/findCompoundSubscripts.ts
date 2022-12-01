@@ -1,5 +1,5 @@
-import { CompoundSubscripts } from "../newConfigurations/interfaces";
-import { FirstSubscript, SecondSubscript } from "../newConfigurations/types";
+import { CompoundSubscripts } from "../configurations/interfaces";
+import { FirstSubscript, SecondSubscript } from "../configurations/types";
 import { PossiblePositiveCharges, PossibleNegativeCharges } from "../../ions/configurations/types";
 
 /**

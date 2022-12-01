@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import { StateOfMatter } from "./types";
-import { Compound, FormulaParts, Ion, MolecularCompound } from "../../compounds/configurations/interfaces";
-import { ReactionType } from "../../common/configurations/types";
+import { Ion, MolecularElement } from "../../ions/configurations/interfaces";
+import { IonicCompound, MolecularCompound } from "../../compounds/configurations/interfaces";
+import { ReactionType, FormulaParts, StateOfMatter } from "../../common/configurations/types";
 
 export interface InformationDisplay {
     reactionType: ReactionType,
@@ -10,130 +10,62 @@ export interface InformationDisplay {
     example: () => ReactElement,
 }
 
-export interface ActivitySeriesElement {
-    elementSymbol: string,
-    ionName: string,
-    possibleCharges: number[],
-    priority: number,
-    isTransitionMetal: boolean,
-}
-
-export interface ActivitySeries {
-    [member: string]: ActivitySeriesElement,
-}
-
-export interface SolubilityAnions {
-    [member: string]: boolean,
-
-}
-
-export interface SolubilityCations {
-    [member: string]: SolubilityAnions,
-}
-
 export interface ReactionTypeMenuOption {
     reactionType: ReactionType,
     optionTitle: string,
 }
 
-export interface Element {
-    elementName: string,
-    elementSymbol: string,
-    isDiatomic: boolean,
-    state: StateOfMatter,
-}
-
-export interface BalancingData {
-    initialCationQty: number,
-    initialAnionQty: number,
-    totalCationQty: number,
-    totalAnionQty: number,
+export interface RxnTypeDropdownProps {
+    toggleFlag: boolean,
+    reactionType: ReactionType
 }
 
 export interface EquationElement {
-    element: Element,
-    coefficient: number,
-    balancingData: BalancingData,
-    formulaParts: {
-        elementSymbol: string,
-        subscript: string,
-    },
-}
-
-export interface EquationCompound {
-    compound: Compound,
-    coefficient: number,
+    compoundName: string,
+    compoundFormula: string,
+    formulaParts: FormulaParts,
+    molarMass: number,
     state: StateOfMatter,
-    balancingData: BalancingData,
-}
-
-export interface EquationMolecCompound {
-    compound: MolecularCompound,
     coefficient: number,
-    state: StateOfMatter,
-    balancingData: BalancingData,
+    subscript: number,
 }
 
 export interface DecompositionReaction {
     type: ReactionType,
-    reactantOne: EquationCompound,
-    productOne: EquationElement,
-    productTwo: EquationElement,
-}
-
-export interface MakeDecompProductsReturn {
+    reactantOne: IonicCompound,
     productOne: EquationElement,
     productTwo: EquationElement,
 }
 
 export interface CombustionReaction {
     type: ReactionType,
-    hydrocarbon: Hydrocarbon,
-    o2: CombustionEquationOxygen,
-    h2o: CombustionEquationProduct,
-    co2: CombustionEquationProduct,
+    hydrocarbon: MolecularCompound,
+    o2: EquationElement,
+    h2o: MolecularCompound,
+    co2: MolecularCompound,
 }
 
 export interface SRReaction {
     type: ReactionType,
-    reactantOne: EquationCompound,
+    reactantOne: IonicCompound,
     reactantTwo: EquationElement,
-    productOne: EquationCompound,
-    productTwo: EquationElement,
-}
-
-export interface MakeSRProductsReturn {
-    productOne: EquationCompound,
+    productOne: IonicCompound,
     productTwo: EquationElement,
 }
 
 export interface DRReaction {
     type: ReactionType,
-    reactantOne: EquationCompound,
-    reactantTwo: EquationCompound,
-    productOne: EquationCompound,
-    productTwo: EquationCompound,
-}
-
-export interface MakeDRProductsReturn {
-    productOne: EquationCompound,
-    productTwo: EquationCompound,
+    reactantOne: IonicCompound,
+    reactantTwo: IonicCompound,
+    productOne: IonicCompound,
+    productTwo: IonicCompound,
 }
 
 export interface CombinationReaction {
     type: ReactionType,
     reactantOne: EquationElement,
     reactantTwo: EquationElement,
-    productOne: EquationCompound,
-}
-
-export interface MakeCombProductsReturn {
-    productOne: EquationCompound,
-}
-
-export interface MakeCombReactantsReturn {
-    reactantOne: EquationElement,
-    reactantTwo: EquationElement,
+    productOne: IonicCompound,
 }
 
 export interface BalancingTable {
@@ -143,57 +75,21 @@ export interface BalancingTable {
     }
 }
 
-export interface RxnTypeDropdownProps {
-    toggleFlag: boolean,
-    reactionType: ReactionType
+export interface SolubilityLists {
+    solubleIons: string [],
+    insolubleIons: string [],
 }
 
-export interface CombustionBalancingData {
-    currentCQty: number,
-    currentHQty: number,
-    currentOQty: number
+export interface SortedCationSolubilityTable extends SolubilityLists {
+    cation: Ion,
 }
 
-export interface Hydrocarbon {
-    compoundFormula: string,
-    carbonSubscript: string,
-    hydrogenSubscript: string,
-    hasOxygen: boolean
-    oxygenSubscript?: string,
-    coefficient: number,
-    balancingData: CombustionBalancingData
+export interface DRAnionsWithCation {
+    firstCation: Ion,
+    firstAnion: Ion,
+    secondAnion: Ion,
 }
 
-export interface CombustionEquationProduct {
-    compoundName: string,
-    compoundFormula: string,
-    coefficient: number,
-    balancingData: CombustionBalancingData,
-}
-
-export interface CombustionEquationOxygen {
-    elementName: string,
-    elementSymbol: string,
-    isDiatomic: boolean,
-    state: StateOfMatter,
-    coefficient: number,
-    balancingData: CombustionBalancingData,
-}
-
-export interface DRReactantPair {
-    cationName: string,
-    anionName: string,
-}
-
-export interface DRIons {
-    [member: string]: Ion,
-}
-
-export interface SolubilityPairs {
-    solublePairs: DRReactantPair[],
-    insolublePairs: DRReactantPair[],
-}
-
-export interface CombustionFormulaParts {
-    [member: string]: FormulaParts
+export interface DRIons extends DRAnionsWithCation {
+    secondCation: Ion,
 }

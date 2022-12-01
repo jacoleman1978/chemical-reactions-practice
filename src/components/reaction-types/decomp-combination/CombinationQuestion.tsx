@@ -1,6 +1,6 @@
 import ReactionTypesDropdown from "../ReactionTypesDropdown";
 import DisplayFormula from "../../compounds/DisplayFormula";
-import { CombinationReaction } from "../newConfigurations/interfaces";
+import { CombinationReaction } from "../configurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed combination reaction
 // Called from /reaction-types/ReactionTypesQuestionsGroup.tsx

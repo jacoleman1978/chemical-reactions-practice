@@ -1,7 +1,7 @@
 import { getRandomListMember } from "../../common/helpers/getRandomListMember";
 import { findCompoundSubscripts } from "./findCompoundSubscripts";
 import { diatomicElements, molecularByOxState, molecularByElectronegativity, elementData } from "../../ions/configurations/elementData";
-import { MolecularPart, MolecularCompound } from "../newConfigurations/interfaces";
+import { MolecularPart, MolecularCompound } from "../configurations/interfaces";
 import { Element, MolecularElement } from "../../ions/configurations/interfaces";
 import { PossiblePositiveCharges, PossibleNegativeCharges, MolecularOxStates, GreekPrefixes } from "../../ions/configurations/types";
 import { FormulaParts } from "../../common/configurations/types";

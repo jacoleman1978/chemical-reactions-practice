@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import NamingQuestion from "./NamingQuestion";
 import FormulasQuestion from "./FormulasQuestion";
-import { updateInputBackgroundColor } from "./newHelpers/updateInputBackgorundColor";
+import { updateInputBackgroundColor } from "./helpers/updateInputBackgorundColor";
 import { FormulaParts, PracticeType } from "../common/configurations/types";
 
 interface QuestionProps {

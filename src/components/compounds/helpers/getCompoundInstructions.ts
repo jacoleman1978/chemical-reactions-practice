@@ -1,4 +1,4 @@
-import { formulasInstructions, namingInstructions } from "../newConfigurations/compoundInstructions"
+import { formulasInstructions, namingInstructions } from "../configurations/compoundInstructions"
 import { CompoundInstructions } from "../configurations/interfaces";
 import { CompoundType, PracticeType } from "../../common/configurations/types";
 

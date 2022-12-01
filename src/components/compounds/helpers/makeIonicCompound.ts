@@ -1,7 +1,7 @@
 import { getRandomCation } from "../../ions/helpers/getRandomCation";
 import { getRandomAnion } from "../../ions/helpers/getRandomAnion";
 import { findCompoundSubscripts } from "./findCompoundSubscripts";
-import { IonicCompound } from "../newConfigurations/interfaces";
+import { IonicCompound } from "../configurations/interfaces";
 import { Ion } from "../../ions/configurations/interfaces";
 import { PossibleNegativeCharges, PossiblePositiveCharges } from "../../ions/configurations/types";
 import { CompoundType, FormulaParts, StateOfMatter } from "../../common/configurations/types";

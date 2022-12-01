@@ -1,6 +1,6 @@
 import { makeRandomIonicCompound } from "./makeIonicCompound";
 import { makeRandomMolecularCompound } from "./makeMolecularCompound";
-import { IonicCompound, MolecularCompound } from "../newConfigurations/interfaces";
+import { IonicCompound, MolecularCompound } from "../configurations/interfaces";
 import { CompoundType, GenerateQuantity } from "../../common/configurations/types";
 
 /**

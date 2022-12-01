@@ -1,6 +1,6 @@
 import { diatomicElements, elementData } from "../../ions/configurations/elementData";
-import { EquationElement } from "../newConfigurations/interfaces";
-import { IonicCompound } from "../../compounds/newConfigurations/interfaces";
+import { EquationElement } from "../configurations/interfaces";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
 import { Element} from "../../ions/configurations/interfaces";
 
 interface EquationElements {

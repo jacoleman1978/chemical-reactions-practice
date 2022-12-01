@@ -1,5 +1,5 @@
-import { BalancingTable } from "../newConfigurations/interfaces";
-import { IonicCompound } from "../../compounds/newConfigurations/interfaces";
+import { BalancingTable } from "../configurations/interfaces";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
 
 /**
  * Updates the 'elementKey' property of 'balancingTable' by incrementing the compound coefficient and modifying the corresponding quantity values.

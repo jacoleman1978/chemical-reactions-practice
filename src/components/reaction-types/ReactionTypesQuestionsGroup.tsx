@@ -1,12 +1,12 @@
 import { useState, useEffect, ReactElement } from "react";
 import { Button } from "react-bootstrap";
-import { makeEquationsList } from "./newHelpers/makeEquationsList";
+import { makeEquationsList } from "./helpers/makeEquationsList";
 import DecompositionQuestion from "./decomp-combination/DecompositionQuestion";
 import CombustionQuestion from "./combustion/CombustionQuestion";
 import DRQuestion from "./double-replacement/DRQuestion";
 import CombinationQuestion from "./decomp-combination/CombinationQuestion";
 import { useToggle } from "../../customHooks/useToggle";
-import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./newConfigurations/interfaces";
+import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./configurations/interfaces";
 import { ReactionTypeList } from "../common/configurations/types";
 
 // Called from /reaction-types/ReactionTypesPractice.tsx

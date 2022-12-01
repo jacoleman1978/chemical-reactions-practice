@@ -1,7 +1,7 @@
-import { makeNewMolecularElement, makeMolecularCompound } from "../../../compounds/newHelpers/makeMolecularCompound";
-import { EquationElement } from "../../newConfigurations/interfaces";
+import { makeNewMolecularElement, makeMolecularCompound } from "../../../compounds/helpers/makeMolecularCompound";
+import { EquationElement } from "../../configurations/interfaces";
 import { MolecularElement } from "../../../ions/configurations/interfaces";
-import { MolecularCompound } from "../../../compounds/newConfigurations/interfaces";
+import { MolecularCompound } from "../../../compounds/configurations/interfaces";
 import { MolecularOxStates } from "../../../ions/configurations/types";
 
 export const makeOxygenGas = (): EquationElement => {

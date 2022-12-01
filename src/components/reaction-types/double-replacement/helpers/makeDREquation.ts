@@ -1,12 +1,12 @@
 import { getRandomListMember } from "../../../common/helpers/getRandomListMember";
-import { makeIonicCompound } from "../../../compounds/newHelpers/makeIonicCompound";
+import { makeIonicCompound } from "../../../compounds/helpers/makeIonicCompound";
 import { makeNewIon } from "../../../ions/helpers/makeNewIon";
 import { balanceDREquation } from "./balanceDREquation";
 import { drCations } from "../../../ions/configurations/elementData";
 import { drPolyatomicCations, drPolyatomicAnions, polyatomicIonData } from "../../../ions/configurations/polyatomicIonData";
-import { SolubilityLists, SortedCationSolubilityTable, DRAnionsWithCation, DRIons, DRReaction } from "../../newConfigurations/interfaces";
+import { SolubilityLists, SortedCationSolubilityTable, DRAnionsWithCation, DRIons, DRReaction } from "../../configurations/interfaces";
 import { Ion } from "../../../ions/configurations/interfaces";
-import { IonicCompound } from "../../../compounds/newConfigurations/interfaces";
+import { IonicCompound } from "../../../compounds/configurations/interfaces";
 import { ReactionType } from "../../../common/configurations/types";
 
 export const makeDREquation = (isSoluble: boolean): DRReaction=> {

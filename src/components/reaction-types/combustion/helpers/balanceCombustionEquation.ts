@@ -1,6 +1,6 @@
-import { isBalanced } from "../../newHelpers/isBalanced";
-import { BalancingTable, EquationElement } from "../../newConfigurations/interfaces";
-import { MolecularCompound } from "../../../compounds/newConfigurations/interfaces";
+import { isBalanced } from "../../helpers/isBalanced";
+import { BalancingTable, EquationElement } from "../../configurations/interfaces";
+import { MolecularCompound } from "../../../compounds/configurations/interfaces";
 
 export const balanceCombustionEquation = (hydrocarbon: MolecularCompound, o2: EquationElement, h2o: MolecularCompound, co2: MolecularCompound): [MolecularCompound, EquationElement, MolecularCompound, MolecularCompound] => {
     let balancingTable: BalancingTable = makeCombustionBalancingTable(hydrocarbon);

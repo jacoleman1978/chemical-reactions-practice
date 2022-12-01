@@ -1,11 +1,11 @@
-import { makeRandomIonicCompound } from "../../../compounds/newHelpers/makeIonicCompound";
-import { makeEquationElements } from "../../newHelpers/makeEquationElements";
+import { makeRandomIonicCompound } from "../../../compounds/helpers/makeIonicCompound";
+import { makeEquationElements } from "../../helpers/makeEquationElements";
 import { makeDecompCombBalancingTable } from "./makeDecompCombBalancingTable";
-import { isBalanced } from "../../newHelpers/isBalanced";
-import { updateCompoundCoefficient } from "../../newHelpers/updateCompoundCoefficient";
+import { isBalanced } from "../../helpers/isBalanced";
+import { updateCompoundCoefficient } from "../../helpers/updateCompoundCoefficient";
 import { updateElementCoefficient } from "./updateElementCoefficient";
-import { DecompositionReaction, CombinationReaction, BalancingTable } from "../../newConfigurations/interfaces";
-import { IonicCompound } from "../../../compounds/newConfigurations/interfaces";
+import { DecompositionReaction, CombinationReaction, BalancingTable } from "../../configurations/interfaces";
+import { IonicCompound } from "../../../compounds/configurations/interfaces";
 import { ReactionTypeList } from "../../../common/configurations/types";
 
 /**

@@ -1,5 +1,5 @@
-import { EquationElement, BalancingTable } from "../../newConfigurations/interfaces";
-import { IonicCompound } from "../../../compounds/newConfigurations/interfaces";
+import { EquationElement, BalancingTable } from "../../configurations/interfaces";
+import { IonicCompound } from "../../../compounds/configurations/interfaces";
 import { ReactionType } from "../../../common/configurations/types";
 
 /**

@@ -1,4 +1,4 @@
-import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "../../reaction-types/newConfigurations/interfaces";
+import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "../../reaction-types/configurations/interfaces";
 
 export type PracticeType = "" | "main" | "naming" | "formulas" | "balancing" | "reaction-types" | "predicting-products";
 

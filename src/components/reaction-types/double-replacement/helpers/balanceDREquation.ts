@@ -1,7 +1,7 @@
-import { isBalanced } from "../../newHelpers/isBalanced";
-import { updateCompoundCoefficient } from "../../newHelpers/updateCompoundCoefficient";
-import { BalancingTable, DRReaction } from "../../newConfigurations/interfaces";
-import { IonicCompound } from "../../../compounds/newConfigurations/interfaces";
+import { isBalanced } from "../../helpers/isBalanced";
+import { updateCompoundCoefficient } from "../../helpers/updateCompoundCoefficient";
+import { BalancingTable, DRReaction } from "../../configurations/interfaces";
+import { IonicCompound } from "../../../compounds/configurations/interfaces";
 
 export const balanceDREquation = (drEquation: DRReaction): DRReaction => {
     let {type, reactantOne, reactantTwo, productOne, productTwo} = drEquation;

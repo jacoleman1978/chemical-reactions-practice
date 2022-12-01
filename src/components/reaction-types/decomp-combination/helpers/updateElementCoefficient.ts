@@ -1,5 +1,5 @@
-import { BalancingTable } from "../../newConfigurations/interfaces";
-import { EquationElement } from "../../newConfigurations/interfaces";
+import { BalancingTable } from "../../configurations/interfaces";
+import { EquationElement } from "../../configurations/interfaces";
 
 /**
  * Updates the 'elementKey' property of 'balancingTable' by incrementing the element coefficient and modifying the corresponding quantity values.

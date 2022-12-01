@@ -2,8 +2,8 @@ import { useLocation } from 'react-router-dom';
 import Title from "../common/Title";
 import TypesContainer from "../common/TypesContainer";
 import { Description } from '../common/configurations/interfaces';
-import { generalIonicTypes } from "./newConfigurations/generalIonicTypes";
-import { generalCompoundTypes } from "./newConfigurations/generalCompoundTypes";
+import { generalIonicTypes } from "./configurations/generalIonicTypes";
+import { generalCompoundTypes } from "./configurations/generalCompoundTypes";
 
 // Describes the different compound types for "naming" and "formulas" practiceTypes
 // Called from App.tsx
