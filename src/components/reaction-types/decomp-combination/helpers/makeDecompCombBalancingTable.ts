@@ -1,4 +1,5 @@
-import { BalancingTable, EquationCompound, EquationElement } from "../../configurations/interfaces";
+import { EquationElement, BalancingTable } from "../../newConfigurations/interfaces";
+import { IonicCompound } from "../../../compounds/newConfigurations/interfaces";
 import { ReactionType } from "../../../common/configurations/types";
 
 /**
@@ -9,36 +10,33 @@ import { ReactionType } from "../../../common/configurations/types";
  * @param elementTwo EquationElement object
  * @returns A BalancingTable object with ion names as keys, each with qtyReactants and qtyProducts
  */
-export const makeDecompCombBalancingTable = (reactionType: ReactionType, compound: EquationCompound, elementOne: EquationElement, elementTwo: EquationElement): BalancingTable => {
-    // Gets the cation and anion name to use as keys in the BalancingTable object
-    const [cation, anion]: string[] = compound.compound.compoundName.split(" ");
-
+export const makeDecompCombBalancingTable = (reactionType: ReactionType, compound: IonicCompound, elementOne: EquationElement, elementTwo: EquationElement): BalancingTable => {
     // Determines the total number atoms of cation type for the [cation] key
     // Whether the number is assigned to reactants or products depends on the "reactionType"
-    const cationElement: number = elementOne.balancingData.totalCationQty;
-    const cationInCompound: number = compound.balancingData.totalCationQty;
-    const anionElement: number = elementTwo.balancingData.totalAnionQty;
-    const anionInCompound: number = compound.balancingData.totalAnionQty;
+    let cationElement: number = elementOne.element.subscript;
+    let cationInCompound: number = compound.cation.subscript;
+    let anionElement: number = elementTwo.element.subscript;
+    let anionInCompound: number = compound.anion.subscript;
 
     let balancingTable: BalancingTable = {} as BalancingTable;
 
     // For "decomposition" reactions, the numbers from the elements are products and the numbers from the compound are reactants
     if (reactionType === 'decomposition') {
-        balancingTable[cation] = {
+        balancingTable[compound.cation.ionFormula] = {
             qtyReactants: cationInCompound,
             qtyProducts: cationElement, 
         }
-        balancingTable[anion] = {
+        balancingTable[compound.anion.ionFormula] = {
             qtyReactants: anionInCompound,
             qtyProducts: anionElement,
         }
     // For "combination" reactions, the numbers from the elements are reactants and the numbers from the compound are products
     } else if (reactionType === 'combination') {
-        balancingTable[cation] = {
+        balancingTable[compound.cation.ionFormula] = {
             qtyReactants: cationElement,
             qtyProducts: cationInCompound, 
         }
-        balancingTable[anion] = {
+        balancingTable[compound.anion.ionFormula] = {
             qtyReactants: anionElement,
             qtyProducts: anionInCompound,
         }

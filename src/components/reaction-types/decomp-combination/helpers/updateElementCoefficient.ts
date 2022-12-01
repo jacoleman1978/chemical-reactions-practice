@@ -1,4 +1,5 @@
-import { EquationElement, BalancingTable } from "../../configurations/interfaces";
+import { BalancingTable } from "../../newConfigurations/interfaces";
+import { EquationElement } from "../../newConfigurations/interfaces";
 
 /**
  * Updates the 'elementKey' property of 'balancingTable' by incrementing the element coefficient and modifying the corresponding quantity values.
@@ -12,17 +13,15 @@ export const updateElementCoefficient = (balancingTable: BalancingTable, element
     let coefficient: number = element.coefficient + 1;
 
     // Get the initial quantity of each element from the EquationElement object
-    let initialCatQty: number = element.balancingData.initialCationQty;
-    let initialAnQty: number = element.balancingData.initialAnionQty;
+    let initialCatQty: number = element.subscript;
+    let initialAnQty: number = element.subscript;
 
     // Calculate the quantity of each element after the coefficient has been incremented by 1
     let updatedCatQty: number = coefficient * initialCatQty;
     let updatedAnQty: number = coefficient * initialAnQty;
 
-    // Update the EquationElement object with the new values
+    // Update the EquationElement coefficient
     element.coefficient = coefficient;
-    element.balancingData.totalCationQty = updatedCatQty;
-    element.balancingData.totalAnionQty = updatedAnQty;
 
     // Only update the quantities for the BalancingTable object keys, if the property has a nonzero value
     if (initialCatQty > 0) {

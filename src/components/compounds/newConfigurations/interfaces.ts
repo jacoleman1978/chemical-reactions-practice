@@ -14,8 +14,8 @@ export interface IonicCompound {
     cation: Ion,
     anion: Ion,
     molarMass: number,
-    state?: StateOfMatter,
-    coefficient?: number,
+    state: StateOfMatter,
+    coefficient: number,
 }
 
 export interface MolecularCompound {
@@ -26,8 +26,8 @@ export interface MolecularCompound {
     secondElement: MolecularElement, 
     thirdElement?: MolecularElement,
     molarMass: number,
-    state?: StateOfMatter,
-    coefficient?: number,
+    state: StateOfMatter,
+    coefficient: number,
 }
 
 export interface MolecularPart {

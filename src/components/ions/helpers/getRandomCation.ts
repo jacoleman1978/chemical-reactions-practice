@@ -117,6 +117,7 @@ const getRandomTMCation = (): Ion => {
         charge: charge,
         isPolyatomic: false,
         molarMass: element.molarMass,
+        subscript: 1,
     };
     
     // If the "Element" object has data in the "activitySeriesPriority" property, add it to the "Ion" object

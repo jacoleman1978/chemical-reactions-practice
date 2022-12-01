@@ -1,7 +1,6 @@
 import ReactionTypesDropdown from "../ReactionTypesDropdown";
-import DisplayIonicCompound from "../DisplayIonicCompound";
-import DisplayElement from "../DisplayElement";
-import { CombinationReaction } from "../configurations/interfaces";
+import DisplayFormula from "../../compounds/DisplayFormula";
+import { CombinationReaction } from "../newConfigurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed combination reaction
 // Called from /reaction-types/ReactionTypesQuestionsGroup.tsx
@@ -13,18 +12,15 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
       <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={type}/>
 
       <div className="flex-left-center med-gap">
-        {(reactantOne.coefficient > 1 ? `${reactantOne.coefficient}` : <></>)}
-        <DisplayElement element={reactantOne} state={reactantOne.element.state} />
+        <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={reactantOne.coefficient} state={reactantOne.state} />
 
         <div>+</div>
 
-        {(reactantTwo.coefficient > 1 ? `${reactantTwo.coefficient}` : <></>)}
-        <DisplayElement element={reactantTwo} state={reactantTwo.element.state} />
+        <DisplayFormula formulaParts={reactantTwo.formulaParts} coefficient={reactantTwo.coefficient} state={reactantTwo.state} />
 
         <i className="fa-solid fa-arrow-right-long"></i>
         
-        {(productOne.coefficient > 1 ? `${productOne.coefficient}` : <></>)}
-        <DisplayIonicCompound compound={productOne} state={productOne.state} />
+        <DisplayFormula formulaParts={productOne.formulaParts} coefficient={productOne.coefficient} state={productOne.state} />
       </div>
     </div>
   )

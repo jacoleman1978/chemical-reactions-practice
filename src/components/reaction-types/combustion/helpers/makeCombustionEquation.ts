@@ -1,8 +1,8 @@
-import { makeRandomHydrocarbon } from "./makeRandomHydrocarbon";
-import { makeCombustionBalancingTable } from "./makeCombustionBalancingTable";
-import { balanceCarbon, balanceHydrogen, balanceOxygen } from "./balanceElements";
-import { combustionCompounds, oxygenGas } from "../../configurations/combustion";
-import { CombustionReaction, Hydrocarbon, CombustionEquationOxygen, CombustionEquationProduct, BalancingTable } from "../../configurations/interfaces";
+import { makeRandomHydrocarbon } from "./makeHydrocarbon";
+import { makeOxygenGas, makeWaterVapor, makeCarbonDioxide } from "./makeOtherCombustionMolecules";
+import { balanceCombustionEquation } from "./balanceCombustionEquation";
+import { CombustionReaction, EquationElement } from "../../newConfigurations/interfaces";
+import { MolecularCompound } from "../../../compounds/newConfigurations/interfaces";
 
 /**
  * Randomly generates a balanced CombustionReaction object
@@ -10,20 +10,12 @@ import { CombustionReaction, Hydrocarbon, CombustionEquationOxygen, CombustionEq
  */
 export const makeCombustionEquation = (): CombustionReaction => {
     // Create and populate the CombustionReaction object properties
-    let hydrocarbon: Hydrocarbon = makeRandomHydrocarbon();
-    let o2: CombustionEquationOxygen = {...oxygenGas};
-    let h2o: CombustionEquationProduct = {...combustionCompounds["dihydrogen monoxide"]};
-    let co2: CombustionEquationProduct = {...combustionCompounds["carbon dioxide"]};
+    let hydrocarbon: MolecularCompound = makeRandomHydrocarbon();
+    let o2: EquationElement = makeOxygenGas();
+    let h2o: MolecularCompound = makeWaterVapor();
+    let co2: MolecularCompound = makeCarbonDioxide();
 
-    // Create and populate the BalancingTable object used while balancing the combustion reaction
-    let balancingTable: BalancingTable = makeCombustionBalancingTable(hydrocarbon);
-
-    // Balances the combustion equation, updating the BalancingTable object, Hydrocarbon object and the other compound objects
-    [balancingTable, hydrocarbon, co2] = balanceCarbon(balancingTable, hydrocarbon, co2);
-
-    [balancingTable, hydrocarbon, h2o] = balanceHydrogen(balancingTable, hydrocarbon, h2o);
-    
-    [balancingTable, hydrocarbon, o2, h2o, co2] = balanceOxygen(balancingTable, hydrocarbon, o2, h2o, co2);
+    [hydrocarbon, o2, h2o, co2] = balanceCombustionEquation(hydrocarbon, o2, h2o, co2);
 
     return {type: "combustion", hydrocarbon, o2, h2o, co2}
 };

@@ -1,4 +1,4 @@
-import { BalancingTable } from "../configurations/interfaces";
+import { BalancingTable } from "../newConfigurations/interfaces";
 
 /**
  * Checks 'balancingTable' to determine if the chemical equation is balanced

@@ -1,6 +1,6 @@
 import ReactionTypesDropdown from "../ReactionTypesDropdown";
-import DisplayIonicCompound from "../DisplayIonicCompound";
-import { DRReaction } from "../configurations/interfaces";
+import DisplayFormula from "../../compounds/DisplayFormula";
+import { DRReaction } from "../newConfigurations/interfaces";
 
 const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRReaction}) => {
   const {reactantOne, reactantTwo, productOne, productTwo, type} = equation;
@@ -10,23 +10,19 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
         <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={type}/>
 
         <div className="flex-left-center med-gap">
-            {(reactantOne.coefficient > 1 ? `${reactantOne.coefficient}` : <></>)}
-            <DisplayIonicCompound compound={reactantOne} state={reactantOne.state} />
+            <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={reactantOne.coefficient} state={reactantOne.state} />
 
             <div>+</div>
 
-            {(reactantTwo.coefficient > 1 ? `${reactantTwo.coefficient}` : <></>)}
-            <DisplayIonicCompound compound={reactantTwo} state={reactantTwo.state} />
+            <DisplayFormula formulaParts={reactantTwo.formulaParts} coefficient={reactantTwo.coefficient} state={reactantTwo.state} />
 
             <i className="fa-solid fa-arrow-right-long"></i>
 
-            {(productOne.coefficient > 1 ? `${productOne.coefficient}` : <></>)}
-            <DisplayIonicCompound compound={productOne} state={productOne.state} />
+            <DisplayFormula formulaParts={productOne.formulaParts} coefficient={productOne.coefficient} state={productOne.state} />
 
             <div>+</div>
 
-            {(productTwo.coefficient > 1 ? `${productTwo.coefficient}` : <></>)}
-            <DisplayIonicCompound compound={productTwo} state={productTwo.state} />            
+            <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={productTwo.coefficient} state={productTwo.state} />
         </div>
     </div>
   )

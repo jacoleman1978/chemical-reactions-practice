@@ -1,7 +1,7 @@
 import { makeDREquationCompounds } from "./makeDREquationCompounds";
 import { makeDRBalancingTable } from "./makeDRBalancingTable";
 import { balanceIon } from "./balanceIon";
-import { isBalanced } from "../../helpers/isBalanced";
+import { isBalanced } from "../../newHelpers/isBalanced";
 import { drCations, drAnions } from "../../configurations/doubleReplacementIons";
 import { Ion } from "../../../compounds/configurations/interfaces";
 import { DRReactantPair, EquationCompound } from "../../configurations/interfaces";

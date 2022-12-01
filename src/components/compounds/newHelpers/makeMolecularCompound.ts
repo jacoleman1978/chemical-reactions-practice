@@ -38,6 +38,8 @@ export const makeMolecularCompound = (firstMolecularElement: MolecularElement, s
             firstElement: firstMolecularElement,
             secondElement: secondMolecularElement,
             molarMass: firstMolecularElement.molarMass + secondMolecularElement.molarMass,
+            coefficient: 1,
+            state: "g",
         }
     } else {
         molecularCompound = {
@@ -48,6 +50,8 @@ export const makeMolecularCompound = (firstMolecularElement: MolecularElement, s
             secondElement: secondMolecularElement,
             thirdElement: thirdMolecularElement,
             molarMass: firstMolecularElement.molarMass + secondMolecularElement.molarMass + thirdMolecularElement.molarMass,
+            coefficient: 1,
+            state: "g",
         }
     }
 
@@ -131,7 +135,7 @@ const numberToPrefix: {[member: string]: GreekPrefixes} = {
  * @param displayMonoPrefix boolean: set to false for the first "MolecularPart" object, and set to true for the second "MolecularPart" object
  * @returns "MolecularElement" object
  */
-const makeNewMolecularElement = (elementPart: MolecularPart, subscript: number, displayMonoPrefix: boolean): MolecularElement => {
+export const makeNewMolecularElement = (elementPart: MolecularPart, subscript: number, displayMonoPrefix: boolean): MolecularElement => {
     // Retrieve the "Element" object for the passed in "elementPart" from the "elementData" dictionary
     let element: Element = {...elementData[elementPart.elementSymbol]};
     let greekPrefix: GreekPrefixes;
@@ -152,6 +156,7 @@ const makeNewMolecularElement = (elementPart: MolecularPart, subscript: number, 
         oxState: elementPart.oxState as MolecularOxStates,
         molarMass: element.molarMass,
         subscript: subscript,
+        coefficient: 1,
         greekPrefix: greekPrefix,
     }
 

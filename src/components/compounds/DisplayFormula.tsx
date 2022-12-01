@@ -11,7 +11,9 @@ const DisplayFormula = ({formulaParts, coefficient, state}: DisplayCompound) => 
     let isState: boolean = false;
 
     if (coefficient !== undefined) {
-        isCoefficient = true;
+        if (coefficient > 1) {
+            isCoefficient = true;
+        }
     }
 
     if (state !== undefined) {

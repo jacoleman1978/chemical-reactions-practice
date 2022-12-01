@@ -18,7 +18,8 @@ export interface Element {
     readonly solubilityTable?: BooleanDict,
     readonly stateOfMatter: StateOfMatter,
     readonly molarMass: number,
-    subscript?: number,
+    subscript: number,
+    
 }
 
 export interface ElementData {
@@ -57,7 +58,7 @@ export interface Ion {
     charge: (PossiblePositiveCharges | PossibleNegativeCharges),
     isPolyatomic: boolean,
     molarMass: number,
-    subscript?: number,
+    subscript: number,
     activitySeriesPriority?: number,
     solubilityTable?: BooleanDict,
 }
@@ -70,6 +71,7 @@ export interface MolecularElement {
     oxState: MolecularOxStates,
     molarMass: number,
     subscript: number,
+    coefficient: number,
     greekPrefix: GreekPrefixes,
 }
 

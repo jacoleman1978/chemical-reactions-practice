@@ -43,6 +43,8 @@ export const makeIonicCompound = (compoundType: CompoundType, cation: Ion, anion
         cation: cation,
         anion: anion,
         molarMass: cation.molarMass + anion.molarMass,
+        coefficient: 1,
+        state: "s",
     }
 
     // If both "Ion" objects have data in the "solubilityTable" property, use the "solubilityTable" "BooleanDict" to determine the state of the compound in water
@@ -116,50 +118,47 @@ const makeIonicCompoundName = (compoundType: CompoundType, cationName: string, a
 const makeFormulaParts = (ion: Ion): FormulaParts => {
     let formulaParts: FormulaParts = [];
 
-    // Verify that the subscript property is populated
-    if (ion.subscript !== undefined) {
-        // If the ion is not polyatomic, return the symbol for ionParts and the subscript
-        if (!ion.isPolyatomic) {
-            return [ion.ionParts[0], ion.subscript];
+    // If the ion is not polyatomic, return the symbol for ionParts and the subscript
+    if (!ion.isPolyatomic) {
+        return [ion.ionParts[0], ion.subscript];
 
-        // Don't use parentheses, if the subcript is 1. Return the ionParts and the subscript
-        } else if (ion.subscript === 1) {
-            let formulaParts: FormulaParts = [];
+    // Don't use parentheses, if the subcript is 1. Return the ionParts and the subscript
+    } else if (ion.subscript === 1) {
+        let formulaParts: FormulaParts = [];
 
-            for (let part of ion.ionParts) {
-                formulaParts = [...formulaParts, part];
-            }
-
-            return [...formulaParts, ion.subscript];
-
-        // Use parentheses for polyatomic ions with subscripts greater than 1
-        } else {
-            const length: number = ion.ionParts.length;
-
-            // The polyatomic ion does not contain its own subscripts
-            if (length === 1) {
-                return [`(${ion.ionParts[0]})`, ion.subscript]
-            }
-
-            // The polyatomic ion does contain at least one of its own subscripts
-            formulaParts = [`(${ion.ionParts[0]}`];
-
-            for (let i = 1; i < length -1; i++) {
-                formulaParts = [...formulaParts, ion.ionParts[i]];
-            }
-
-            // If the last entry of ionParts is a string, concatenate ")" to the last part
-            if (typeof ion.ionParts[length - 1] === "string") {
-                formulaParts = [...formulaParts, `${ion.ionParts[length - 1]})`, ion.subscript];
-
-            // If the last entry of ionParts is a number, add a ")" item to the array
-            } else {
-                formulaParts = [...formulaParts, ion.ionParts[length - 1], ")", ion.subscript];
-
-            }
-
-            return formulaParts
+        for (let part of ion.ionParts) {
+            formulaParts = [...formulaParts, part];
         }
+
+        return [...formulaParts, ion.subscript];
+
+    // Use parentheses for polyatomic ions with subscripts greater than 1
+    } else {
+        const length: number = ion.ionParts.length;
+
+        // The polyatomic ion does not contain its own subscripts
+        if (length === 1) {
+            return [`(${ion.ionParts[0]})`, ion.subscript]
+        }
+
+        // The polyatomic ion does contain at least one of its own subscripts
+        formulaParts = [`(${ion.ionParts[0]}`];
+
+        for (let i = 1; i < length -1; i++) {
+            formulaParts = [...formulaParts, ion.ionParts[i]];
+        }
+
+        // If the last entry of ionParts is a string, concatenate ")" to the last part
+        if (typeof ion.ionParts[length - 1] === "string") {
+            formulaParts = [...formulaParts, `${ion.ionParts[length - 1]})`, ion.subscript];
+
+        // If the last entry of ionParts is a number, add a ")" item to the array
+        } else {
+            formulaParts = [...formulaParts, ion.ionParts[length - 1], ")", ion.subscript];
+
+        }
+
+        return formulaParts
     }
 
     return formulaParts
