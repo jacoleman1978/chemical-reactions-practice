@@ -81,6 +81,7 @@ export const makeHydrocarbonFormula = (carbonSubscript: number, hydrogenSubscrip
 
 /**
  * Uses a weighted table to return the carbon subscript in the hydrocarbon MolecularCompound used for combustion reactions
+ * 5% chance of 10 C's, 10% chance of 9 C's, 10% chance of 8 C's, 10% chance of 7 C's, 20% chance of 6 C's, 20% chance of 5 C's, 10% chance of 4 C's, 7% chance of 3 C's, 6% chance of 2 C's 2% chance of 1 C
  * @returns The subscript for carbon as a number
  */
  export const getRandomCSubscript = (): number => {
@@ -158,6 +159,7 @@ export const makeHydrocarbonFormula = (carbonSubscript: number, hydrogenSubscrip
 
 /**
  * Uses a weighted scale to determine the oxygen subscript of the hydrocarbon
+ * 3% chance of 3 O's, 4% chance of 2 O's, 13% chance of 1 O, 80% chance of no O's
  * @returns An integer, number type, indicating the oxygen subscript
  */
  export const getRandomOSubscript = (): number => {

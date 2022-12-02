@@ -8,6 +8,11 @@ interface EquationElements {
     elementTwo: EquationElement,
 }
 
+/**
+ * Make "EquationElement" objects for each ion in an ionic compound
+ * @param compound "IonicCompound" object
+ * @returns "{elementOne, elementTwo}" both of which are "EquationElement" objects
+ */
 export const makeEquationElements = (compound: IonicCompound): EquationElements => {
     const cation: Element = elementData[compound.cation.ionFormula];
     const elementOne: EquationElement = makeEquationElement(cation);
@@ -18,6 +23,11 @@ export const makeEquationElements = (compound: IonicCompound): EquationElements 
     return {elementOne, elementTwo}
 };
 
+/**
+ * Make an "EquationElement" object from an "Element" object
+ * @param element "Element" object
+ * @returns "EquationElement" object
+ */
 const makeEquationElement = (element: Element): EquationElement => {
     const elementOne: EquationElement = {
         compoundName: element.elementName,

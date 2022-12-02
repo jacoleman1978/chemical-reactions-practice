@@ -24,7 +24,7 @@ export const makeRandomMolecularCompound = (): MolecularCompound => {
  * Makes a "MolecularCompound" object using the two passed in "MolecularElement" objects
  * @param firstMolecularElement "MolecularElement" object used as the first element in the compound formula
  * @param secondMolecularElement "MolecularElement" object used as the second element in the compound formula
- * @param thirdMolecularElement (optional) "MolecularElement" object used as the third element in the compound formula
+ * @param thirdMolecularElement (optional) "MolecularElement" object used as the third element in the compound formula. Designed to be used with hydrocarbons containing oxygen. 
  * @returns a "MolecularCompound" object with the two designated elements
  */
 export const makeMolecularCompound = (firstMolecularElement: MolecularElement, secondMolecularElement: MolecularElement, thirdMolecularElement?: MolecularElement): MolecularCompound => {
@@ -105,6 +105,7 @@ const getRandomSecondMolecularPart = (firstPart: MolecularPart): MolecularPart =
         } else {
             oxState = getRandomListMember(possibleOxStates);
 
+            // Ensure that the first subscript will be lesser in value than the second subscript
             while (-oxState > firstPartOxState) {
                 oxState = getRandomListMember(possibleOxStates);
             }

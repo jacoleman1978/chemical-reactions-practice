@@ -2,8 +2,7 @@ import Title from "../common/Title";
 import InstructionsList from "../common/InstructionsList";
 import CompoundsQuestionsGroup from "./CompoundsQuestionsGroup";
 import AdditionalFormulasInstruction from "./AdditionalFormulasInstruction";
-import { getCompoundInstructions } from "./helpers/getCompoundInstructions";
-import { getCompoundPracticeTitle } from "./helpers/getCompoundPracticeTitle";
+import { getCompoundInstructions, getCompoundPracticeTitle } from "./helpers/getCompoundInformation";
 import { CompoundType, PracticeType } from "../common/configurations/types";
 
 interface CompoundsPracticeProps {

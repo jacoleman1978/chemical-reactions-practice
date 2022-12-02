@@ -22,11 +22,12 @@ export const makeRandomIonicCompound = (compoundType: CompoundType): IonicCompou
 /**
  * Generates an "IonicCompound" object using the passed in cation and anion "Ion" objects
  * @param compoundType "CompoundType" type literal
- * @param cation "Ion" object of a cation
- * @param anion "Ion" object of a anion
+ * @param cationToCopy "Ion" object of a cation
+ * @param anionToCopy "Ion" object of a anion
  * @returns "IonicCompound" object
  */
 export const makeIonicCompound = (compoundType: CompoundType, cationToCopy: Ion, anionToCopy: Ion): IonicCompound => {
+    // Make a new instance of the "Ion" object that can be individually modified
     let cation: Ion = {...cationToCopy};
     let anion: Ion = {...anionToCopy};
 
@@ -38,10 +39,12 @@ export const makeIonicCompound = (compoundType: CompoundType, cationToCopy: Ion,
     // Generate the "FormulaParts", adding in "(" or ")" as appropriate
     let formulaParts: FormulaParts = [...makeFormulaParts(cation), ...makeFormulaParts(anion)];
 
+    // The default state for ionic compounds is solid, "s"
     let state: StateOfMatter = "s";
 
     // If the ions have the "solubilityTable" properties present, use them to determine the "state".
     if (cation.solubilityTable !== undefined && anion.solubilityTable !== undefined) {
+        // Polyatomic and monatomic ions use a different field as keys in the solubility table
         if (anion.isPolyatomic) {
             state = (cation.solubilityTable[anion.ionName] ? "aq" : "s");
 
@@ -54,12 +57,12 @@ export const makeIonicCompound = (compoundType: CompoundType, cationToCopy: Ion,
     let compound: IonicCompound = {
         compoundName: makeIonicCompoundName(compoundType, cation.ionName, anion.ionName),
         compoundFormula: makeFormulaString(formulaParts),
-        formulaParts: formulaParts,
-        cation: cation,
-        anion: anion,
+        formulaParts,
+        cation,
+        anion,
         molarMass: cation.molarMass + anion.molarMass,
         coefficient: 1,
-        state: state,
+        state,
     }
 
     return compound
@@ -73,7 +76,6 @@ export const makeIonicCompound = (compoundType: CompoundType, cationToCopy: Ion,
  * @returns the name of the ionic compound as a string
  */
 const makeIonicCompoundName = (compoundType: CompoundType, cationName: string, anionName: string): string => {
-    // If the "compoundType" is "acids", use acid naming rules
     if (compoundType === "acids") {
         return convertToAcid(anionName)
     }

@@ -8,7 +8,6 @@ import { PracticeType } from "../../common/configurations/types";
  * @param practiceType The practice type of type PracticeType
  * @returns An object {backgroundColor: "color"} that can be used in a style attribute to change the background color
  */
-
 export const updateInputBackgroundColor = (answer: string, compoundName: string, compoundFormula: string, practiceType: PracticeType): {backgroundColor: string} => {
     if (isAnswerCorrect(answer, compoundName, compoundFormula, practiceType)) {
         return {backgroundColor: "palegreen"}

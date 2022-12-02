@@ -3,6 +3,10 @@ import { makeCombustionEquation } from "../combustion/helpers/makeCombustionEqua
 import { makeDREquation } from "../double-replacement/helpers/makeDREquation";
 import { ReactionType, ReactionTypeList } from "../../common/configurations/types";
 
+/**
+ * Make an array of random reaction types from the "ReactionTypeList" type literal
+ * @returns "ReactionTypeList[]"
+ */
 export const makeEquationsList = (): ReactionTypeList[] => {
     let numberOfEquations = 15;
 
@@ -33,6 +37,7 @@ export const makeEquationsList = (): ReactionTypeList[] => {
 
 /**
  * Generates a reaction type using weighted values and a randomly generated number
+ * 15% chance of "combination", 5% chance of "dr-no-reaction", 20% chance of "double-replacement", 5% chance of "sr-no-reaction", 20% chance of "single-replacement", 20% chance of combustion, and 15% chance of decomposition
  * @returns ReactionType type literal
  */
  export const getRandomReactionType = (): ReactionType => {

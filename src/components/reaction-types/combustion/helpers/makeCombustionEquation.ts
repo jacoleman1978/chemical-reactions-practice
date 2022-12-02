@@ -15,7 +15,7 @@ export const makeCombustionEquation = (): CombustionReaction => {
     let h2o: MolecularCompound = makeWaterVapor();
     let co2: MolecularCompound = makeCarbonDioxide();
 
-    [hydrocarbon, o2, h2o, co2] = balanceCombustionEquation(hydrocarbon, o2, h2o, co2);
+    [hydrocarbon, o2, h2o, co2] = balanceCombustionEquation({...hydrocarbon}, {...o2}, {...h2o}, {...co2});
 
     return {type: "combustion", hydrocarbon, o2, h2o, co2}
 };
