@@ -26,6 +26,13 @@ export interface ElementData {
     [member: string]: Element,
 }
 
+export interface ActivitySeries {
+    [members: string]: {
+        lessActivity: string[],
+        greaterActivity: string[],
+    }
+}
+
 export interface TMMetalsByCharge {
     readonly plusOne: string[],
     readonly plusTwo: string[],

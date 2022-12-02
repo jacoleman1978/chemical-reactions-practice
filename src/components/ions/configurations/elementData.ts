@@ -1,4 +1,4 @@
-import { ElementData, TMMetalsByCharge, MolecularByOxState } from "./interfaces";
+import { ElementData, TMMetalsByCharge, MolecularByOxState, ActivitySeries } from "./interfaces";
 
 // Halogens
 const halogens: readonly string[] = ["F", "Cl", "Br", "I"];
@@ -27,6 +27,96 @@ export const drAnions: readonly string[] = [...halogens];
 // On activity series - single replacement ions
 export const activitySeriesCations: readonly string[] = ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"];
 export const activitySeriesAnions: readonly string[] = [...halogens];
+
+export const activitySeriesNonmetals: ActivitySeries = {
+    F: {
+        lessActivity: ["Cl", "Br", "I"],
+        greaterActivity: [],
+    },
+    Cl: {
+        lessActivity: ["Br", "I"],
+        greaterActivity: ["F"],
+    },
+    Br: {
+        lessActivity: ["I"],
+        greaterActivity: ["F", "Cl"],
+    },
+    I: {
+        lessActivity: [],
+        greaterActivity: ["F", "Cl", "Br"],
+    },
+}
+
+export const activitySeriesMetals: ActivitySeries = {
+    Mg: {
+        lessActivity: ["Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: [],
+    },
+    Al: {
+        lessActivity: ["Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg"],
+    },
+    Ti: {
+        lessActivity: ["Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al"],
+    },
+    Mn: {
+        lessActivity: ["Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti"],
+    },
+    Zn: {
+        lessActivity: ["Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn"],
+    },
+    Cr: {
+        lessActivity: ["Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn"],
+    },
+    Fe: {
+        lessActivity: ["Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr"],
+    },
+    Co: {
+        lessActivity: ["Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe"],
+    },
+    Ni: {
+        lessActivity: ["Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co"],
+    },
+    Sn: {
+        lessActivity: ["Pb", "H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni"],
+    },
+    Pb: {
+        lessActivity: ["H", "Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn"],
+    },
+    H: {
+        lessActivity: ["Cu", "Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb"],
+    },
+    Cu: {
+        lessActivity: ["Ag", "Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H"],
+    },
+    Ag: {
+        lessActivity: ["Hg", "Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu"],
+    },
+    Hg: {
+        lessActivity: ["Pt", "Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag"],
+    },
+    Pt: {
+        lessActivity: ["Au"],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg"],
+    },
+    Au: {
+        lessActivity: [],
+        greaterActivity: ["Mg", "Al", "Ti", "Mn", "Zn", "Cr", "Fe", "Co", "Ni", "Sn", "Pb", "H", "Cu", "Ag", "Hg", "Pt"],
+    },
+}
 
 // Transition metal cations by charge
 export const transitionMetalsByCharge: TMMetalsByCharge = {
