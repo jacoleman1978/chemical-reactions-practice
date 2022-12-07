@@ -5,14 +5,20 @@ import DecompositionQuestion from "./decomp-combination/DecompositionQuestion";
 import CombustionQuestion from "./combustion/CombustionQuestion";
 import DRQuestion from "./double-replacement/DRQuestion";
 import CombinationQuestion from "./decomp-combination/CombinationQuestion";
+import SRQuestion from "./single-replacement/SRQuestion";
 import { useToggle } from "../../customHooks/useToggle";
 import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./configurations/interfaces";
 import { ReactionTypeList } from "../common/configurations/types";
+
+import { makeSREquation } from "./single-replacement/helpers/makeSREquation";
 
 // Called from /reaction-types/ReactionTypesPractice.tsx
 const ReactionTypesQuestionsGroup = () => {
     const [questionsDisplay, setQuestionsDisplay] = useState<ReactElement[]>([]);
     const [toggleFlag, handleToggle] = useToggle();
+
+    // todo
+    const srEquation: SRReaction = makeSREquation(false, false)
 
     useEffect(() => {
       let newQuestions: ReactElement[];
@@ -41,6 +47,7 @@ const ReactionTypesQuestionsGroup = () => {
 
   return (
     <div className="flex-column med-gap">
+        <SRQuestion equation={srEquation} toggleFlag={toggleFlag} />
         {questionsDisplay}
         <div className="flex-center-center">
             <Button variant="primary" className="flex-center-center" onClick={handleToggle}>

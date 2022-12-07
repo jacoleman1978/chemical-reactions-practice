@@ -82,14 +82,3 @@ export interface Ion {
 export interface PolyatomicIonData {
     [member: string]: Ion,
 }
-
-export interface IonicCompound {
-    compoundName: string,
-    compoundFormula: string,
-    formulaParts: FormulaParts,
-    cation: Ion,
-    anion: Ion,
-    molarMass: number,
-    state?: StateOfMatter,
-    coefficient?: number,
-}

@@ -47,10 +47,10 @@ export interface CombustionReaction {
 
 export interface SRReaction {
     type: ReactionType,
-    reactantOne: IonicCompound,
-    reactantTwo: EquationElement,
-    productOne: IonicCompound,
-    productTwo: EquationElement,
+    reactantCompound: IonicCompound,
+    reactantElement: EquationElement,
+    productCompound: IonicCompound,
+    productElement: EquationElement,
 }
 
 export interface DRReaction {

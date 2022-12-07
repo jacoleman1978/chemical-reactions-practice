@@ -108,7 +108,7 @@ const getSortedCationSolubilityTable = (): SortedCationSolubilityTable => {
  * @param ion "Ion" object
  * @returns "{solubleIons, insolubleIons}" as "SolubilityLists" object
  */
-const getSolubilityLists = (ion: Ion): SolubilityLists => {
+export const getSolubilityLists = (ion: Ion): SolubilityLists => {
     let solubleIons: string[] = [];
     let insolubleIons: string[] = [];
 

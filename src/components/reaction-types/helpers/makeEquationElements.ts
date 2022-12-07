@@ -28,7 +28,7 @@ export const makeEquationElements = (compound: IonicCompound): EquationElements 
  * @param element "Element" object
  * @returns "EquationElement" object
  */
-const makeEquationElement = (element: Element): EquationElement => {
+export const makeEquationElement = (element: Element): EquationElement => {
     const elementOne: EquationElement = {
         compoundName: element.elementName,
         compoundFormula: element.elementSymbol,
