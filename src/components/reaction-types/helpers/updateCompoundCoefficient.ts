@@ -3,8 +3,8 @@ import { IonicCompound } from "../../compounds/configurations/interfaces";
 
 /**
  * Updates the 'elementKey' property of 'balancingTable' by incrementing the compound coefficient and modifying the corresponding quantity values.
- * @param balancingTable BalancingTable object
- * @param compound IonicCompound object
+ * @param balancingTable "BalancingTable" object
+ * @param compound "IonicCompound" object
  * @param isReactant boolean: true if the compound is a reactant (decomposition reactions), and false if the compound is a product (combination reactions)
  * @returns [balancingTable: BalancingTable, compound: IonicCompound]
  */

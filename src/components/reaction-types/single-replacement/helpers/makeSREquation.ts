@@ -3,6 +3,7 @@ import { makeEquationElement } from "../../helpers/makeEquationElements";
 import { makeNewIon } from "../../../ions/helpers/makeNewIon";
 import { makeIonicCompound } from "../../../compounds/helpers/makeIonicCompound";
 import { getSolubilityLists } from "../../double-replacement/helpers/makeDREquation";
+import { balanceSREquations } from "./balanceSREquations";
 import { activitySeriesCations, activitySeriesAnions, activitySeriesMetals, activitySeriesNonmetals, elementData } from "../../../ions/configurations/elementData";
 import { polyatomicIonData } from "../../../ions/configurations/polyatomicIonData";
 import { EquationElement } from "../../configurations/interfaces";
@@ -13,26 +14,29 @@ import { ReactionType } from "../../../common/configurations/types";
 
 /**
  * Make and return the balanced single replacement equation as a "SRReaction" object
- * @param isMetal boolean: If true, the elements doing the replacing are metals, otherwise they are nonmentals
  * @param isSuccessful boolean: If true, the reaction occurs and has a "ReactionType" of "single-replacement", otherwise the reaction does not occur and has a "ReactionType" of "sr-no-reaction"
  * @returns "{type, reactantCompound, reactantElement, productCompound, productElement}: SRReaction"
  */
-export const makeSREquation = (isMetal: boolean, isSuccessful: boolean): SRReaction => {
+export const makeSREquation = (isSuccessful: boolean): SRReaction => {
+    // 85% chance of the metal single replacement reaction and 15% chance of the nonmetal version
+    const randomNumber: number = Math.random();
+    const isMetal: boolean = (randomNumber < 0.85 ? true : false)
+
     // Make the "EquationElement" objects for both the reactant and product
     const {reactantEquationElement, productEquationElement} = makeEquationElements(isMetal, isSuccessful);
 
-    // Reactant "Ion" object is converted to the product element
-    const reactantElementIon: Ion = makeNewIon(productEquationElement.compoundFormula);
-
-    // Product "Ion" object comes from the reactant element
-    const productElementIon: Ion = makeNewIon(reactantEquationElement.compoundFormula);
+    // Make "Ion" objects
+    const reactantElementIon: Ion = makeNewIon(reactantEquationElement.compoundFormula);
+    const productElementIon: Ion = makeNewIon(productEquationElement.compoundFormula);
 
     // Make the "IonicCompound" objects for the reactants and products
     const {reactantCompound, productCompound} = makeIonicCompounds(reactantElementIon, productElementIon, isMetal);
 
     const type: ReactionType = (isSuccessful ? "single-replacement" : "sr-no-reaction");
 
-    return {type, reactantCompound, reactantElement: reactantEquationElement, productCompound, productElement: productEquationElement}
+    let srEquation: SRReaction = {type, reactantCompound, reactantElement: reactantEquationElement, productCompound, productElement: productEquationElement}
+
+    return balanceSREquations(srEquation, isMetal)
 }
 
 /**

@@ -1,6 +1,7 @@
 import { makeDecompCombEquation } from "../decomp-combination/helpers/makeDecompCombEquation";
 import { makeCombustionEquation } from "../combustion/helpers/makeCombustionEquation";
 import { makeDREquation } from "../double-replacement/helpers/makeDREquation";
+import { makeSREquation } from "../single-replacement/helpers/makeSREquation";
 import { ReactionType, ReactionTypeList } from "../../common/configurations/types";
 
 /**
@@ -26,6 +27,12 @@ export const makeEquationsList = (): ReactionTypeList[] => {
 
         } else if (reactionType === "dr-no-reaction") {
             equationsList = [...equationsList, makeDREquation(true)];
+
+        } else if (reactionType === "single-replacement") {
+            equationsList = [...equationsList, makeSREquation(true)];
+
+        } else if (reactionType === "sr-no-reaction") {
+            equationsList = [...equationsList, makeSREquation(false)];
 
         } else if (reactionType === "combination") {
             equationsList = [...equationsList, makeDecompCombEquation("combination")];
