@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Ion, MolecularElement } from "../../ions/configurations/interfaces";
+import { Ion } from "../../ions/configurations/interfaces";
 import { IonicCompound, MolecularCompound } from "../../compounds/configurations/interfaces";
 import { ReactionType, FormulaParts, StateOfMatter } from "../../common/configurations/types";
 
