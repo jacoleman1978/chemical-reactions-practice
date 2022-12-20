@@ -1,6 +1,6 @@
-import { isBalanced } from "../../helpers/isBalanced";
-import { BalancingTable, EquationElement } from "../../configurations/interfaces";
-import { MolecularCompound } from "../../../compounds/configurations/interfaces";
+import { isBalanced } from "./isBalanced";
+import { BalancingTable, EquationElement } from "../configurations/interfaces";
+import { MolecularCompound } from "../../compounds/configurations/interfaces";
 
 /**
  * Uses the "MolecularCompound" and "EquationElement" objects of the reactants and products of a "CombustionReaction" object to balance the equation

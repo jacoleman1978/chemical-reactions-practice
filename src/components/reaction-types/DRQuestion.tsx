@@ -1,6 +1,6 @@
-import ReactionTypesDropdown from "../ReactionTypesDropdown";
-import DisplayFormula from "../../compounds/DisplayFormula";
-import { DRReaction } from "../configurations/interfaces";
+import ReactionTypesDropdown from "./ReactionTypesDropdown";
+import DisplayFormula from "../compounds/DisplayFormula";
+import { DRReaction } from "./configurations/interfaces";
 
 const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRReaction}) => {
   const {reactantOne, reactantTwo, productOne, productTwo, type} = equation;

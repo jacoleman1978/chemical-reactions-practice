@@ -1,6 +1,6 @@
-import DisplayFormula from "../../compounds/DisplayFormula";
-import ReactionTypesDropdown from "../ReactionTypesDropdown";
-import { CombustionReaction } from "../configurations/interfaces";
+import DisplayFormula from "../compounds/DisplayFormula";
+import ReactionTypesDropdown from "./ReactionTypesDropdown";
+import { CombustionReaction } from "./configurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed combustion reaction
 // Called from /reaction-types/ReactionTypesQuestionsGroup.tsx

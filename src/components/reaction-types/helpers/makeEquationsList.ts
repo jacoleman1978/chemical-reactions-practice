@@ -1,7 +1,7 @@
-import { makeDecompCombEquation } from "../decomp-combination/helpers/makeDecompCombEquation";
-import { makeCombustionEquation } from "../combustion/helpers/makeCombustionEquation";
-import { makeDREquation } from "../double-replacement/helpers/makeDREquation";
-import { makeSREquation } from "../single-replacement/helpers/makeSREquation";
+import { makeDecompCombEquation } from "./makeDecompCombEquation";
+import { makeCombustionEquation } from "./makeCombustionEquation";
+import { makeDREquation } from "./makeDREquation";
+import { makeSREquation } from "./makeSREquation";
 import { ReactionType, ReactionTypeList } from "../../common/configurations/types";
 
 /**

@@ -1,8 +1,8 @@
-import { makeRandomIonicCompound } from "../../../compounds/helpers/makeIonicCompound";
-import { makeEquationElements } from "../../helpers/makeEquationElements";
+import { makeRandomIonicCompound } from "../../compounds/helpers/makeIonicCompound";
+import { makeEquationElements } from "./makeEquationElements";
 import { balanceDecompCombEquation } from "./balanceDecompCombEquation";
-import { IonicCompound } from "../../../compounds/configurations/interfaces";
-import { ReactionTypeList } from "../../../common/configurations/types";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
+import { ReactionTypeList } from "../../common/configurations/types";
 
 /**
  * Generates a "DecompositionReaction" or "CombinationReaction" object

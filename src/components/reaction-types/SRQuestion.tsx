@@ -1,6 +1,6 @@
-import ReactionTypesDropdown from "../ReactionTypesDropdown";
-import DisplayFormula from "../../compounds/DisplayFormula";
-import { SRReaction } from "../configurations/interfaces";
+import ReactionTypesDropdown from "./ReactionTypesDropdown";
+import DisplayFormula from "../compounds/DisplayFormula";
+import { SRReaction } from "./configurations/interfaces";
 
 const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRReaction}) => {
   const {reactantCompound, reactantElement, productCompound, productElement, type} = equation;

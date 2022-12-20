@@ -1,5 +1,5 @@
-import { makeNewMolecularElement } from "../../../compounds/helpers/makeMolecularCompound";
-import { MolecularCompound } from "../../../compounds/configurations/interfaces";
+import { makeNewMolecularElement } from "../../compounds/helpers/makeMolecularCompound";
+import { MolecularCompound } from "../../compounds/configurations/interfaces";
 
 /**
  * Generates a random hydrocarbon "MolecularCompound" object

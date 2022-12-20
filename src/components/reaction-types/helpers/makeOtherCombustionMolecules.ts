@@ -1,8 +1,8 @@
-import { makeNewMolecularElement, makeMolecularCompound } from "../../../compounds/helpers/makeMolecularCompound";
-import { EquationElement } from "../../configurations/interfaces";
-import { MolecularElement } from "../../../ions/configurations/interfaces";
-import { MolecularCompound } from "../../../compounds/configurations/interfaces";
-import { MolecularOxStates } from "../../../ions/configurations/types";
+import { makeNewMolecularElement, makeMolecularCompound } from "../../compounds/helpers/makeMolecularCompound";
+import { EquationElement } from "../configurations/interfaces";
+import { MolecularElement } from "../../ions/configurations/interfaces";
+import { MolecularCompound } from "../../compounds/configurations/interfaces";
+import { MolecularOxStates } from "../../ions/configurations/types";
 
 /**
  * Make the oxygen gas "EquationElement" object for a combustion reaction

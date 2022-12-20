@@ -1,7 +1,7 @@
-import { isBalanced } from "../../helpers/isBalanced";
-import { updateCompoundCoefficient } from "../../helpers/updateCompoundCoefficient";
-import { BalancingTable, DRReaction } from "../../configurations/interfaces";
-import { IonicCompound } from "../../../compounds/configurations/interfaces";
+import { isBalanced } from "./isBalanced";
+import { updateCompoundCoefficient } from "./updateCompoundCoefficient";
+import { BalancingTable, DRReaction } from "../configurations/interfaces";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
 
 /**
  * Balance the double replacement reaction of the general pattern: AB + CD --> AD + CB

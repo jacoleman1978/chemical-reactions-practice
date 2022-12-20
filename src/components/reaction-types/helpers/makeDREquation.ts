@@ -1,13 +1,13 @@
-import { getRandomListMember } from "../../../common/helpers/getRandomListMember";
-import { makeIonicCompound } from "../../../compounds/helpers/makeIonicCompound";
-import { makeNewIon } from "../../../ions/helpers/makeNewIon";
+import { getRandomListMember } from "../../common/helpers/getRandomListMember";
+import { makeIonicCompound } from "../../compounds/helpers/makeIonicCompound";
+import { makeNewIon } from "../../ions/helpers/makeNewIon";
 import { balanceDREquation } from "./balanceDREquation";
-import { drCations } from "../../../ions/configurations/elementData";
-import { drPolyatomicCations, drPolyatomicAnions, polyatomicIonData } from "../../../ions/configurations/polyatomicIonData";
-import { SolubilityLists, SortedCationSolubilityTable, DRAnionsWithCation, DRIons, DRReaction } from "../../configurations/interfaces";
-import { Ion } from "../../../ions/configurations/interfaces";
-import { IonicCompound } from "../../../compounds/configurations/interfaces";
-import { ReactionType } from "../../../common/configurations/types";
+import { drCations } from "../../ions/configurations/elementData";
+import { drPolyatomicCations, drPolyatomicAnions, polyatomicIonData } from "../../ions/configurations/polyatomicIonData";
+import { SolubilityLists, SortedCationSolubilityTable, DRAnionsWithCation, DRIons, DRReaction } from "../configurations/interfaces";
+import { Ion } from "../../ions/configurations/interfaces";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
+import { ReactionType } from "../../common/configurations/types";
 
 /**
  * Makes a balanced double replacement reaction with a general pattern: AB + CD --> AD + CB

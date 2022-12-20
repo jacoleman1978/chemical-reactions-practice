@@ -1,6 +1,6 @@
-import ReactionTypesDropdown from "../ReactionTypesDropdown";
-import DisplayFormula from "../../compounds/DisplayFormula";
-import { DecompositionReaction } from "../configurations/interfaces";
+import ReactionTypesDropdown from "./ReactionTypesDropdown";
+import DisplayFormula from "../compounds/DisplayFormula";
+import { DecompositionReaction } from "./configurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed decomposition reaction
 // Called from /reaction-types/ReactionTypesQuestionsGroup.tsx

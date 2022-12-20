@@ -1,8 +1,8 @@
-import { isBalanced } from "../../helpers/isBalanced";
-import { updateCompoundCoefficient } from "../../helpers/updateCompoundCoefficient";
-import { updateElementCoefficient } from "../../helpers/updateElementCoefficient";
-import { SRReaction, BalancingTable, EquationElement } from "../../configurations/interfaces";
-import { IonicCompound } from "../../../compounds/configurations/interfaces";
+import { isBalanced } from "./isBalanced";
+import { updateCompoundCoefficient } from "./updateCompoundCoefficient";
+import { updateElementCoefficient } from "./updateElementCoefficient";
+import { SRReaction, BalancingTable, EquationElement } from "../configurations/interfaces";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
 
 /**
  * Balance the single replacement reaction with one of two general patterns. Metal elements: AB + C --> CB + A. Nonmetal elements: AB + C --> AC + B.

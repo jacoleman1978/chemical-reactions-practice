@@ -1,9 +1,9 @@
-import { isBalanced } from "../../helpers/isBalanced";
-import { updateCompoundCoefficient } from "../../helpers/updateCompoundCoefficient";
-import { EquationElement, BalancingTable } from "../../configurations/interfaces";
-import { IonicCompound } from "../../../compounds/configurations/interfaces";
-import { ReactionType } from "../../../common/configurations/types";
-import { DecompositionReaction, CombinationReaction } from "../../configurations/interfaces";
+import { isBalanced } from "./isBalanced";
+import { updateCompoundCoefficient } from "./updateCompoundCoefficient";
+import { EquationElement, BalancingTable } from "../configurations/interfaces";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
+import { ReactionType } from "../../common/configurations/types";
+import { DecompositionReaction, CombinationReaction } from "../configurations/interfaces";
 
 interface BalanceDecompCombParam {
     reactionType: ReactionType,

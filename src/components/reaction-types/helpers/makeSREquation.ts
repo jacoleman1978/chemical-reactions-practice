@@ -1,16 +1,16 @@
-import { getRandomListMember } from "../../../common/helpers/getRandomListMember";
-import { makeEquationElement } from "../../helpers/makeEquationElements";
-import { makeNewIon } from "../../../ions/helpers/makeNewIon";
-import { makeIonicCompound } from "../../../compounds/helpers/makeIonicCompound";
-import { getSolubilityLists } from "../../double-replacement/helpers/makeDREquation";
+import { getRandomListMember } from "../../common/helpers/getRandomListMember";
+import { makeEquationElement } from "./makeEquationElements";
+import { makeNewIon } from "../../ions/helpers/makeNewIon";
+import { makeIonicCompound } from "../../compounds/helpers/makeIonicCompound";
+import { getSolubilityLists } from "./makeDREquation";
 import { balanceSREquations } from "./balanceSREquations";
-import { activitySeriesCations, activitySeriesAnions, activitySeriesMetals, activitySeriesNonmetals, elementData } from "../../../ions/configurations/elementData";
-import { polyatomicIonData } from "../../../ions/configurations/polyatomicIonData";
-import { EquationElement } from "../../configurations/interfaces";
-import { ActivitySeries, Element, Ion } from "../../../ions/configurations/interfaces";
-import { IonicCompound } from "../../../compounds/configurations/interfaces";
-import { SRReaction } from "../../configurations/interfaces";
-import { ReactionType } from "../../../common/configurations/types";
+import { activitySeriesCations, activitySeriesAnions, activitySeriesMetals, activitySeriesNonmetals, elementData } from "../../ions/configurations/elementData";
+import { polyatomicIonData } from "../../ions/configurations/polyatomicIonData";
+import { EquationElement } from "../configurations/interfaces";
+import { ActivitySeries, Element, Ion } from "../../ions/configurations/interfaces";
+import { IonicCompound } from "../../compounds/configurations/interfaces";
+import { SRReaction } from "../configurations/interfaces";
+import { ReactionType } from "../../common/configurations/types";
 
 /**
  * Make and return the balanced single replacement equation as a "SRReaction" object
