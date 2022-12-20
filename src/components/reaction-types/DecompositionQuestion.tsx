@@ -8,20 +8,24 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
   const {reactantOne, productOne, productTwo, type} = equation;
 
   return (
-    <div className="grid-equations med-gap">
-      <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={type}/>
+    <div className="flex-column med-gap border-bubble">
+      <div className="flex-left-center wrap med-gap">
+        <div className="flex-left-center med-gap">
+          <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={reactantOne.coefficient} state={reactantOne.state} />
 
-      <div className="flex-left-center med-gap">
-        <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={reactantOne.coefficient} state={reactantOne.state} />
+          <i className="fa-solid fa-arrow-right-long"></i>
+        </div>
 
-        <i className="fa-solid fa-arrow-right-long"></i>
+        <div className="flex-left-center med-gap">
+          <DisplayFormula formulaParts={productOne.formulaParts} coefficient={productOne.coefficient} state={productOne.state} />
 
-        <DisplayFormula formulaParts={productOne.formulaParts} coefficient={productOne.coefficient} state={productOne.state} />
+          <div>+</div>
 
-        <div>+</div>
-        
-        <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={productTwo.coefficient} state={productTwo.state} />
+          <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={productTwo.coefficient} state={productTwo.state} />
+        </div>
       </div>
+
+      <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={type}/>
     </div>
   )
 }

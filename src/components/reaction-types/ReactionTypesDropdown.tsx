@@ -23,14 +23,17 @@ const ReactionTypesDropdown = ({toggleFlag, reactionType}: RxnTypeDropdownProps)
     }, [selectedType, reactionType])
 
   return (
-    <Form.Select style={formStyle} aria-label={"Select Reaction Type"} value={selectedType} onChange={(event) => {setSelectedType(event.target.value)}}>
-        <option disabled value="">Reaction Type</option>
-        {
-            reactionTypeMenuOptions.map((option: ReactionTypeMenuOption) => {
-                return <option key={option.reactionType} value={option.reactionType}>{option.optionTitle}</option>
-            })
-        }
-    </Form.Select>
+    <div className="rxn-type-select">
+      <Form.Select style={formStyle} aria-label={"Select Reaction Type"} value={selectedType} onChange={(event) => {setSelectedType(event.target.value)}}>
+          <option disabled value="">Reaction Type</option>
+          {
+              reactionTypeMenuOptions.map((option: ReactionTypeMenuOption) => {
+                  return <option key={option.reactionType} value={option.reactionType}>{option.optionTitle}</option>
+              })
+          }
+      </Form.Select>
+    </div>
+
   )
 }
 export default ReactionTypesDropdown
