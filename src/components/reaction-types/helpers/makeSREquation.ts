@@ -30,7 +30,9 @@ export const makeSREquation = (isSuccessful: boolean): SRReaction => {
     const productElementIon: Ion = makeNewIon(productEquationElement.compoundFormula);
 
     // Make the "IonicCompound" objects for the reactants and products
-    const {reactantCompound, productCompound} = makeIonicCompounds(reactantElementIon, productElementIon, isMetal);
+    let {reactantCompound, productCompound} = makeIonicCompounds(reactantElementIon, productElementIon, isMetal);
+    reactantCompound.state = "aq";
+    productCompound.state = "aq";
 
     const type: ReactionType = (isSuccessful ? "single-replacement" : "sr-no-reaction");
 

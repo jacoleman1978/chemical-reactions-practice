@@ -44,23 +44,23 @@ export const makeEquationsList = (): ReactionTypeList[] => {
 
 /**
  * Generates a reaction type using weighted values and a randomly generated number
- * 15% chance of "combination", 5% chance of "dr-no-reaction", 20% chance of "double-replacement", 5% chance of "sr-no-reaction", 20% chance of "single-replacement", 20% chance of combustion, and 15% chance of decomposition
+ * 10% chance of "combination", 10% chance of "dr-no-reaction", 25% chance of "double-replacement", 10% chance of "sr-no-reaction", 25% chance of "single-replacement", 10% chance of combustion, and 10% chance of decomposition
  * @returns ReactionType type literal
  */
  export const getRandomReactionType = (): ReactionType => {
     const randomNumber: number = Math.random();
 
-    if (randomNumber > 0.85) {
+    if (randomNumber > 0.9) {
         return "combination"
     } else if (randomNumber > 0.8) {
         return "dr-no-reaction"
-    } else if (randomNumber > 0.6) {
-        return "double-replacement"
     } else if (randomNumber > 0.55) {
+        return "double-replacement"
+    } else if (randomNumber > 0.45) {
         return "sr-no-reaction"
-    } else if (randomNumber > 0.35) {
+    } else if (randomNumber > 0.20) {
         return "single-replacement"
-    } else if (randomNumber > 0.15) {
+    } else if (randomNumber > 0.10) {
         return "combustion"
     } else {
         return "decomposition"

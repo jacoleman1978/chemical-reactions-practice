@@ -13,6 +13,7 @@ export const makeDecompCombEquation = (reactionType: ("decomposition" | "combina
     // Make a random ionic compound "EquationCompound" object and the corresponsing "EquationElements"
     const randomChoice: boolean = Boolean(Math.round(Math.random()));
     let compound: IonicCompound = (randomChoice ? makeRandomIonicCompound("ionic-main"): makeRandomIonicCompound("ionic-transition"));
+    compound.state = "s";
     
     let {elementOne, elementTwo} = makeEquationElements(compound);
 
