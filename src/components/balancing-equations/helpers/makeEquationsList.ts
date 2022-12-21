@@ -1,7 +1,7 @@
-import { makeDecompCombEquation } from "./makeDecompCombEquation";
-import { makeCombustionEquation } from "./makeCombustionEquation";
-import { makeDREquation } from "./makeDREquation";
-import { makeSREquation } from "./makeSREquation";
+import { makeDecompCombEquation } from "../../reaction-types/helpers/makeDecompCombEquation";
+import { makeCombustionEquation } from "../../reaction-types/helpers/makeCombustionEquation";
+import { makeDREquation } from "../../reaction-types/helpers/makeDREquation";
+import { makeSREquation } from "../../reaction-types/helpers/makeSREquation";
 import { ReactionType, ReactionTypeList } from "../../common/configurations/types";
 
 /**
@@ -25,14 +25,8 @@ export const makeEquationsList = (): ReactionTypeList[] => {
         } else if (reactionType === "double-replacement") {
             equationsList = [...equationsList, makeDREquation(false)];
 
-        } else if (reactionType === "dr-no-reaction") {
-            equationsList = [...equationsList, makeDREquation(true)];
-
         } else if (reactionType === "single-replacement") {
             equationsList = [...equationsList, makeSREquation(true)];
-
-        } else if (reactionType === "sr-no-reaction") {
-            equationsList = [...equationsList, makeSREquation(false)];
 
         } else if (reactionType === "combination") {
             equationsList = [...equationsList, makeDecompCombEquation("combination")];
@@ -50,17 +44,13 @@ export const makeEquationsList = (): ReactionTypeList[] => {
  export const getRandomReactionType = (): ReactionType => {
     const randomNumber: number = Math.random();
 
-    if (randomNumber > 0.9) {
+    if (randomNumber > 0.85) {
         return "combination"
-    } else if (randomNumber > 0.8) {
-        return "dr-no-reaction"
     } else if (randomNumber > 0.55) {
         return "double-replacement"
-    } else if (randomNumber > 0.45) {
-        return "sr-no-reaction"
-    } else if (randomNumber > 0.20) {
+    } else if (randomNumber > 0.4) {
         return "single-replacement"
-    } else if (randomNumber > 0.10) {
+    } else if (randomNumber > 0.15) {
         return "combustion"
     } else {
         return "decomposition"
