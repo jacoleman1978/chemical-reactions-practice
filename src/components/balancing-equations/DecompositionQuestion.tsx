@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Button } from "react-bootstrap";
 import CoefficientInput from "./CoefficientInput";
 import DisplayFormula from "../compounds/DisplayFormula";
 import { DecompositionReaction } from "../reaction-types/configurations/interfaces";
@@ -24,7 +25,7 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
     setFormStyle({backgroundColor: "lightpink"});
   }, [toggleFlag])
 
-  useEffect(() => {
+  const handleCheckClick = (): void => {
     if (coefficientR1 === balancedCoefficients.R1 
       && coefficientP1 === balancedCoefficients.P1 
       && coefficientP2 === balancedCoefficients.P2
@@ -33,7 +34,7 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
     } else {
       setFormStyle({backgroundColor: "lightpink"});
     }
-  }, [coefficientR1, coefficientP1, coefficientP2, balancedCoefficients])
+  }
 
   return (
     <div className="flex-column med-gap border-bubble">
@@ -54,6 +55,12 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
           <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientP2} userAnswer={coefficientP2} />
           <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={1} state={productTwo.state} />
         </div>
+      </div>
+
+      <div className="flex-left-center">
+        <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleCheckClick()}>
+            Check Answer
+        </Button>
       </div>
     </div>
   )

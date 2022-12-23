@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Button } from "react-bootstrap";
 import CoefficientInput from "./CoefficientInput";
 import DisplayFormula from "../compounds/DisplayFormula";
 import { DRReaction } from "../reaction-types/configurations/interfaces";
@@ -27,7 +28,7 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
     setFormStyle({backgroundColor: "lightpink"});
   }, [toggleFlag])
 
-  useEffect(() => {
+  const handleCheckClick = (): void => {
     if (coefficientR1 === balancedCoefficients.R1 
       && coefficientR2 === balancedCoefficients.R2 
       && coefficientP1 === balancedCoefficients.P1 
@@ -36,7 +37,7 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
     } else {
       setFormStyle({backgroundColor: "lightpink"});
     }
-  }, [coefficientR1, coefficientR2, coefficientP1, coefficientP2, balancedCoefficients])
+  }
 
   return (
     <div className="flex-column med-gap border-bubble">
@@ -63,6 +64,12 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
           <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientP2} userAnswer={coefficientP2} />
           <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={1} state={productTwo.state} />
         </div>
+      </div>
+
+      <div className="flex-left-center">
+        <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleCheckClick()}>
+            Check Answer
+        </Button>
       </div>
     </div>
   )

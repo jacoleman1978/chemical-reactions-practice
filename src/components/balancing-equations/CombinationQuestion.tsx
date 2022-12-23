@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Button } from "react-bootstrap";
 import CoefficientInput from "./CoefficientInput";
 import DisplayFormula from "../compounds/DisplayFormula";
 import { CombinationReaction } from "../reaction-types/configurations/interfaces";
@@ -24,7 +25,18 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
     setFormStyle({backgroundColor: "lightpink"});
   }, [toggleFlag])
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (coefficientR1 === balancedCoefficients.R1 
+  //     && coefficientR2 === balancedCoefficients.R2 
+  //     && coefficientP1 === balancedCoefficients.P1
+  //     ) {
+  //       setFormStyle({backgroundColor: "palegreen"})
+  //   } else {
+  //     setFormStyle({backgroundColor: "lightpink"});
+  //   }
+  // }, [coefficientR1, coefficientR2, coefficientP1, balancedCoefficients])
+
+  const handleCheckClick = (): void => { 
     if (coefficientR1 === balancedCoefficients.R1 
       && coefficientR2 === balancedCoefficients.R2 
       && coefficientP1 === balancedCoefficients.P1
@@ -33,7 +45,7 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
     } else {
       setFormStyle({backgroundColor: "lightpink"});
     }
-  }, [coefficientR1, coefficientR2, coefficientP1, balancedCoefficients])
+  }
 
   return (
     <div className="flex-column med-gap border-bubble">
@@ -54,6 +66,12 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
           <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientP1} userAnswer={coefficientP1} />
           <DisplayFormula formulaParts={productOne.formulaParts} coefficient={1} state={productOne.state} />
         </div>
+      </div>
+
+      <div className="flex-left-center">
+          <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleCheckClick()}>
+              Check Answer
+          </Button>
       </div>
     </div>
   )

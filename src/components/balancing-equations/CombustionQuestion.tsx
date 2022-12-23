@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Button } from "react-bootstrap";
 import CoefficientInput from "./CoefficientInput";
 import DisplayFormula from "../compounds/DisplayFormula";
 import { CombustionReaction } from "../reaction-types/configurations/interfaces";
@@ -27,7 +28,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
     setFormStyle({backgroundColor: "lightpink"});
   }, [toggleFlag])
 
-  useEffect(() => {
+  const handleCheckClick = (): void => {
     if (coefficientHC === balancedCoefficients.HC 
       && coefficientO2 === balancedCoefficients.O2 
       && coefficientH2O === balancedCoefficients.H2O 
@@ -36,7 +37,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
     } else {
       setFormStyle({backgroundColor: "lightpink"});
     }
-  }, [coefficientHC, coefficientO2, coefficientH2O, coefficientCO2, balancedCoefficients])
+  }
 
   return (
     <div className="flex-column med-gap border-bubble">
@@ -62,6 +63,12 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
           <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientCO2} userAnswer={coefficientCO2} />
           <DisplayFormula formulaParts={co2.formulaParts} coefficient={1} state={co2.state} />
         </div>
+      </div>
+
+      <div className="flex-left-center">
+        <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleCheckClick()}>
+            Check Answer
+        </Button>
       </div>
     </div>
   )
