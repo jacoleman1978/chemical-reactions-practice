@@ -40,8 +40,8 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
 
   return (
     <div className="flex-column med-gap border-bubble">
-      <div className="flex-left-center wrap med-gap">
-        <div className="flex-left-center med-gap">
+      <div className="flex-left-center wrap sm-gap">
+        <div className="flex-left-center sm-gap">
           <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientHC} userAnswer={coefficientHC} />
           <DisplayFormula formulaParts={hydrocarbon.formulaParts} coefficient={1} state={hydrocarbon.state} />
 
@@ -53,7 +53,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
 
         <i className="fa-solid fa-arrow-right-long"></i>
 
-        <div className="flex-left-center med-gap">
+        <div className="flex-left-center sm-gap">
           <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientH2O} userAnswer={coefficientH2O} />
           <DisplayFormula formulaParts={h2o.formulaParts} coefficient={1} state={h2o.state} />
 
