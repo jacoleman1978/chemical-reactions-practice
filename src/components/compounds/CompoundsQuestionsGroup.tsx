@@ -52,9 +52,9 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
         <div className="flex-column med-gap">
             {questionsDisplay}
             <div className="flex-center-center">
-                <Button variant="primary" className="flex-center-center" onClick={handleToggle}>
+                <button className="flex-center-center fancy-btn" onClick={handleToggle}>
                     More Practice
-                </Button>
+                </button>
             </div>
         </div>
     )

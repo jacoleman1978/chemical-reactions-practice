@@ -17,12 +17,12 @@ const CompoundsPractice = ({compoundType, practiceType}: CompoundsPracticeProps)
     const instructionsList: string[] = getCompoundInstructions(compoundType, practiceType);
 
     return (
-        <div>
+        <section className="full-width">
             <Title title={title} />
             <AdditionalFormulasInstruction practiceType={practiceType} />
             <InstructionsList label="Background and Instructions:" instructionsList={instructionsList} />
             <CompoundsQuestionsGroup compoundType={compoundType} practiceType={practiceType} />
-        </div>
+        </section>
     )
 }
 

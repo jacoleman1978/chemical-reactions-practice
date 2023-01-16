@@ -1,5 +1,4 @@
 import { ChangeEvent } from "react";
-import { Form } from "react-bootstrap";
 import DisplayUsersFormula from "./DisplayUsersFormula";
 
 interface FormulasQuestionProps {
@@ -14,19 +13,21 @@ interface FormulasQuestionProps {
 // Called from /compound/CompoundsQuestion.tsx
 const FormulasQuestion = ({formStyle, handleUserAnswer, compoundName, userAnswer}: FormulasQuestionProps) => {
     return (
-        <div className="grid-formulas med-gap">
-            <div className="flex-right-center">
+        <div className="flex-center-center med-gap">
+            <label htmlFor={compoundName} className="flex-compound-label">
                 {compoundName}
-            </div>
-            <div>
-                <Form.Control 
-                    style={formStyle}
-                    type="text"
-                    aria-describedby="compound name"
-                    onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
-                    value={userAnswer}
-                />
-            </div>
+            </label>
+
+            <input 
+                className="flex-compound-input"
+                id={compoundName}
+                style={formStyle}
+                type="text"
+                aria-describedby="compound name"
+                onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
+                value={userAnswer}
+            />
+
             <DisplayUsersFormula usersFormula={userAnswer} />
         </div>
     )

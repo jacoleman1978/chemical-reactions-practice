@@ -16,9 +16,12 @@ function App() {
   const practiceType = pathname.split("/")[1] as PracticeType;
 
   return (
-    <div className="App">
-      <NavMenus practiceType={practiceType} />
-      <div className="flex-left-center full-width">
+    <>
+      <header>
+        <NavMenus practiceType={practiceType} />
+      </header>
+      
+      <main className="flex-left-center full-width">
         <Routes>
           <Route path='/' element={<PracticeTypes />} /> 
           <Route path='/naming' element={<CompoundDescriptions />} />
@@ -41,8 +44,8 @@ function App() {
           <Route path='/reaction-types' element={<ReactionTypesPractice />} />
           <Route path='/predicting-products' element={<PredictingProducts />} />
         </Routes>
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
 

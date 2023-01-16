@@ -16,13 +16,13 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
   const [coefficientR1, setCoefficientR1] = useState<string>("");
   const [coefficientP1, setCoefficientP1] = useState<string>("");
   const [coefficientP2, setCoefficientP2] = useState<string>("");
-  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
+  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightgray"});
 
   useEffect(() => {
     setCoefficientR1("");
     setCoefficientP1("");
     setCoefficientP2("");
-    setFormStyle({backgroundColor: "lightpink"});
+    setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
   const handleCheckClick = (): void => {

@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import Title from "../common/Title";
 import TypesContainer from "../common/TypesContainer";
@@ -15,16 +16,25 @@ const CompoundDescriptions = () => {
     const compoundTypes = generalCompoundTypes.map((compoundType): Description => {return {...compoundType, path: pathname + compoundType.path}});
 
     return (
-        <div className="flex-column">
+        <section className="flex-column">
 
-            {(pathname === "/naming" && <Title title="Naming Compounds Practice" />)}
-            {(pathname === "/formulas" && <Title title="Writing Compound Formulas Practice" />)}
-            <ul><li>Ionic: Compounds composed of ions, species with full charges</li></ul>
-            <div className="lg-left-margin">
-                <TypesContainer types={ionicTypes} />
-            </div>
+            {pathname === "/naming" ? 
+                <Title title="Naming Compounds Practice" /> 
+                : null
+            }
+            {pathname === "/formulas" ? 
+                <Title title="Writing Compound Formulas Practice" /> 
+                : null
+            }
+
+            <ul>
+                <li>Ionic: Compounds composed of ions, species with full charges</li>
+                <Fragment>
+                    <TypesContainer types={ionicTypes} />
+                </Fragment>
+            </ul>
             <TypesContainer types={compoundTypes} />
-        </div>
+        </section>
     )
 }
 

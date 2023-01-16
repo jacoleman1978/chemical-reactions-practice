@@ -18,14 +18,14 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
   const [coefficientRE, setCoefficientRE] = useState<string>("");
   const [coefficientPC, setCoefficientPC] = useState<string>("");
   const [coefficientPE, setCoefficientPE] = useState<string>("");
-  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
+  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightgray"});
 
   useEffect(() => {
     setCoefficientRC("");
     setCoefficientRE("");
     setCoefficientPC("");
     setCoefficientPE("");
-    setFormStyle({backgroundColor: "lightpink"});
+    setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
   const handleCheckClick = (): void => {

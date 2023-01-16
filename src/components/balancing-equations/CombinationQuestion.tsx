@@ -16,13 +16,13 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
   const [coefficientR1, setCoefficientR1] = useState<string>("");
   const [coefficientR2, setCoefficientR2] = useState<string>("");
   const [coefficientP1, setCoefficientP1] = useState<string>("");
-  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
+  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightgray"});
 
   useEffect(() => {
     setCoefficientR1("");
     setCoefficientR2("");
     setCoefficientP1("");
-    setFormStyle({backgroundColor: "lightpink"});
+    setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
   // useEffect(() => {

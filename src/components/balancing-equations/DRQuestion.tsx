@@ -18,14 +18,14 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
   const [coefficientR2, setCoefficientR2] = useState<string>("");
   const [coefficientP1, setCoefficientP1] = useState<string>("");
   const [coefficientP2, setCoefficientP2] = useState<string>("");
-  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
+  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightgray"});
 
   useEffect(() => {
     setCoefficientR1("");
     setCoefficientR2("");
     setCoefficientP1("");
     setCoefficientP2("");
-    setFormStyle({backgroundColor: "lightpink"});
+    setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
   const handleCheckClick = (): void => {

@@ -18,14 +18,14 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
   const [coefficientO2, setCoefficientO2] = useState<string>("");
   const [coefficientH2O, setCoefficientH2O] = useState<string>("");
   const [coefficientCO2, setCoefficientCO2] = useState<string>("");
-  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
+  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightgray"});
 
   useEffect(() => {
     setCoefficientHC("");
     setCoefficientO2("");
     setCoefficientH2O("");
     setCoefficientCO2("");
-    setFormStyle({backgroundColor: "lightpink"});
+    setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
   const handleCheckClick = (): void => {

@@ -21,7 +21,7 @@ const DisplayUsersFormula = ({usersFormula}: {usersFormula: string}) => {
     })
 
     return (
-        <div className="flex-left-center">
+        <div className="flex-compound-display-answer">
             {userDisplayFormula}
         </div>
     )
