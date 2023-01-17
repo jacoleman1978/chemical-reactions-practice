@@ -1,5 +1,4 @@
 import { useState, useEffect, ReactElement } from "react";
-import { Button } from "react-bootstrap";
 import CompoundsQuestion from "./CompoundsQuestion";
 import { makeCompoundList } from "./helpers/makeCompoundList";
 import { useToggle } from "../../customHooks/useToggle";

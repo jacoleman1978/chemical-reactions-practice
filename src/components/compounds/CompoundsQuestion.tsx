@@ -31,7 +31,7 @@ const CompoundsQuestion = ({toggleFlag, compoundName, compoundFormula, formulaPa
     }
 
     if (practiceType === "naming") {
-        return <NamingQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} formulaParts={formulaParts} userAnswer={userAnswer} />
+        return <NamingQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compoundName} formulaParts={formulaParts} userAnswer={userAnswer} />
 
     } else if (practiceType === "formulas") {
         return <FormulasQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compoundName} userAnswer={userAnswer} />

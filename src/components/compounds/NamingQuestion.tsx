@@ -1,11 +1,11 @@
 import { ChangeEvent } from "react";
-import { Form } from "react-bootstrap";
 import DisplayFormula from "./DisplayFormula";
 import { FormulaParts } from "../common/configurations/types";
 
 interface NamingQuestionProps {
     formStyle: {backgroundColor: string};
     handleUserAnswer: (arg0: string) => void;
+    compoundName: string;
     formulaParts: FormulaParts;
     userAnswer: string;
 }
@@ -13,19 +13,23 @@ interface NamingQuestionProps {
 // Displays the formula of the compound the user must name in the input field
 // The input field's background color will change to a light green when the answer is correct.
 // Called from /compound/CompoundsQuestion.tsx
-const NamingQuestion = ({formStyle, handleUserAnswer, formulaParts, userAnswer}: NamingQuestionProps) => {
+const NamingQuestion = ({formStyle, handleUserAnswer, compoundName, formulaParts, userAnswer}: NamingQuestionProps) => {
     return (
-        <div className="grid-naming med-gap">
-            <DisplayFormula formulaParts={formulaParts} />
-            <div>
-                <Form.Control 
-                    style={formStyle}
-                    type="text"
-                    aria-describedby="compound name"
-                    onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
-                    value={userAnswer}
-                />
-            </div>
+        <div className="flex-center-center med-gap">
+            <label htmlFor={compoundName} className="flex-naming-label">
+                <DisplayFormula formulaParts={formulaParts} />
+            </label>
+
+            <input
+                className="flex-naming-input"
+                id={compoundName}
+                style={formStyle}
+                type="text"
+                aria-describedby="compound name"
+                onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
+                value={userAnswer}
+            />
+
         </div>
     )
 }

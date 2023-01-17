@@ -23,7 +23,7 @@ const FormulasQuestion = ({formStyle, handleUserAnswer, compoundName, userAnswer
                 id={compoundName}
                 style={formStyle}
                 type="text"
-                aria-describedby="compound name"
+                aria-describedby="compound formula"
                 onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
                 value={userAnswer}
             />
