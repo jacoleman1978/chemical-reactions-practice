@@ -1,5 +1,6 @@
 import { useState, useEffect, ReactElement } from "react";
 import CompoundsQuestion from "./CompoundsQuestion";
+import MorePracticeBtn from "../common/MorePracticeBtn";
 import { makeCompoundList } from "./helpers/makeCompoundList";
 import { useToggle } from "../../customHooks/useToggle";
 import { IonicCompound, MolecularCompound } from "./configurations/interfaces";
@@ -20,10 +21,10 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
         let numberOfQuestions: GenerateQuantity = 10;
 
         if (compoundType === "ionic-mixed") {
-            numberOfQuestions = 15;
+            numberOfQuestions = 10;
 
         } else if (compoundType === "mixed") {
-            numberOfQuestions = 15;
+            numberOfQuestions = 10;
         }
 
         let newQuestions: ReactElement[];
@@ -50,11 +51,7 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
     return (
         <div className="flex-column med-gap">
             {questionsDisplay}
-            <div className="flex-center-center">
-                <button className="flex-center-center fancy-btn" onClick={handleToggle}>
-                    More Practice
-                </button>
-            </div>
+            <MorePracticeBtn handleToggle={handleToggle} />
         </div>
     )
 }

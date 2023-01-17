@@ -37,23 +37,30 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
   }
 
   return (
-    <div className="flex-column med-gap border-bubble">
+    <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap sm-gap">
         <div className="flex-left-center sm-gap">
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientR1} userAnswer={coefficientR1} />
-          <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={1} state={reactantOne.state} />
+          <CoefficientInput id={reactantOne.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientR1} userAnswer={coefficientR1} />
+          <label htmlFor={reactantOne.compoundName} >
+            <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={1} state={reactantOne.state} />
+          </label>
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>
 
         <div className="flex-left-center sm-gap">
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientP1} userAnswer={coefficientP1} />
-          <DisplayFormula formulaParts={productOne.formulaParts} coefficient={1} state={productOne.state} />
+          <CoefficientInput id={productOne.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientP1} userAnswer={coefficientP1} />
+          <label htmlFor={productOne.compoundName} >
+            <DisplayFormula formulaParts={productOne.formulaParts} coefficient={1} state={productOne.state} />
+          </label>
 
           <div>+</div>
 
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientP2} userAnswer={coefficientP2} />
-          <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={1} state={productTwo.state} />
+          <CoefficientInput id={productTwo.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientP2} userAnswer={coefficientP2} />
+          <label htmlFor={productTwo.compoundName} >
+            <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={1} state={productTwo.state} />
+          </label>
+          
         </div>
       </div>
 
@@ -62,7 +69,7 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
             Check Answer
         </Button>
       </div>
-    </div>
+    </section>
   )
 }
 export default DecompositionQuestion

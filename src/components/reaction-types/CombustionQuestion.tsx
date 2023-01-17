@@ -8,7 +8,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
   const {hydrocarbon, o2, h2o, co2} = equation;
 
   return (
-    <div className="flex-column med-gap border-bubble">
+    <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap med-gap">
         <div className="flex-left-center med-gap">
           <DisplayFormula formulaParts={hydrocarbon.formulaParts} coefficient={hydrocarbon.coefficient} state={hydrocarbon.state} />
@@ -30,7 +30,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
       </div>
 
       <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={equation.type}/>
-    </div>
+    </section>
   )
 }
 export default CombustionQuestion

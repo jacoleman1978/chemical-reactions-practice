@@ -40,28 +40,36 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
   }
 
   return (
-    <div className="flex-column med-gap border-bubble">
+    <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap sm-gap">
         <div className="flex-left-center sm-gap">
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientHC} userAnswer={coefficientHC} />
-          <DisplayFormula formulaParts={hydrocarbon.formulaParts} coefficient={1} state={hydrocarbon.state} />
+          <CoefficientInput id={hydrocarbon.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientHC} userAnswer={coefficientHC} />
+          <label htmlFor={hydrocarbon.compoundName}>
+            <DisplayFormula formulaParts={hydrocarbon.formulaParts} coefficient={1} state={hydrocarbon.state} />
+          </label>
 
           <div>+</div>
 
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientO2} userAnswer={coefficientO2} />
-          <DisplayFormula formulaParts={o2.formulaParts} coefficient={1} state={o2.state} /> 
+          <CoefficientInput id={o2.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientO2} userAnswer={coefficientO2} />
+          <label htmlFor={o2.compoundName}>
+            <DisplayFormula formulaParts={o2.formulaParts} coefficient={1} state={o2.state} /> 
+          </label>
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>
 
         <div className="flex-left-center sm-gap">
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientH2O} userAnswer={coefficientH2O} />
-          <DisplayFormula formulaParts={h2o.formulaParts} coefficient={1} state={h2o.state} />
-
+          <CoefficientInput id={h2o.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientH2O} userAnswer={coefficientH2O} />
+          <label htmlFor={h2o.compoundName}>
+            <DisplayFormula formulaParts={h2o.formulaParts} coefficient={1} state={h2o.state} />
+          </label>
+          
           <div>+</div>
 
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientCO2} userAnswer={coefficientCO2} />
-          <DisplayFormula formulaParts={co2.formulaParts} coefficient={1} state={co2.state} />
+          <CoefficientInput id={co2.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientCO2} userAnswer={coefficientCO2} />
+          <label htmlFor={co2.compoundName} >
+            <DisplayFormula formulaParts={co2.formulaParts} coefficient={1} state={co2.state} />
+          </label>
         </div>
       </div>
 
@@ -70,7 +78,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
             Check Answer
         </Button>
       </div>
-    </div>
+    </section>
   )
 }
 export default CombustionQuestion

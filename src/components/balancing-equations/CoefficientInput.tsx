@@ -1,15 +1,17 @@
 import { ChangeEvent } from "react";
 
 interface CoefficientInputProps {
+    id: string,
     formStyle: {backgroundColor: string};
     handleUserAnswer: (arg0: string) => void;
     userAnswer: string;
 }
 
-const CoefficientInput = ({formStyle, handleUserAnswer, userAnswer}: CoefficientInputProps) => {
+const CoefficientInput = ({id, formStyle, handleUserAnswer, userAnswer}: CoefficientInputProps) => {
   return (
     <div>
         <input 
+            id={id}
             className="coefficient-input"
             style={formStyle}
             type="number"

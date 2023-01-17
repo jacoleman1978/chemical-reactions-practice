@@ -8,7 +8,7 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
   const {reactantOne, reactantTwo, productOne, type} = equation;
 
   return (
-    <div className="flex-column med-gap border-bubble">
+    <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap med-gap">
         <div className="flex-left-center med-gap">
           <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={reactantOne.coefficient} state={reactantOne.state} />
@@ -28,7 +28,7 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
       </div>
 
       <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={type}/>
-    </div>
+    </section>
   )
 }
 export default CombinationQuestion

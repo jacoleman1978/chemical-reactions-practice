@@ -1,11 +1,11 @@
 import { useState, useEffect, ReactElement } from "react";
-import { Button } from "react-bootstrap";
 import { makeEquationsList } from "./helpers/makeEquationsList";
 import DecompositionQuestion from "./DecompositionQuestion";
 import CombustionQuestion from "./CombustionQuestion";
 import DRQuestion from "./DRQuestion";
 import CombinationQuestion from "./CombinationQuestion";
 import SRQuestion from "./SRQuestion";
+import MorePracticeBtn from "../common/MorePracticeBtn";
 import { useToggle } from "../../customHooks/useToggle";
 import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./configurations/interfaces";
 import { ReactionTypeList } from "../common/configurations/types";
@@ -47,11 +47,7 @@ const ReactionTypesQuestionsGroup = () => {
   return (
     <div className="flex-column med-gap">
         {questionsDisplay}
-        <div className="flex-center-center">
-            <Button variant="primary" className="flex-center-center" onClick={handleToggle}>
-                More Practice
-            </Button>
-        </div>
+        <MorePracticeBtn handleToggle={handleToggle} />
     </div>
   )
 }

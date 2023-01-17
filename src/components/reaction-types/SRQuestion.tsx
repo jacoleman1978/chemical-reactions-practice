@@ -6,7 +6,7 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
   const {reactantCompound, reactantElement, productCompound, productElement, type} = equation;
 
   return (
-    <div className="flex-column med-gap border-bubble">
+    <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap med-gap">
         <div className="flex-left-center med-gap">
             <DisplayFormula formulaParts={reactantCompound.formulaParts} coefficient={reactantCompound.coefficient} state={reactantCompound.state} />
@@ -28,7 +28,7 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
       </div>
 
       <ReactionTypesDropdown toggleFlag={toggleFlag} reactionType={type}/>
-    </div>
+    </section>
   )
 }
 export default SRQuestion

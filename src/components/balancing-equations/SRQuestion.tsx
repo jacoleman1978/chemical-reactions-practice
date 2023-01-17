@@ -40,28 +40,38 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
   }
 
   return (
-    <div className="flex-column med-gap border-bubble">
+    <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap sm-gap">
         <div className="flex-left-center sm-gap">
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientRC} userAnswer={coefficientRC} />
-          <DisplayFormula formulaParts={reactantCompound.formulaParts} coefficient={1} state={reactantCompound.state} />
+          <CoefficientInput id={reactantCompound.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientRC} userAnswer={coefficientRC} />
+          <label htmlFor={reactantCompound.compoundName} >
+            <DisplayFormula formulaParts={reactantCompound.formulaParts} coefficient={1} state={reactantCompound.state} />
+          </label>         
 
           <div>+</div>
 
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientRE} userAnswer={coefficientRE} />
-          <DisplayFormula formulaParts={reactantElement.formulaParts} coefficient={1} state={reactantElement.state} />      
+          <CoefficientInput id={reactantElement.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientRE} userAnswer={coefficientRE} />
+          <label htmlFor={reactantElement.compoundName}>
+            <DisplayFormula formulaParts={reactantElement.formulaParts} coefficient={1} state={reactantElement.state} /> 
+          </label>
+               
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>  
 
         <div className="flex-left-center sm-gap">
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientPC} userAnswer={coefficientPC} />
-          <DisplayFormula formulaParts={productCompound.formulaParts} coefficient={1} state={productCompound.state} />
+          <CoefficientInput id={productCompound.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientPC} userAnswer={coefficientPC} />
+          <label htmlFor={productCompound.compoundName}>
+            <DisplayFormula formulaParts={productCompound.formulaParts} coefficient={1} state={productCompound.state} />
+          </label>
 
           <div>+</div>
 
-          <CoefficientInput formStyle={formStyle} handleUserAnswer={setCoefficientPE} userAnswer={coefficientPE} />
-          <DisplayFormula formulaParts={productElement.formulaParts} coefficient={1} state={productElement.state} /> 
+          <CoefficientInput id={productElement.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientPE} userAnswer={coefficientPE} />
+          <label htmlFor={productElement.compoundName}>
+            <DisplayFormula formulaParts={productElement.formulaParts} coefficient={1} state={productElement.state} />
+          </label>
+           
         </div>
       </div>
 
@@ -70,7 +80,7 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
             Check Answer
         </Button>
       </div>
-    </div>
+    </section>
   )
 }
 export default SRQuestion
