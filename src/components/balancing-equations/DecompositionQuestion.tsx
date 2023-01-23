@@ -25,6 +25,12 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
     setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
+  useEffect(() => {
+    if (formStyle.backgroundColor !== "lightgray") {
+      setFormStyle({backgroundColor: "lightgray"});
+    }
+  }, [coefficientR1, coefficientP1, coefficientP2])
+
   const handleCheckClick = (): void => {
     if (coefficientR1 === balancedCoefficients.R1 
       && coefficientP1 === balancedCoefficients.P1 
@@ -60,7 +66,6 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
           <label htmlFor={productTwo.compoundName} >
             <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={1} state={productTwo.state} />
           </label>
-          
         </div>
       </div>
 

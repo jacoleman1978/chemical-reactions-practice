@@ -28,6 +28,12 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
     setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
+  useEffect(() => {
+    if (formStyle.backgroundColor !== "lightgray") {
+      setFormStyle({backgroundColor: "lightgray"});
+    }
+  }, [coefficientR1, coefficientR2, coefficientP1, coefficientP2])
+
   const handleCheckClick = (): void => {
     if (coefficientR1 === balancedCoefficients.R1 
       && coefficientR2 === balancedCoefficients.R2 
@@ -54,7 +60,6 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
           <label htmlFor={reactantTwo.compoundName} >
             <DisplayFormula formulaParts={reactantTwo.formulaParts} coefficient={1} state={reactantTwo.state} />
           </label>
-
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>
@@ -71,7 +76,6 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
           <label htmlFor={productTwo.compoundName} >
             <DisplayFormula formulaParts={productTwo.formulaParts} coefficient={1} state={productTwo.state} />
           </label>
-          
         </div>
       </div>
 

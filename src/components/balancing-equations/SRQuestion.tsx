@@ -28,6 +28,12 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
     setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
+  useEffect(() => {
+    if (formStyle.backgroundColor !== "lightgray") {
+      setFormStyle({backgroundColor: "lightgray"});
+    }
+  }, [coefficientRC, coefficientRE, coefficientPC, coefficientPE])
+
   const handleCheckClick = (): void => {
     if (coefficientRC === balancedCoefficients.RC 
       && coefficientRE === balancedCoefficients.RE 
@@ -54,7 +60,6 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
           <label htmlFor={reactantElement.compoundName}>
             <DisplayFormula formulaParts={reactantElement.formulaParts} coefficient={1} state={reactantElement.state} /> 
           </label>
-               
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>  
@@ -71,7 +76,6 @@ const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRRe
           <label htmlFor={productElement.compoundName}>
             <DisplayFormula formulaParts={productElement.formulaParts} coefficient={1} state={productElement.state} />
           </label>
-           
         </div>
       </div>
 

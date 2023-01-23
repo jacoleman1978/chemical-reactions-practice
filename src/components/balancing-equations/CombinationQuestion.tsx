@@ -25,16 +25,11 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
     setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
-  // useEffect(() => {
-  //   if (coefficientR1 === balancedCoefficients.R1 
-  //     && coefficientR2 === balancedCoefficients.R2 
-  //     && coefficientP1 === balancedCoefficients.P1
-  //     ) {
-  //       setFormStyle({backgroundColor: "palegreen"})
-  //   } else {
-  //     setFormStyle({backgroundColor: "lightpink"});
-  //   }
-  // }, [coefficientR1, coefficientR2, coefficientP1, balancedCoefficients])
+  useEffect(() => {
+    if (formStyle.backgroundColor !== "lightgray") {
+      setFormStyle({backgroundColor: "lightgray"});
+    }
+  }, [coefficientR1, coefficientR2, coefficientP1])
 
   const handleCheckClick = (): void => { 
     if (coefficientR1 === balancedCoefficients.R1 
@@ -55,7 +50,6 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
           <label htmlFor={reactantOne.compoundName}>
             <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={1} state={reactantOne.state} />
           </label>
-          
 
           <div>+</div>
 
@@ -63,7 +57,6 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
           <label htmlFor={reactantTwo.compoundName}>
             <DisplayFormula formulaParts={reactantTwo.formulaParts} coefficient={1} state={reactantTwo.state} />
           </label>
-          
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>

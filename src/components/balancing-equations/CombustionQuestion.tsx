@@ -28,6 +28,12 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
     setFormStyle({backgroundColor: "lightgray"});
   }, [toggleFlag])
 
+  useEffect(() => {
+    if (formStyle.backgroundColor !== "lightgray") {
+      setFormStyle({backgroundColor: "lightgray"});
+    }
+  }, [coefficientHC, coefficientO2, coefficientH2O, coefficientCO2])
+
   const handleCheckClick = (): void => {
     if (coefficientHC === balancedCoefficients.HC 
       && coefficientO2 === balancedCoefficients.O2 
