@@ -21,10 +21,10 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
         let numberOfQuestions: GenerateQuantity = 10;
 
         if (compoundType === "ionic-mixed") {
-            numberOfQuestions = 10;
+            numberOfQuestions = 18;
 
         } else if (compoundType === "mixed") {
-            numberOfQuestions = 10;
+            numberOfQuestions = 18;
         }
 
         let newQuestions: ReactElement[];
@@ -49,8 +49,11 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
     }, [toggleFlag, compoundType, practiceType])
 
     return (
-        <div className="flex-column med-gap">
-            {questionsDisplay}
+        <div className="flex-column med-gap full-width">
+            <div className="compound-questions med-gap">
+                {questionsDisplay}
+            </div>
+
             <MorePracticeBtn handleToggle={handleToggle} />
         </div>
     )

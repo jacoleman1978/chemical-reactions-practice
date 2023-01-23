@@ -6,9 +6,11 @@ import { generalPracticeTypes } from "./configurations/generalPracticeTypes";
 // Called from App.tsx
 const PracticeTypes = () => {
     return (
-        <div className="flex-center-center flex-column">
-            <Title title="Chemical Reactions Practice" />
-            <TypesContainer types={generalPracticeTypes} />
+        <div className="flex-center-center full-width">
+            <div className="flex-center-center flex-column">
+                <Title title="Chemical Reactions Practice" />
+                <TypesContainer types={generalPracticeTypes} />
+            </div>
         </div>
     )
 }

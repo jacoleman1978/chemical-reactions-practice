@@ -14,12 +14,12 @@ interface FormulasQuestionProps {
 const FormulasQuestion = ({formStyle, handleUserAnswer, compoundName, userAnswer}: FormulasQuestionProps) => {
     return (
         <div className="flex-center-center med-gap">
-            <label htmlFor={compoundName} className="flex-compound-label">
+            <label htmlFor={compoundName} className="flex-formula-label">
                 {compoundName}
             </label>
 
             <input 
-                className="flex-compound-input"
+                className="flex-formula-input"
                 id={compoundName}
                 style={formStyle}
                 type="text"

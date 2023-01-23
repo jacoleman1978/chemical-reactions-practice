@@ -72,4 +72,4 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
     </section>
   )
 }
-export default DecompositionQuestion
+export default DecompositionQuestion;

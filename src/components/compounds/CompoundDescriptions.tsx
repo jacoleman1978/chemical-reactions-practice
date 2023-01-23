@@ -16,25 +16,27 @@ const CompoundDescriptions = () => {
     const compoundTypes = generalCompoundTypes.map((compoundType): Description => {return {...compoundType, path: pathname + compoundType.path}});
 
     return (
-        <section className="flex-column">
+        <div className="flex-center-center full-width">
+            <section className="flex-column">
+                {pathname === "/naming" ? 
+                    <Title title="Naming Compounds Practice" /> 
+                    : null
+                }
+                {pathname === "/formulas" ? 
+                    <Title title="Writing Compound Formulas Practice" /> 
+                    : null
+                }
 
-            {pathname === "/naming" ? 
-                <Title title="Naming Compounds Practice" /> 
-                : null
-            }
-            {pathname === "/formulas" ? 
-                <Title title="Writing Compound Formulas Practice" /> 
-                : null
-            }
+                <ul>
+                    <li>Ionic: Compounds composed of ions, species with full charges</li>
+                    <Fragment>
+                        <TypesContainer types={ionicTypes} />
+                    </Fragment>
+                </ul>
+                <TypesContainer types={compoundTypes} />
+            </section>
+        </div>
 
-            <ul>
-                <li>Ionic: Compounds composed of ions, species with full charges</li>
-                <Fragment>
-                    <TypesContainer types={ionicTypes} />
-                </Fragment>
-            </ul>
-            <TypesContainer types={compoundTypes} />
-        </section>
     )
 }
 
