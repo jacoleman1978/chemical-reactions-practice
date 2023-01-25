@@ -1,5 +1,6 @@
 import DisplayFormula from "../compounds/DisplayFormula";
 import ReactionTypesDropdown from "./ReactionTypesDropdown";
+import Arrow from "../common/Arrow";
 import { CombustionReaction } from "./configurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed combustion reaction
@@ -17,7 +18,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
 
           <DisplayFormula formulaParts={o2.formulaParts} coefficient={o2.coefficient} state={o2.state} />
 
-          <i className="fa-solid fa-arrow-right-long"></i>
+          <Arrow />
         </div>
 
         <div className="flex-left-center med-gap">

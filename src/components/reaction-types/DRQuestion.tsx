@@ -1,5 +1,6 @@
 import ReactionTypesDropdown from "./ReactionTypesDropdown";
 import DisplayFormula from "../compounds/DisplayFormula";
+import Arrow from "../common/Arrow";
 import { DRReaction } from "./configurations/interfaces";
 
 const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRReaction}) => {
@@ -15,7 +16,7 @@ const DRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: DRRe
 
           <DisplayFormula formulaParts={reactantTwo.formulaParts} coefficient={reactantTwo.coefficient} state={reactantTwo.state} />
 
-          <i className="fa-solid fa-arrow-right-long"></i>
+          <Arrow />
         </div>
 
         <div className="flex-left-center med-gap">

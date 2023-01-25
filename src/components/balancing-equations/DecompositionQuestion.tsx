@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { Button } from "react-bootstrap";
 import { useCoefficientInputs } from "../../customHooks/useCoeffcientInputs";
 import CoefficientInput from "./CoefficientInput";
+import Arrow from "../common/Arrow";
 import { getTargetCoefficients } from "./helpers/getTargetCoefficients";
 import { makeEquationParts } from "./helpers/makeEquationParts";
 import { DecompositionReaction } from "../reaction-types/configurations/interfaces";
@@ -26,7 +27,7 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
           <CoefficientInput equationPart={equationParts.R1} formStyle={inputColor} userAnswer={coefficientInputs.R1} handleCoefficientChange={handleCoefficientInputs} />
         </div>
 
-        <i className="fa-solid fa-arrow-right-long"></i>
+        <Arrow />
 
         <div className="flex-left-center sm-gap">
           <CoefficientInput equationPart={equationParts.P1} formStyle={inputColor} userAnswer={coefficientInputs.P1} handleCoefficientChange={handleCoefficientInputs} />

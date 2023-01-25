@@ -1,5 +1,6 @@
 import ReactionTypesDropdown from "./ReactionTypesDropdown";
 import DisplayFormula from "../compounds/DisplayFormula";
+import Arrow from "../common/Arrow";
 import { CombinationReaction } from "./configurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed combination reaction
@@ -17,8 +18,7 @@ const CombinationQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equat
 
           <DisplayFormula formulaParts={reactantTwo.formulaParts} coefficient={reactantTwo.coefficient} state={reactantTwo.state} />
 
-          <i className="fa-solid fa-arrow-right-long"></i>
-          
+          <Arrow />
           
         </div>
 

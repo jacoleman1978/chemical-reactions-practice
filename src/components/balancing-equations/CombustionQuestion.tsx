@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { Button } from "react-bootstrap";
 import { useCoefficientInputs } from "../../customHooks/useCoeffcientInputs";
+import Arrow from "../common/Arrow";
 import CoefficientInput from "./CoefficientInput";
 import { getTargetCoefficients } from "./helpers/getTargetCoefficients";
 import { makeEquationParts } from "./helpers/makeEquationParts";
@@ -30,7 +31,7 @@ const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equati
           <CoefficientInput equationPart={equationParts.R2} formStyle={inputColor} userAnswer={coefficientInputs.R2} handleCoefficientChange={handleCoefficientInputs} />
         </div>
 
-        <i className="fa-solid fa-arrow-right-long"></i>
+        <Arrow />
 
         <div className="flex-left-center sm-gap">
           <CoefficientInput equationPart={equationParts.P1} formStyle={inputColor} userAnswer={coefficientInputs.P1} handleCoefficientChange={handleCoefficientInputs} />

@@ -1,5 +1,6 @@
 import ReactionTypesDropdown from "./ReactionTypesDropdown";
 import DisplayFormula from "../compounds/DisplayFormula";
+import Arrow from "../common/Arrow";
 import { DecompositionReaction } from "./configurations/interfaces";
 
 // Container for the dropdown reaction types menu and displayed decomposition reaction
@@ -13,7 +14,7 @@ const DecompositionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equ
         <div className="flex-left-center med-gap">
           <DisplayFormula formulaParts={reactantOne.formulaParts} coefficient={reactantOne.coefficient} state={reactantOne.state} />
 
-          <i className="fa-solid fa-arrow-right-long"></i>
+          <Arrow />
         </div>
 
         <div className="flex-left-center med-gap">
