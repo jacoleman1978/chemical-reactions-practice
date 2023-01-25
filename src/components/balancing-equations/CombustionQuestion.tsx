@@ -1,88 +1,50 @@
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Button } from "react-bootstrap";
+import { useCoefficientInputs } from "../../customHooks/useCoeffcientInputs";
 import CoefficientInput from "./CoefficientInput";
-import DisplayFormula from "../compounds/DisplayFormula";
+import { getTargetCoefficients } from "./helpers/getTargetCoefficients";
+import { makeEquationParts } from "./helpers/makeEquationParts";
 import { CombustionReaction } from "../reaction-types/configurations/interfaces";
 
 const CombustionQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: CombustionReaction}) => {
   const {hydrocarbon, o2, h2o, co2} = equation;
 
-  const balancedCoefficients = useMemo (() => {return {
-    HC: (hydrocarbon.coefficient === 1 ? "" : `${hydrocarbon.coefficient}`),
-    O2: (o2.coefficient === 1 ? "" : `${o2.coefficient}`),
-    H2O: (h2o.coefficient === 1 ? "" : `${h2o.coefficient}`),
-    CO2: (co2.coefficient === 1 ? "" : `${co2.coefficient}`),
-  }}, [hydrocarbon, o2, h2o, co2])
+  const equationParts = useMemo(() => makeEquationParts(hydrocarbon, o2, h2o, co2), [hydrocarbon, o2, h2o, co2]);
 
-  const [coefficientHC, setCoefficientHC] = useState<string>("");
-  const [coefficientO2, setCoefficientO2] = useState<string>("");
-  const [coefficientH2O, setCoefficientH2O] = useState<string>("");
-  const [coefficientCO2, setCoefficientCO2] = useState<string>("");
-  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightgray"});
+  const targetCoefficients = useMemo (() => getTargetCoefficients(hydrocarbon.coefficient, o2.coefficient, h2o.coefficient, co2.coefficient), [hydrocarbon, o2, h2o, co2])
+
+  const [coefficientInputs, handleCoefficientInputs, inputColor, handleUpdateInputColor] = useCoefficientInputs();
 
   useEffect(() => {
-    setCoefficientHC("");
-    setCoefficientO2("");
-    setCoefficientH2O("");
-    setCoefficientCO2("");
-    setFormStyle({backgroundColor: "lightgray"});
-  }, [toggleFlag])
-
-  useEffect(() => {
-    if (formStyle.backgroundColor !== "lightgray") {
-      setFormStyle({backgroundColor: "lightgray"});
-    }
-  }, [coefficientHC, coefficientO2, coefficientH2O, coefficientCO2])
-
-  const handleCheckClick = (): void => {
-    if (coefficientHC === balancedCoefficients.HC 
-      && coefficientO2 === balancedCoefficients.O2 
-      && coefficientH2O === balancedCoefficients.H2O 
-      && coefficientCO2 === balancedCoefficients.CO2) {
-        setFormStyle({backgroundColor: "palegreen"})
-    } else {
-      setFormStyle({backgroundColor: "lightpink"});
-    }
-  }
+    handleCoefficientInputs("all", "");
+  }, [toggleFlag, handleCoefficientInputs])
 
   return (
     <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap sm-gap">
         <div className="flex-left-center sm-gap">
-          <CoefficientInput id={hydrocarbon.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientHC} userAnswer={coefficientHC} />
-          <label htmlFor={hydrocarbon.compoundName}>
-            <DisplayFormula formulaParts={hydrocarbon.formulaParts} coefficient={1} state={hydrocarbon.state} />
-          </label>
+          <CoefficientInput equationPart={equationParts.R1} formStyle={inputColor} userAnswer={coefficientInputs.R1} handleCoefficientChange={handleCoefficientInputs} />
 
           <div>+</div>
 
-          <CoefficientInput id={o2.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientO2} userAnswer={coefficientO2} />
-          <label htmlFor={o2.compoundName}>
-            <DisplayFormula formulaParts={o2.formulaParts} coefficient={1} state={o2.state} /> 
-          </label>
+          <CoefficientInput equationPart={equationParts.R2} formStyle={inputColor} userAnswer={coefficientInputs.R2} handleCoefficientChange={handleCoefficientInputs} />
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>
 
         <div className="flex-left-center sm-gap">
-          <CoefficientInput id={h2o.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientH2O} userAnswer={coefficientH2O} />
-          <label htmlFor={h2o.compoundName}>
-            <DisplayFormula formulaParts={h2o.formulaParts} coefficient={1} state={h2o.state} />
-          </label>
+          <CoefficientInput equationPart={equationParts.P1} formStyle={inputColor} userAnswer={coefficientInputs.P1} handleCoefficientChange={handleCoefficientInputs} />
           
           <div>+</div>
 
-          <CoefficientInput id={co2.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientCO2} userAnswer={coefficientCO2} />
-          <label htmlFor={co2.compoundName} >
-            <DisplayFormula formulaParts={co2.formulaParts} coefficient={1} state={co2.state} />
-          </label>
+          <CoefficientInput equationPart={equationParts.P2} formStyle={inputColor} userAnswer={coefficientInputs.P2} handleCoefficientChange={handleCoefficientInputs} />
         </div>
       </div>
 
       <div className="flex-left-center">
-        <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleCheckClick()}>
-            Check Answer
-        </Button>
+          <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleUpdateInputColor(coefficientInputs, targetCoefficients)}>
+              Check Answer
+          </Button>
       </div>
     </section>
   )

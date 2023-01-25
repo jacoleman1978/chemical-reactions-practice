@@ -1,88 +1,50 @@
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Button } from "react-bootstrap";
+import { useCoefficientInputs } from "../../customHooks/useCoeffcientInputs";
 import CoefficientInput from "./CoefficientInput";
-import DisplayFormula from "../compounds/DisplayFormula";
+import { getTargetCoefficients } from "./helpers/getTargetCoefficients";
+import { makeEquationParts } from "./helpers/makeEquationParts";
 import { SRReaction } from "../reaction-types/configurations/interfaces";
 
 const SRQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: SRReaction}) => {
   const {reactantCompound, reactantElement, productCompound, productElement} = equation;
 
-  const balancedCoefficients = useMemo (() => {return {
-    RC: (reactantCompound.coefficient === 1 ? "" : `${reactantCompound.coefficient}`),
-    RE: (reactantElement.coefficient === 1 ? "" : `${reactantElement.coefficient}`),
-    PC: (productCompound.coefficient === 1 ? "" : `${productCompound.coefficient}`),
-    PE: (productElement.coefficient === 1 ? "" : `${productElement.coefficient}`),
-  }}, [reactantCompound, reactantElement, productCompound, productElement])
+  const equationParts = useMemo(() => makeEquationParts(reactantCompound, reactantElement, productCompound, productElement), [reactantCompound, reactantElement, productCompound, productElement]);
 
-  const [coefficientRC, setCoefficientRC] = useState<string>("");
-  const [coefficientRE, setCoefficientRE] = useState<string>("");
-  const [coefficientPC, setCoefficientPC] = useState<string>("");
-  const [coefficientPE, setCoefficientPE] = useState<string>("");
-  const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightgray"});
+  const targetCoefficients = useMemo (() => getTargetCoefficients(reactantCompound.coefficient, reactantElement.coefficient, productCompound.coefficient, productElement.coefficient), [reactantCompound, reactantElement, productCompound, productElement]);
+
+  const [coefficientInputs, handleCoefficientInputs, inputColor, handleUpdateInputColor] = useCoefficientInputs();
 
   useEffect(() => {
-    setCoefficientRC("");
-    setCoefficientRE("");
-    setCoefficientPC("");
-    setCoefficientPE("");
-    setFormStyle({backgroundColor: "lightgray"});
-  }, [toggleFlag])
-
-  useEffect(() => {
-    if (formStyle.backgroundColor !== "lightgray") {
-      setFormStyle({backgroundColor: "lightgray"});
-    }
-  }, [coefficientRC, coefficientRE, coefficientPC, coefficientPE])
-
-  const handleCheckClick = (): void => {
-    if (coefficientRC === balancedCoefficients.RC 
-      && coefficientRE === balancedCoefficients.RE 
-      && coefficientPC === balancedCoefficients.PC 
-      && coefficientPE === balancedCoefficients.PE) {
-        setFormStyle({backgroundColor: "palegreen"})
-    } else {
-      setFormStyle({backgroundColor: "lightpink"});
-    }
-  }
+    handleCoefficientInputs("all", "");
+  }, [toggleFlag, handleCoefficientInputs])
 
   return (
     <section className="flex-column med-gap border-bubble">
       <div className="flex-left-center wrap sm-gap">
         <div className="flex-left-center sm-gap">
-          <CoefficientInput id={reactantCompound.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientRC} userAnswer={coefficientRC} />
-          <label htmlFor={reactantCompound.compoundName} >
-            <DisplayFormula formulaParts={reactantCompound.formulaParts} coefficient={1} state={reactantCompound.state} />
-          </label>         
+          <CoefficientInput equationPart={equationParts.R1} formStyle={inputColor} userAnswer={coefficientInputs.R1} handleCoefficientChange={handleCoefficientInputs} /> 
 
           <div>+</div>
 
-          <CoefficientInput id={reactantElement.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientRE} userAnswer={coefficientRE} />
-          <label htmlFor={reactantElement.compoundName}>
-            <DisplayFormula formulaParts={reactantElement.formulaParts} coefficient={1} state={reactantElement.state} /> 
-          </label>
+          <CoefficientInput equationPart={equationParts.R2} formStyle={inputColor} userAnswer={coefficientInputs.R2} handleCoefficientChange={handleCoefficientInputs} />
         </div>
 
         <i className="fa-solid fa-arrow-right-long"></i>  
 
         <div className="flex-left-center sm-gap">
-          <CoefficientInput id={productCompound.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientPC} userAnswer={coefficientPC} />
-          <label htmlFor={productCompound.compoundName}>
-            <DisplayFormula formulaParts={productCompound.formulaParts} coefficient={1} state={productCompound.state} />
-          </label>
+          <CoefficientInput equationPart={equationParts.P1} formStyle={inputColor} userAnswer={coefficientInputs.P1} handleCoefficientChange={handleCoefficientInputs} />
 
           <div>+</div>
 
-          <CoefficientInput id={productElement.compoundName} formStyle={formStyle} handleUserAnswer={setCoefficientPE} userAnswer={coefficientPE} />
-          <label htmlFor={productElement.compoundName}>
-            <DisplayFormula formulaParts={productElement.formulaParts} coefficient={1} state={productElement.state} />
-          </label>
+          <CoefficientInput equationPart={equationParts.P2} formStyle={inputColor} userAnswer={coefficientInputs.P2} handleCoefficientChange={handleCoefficientInputs} />
         </div>
       </div>
 
       <div className="flex-left-center">
-        <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleCheckClick()}>
-            Check Answer
-        </Button>
+          <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleUpdateInputColor(coefficientInputs, targetCoefficients)}>
+              Check Answer
+          </Button>
       </div>
     </section>
   )

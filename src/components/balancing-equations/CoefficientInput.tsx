@@ -1,17 +1,22 @@
 import { ChangeEvent } from "react";
+import DisplayFormula from "../compounds/DisplayFormula";
+import { EquationPart } from "./configurations/interfaces";
+import { CoefficientType } from "../../customHooks/configurations/types";
 
 interface CoefficientInputProps {
-    id: string,
+    equationPart: EquationPart,
     formStyle: {backgroundColor: string};
-    handleUserAnswer: (arg0: string) => void;
     userAnswer: string;
+    handleCoefficientChange: (coefficientType: CoefficientType, coefficient: string) => void,
 }
 
-const CoefficientInput = ({id, formStyle, handleUserAnswer, userAnswer}: CoefficientInputProps) => {
+const CoefficientInput = ({equationPart, formStyle, userAnswer, handleCoefficientChange}: CoefficientInputProps) => {
+  const {coefficientType, compoundName, formulaParts, state} = equationPart;
+
   return (
-    <div>
+    <div className="flex-left-center sm-gap">
         <input 
-            id={id}
+            id={compoundName}
             className="coefficient-input"
             style={formStyle}
             type="number"
@@ -19,9 +24,12 @@ const CoefficientInput = ({id, formStyle, handleUserAnswer, userAnswer}: Coeffic
             max="100"
             step="1"
             aria-describedby="coefficient"
-            onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => handleCoefficientChange(coefficientType, event.target.value)}
             value={userAnswer}
         />
+        <label htmlFor={compoundName} >
+            <DisplayFormula formulaParts={formulaParts} coefficient={1} state={state} />
+        </label>
     </div>
   )
 }
