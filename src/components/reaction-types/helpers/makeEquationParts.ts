@@ -1,7 +1,7 @@
-import { EquationPartType } from "../configurations/types";
-import { EquationPart, EquationParts } from "../configurations/interfaces";
+import { EquationPartType } from "../../balancing-equations/configurations/types";
+import { EquationPart, EquationParts } from "../../balancing-equations/configurations/interfaces";
 import { ReactionTypeList } from "../../common/configurations/types";
-import { DecompositionReaction, CombinationReaction, SRReaction, DRReaction, CombustionReaction } from "../../reaction-types/configurations/interfaces";
+import { DecompositionReaction, CombinationReaction, SRReaction, DRReaction, CombustionReaction } from "../configurations/interfaces";
 
 export const makeEquationParts = (equation: ReactionTypeList): EquationParts => {
     let R1: EquationPartType = null;
@@ -31,7 +31,7 @@ export const makeEquationParts = (equation: ReactionTypeList): EquationParts => 
         R2name = reactantTwo.compoundName + reactantOne.compoundName;
         P1name = productOne.compoundName;
 
-    } else if (equation.type === "single-replacement") {
+    } else if (equation.type === "single-replacement" || equation.type === "sr-no-reaction") {
         const {reactantCompound, reactantElement, productCompound, productElement} = equation as SRReaction;
         R1 = reactantCompound;
         R2 = reactantElement;
@@ -42,7 +42,7 @@ export const makeEquationParts = (equation: ReactionTypeList): EquationParts => 
         P1name = productCompound.compoundName + productElement.compoundName;
         P2name = productElement.compoundName + productCompound.compoundName;
 
-    } else if (equation.type === "double-replacement") {
+    } else if (equation.type === "double-replacement" || equation.type === "dr-no-reaction") {
         const {reactantOne, reactantTwo, productOne, productTwo} = equation as DRReaction;
         R1 = reactantOne;
         R2 = reactantTwo;
@@ -71,6 +71,7 @@ export const makeEquationParts = (equation: ReactionTypeList): EquationParts => 
         formulaParts: [],
         state: "",
         targetCoefficient: "",
+        coefficient: 1,
     }
 
     const equationParts: EquationParts = {
@@ -80,6 +81,7 @@ export const makeEquationParts = (equation: ReactionTypeList): EquationParts => 
             formulaParts: R1.formulaParts,
             state: R1.state,
             targetCoefficient: (R1.coefficient === 1 ? "" : `${R1.coefficient}`),
+            coefficient: R1.coefficient,
         },
         R2: R2 === null ? defaultEquationPart : {
             coefficientType: "R2",
@@ -87,6 +89,7 @@ export const makeEquationParts = (equation: ReactionTypeList): EquationParts => 
             formulaParts: R2.formulaParts,
             state: R2.state,
             targetCoefficient: (R2.coefficient === 1 ? "" : `${R2.coefficient}`),
+            coefficient: R2.coefficient,
         },
         P1: P1 === null ? defaultEquationPart : {
             coefficientType: "P1",
@@ -94,6 +97,7 @@ export const makeEquationParts = (equation: ReactionTypeList): EquationParts => 
             formulaParts: P1.formulaParts,
             state: P1.state,
             targetCoefficient: (P1.coefficient === 1 ? "" : `${P1.coefficient}`),
+            coefficient: P1.coefficient,
         },
         P2: P2 === null ? defaultEquationPart : {
             coefficientType: "P2",
@@ -101,6 +105,7 @@ export const makeEquationParts = (equation: ReactionTypeList): EquationParts => 
             formulaParts: P2.formulaParts,
             state: P2.state,
             targetCoefficient: (P2.coefficient === 1 ? "" : `${P2.coefficient}`),
+            coefficient: P2.coefficient,
         },
     }
 

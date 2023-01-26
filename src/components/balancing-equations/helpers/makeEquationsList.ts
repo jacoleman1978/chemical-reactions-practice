@@ -9,7 +9,7 @@ import { ReactionType, ReactionTypeList } from "../../common/configurations/type
  * @returns "ReactionTypeList[]"
  */
 export const makeEquationsList = (): ReactionTypeList[] => {
-    let numberOfEquations = 5;
+    let numberOfEquations = 8;
 
     let equationsList: ReactionTypeList[] = [];
 

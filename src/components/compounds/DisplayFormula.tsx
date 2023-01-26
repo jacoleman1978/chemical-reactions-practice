@@ -20,7 +20,7 @@ const DisplayFormula = ({formulaParts, coefficient, state}: DisplayCompound) => 
         isState = true;
     }
   return (
-    <div className="flex-right-center med-gap">
+    <div className="flex-right-center sm-gap">
         {(isCoefficient ? coefficient : <></>)}
         <div className="flex-right-center">
             {formulaParts.map((part: (string | number), i: number) => {
@@ -28,6 +28,8 @@ const DisplayFormula = ({formulaParts, coefficient, state}: DisplayCompound) => 
                     return <div key={`part-${i}`}>{part}</div>
                 } else if (typeof part === "number") {
                     return (part > 1 ? <sub key={`part-${i}`}>{part}</sub> : <div key={`part-${i}`}></div>)
+                } else {
+                    return <></>
                 }
             })}
             {(isState ? <sub>({state})</sub> : <></>)}

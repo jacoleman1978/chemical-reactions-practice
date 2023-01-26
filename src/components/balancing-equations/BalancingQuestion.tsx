@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import Arrow from "../common/Arrow";
 import CoefficientInput from "./CoefficientInput";
 import { useCoefficientInputs } from "../../customHooks/useCoeffcientInputs";
-import { makeEquationParts } from "./helpers/makeEquationParts";
+import { makeEquationParts } from "../reaction-types/helpers/makeEquationParts";
 import { ReactionTypeList } from "../common/configurations/types";
 
 const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: ReactionTypeList}) => {
@@ -16,7 +16,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
     }, [toggleFlag, handleCoefficientInputs])
 
   return (
-    <section className="flex-column med-gap border-bubble">
+    <section className="balancing-section med-gap border-bubble">
       <div className="balancing">
         <div className="flex-left-center sm-gap reactants">
           <CoefficientInput equationPart={equationParts.R1} formStyle={inputColor} userAnswer={coefficientInputs.R1} handleCoefficientChange={handleCoefficientInputs} />
@@ -38,7 +38,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
       </div>
 
       <div className="flex-left-center">
-          <Button variant="success" className="flex-center-center lg-left-margin" onClick={() => handleUpdateInputColor(coefficientInputs, equationParts)}>
+          <Button variant="success" className="flex-center-center check-answer-btn" onClick={() => handleUpdateInputColor(coefficientInputs, equationParts)}>
               Check Answer
           </Button>
       </div>

@@ -7,6 +7,7 @@ export interface EquationPart {
     formulaParts: FormulaParts,
     state: StateOfMatter,
     targetCoefficient: string,
+    coefficient: number,
 }
 
 export interface EquationParts {

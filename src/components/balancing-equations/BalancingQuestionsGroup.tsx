@@ -23,7 +23,10 @@ const BalancingQuestionsGroup = () => {
 
   return (
     <div className="flex-column med-gap">
-        {questionsDisplay}
+        <div className="balancing-group">
+          {questionsDisplay}
+        </div>
+
         <MorePracticeBtn handleToggle={handleToggle} />
     </div>
   )

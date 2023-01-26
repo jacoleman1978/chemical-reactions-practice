@@ -1,13 +1,8 @@
 import { useState, useEffect, ReactElement } from "react";
 import { makeEquationsList } from "./helpers/makeEquationsList";
-import DecompositionQuestion from "./DecompositionQuestion";
-import CombustionQuestion from "./CombustionQuestion";
-import DRQuestion from "./DRQuestion";
-import CombinationQuestion from "./CombinationQuestion";
-import SRQuestion from "./SRQuestion";
+import ReactionTypeQuestion from "./ReactionTypeQuestion";
 import MorePracticeBtn from "../common/MorePracticeBtn";
 import { useToggle } from "../../customHooks/useToggle";
-import { DecompositionReaction, CombustionReaction, SRReaction, DRReaction, CombinationReaction } from "./configurations/interfaces";
 import { ReactionTypeList } from "../common/configurations/types";
 
 // Called from /reaction-types/ReactionTypesPractice.tsx
@@ -20,24 +15,7 @@ const ReactionTypesQuestionsGroup = () => {
       let equationsList: ReactionTypeList[] = makeEquationsList();
 
       newQuestions = equationsList.map((equation, i) => {
-        if (equation.type === "decomposition") {
-            return <DecompositionQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DecompositionReaction} />
-        } else if (equation.type === "combustion") {
-            return <CombustionQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as CombustionReaction} />
-        } else if (equation.type === "double-replacement") {
-            return <DRQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DRReaction} />
-        } else if (equation.type === "dr-no-reaction") {
-            return <DRQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as DRReaction} />
-        } else if (equation.type === "single-replacement") {
-            return <SRQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as SRReaction} />
-        } else if (equation.type === "sr-no-reaction") {
-            return <SRQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as SRReaction} />
-        } else if (equation.type === "combination") {
-            return <CombinationQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation as CombinationReaction} />
-        } else {
-            return <div key={`equation-${i}`}></div>
-        }
-        
+        return <ReactionTypeQuestion key={`equation-${i}`} toggleFlag={toggleFlag} equation={equation} />
       })
 
       setQuestionsDisplay(newQuestions)
@@ -46,7 +24,10 @@ const ReactionTypesQuestionsGroup = () => {
 
   return (
     <div className="flex-column med-gap">
-        {questionsDisplay}
+        <div className="reaction-type-group">
+            {questionsDisplay}
+        </div>
+        
         <MorePracticeBtn handleToggle={handleToggle} />
     </div>
   )
