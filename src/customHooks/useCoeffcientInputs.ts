@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { UseCoefficientInputs, CoefficientType } from './configurations/types';
 import { CoefficientInputs, BackgroundColorStyle } from './configurations/interfaces';
+import { EquationParts } from '../components/balancing-equations/configurations/interfaces';
 
 export const useCoefficientInputs = (): UseCoefficientInputs => {
     const [coefficientInputs, setCoefficientInputs] = useState<CoefficientInputs>({
@@ -30,11 +31,11 @@ export const useCoefficientInputs = (): UseCoefficientInputs => {
         setInputColor({backgroundColor: "lightgray"});
     }, []) 
 
-    const handleUpdateInputColor = useCallback((coefficientInputs: CoefficientInputs, targetCoefficients: CoefficientInputs): void => {
-        if (coefficientInputs.R1 === targetCoefficients.R1 
-            && coefficientInputs.R2 === targetCoefficients.R2 
-            && coefficientInputs.P1 === targetCoefficients.P1 
-            && coefficientInputs.P2 === targetCoefficients.P2) 
+    const handleUpdateInputColor = useCallback((coefficientInputs: CoefficientInputs, equationParts: EquationParts): void => {
+        if (coefficientInputs.R1 === equationParts.R1.targetCoefficient 
+            && coefficientInputs.R2 === equationParts.R2.targetCoefficient
+            && coefficientInputs.P1 === equationParts.P1.targetCoefficient 
+            && coefficientInputs.P2 === equationParts.P2.targetCoefficient) 
         {
             setInputColor({backgroundColor: "palegreen"});
         } else {

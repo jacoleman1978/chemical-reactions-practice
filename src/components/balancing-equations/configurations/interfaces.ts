@@ -6,6 +6,7 @@ export interface EquationPart {
     compoundName: string,
     formulaParts: FormulaParts,
     state: StateOfMatter,
+    targetCoefficient: string,
 }
 
 export interface EquationParts {

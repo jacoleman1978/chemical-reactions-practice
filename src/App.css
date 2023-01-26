@@ -237,12 +237,20 @@ h1 {
   background-image: linear-gradient(#6ef50d, #1b720c 70%);
 }
 
+.balancing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 0.5rem;
+}
+
 .arrow {
   display: flex;
   justify-content: right;
   align-items: center;
-  height: 25px;
-  width: 40px;
+  height: 15px;
+  width: 25px;
 }
 
 .arrow-stem {
@@ -260,8 +268,8 @@ h1 {
   height: 2px;
   width: 7px;
   transform: rotate(45deg);
-  left: 20.5px;
-  bottom: 2.4px;
+  left: 15.5px;
+  bottom: 1.2px;
   border-radius: 2px;
 }
 
@@ -272,8 +280,8 @@ h1 {
   height: 2px;
   width: 7px;
   transform: rotate(-45deg);
-  right: 6.5px;
-  top: 2.4px;
+  right: 4.5px;
+  top: 1.2px;
   border-radius: 2px;
 }
 
@@ -290,6 +298,28 @@ h1 {
   
   .flex-naming-input {
     flex: 1 0 6rem;
+  }
+
+  .balancing {
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0rem;
+  }
+
+  .reactants, .products, .arrow{
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 750px) {
+  .balancing {
+    flex-wrap: nowrap;
+  }
+
+  .reactants, .products, .arrow{
+    margin: 0.5rem 0rem;
   }
 }
 
