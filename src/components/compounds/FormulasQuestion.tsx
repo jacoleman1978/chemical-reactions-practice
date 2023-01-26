@@ -13,7 +13,7 @@ interface FormulasQuestionProps {
 // Called from /compound/CompoundsQuestion.tsx
 const FormulasQuestion = ({formStyle, handleUserAnswer, compoundName, userAnswer}: FormulasQuestionProps) => {
     return (
-        <div className="flex-center-center med-gap">
+        <div className="flex-center-center med-gap border-bubble">
             <label htmlFor={compoundName} className="flex-formula-label">
                 {compoundName}
             </label>

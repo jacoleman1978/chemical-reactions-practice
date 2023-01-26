@@ -15,7 +15,7 @@ interface NamingQuestionProps {
 // Called from /compound/CompoundsQuestion.tsx
 const NamingQuestion = ({formStyle, handleUserAnswer, compoundName, formulaParts, userAnswer}: NamingQuestionProps) => {
     return (
-        <div className="flex-center-center med-gap">
+        <div className="flex-center-center med-gap border-bubble">
             <label htmlFor={compoundName} className="flex-naming-label">
                 <DisplayFormula formulaParts={formulaParts} />
             </label>
