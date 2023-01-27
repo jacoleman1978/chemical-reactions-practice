@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { UseCoefficientInputs, CoefficientType } from './configurations/types';
 import { CoefficientInputs, BackgroundColorStyle } from './configurations/interfaces';
-import { EquationParts } from '../components/balancing-equations/configurations/interfaces';
+import { EquationParts } from '../components/reaction-types/configurations/interfaces';
 
 export const useCoefficientInputs = (): UseCoefficientInputs => {
     const [coefficientInputs, setCoefficientInputs] = useState<CoefficientInputs>({

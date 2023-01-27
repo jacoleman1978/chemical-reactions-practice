@@ -31,7 +31,7 @@ export const balanceSREquations = (srEquation: SRReaction, isMetal: boolean): SR
  * @param isMetal boolean: If true, the elements doing the replacing are metals, otherwise they are nonmentals
  * @returns "{balancingTable: BalancingTable, tableKeys: string[]}"
  */
-const makeSRBalancingTable = (srEquation: SRReaction, isMetal: boolean): {balancingTable: BalancingTable, tableKeys: string[]} => {
+export const makeSRBalancingTable = (srEquation: SRReaction, isMetal: boolean): {balancingTable: BalancingTable, tableKeys: string[]} => {
     const {reactantCompound, reactantElement, productCompound, productElement} = srEquation;
     const elementOne: string = reactantElement.compoundFormula;
     const elementTwo: string = productElement.compoundFormula;

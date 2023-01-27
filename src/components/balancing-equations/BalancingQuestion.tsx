@@ -4,6 +4,7 @@ import Arrow from "../common/Arrow";
 import CoefficientInput from "./CoefficientInput";
 import { useCoefficientInputs } from "../../customHooks/useCoeffcientInputs";
 import { makeEquationParts } from "../reaction-types/helpers/makeEquationParts";
+import { getBalancingHint } from "./helpers/getBalancingHint";
 import { ReactionTypeList } from "../common/configurations/types";
 
 const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: ReactionTypeList}) => {
@@ -11,7 +12,9 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
 
     const [coefficientInputs, handleCoefficientInputs, inputColor, handleUpdateInputColor] = useCoefficientInputs();
 
+    
     useEffect(() => {
+      console.log(getBalancingHint(coefficientInputs, equationParts));
       handleCoefficientInputs("all", "");
     }, [toggleFlag, handleCoefficientInputs])
 
@@ -19,26 +22,56 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
     <section className="balancing-section med-gap border-bubble">
       <div className="balancing">
         <div className="flex-left-center sm-gap reactants">
-          <CoefficientInput equationPart={equationParts.R1} formStyle={inputColor} userAnswer={coefficientInputs.R1} handleCoefficientChange={handleCoefficientInputs} />
+          <CoefficientInput 
+            equationPart={equationParts.R1} 
+            formStyle={inputColor} 
+            userAnswer={coefficientInputs.R1} 
+            handleCoefficientChange={handleCoefficientInputs} 
+          />
 
           {equation.type !== "decomposition" ? <div>+</div> : null}
 
-          {equation.type !== "decomposition" ? <CoefficientInput equationPart={equationParts.R2} formStyle={inputColor} userAnswer={coefficientInputs.R2} handleCoefficientChange={handleCoefficientInputs} /> : null}
+          {equation.type !== "decomposition" ? 
+            <CoefficientInput 
+              equationPart={equationParts.R2} 
+              formStyle={inputColor} 
+              userAnswer={coefficientInputs.R2} 
+              handleCoefficientChange={handleCoefficientInputs} 
+            /> 
+            : null
+          }
         </div>
 
         <Arrow />
 
         <div className="flex-left-center sm-gap products">
-          <CoefficientInput equationPart={equationParts.P1} formStyle={inputColor} userAnswer={coefficientInputs.P1} handleCoefficientChange={handleCoefficientInputs} />
+          <CoefficientInput 
+            equationPart={equationParts.P1} 
+            formStyle={inputColor} 
+            userAnswer={coefficientInputs.P1} 
+            handleCoefficientChange={handleCoefficientInputs} 
+          />
 
           {equation.type !== "combination" ? <div>+</div> : null}
 
-          {equation.type !== "combination" ? <CoefficientInput equationPart={equationParts.P2} formStyle={inputColor} userAnswer={coefficientInputs.P2} handleCoefficientChange={handleCoefficientInputs} /> : null}
+          {equation.type !== "combination" ? 
+            <CoefficientInput 
+              equationPart={equationParts.P2} 
+              formStyle={inputColor} 
+              userAnswer={coefficientInputs.P2} 
+              handleCoefficientChange={handleCoefficientInputs} 
+            /> 
+            : null
+          }
         </div>
       </div>
 
       <div className="flex-left-center">
-          <Button variant="success" className="flex-center-center check-answer-btn" onClick={() => handleUpdateInputColor(coefficientInputs, equationParts)}>
+          <Button 
+            variant="success" 
+            className="flex-center-center check-answer-btn" 
+            onClick={() => handleUpdateInputColor(coefficientInputs, equationParts)}
+          >
               Check Answer
           </Button>
       </div>

@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { Ion } from "../../ions/configurations/interfaces";
 import { IonicCompound, MolecularCompound } from "../../compounds/configurations/interfaces";
 import { ReactionType, FormulaParts, StateOfMatter } from "../../common/configurations/types";
+import { CoefficientType } from "../../../customHooks/configurations/types";
 
 export interface InformationDisplay {
     reactionType: ReactionType,
@@ -92,4 +93,26 @@ export interface DRAnionsWithCation {
 
 export interface DRIons extends DRAnionsWithCation {
     secondCation: Ion,
+}
+
+export interface CompoundParts {
+    [key: string]: number;
+}
+
+export interface EquationPart {
+    coefficientType: CoefficientType,
+    ariaLabel: string,
+    formulaParts: FormulaParts,
+    state: StateOfMatter,
+    targetCoefficient: string,
+    coefficient: number,
+    compoundParts: CompoundParts,
+}
+
+export interface EquationParts {
+    reactionType: ReactionType,
+    R1: EquationPart,
+    R2: EquationPart,
+    P1: EquationPart,
+    P2: EquationPart,
 }

@@ -1,5 +1,5 @@
 import { CoefficientInputs, BackgroundColorStyle } from "./interfaces";
-import { EquationParts } from "../../components/balancing-equations/configurations/interfaces";
+import { EquationParts } from "../../components/reaction-types/configurations/interfaces";
 
 export type UseToggle = [
     displayToggle: boolean,

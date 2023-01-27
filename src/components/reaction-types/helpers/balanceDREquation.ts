@@ -57,7 +57,7 @@ const balanceIon = (balancingTable: BalancingTable, tableKey: string, reactant: 
  * @param drEquation "DRReaction" object
  * @returns "{balancingTable, tableKeys}: {balancingTable: BalancingTable, tableKeys: string[]}": the created "BalancingTable" object and its keys
  */
-const makeDRBalancingTable = (drEquation: DRReaction): {balancingTable: BalancingTable, tableKeys: string[]} => {
+export const makeDRBalancingTable = (drEquation: DRReaction): {balancingTable: BalancingTable, tableKeys: string[]} => {
     const {reactantOne, reactantTwo, productOne, productTwo} = drEquation;
     const cationOne: string = reactantOne.cation.ionFormula;
     const anionOne: string = reactantOne.anion.ionFormula;

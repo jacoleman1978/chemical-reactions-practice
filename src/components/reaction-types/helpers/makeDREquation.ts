@@ -25,9 +25,9 @@ export const makeDREquation = (isSoluble: boolean): DRReaction=> {
     let productTwo: IonicCompound = makeIonicCompound("ionic-mixed", secondCation, secondAnion);
 
     // Set the reaction type based on whether all products will be soluble
-    const type: ReactionType = (isSoluble ? "dr-no-reaction" : "double-replacement")
+    const type: ReactionType = (isSoluble ? "dr-no-reaction" : "double-replacement");
 
-    let drEquation: DRReaction = {type, reactantOne, reactantTwo, productOne, productTwo}
+    let drEquation: DRReaction = {type, reactantOne, reactantTwo, productOne, productTwo};
 
     return balanceDREquation(drEquation)
 };

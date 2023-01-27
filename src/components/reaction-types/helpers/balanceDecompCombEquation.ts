@@ -66,7 +66,7 @@ export const balanceDecompCombEquation = (decompCombEquation: BalanceDecompCombP
  * @param elementTwo "EquationElement" object
  * @returns A "BalancingTable" object with ion names as keys, each with qtyReactants and qtyProducts
  */
-const makeDecompCombBalancingTable = (reactionType: ReactionType, compound: IonicCompound, elementOne: EquationElement, elementTwo: EquationElement): BalancingTable => {
+export const makeDecompCombBalancingTable = (reactionType: ReactionType, compound: IonicCompound, elementOne: EquationElement, elementTwo: EquationElement): BalancingTable => {
     // Whether the number is assigned to reactants or products depends on the "reactionType"
     let cationElement: number = elementOne.subscript;
     let cationInCompound: number = compound.cation.subscript;
