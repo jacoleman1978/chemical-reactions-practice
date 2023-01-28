@@ -298,6 +298,13 @@ h1 {
   flex-direction: column;
 }
 
+.hint-text {
+  font-size: x-small;
+  font-style: italic;
+  color: red;
+  margin: 0;
+}
+
 @media (min-width: 360px) {
   .reaction-type-group {
     display: grid;
