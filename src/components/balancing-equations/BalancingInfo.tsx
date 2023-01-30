@@ -1,5 +1,6 @@
 import { balancingInfo } from "./configurations/balancingInfo";
 
+// Displays background and instruction information for balancing chemical equations
 const BalancingInfo = () => {
   return (
     <ul>

@@ -1,6 +1,12 @@
 import { UserCoefficients } from "../../../customHooks/configurations/interfaces";
 import { EquationParts, BalancingTable } from "../../reaction-types/configurations/interfaces";
 
+/**
+ * Make a list of each component of a chemical equation to be balanced, including the quantities of each component present in the reactants and products.
+ * @param userCoefficients number-based object with UserCoefficients interface.
+ * @param equationParts Interface of EquationParts, containing information necessary for displaying and evaluating balanced chemical equations
+ * @returns object with BalancingTable interface, {[key: string]: {qtyReactants: number, qtyProducts: number}} 
+ */
 export const makeBalancingTable = (userCoefficients: UserCoefficients, equationParts: EquationParts): BalancingTable => {
     let balancingTable: BalancingTable = {} as BalancingTable;
 

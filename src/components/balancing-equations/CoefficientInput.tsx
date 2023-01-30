@@ -10,6 +10,14 @@ interface CoefficientInputProps {
     handleCoefficientChange: (coefficientType: CoefficientType, coefficient: string) => void,
 }
 
+/**
+ * 
+ * @param equationParts object with EquationPart interface
+ * @param formStyle object of {backgroundColor: string} to set the background color of the input
+ * @param userAnswer user-entered coefficient as a string
+ * @param handleCoefficientChange set the state for a coefficient change
+ * @returns Displays an input for the coefficient of a specific component of a chemical equation
+ */
 const CoefficientInput = ({equationPart, formStyle, userAnswer, handleCoefficientChange}: CoefficientInputProps) => {
   const {coefficientType, ariaLabel, formulaParts, state} = equationPart;
 

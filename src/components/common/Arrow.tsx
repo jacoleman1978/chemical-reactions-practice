@@ -1,3 +1,4 @@
+// Displays a reaction arrow for chemical equations
 const Arrow = () => {
   return (
     <div className="arrow">

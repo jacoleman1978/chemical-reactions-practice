@@ -6,16 +6,19 @@ interface DisplayCompound {
     state?: StateOfMatter,
 }
 
+// Displays the chemical formula for FormulaParts type formula parts. 
 const DisplayFormula = ({formulaParts, coefficient, state}: DisplayCompound) => {
     let isCoefficient: boolean = false;
     let isState: boolean = false;
 
+    // If a coefficient is passed in and greater than one, display it.
     if (coefficient !== undefined) {
         if (coefficient > 1) {
             isCoefficient = true;
         }
     }
-
+    
+    // If a state is passed, display it.
     if (state !== undefined) {
         isState = true;
     }

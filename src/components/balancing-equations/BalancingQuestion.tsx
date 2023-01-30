@@ -8,17 +8,27 @@ import { makeEquationParts } from "../reaction-types/helpers/makeEquationParts";
 import { getBalancingHint } from "./helpers/getBalancingHint";
 import { ReactionTypeList } from "../common/configurations/types";
 
+/**
+ * 
+ * @param toggleFlag boolean, indicating whether should reset all question state
+ * @param equation an object with a ReactionTypeList interface, containing all of the components for creating and balancing a chemical equation of a specific type
+ * @returns Display of an individual balancing chemical equation question with inputs for each coefficient and a "Check Answer" button
+ */
 const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: ReactionTypeList}) => {
-    const equationParts = useMemo(() => makeEquationParts(equation), [equation]);
+  // Make convert the equation objects into a uniform object used to display and evaluate a chemical equation
+  const equationParts = useMemo(() => makeEquationParts(equation), [equation]);
 
-    const [answerCheckFlag, setAnswerCheckFlag] = useToggle();
+  // Used in the "Check Answer" button and as a flag to display hints if user answer is incorrect
+  const [answerCheckFlag, setAnswerCheckFlag] = useToggle();
 
-    const [coefficientInputs, handleCoefficientInputs, inputColor, handleUpdateInputColor] = useCoefficientInputs();
-    
-    useEffect(() => {
-      handleCoefficientInputs("all", "");
-      setAnswerCheckFlag();
-    }, [toggleFlag, handleCoefficientInputs])
+  // State for user-entered coefficients and the background color of the input based on correctness of answer and button state. 
+  const [coefficientInputs, handleCoefficientInputs, inputColor, handleUpdateInputColor] = useCoefficientInputs();
+  
+  // Used to reset state for the question
+  useEffect(() => {
+    handleCoefficientInputs("all", "");
+    setAnswerCheckFlag();
+  }, [toggleFlag, handleCoefficientInputs])
 
   return (
     <section className="balancing-section med-gap border-bubble">
@@ -32,6 +42,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
               handleCoefficientChange={handleCoefficientInputs} 
             />
 
+            {/* Since decomposition equations only have one reactant, don't display the "+" or a second reactant. */}
             {equation.type !== "decomposition" ? <div>+</div> : null}
 
             {equation.type !== "decomposition" ? 
@@ -55,6 +66,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
               handleCoefficientChange={handleCoefficientInputs} 
             />
 
+            {/* Since combination equations only have one product, don't display the "+" or a second product. */}
             {equation.type !== "combination" ? <div>+</div> : null}
 
             {equation.type !== "combination" ? 
@@ -69,6 +81,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
           </div>
         </div>
 
+        {/* Display a hint to the user if the "Check Answer" button clicked and the answer is incorrect */}
         {answerCheckFlag && inputColor.backgroundColor === "lightpink" 
           ? <p className="hint-text">{getBalancingHint(coefficientInputs, equationParts)}</p> 
           : null
