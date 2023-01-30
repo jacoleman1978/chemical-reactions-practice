@@ -3,6 +3,7 @@ import { UseCoefficientInputs, CoefficientType } from './configurations/types';
 import { CoefficientInputs, BackgroundColorStyle } from './configurations/interfaces';
 import { EquationParts } from '../components/reaction-types/configurations/interfaces';
 
+// Used to keep track of state for user-entered coefficients for balancing chemical equation, including the current background color for the input field
 export const useCoefficientInputs = (): UseCoefficientInputs => {
     const [coefficientInputs, setCoefficientInputs] = useState<CoefficientInputs>({
         R1: "",
@@ -12,6 +13,7 @@ export const useCoefficientInputs = (): UseCoefficientInputs => {
     });
     const [inputColor, setInputColor] = useState<BackgroundColorStyle>({backgroundColor: "lightgray"});
 
+    // Updates the state for the coefficient inputs, either setting all to the same value or updating the specific coefficient type
     const handleCoefficientInputs = useCallback((coefficientType: CoefficientType, coefficient: string): void => {
         if (coefficientType === "all") {
             setCoefficientInputs({
@@ -28,9 +30,11 @@ export const useCoefficientInputs = (): UseCoefficientInputs => {
             }});
         }
 
+        // Updates the background color of the input field to lightgray when the user starts typing
         setInputColor({backgroundColor: "lightgray"});
     }, []) 
 
+    // Updates the background color of the input field to palegreen if the user has entered the correct coefficients, or lightpink if the user has entered the incorrect coefficients
     const handleUpdateInputColor = useCallback((coefficientInputs: CoefficientInputs, equationParts: EquationParts): void => {
         if (coefficientInputs.R1 === equationParts.R1.targetCoefficient 
             && coefficientInputs.R2 === equationParts.R2.targetCoefficient
