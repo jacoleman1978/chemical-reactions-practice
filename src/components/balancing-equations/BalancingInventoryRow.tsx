@@ -8,9 +8,12 @@ interface BalancingInventoryRowProps {
 }
 
 const BalancingInventoryRow = ({equationComponent, qtyReactants, qtyProducts}: BalancingInventoryRowProps) => {
+  let qtyBackgroundStyle = {
+    backgroundColor: qtyReactants === qtyProducts ? "lightgreen" : "lightcoral"
+  }
 
   return (
-    <tr key={equationComponent + Math.random()}>
+    <tr key={equationComponent + Math.random()} style={qtyBackgroundStyle}>
         <td>{qtyReactants}</td>
         <th className="th-rap"><DisplayUsersFormula usersFormula={equationComponent} /></th>
         <td>{qtyProducts}</td>

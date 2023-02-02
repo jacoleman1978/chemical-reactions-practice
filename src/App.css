@@ -43,10 +43,6 @@ thead {
   background-color: rgb(179, 222, 242);
 }
 
-.th-rap {
-  background-color: rgb(214, 235, 245);
-}
-
 tbody tr:hover {
   background-color: #f4c8c8;
 }
