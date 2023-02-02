@@ -73,7 +73,7 @@ export interface BalancingTable {
     [member: string]: {
         qtyReactants: number,
         qtyProducts: number,
-    }
+    },
 }
 
 export interface SolubilityLists {

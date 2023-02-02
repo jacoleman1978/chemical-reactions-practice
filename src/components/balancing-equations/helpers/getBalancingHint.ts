@@ -1,20 +1,16 @@
-import { convertUserCoefficients } from "./convertUserCoefficients";
 import { makeBalancingTable } from "./makeBalancingTable";
-import { CoefficientInputs, UserCoefficients } from "../../../customHooks/configurations/interfaces";
+import { UserCoefficients } from "../../../customHooks/configurations/interfaces";
 import { EquationParts, BalancingTable } from "../../reaction-types/configurations/interfaces";
 
 /**
  * Evaluates the user-entered coefficients for the balanced equation form, giving specific feedback to the user.
- * @param coefficientInputs Interface of CoefficientInputs containing the coefficients entered into the form for balanced equations with and empty string representing the coefficient of "1".
+ * @param userCoefficients Interface of CoefficientInputs containing the coefficients entered into the form for balanced equations with and empty string representing the coefficient of "1".
  * @param equationParts Interface of EquationParts, containing information necessary for displaying and evaluating balanced chemical equations
  * @returns string with specific feedback regarding the user's coefficient input, attempting to balance a chemical equation.
  */
 
-export const getBalancingHint = (coefficientInputs: CoefficientInputs, equationParts: EquationParts): string => {
-    // Converts the CoefficientInputs string-based object into a number-based UserCoefficients object.
-    const userCoefficients: UserCoefficients = convertUserCoefficients(coefficientInputs);
-
-    for (let coefficient of Object.values(coefficientInputs)) {
+export const getBalancingHint = (userCoefficients: UserCoefficients, equationParts: EquationParts): string => {
+    for (let coefficient of Object.values(userCoefficients)) {
         // Check for user-entered "1" instead of ""
         if (Number(coefficient) === 1) {
             return "When a coefficient should be 1, leave it blank. It is similar to algebraic expressions where 1 is implied, but omitted.";

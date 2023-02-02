@@ -28,7 +28,10 @@ const FormulasQuestion = ({formStyle, handleUserAnswer, compoundName, userAnswer
                 value={userAnswer}
             />
 
-            <DisplayUsersFormula usersFormula={userAnswer} />
+            <div className="width-90px">
+                <DisplayUsersFormula usersFormula={userAnswer} />
+            </div>
+            
         </div>
     )
 }
