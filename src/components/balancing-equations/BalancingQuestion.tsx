@@ -42,72 +42,74 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
   }, [toggleFlag, handleCoefficientInputs])
 
   return (
-    <section className="balancing-section med-gap border-bubble">
-      <div className="flex-column">
-        <div className="balancing">
-          <div className="flex-left-center sm-gap reactants">
-            <CoefficientInput 
-              equationPart={equationParts.R1} 
-              formStyle={inputColor} 
-              userAnswer={coefficientInputs.R1} 
-              handleCoefficientChange={handleCoefficientInputs} 
-            />
-
-            {/* Since decomposition equations only have one reactant, don't display the "+" or a second reactant. */}
-            {equation.type !== "decomposition" ? <div>+</div> : null}
-
-            {equation.type !== "decomposition" ? 
+    <section className="flex-column med-gap border-bubble">
+      <div className="balancing-section med-gap">
+        <div className="flex-column">
+          <div className="balancing">
+            <div className="flex-left-center sm-gap reactants">
               <CoefficientInput 
-                equationPart={equationParts.R2} 
+                equationPart={equationParts.R1} 
                 formStyle={inputColor} 
-                userAnswer={coefficientInputs.R2} 
+                userAnswer={coefficientInputs.R1} 
                 handleCoefficientChange={handleCoefficientInputs} 
-              /> 
-              : null
-            }
+              />
+
+              {/* Since decomposition equations only have one reactant, don't display the "+" or a second reactant. */}
+              {equation.type !== "decomposition" ? <div>+</div> : null}
+
+              {equation.type !== "decomposition" ? 
+                <CoefficientInput 
+                  equationPart={equationParts.R2} 
+                  formStyle={inputColor} 
+                  userAnswer={coefficientInputs.R2} 
+                  handleCoefficientChange={handleCoefficientInputs} 
+                /> 
+                : null
+              }
+            </div>
+
+            <Arrow />
+
+            <div className="flex-left-center sm-gap products">
+              <CoefficientInput 
+                equationPart={equationParts.P1} 
+                formStyle={inputColor} 
+                userAnswer={coefficientInputs.P1} 
+                handleCoefficientChange={handleCoefficientInputs} 
+              />
+
+              {/* Since combination equations only have one product, don't display the "+" or a second product. */}
+              {equation.type !== "combination" ? <div>+</div> : null}
+
+              {equation.type !== "combination" ? 
+                <CoefficientInput 
+                  equationPart={equationParts.P2} 
+                  formStyle={inputColor} 
+                  userAnswer={coefficientInputs.P2} 
+                  handleCoefficientChange={handleCoefficientInputs} 
+                /> 
+                : null
+              }
+            </div>
           </div>
 
-          <Arrow />
-
-          <div className="flex-left-center sm-gap products">
-            <CoefficientInput 
-              equationPart={equationParts.P1} 
-              formStyle={inputColor} 
-              userAnswer={coefficientInputs.P1} 
-              handleCoefficientChange={handleCoefficientInputs} 
-            />
-
-            {/* Since combination equations only have one product, don't display the "+" or a second product. */}
-            {equation.type !== "combination" ? <div>+</div> : null}
-
-            {equation.type !== "combination" ? 
-              <CoefficientInput 
-                equationPart={equationParts.P2} 
-                formStyle={inputColor} 
-                userAnswer={coefficientInputs.P2} 
-                handleCoefficientChange={handleCoefficientInputs} 
-              /> 
-              : null
-            }
-          </div>
+          {/* Display a hint to the user if the "Check Answer" button clicked and the answer is incorrect */}
+          {answerCheckFlag && inputColor.backgroundColor === "lightpink" 
+            ? <p className="hint-text">{getBalancingHint(coefficientInputs, equationParts)}</p> 
+            : null
+          }
         </div>
 
-        {/* Display a hint to the user if the "Check Answer" button clicked and the answer is incorrect */}
-        {answerCheckFlag && inputColor.backgroundColor === "lightpink" 
-          ? <p className="hint-text">{getBalancingHint(userCoefficients, equationParts)}</p> 
-          : null
-        }
-      </div>
-
-      <div className="flex-left-center">
-          <Button 
-            variant="success" 
-            className="flex-center-center check-answer-btn" 
-            onClick={() => {handleUpdateInputColor(coefficientInputs, equationParts)
-                            setAnswerCheckFlag()}}
-          >
-              Check Answer
-          </Button>
+        <div className="flex-left-center">
+            <Button 
+              variant="success" 
+              className="flex-center-center check-answer-btn" 
+              onClick={() => {handleUpdateInputColor(coefficientInputs, equationParts)
+                              setAnswerCheckFlag()}}
+            >
+                Check Answer
+            </Button>
+        </div>
       </div>
 
       {inputColor.backgroundColor === "lightpink" 
