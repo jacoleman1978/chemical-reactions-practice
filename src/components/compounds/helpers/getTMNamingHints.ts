@@ -70,6 +70,11 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
         return "There should be a space between the Roman numeral and the anion.";
     }
 
+    // Ensure that there is one and only one space between the Roman numeral and the anion
+    if (userAnswer.split(" ").length > 2) {
+        return "There can only be one space between the two parts of the name.";
+    }
+
     decomposedUserAnswer.anionName = userAnswer.slice(lastParenthesisIndex + 1).trim();
 
     // Check for presence of anion name

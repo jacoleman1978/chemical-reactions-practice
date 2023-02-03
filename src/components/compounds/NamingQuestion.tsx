@@ -1,6 +1,5 @@
-import { useState, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { Button } from "react-bootstrap";
-import { useToggle } from "../../customHooks/useToggle";
 import DisplayFormula from "./DisplayFormula";
 import { getNamingHints } from "./helpers/getNamingHints";
 import { CompoundType, FormulaParts } from "../common/configurations/types";
@@ -18,8 +17,13 @@ interface NamingQuestionProps {
 // The input field's background color will change to a light green when the answer is correct.
 // Called from /compound/CompoundsQuestion.tsx
 const NamingQuestion = ({formStyle, handleUserAnswer, compoundName, formulaParts, userAnswer, compoundType}: NamingQuestionProps) => {
-    const [toggleHint, setToggleHint] = useToggle();
+    const [toggleHint, setToggleHint] = useState(false);
     const [hints, setHints] = useState<string>("");
+
+    useEffect(() => {
+        setHints("");
+        setToggleHint(false);
+    }, [compoundName])
     
     return (
         <section className="flex-column border-bubble med-gap">
@@ -34,7 +38,10 @@ const NamingQuestion = ({formStyle, handleUserAnswer, compoundName, formulaParts
                     style={formStyle}
                     type="text"
                     aria-describedby="compound name"
-                    onChange={(event: ChangeEvent<HTMLInputElement>) => handleUserAnswer(event.target.value)}
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                        handleUserAnswer(event.target.value);
+                        setToggleHint(false);
+                    }}
                     value={userAnswer}
                 />
                 <div className="flex-left-center">
@@ -43,7 +50,7 @@ const NamingQuestion = ({formStyle, handleUserAnswer, compoundName, formulaParts
                         className="flex-center-center check-answer-btn" 
                         onClick={() => {
                             setHints(() => getNamingHints(userAnswer, compoundName, compoundType));
-                            setToggleHint();
+                            setToggleHint(!toggleHint);
                         }}
                     >
                         Hint
