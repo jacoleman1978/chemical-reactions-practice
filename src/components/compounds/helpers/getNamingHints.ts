@@ -95,6 +95,24 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
             }
         }
     }
+
+    // Give hints for 'molecular' compounds
+    if (compoundType === "molecular") {
+        // Ensure that the first part of the name is the name of the first element and includes Greek prefixes other than 'mono'
+        if (firstUserAnswerPart !== firstCorrectAnswerPart) {
+            // Ensure that "mono" prefix is not used for the first part of the name
+            if (firstUserAnswerPart.slice(0, 4) === "mono") {
+                return "The prefix 'mono' should not be used for the first part of the name.";
+            }
+
+            return `The first part of the name is incorrect. The name should start with the a Greek prefix equal to the subscript, but never 'mono' for the first part of the name followed by the name of the element on the periodic table.`;
+        }
+
+        // Ensure that the second part of the name is the name of the second element and includes Greek prefixes
+        if (secondUserAnswerPart !== secondCorrectAnswerPart) {
+            return `The second part of the name is incorrect. The name should start with the a Greek prefix equal to the subscript followed by the name of the element on the periodic table.`;
+        }
+    }
     
     return "The name of the compound is correct."
 };
