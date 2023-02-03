@@ -22,13 +22,17 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
         return "The name must have a space between the two parts of the name.";
     }
 
+    const [firstUserAnswerPart, secondUserAnswerPart] = userAnswer.split(" ");
+    const [firstCorrectAnswerPart, secondCorrectAnswerPart] = compoundName.split(" ");
+
     // Ensure that there is only one space in the user's answer
     if (userAnswer.split(" ").length > 2) {
         return "There can only be one space between the two parts of the name.";
     }
 
-    const [firstUserAnswerPart, secondUserAnswerPart] = userAnswer.split(" ");
-    const [firstCorrectAnswerPart, secondCorrectAnswerPart] = compoundName.split(" ");
+    if (secondUserAnswerPart === "") {
+        return "The name of the compound should have two parts.";
+    }
 
     // Give hints for 'ionic-main' compounds
     if (compoundType === "ionic-main") {
@@ -57,6 +61,38 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
             }
 
             return `The root name of the anion is incorrect.`;
+        }
+    }
+
+    // Give hints for 'acids' compounds
+    if (compoundType === "acids") {
+        // Ensure the name ends with 'acid'
+        if (secondUserAnswerPart !== "acid") {
+            return 'The name of the compound should end with "acid".';
+        }
+
+        // Ensure that the first part of the name follows the correct naming convention based on anion suffix
+        if (compoundName.includes("ous acid") && !userAnswer.includes("ous acid")) {
+            return 'Acids are named depending on the suffix of the anion. If the anion ends with "ite", the acid is named with the suffix "ous acid".';
+        }
+
+        if (compoundName.includes("ic acid")) {
+            if (!userAnswer.includes("ic acid")) {
+                return 'Acids are named depending on the suffix of the anion. If the anion ends with "ide" or "ate", the acid is named with the suffix "ic acid".';
+
+            } else if (compoundName.includes("hydro")) {
+                let rootName: string = firstCorrectAnswerPart.slice(5, -2);
+
+                if (firstUserAnswerPart.slice(0, 5) !== "hydro") {
+                    return `The name of the acid should start with "hydro".`;
+                }
+                console.log(firstUserAnswerPart.slice(5, -2))
+                if (firstUserAnswerPart.slice(5, -2) !== rootName) {
+                    return `The root name of the anion is incorrect. If the anion ends with "ide", the acid should follow the format "hydro (anion root name)ic acid".`;
+                }
+            } else {
+                return 'Acids are named depending on the suffix of the anion. If the anion ends with "ate", the acid is named with the suffix "ic acid".';
+            }
         }
     }
     
