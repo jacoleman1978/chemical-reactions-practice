@@ -5,6 +5,7 @@ import { IonicCompound } from "../configurations/interfaces";
 import { Ion } from "../../ions/configurations/interfaces";
 import { PossibleNegativeCharges, PossiblePositiveCharges } from "../../ions/configurations/types";
 import { CompoundType, FormulaParts, StateOfMatter } from "../../common/configurations/types";
+import { getRandomListMember } from "../../common/helpers/getRandomListMember";
 
 /**
  * Generates a random "IonicCompound" object of the passed in "CompoundType"
@@ -12,6 +13,13 @@ import { CompoundType, FormulaParts, StateOfMatter } from "../../common/configur
  * @returns "IonicCompound" object
  */
 export const makeRandomIonicCompound = (compoundType: CompoundType): IonicCompound => {
+    if (compoundType === "ionic-mixed") {
+        compoundType = getRandomListMember(["ionic-main", "ionic-polyatomic"]);
+
+    } else if (compoundType === "mixed") {
+        compoundType = getRandomListMember(["ionic-main", "ionic-polyatomic", "acids"]);
+    }
+
     // Get random ions appropriate for the "compoundType"
     const cation: Ion = {...getRandomCation(compoundType)};
     const anion: Ion = {...getRandomAnion(compoundType)};
@@ -63,6 +71,7 @@ export const makeIonicCompound = (compoundType: CompoundType, cationToCopy: Ion,
         molarMass: cation.molarMass + anion.molarMass,
         coefficient: 1,
         state,
+        compoundType,
     }
 
     return compound

@@ -11,14 +11,6 @@ import { CompoundType } from "../../common/configurations/types";
  * @returns A random anion as an "Ion" object
  */
 export const getRandomAnion = (compoundType: CompoundType): Ion => {
-    // If "compoundType" contains the string "mixed", randomly choose and assign an appropriate "compoundType"
-    if (compoundType === "ionic-mixed") {
-        compoundType = getRandomListMember(["ionic-main", "ionic-polyatomic"]);
-
-    } else if (compoundType === "mixed") {
-        compoundType = getRandomListMember(["ionic-main", "ionic-polyatomic", "acids"]);
-    }
-
     // Use main group anions for "ionic-main" and "ionic-transition" 
     if (compoundType === "ionic-main" || compoundType === "ionic-transition") {
         const elementSymbol: string = getRandomListMember([...mainGroupAnions]);

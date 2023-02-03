@@ -1,6 +1,6 @@
 import { MolecularElement, Ion } from "../../ions/configurations/interfaces";
 import { FirstSubscript, SecondSubscript } from "./types";
-import { StateOfMatter, FormulaParts } from "../../common/configurations/types";
+import { StateOfMatter, FormulaParts, CompoundType } from "../../common/configurations/types";
 
 export interface CompoundSubscripts {
     first: FirstSubscript,
@@ -40,6 +40,7 @@ export interface IonicCompound {
     molarMass: number,
     state: StateOfMatter,
     coefficient: number,
+    compoundType: CompoundType,
 }
 
 export interface MolecularCompound {
@@ -52,6 +53,7 @@ export interface MolecularCompound {
     molarMass: number,
     state: StateOfMatter,
     coefficient: number,
+    compoundType: CompoundType,
 }
 
 export interface MolecularPart {

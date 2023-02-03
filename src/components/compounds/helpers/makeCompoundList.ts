@@ -1,5 +1,6 @@
 import { makeRandomIonicCompound } from "./makeIonicCompound";
 import { makeRandomMolecularCompound } from "./makeMolecularCompound";
+import { getRandomListMember } from "../../common/helpers/getRandomListMember";
 import { IonicCompound, MolecularCompound } from "../configurations/interfaces";
 import { CompoundType, GenerateQuantity } from "../../common/configurations/types";
 
@@ -46,13 +47,11 @@ export const makeCompoundList = (compoundType: CompoundType, numberOfQuestions: 
  */
  export const getRandomCompoundType = (): CompoundType => {
     const randomValue: number = Math.random();
-    let compoundType: CompoundType = "ionic-mixed";
-
     if (randomValue > 0.75) {
-        compoundType = "molecular";
+        return "molecular";
     } else if (randomValue > 0.55) {
-        compoundType = "acids";
+        return "acids";
     }
 
-    return compoundType
+    return getRandomListMember(["ionic-transition", "ionic-polyatomic"]);
 }

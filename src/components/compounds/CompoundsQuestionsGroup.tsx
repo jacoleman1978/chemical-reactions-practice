@@ -38,7 +38,8 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
                 compoundName: compound.compoundName,
                 compoundFormula: compound.compoundFormula,
                 formulaParts: compound.formulaParts,
-                practiceType
+                practiceType,
+                compoundType: compound.compoundType
             }
 
             return <CompoundsQuestion {...passedInProps} />

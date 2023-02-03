@@ -40,6 +40,7 @@ export const makeMolecularCompound = (firstMolecularElement: MolecularElement, s
             molarMass: firstMolecularElement.molarMass + secondMolecularElement.molarMass,
             coefficient: 1,
             state: "g",
+            compoundType: "molecular",
         }
     } else {
         molecularCompound = {
@@ -52,6 +53,7 @@ export const makeMolecularCompound = (firstMolecularElement: MolecularElement, s
             molarMass: firstMolecularElement.molarMass + secondMolecularElement.molarMass + thirdMolecularElement.molarMass,
             coefficient: 1,
             state: "g",
+            compoundType: "molecular",
         }
     }
 

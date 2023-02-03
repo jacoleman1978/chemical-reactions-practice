@@ -21,7 +21,7 @@ export const makeRandomHydrocarbon = (): MolecularCompound => {
         molarMass: 0,
         state: "g",
         coefficient: 1,
-
+        compoundType: "molecular",
     }
 
     hydrocarbon.molarMass = hydrocarbon.firstElement.molarMass + hydrocarbon.secondElement.molarMass;

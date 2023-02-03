@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NamingQuestion from "./NamingQuestion";
 import FormulasQuestion from "./FormulasQuestion";
 import { updateInputBackgroundColor } from "./helpers/updateInputBackgorundColor";
-import { FormulaParts, PracticeType } from "../common/configurations/types";
+import { CompoundType, FormulaParts, PracticeType } from "../common/configurations/types";
 
 interface QuestionProps {
     toggleFlag: boolean;
@@ -10,13 +10,14 @@ interface QuestionProps {
     compoundFormula: string;
     formulaParts: FormulaParts;
     practiceType: PracticeType;
+    compoundType: CompoundType;
 }
 
 // Displays the question based on practiceType.
 // Resets the question when the toggleFlag is updated.
 // The input field's background color is updated depending on the correctness of the answer.
 // Called from /compounds/CompoundsQuestionsGroup.tsx
-const CompoundsQuestion = ({toggleFlag, compoundName, compoundFormula, formulaParts, practiceType}: QuestionProps) => {
+const CompoundsQuestion = ({toggleFlag, compoundName, compoundFormula, formulaParts, practiceType, compoundType}: QuestionProps) => {
     const [userAnswer, setUserAnswer] = useState<string>("");
     const [formStyle, setFormStyle] = useState<{backgroundColor: string}>({backgroundColor: "lightpink"});
 
@@ -31,7 +32,7 @@ const CompoundsQuestion = ({toggleFlag, compoundName, compoundFormula, formulaPa
     }
 
     if (practiceType === "naming") {
-        return <NamingQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compoundName} formulaParts={formulaParts} userAnswer={userAnswer} />
+        return <NamingQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compoundName} formulaParts={formulaParts} userAnswer={userAnswer} compoundType={compoundType}/>
 
     } else if (practiceType === "formulas") {
         return <FormulasQuestion formStyle={formStyle} handleUserAnswer={handleUserAnswer} compoundName={compoundName} userAnswer={userAnswer} />
@@ -39,7 +40,6 @@ const CompoundsQuestion = ({toggleFlag, compoundName, compoundFormula, formulaPa
     } else {
         return <></>
     }
-
 }
 
 export default CompoundsQuestion;
