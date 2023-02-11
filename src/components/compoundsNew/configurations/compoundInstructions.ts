@@ -1,4 +1,4 @@
-import { CompoundInstructions } from "./interfaces"
+import { CompoundInstructions } from "./compoundInterfaces"
 
 export const namingInstructions: CompoundInstructions = {
     ionic: {

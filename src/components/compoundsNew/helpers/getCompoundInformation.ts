@@ -1,6 +1,6 @@
 import { compoundTitles } from "../configurations/compoundTitles";
 import { formulasInstructions, namingInstructions } from "../configurations/compoundInstructions"
-import { CompoundDescription, CompoundInstructions } from "../configurations/interfaces";
+import { CompoundDescription, CompoundInstructions } from "../../compounds/configurations/interfaces";
 import { CompoundType, PracticeType } from "../../common/configurations/types";
 
 /**

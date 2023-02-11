@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CompoundType } from "../../common/configurations/types";
+import { CompoundType } from "../configurations/compoundTypes";
 
 export const getCompoundsList = (compoundType: CompoundType, numberInList: number) => {
     axios.defaults.withCredentials = true;

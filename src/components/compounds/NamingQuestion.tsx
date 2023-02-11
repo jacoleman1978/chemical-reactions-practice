@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Button } from "react-bootstrap";
 import DisplayFormula from "./DisplayFormula";
-import { getNamingHints } from "./helpers/getNamingHints";
+import { getNamingHints } from "../compoundsNew/helpers/getNamingHints";
 import { CompoundType, FormulaParts } from "../common/configurations/types";
 
 interface NamingQuestionProps {

@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import NavMenus from './components/nav/NavMenus';
 import PracticeTypes from './components/common/PracticeTypes';
 import CompoundDescriptions from './components/compounds/CompoundDescriptions';
-import CompoundsPractice from './components/compounds/CompoundsPractice';
+import CompoundsPractice from './components/compoundsNew/CompoundsPractice';
 import BalancingPractice from './components/balancing-equations/BalancingPractice';
 import ReactionTypesPractice from './components/reaction-types/ReactionTypesPractice';
 import PredictingProducts from './components/predicting-products/PredictingProducts';

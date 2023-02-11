@@ -1,10 +1,9 @@
-import { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect } from 'react';
 import { useFlag } from '../../customHooks/useFlag';
-import NamingQuestion from './NamingQuestion';
-import FormulaQuestion from './FormulaQuestion';
+import CompoundsQuestion from './CompoundsQuestion';
 import ToggleButton from './ToggleButton';
 import { getCompoundsList } from './helpers/getCompoundsList';
-import { CompoundsPracticeProps, Compound } from './helpers/compoundInterfaces';
+import { CompoundsPracticeProps, Compound } from './configurations/compoundInterfaces';
 
 const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeProps) => {
     const [flag, handleSetFlag] = useFlag();
@@ -20,10 +19,7 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
     <div className="flex-column med-gap full-width">
         <div className="compound-questions med-gap">
             {compoundsList.map((compound, i) => {
-                if (practiceType === "naming") {
-                    return <NamingQuestion key={`question-${i}`} compound={compound} />
-                }
-                return <FormulaQuestion key={`question-${i}`} compound={compound} />
+                return <CompoundsQuestion key={`question-${i}`} compound={compound} practiceType={practiceType} />
             })}
         </div>
 

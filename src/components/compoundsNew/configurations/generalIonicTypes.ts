@@ -1,4 +1,4 @@
-import { Description } from "../../common/configurations/interfaces";
+import { Description } from "../../common/configurations/commonInterfaces";
 import { compoundDescriptions } from "./compoundDescriptions";
 import { compoundTitles } from "./compoundTitles";
 

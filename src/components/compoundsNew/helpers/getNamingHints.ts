@@ -1,5 +1,5 @@
 import { getTMNamingHints } from "./getTMNamingHints";
-import { CompoundType } from "../../common/configurations/types";
+import { CompoundType } from "../configurations/compoundTypes";
 
 export const getNamingHints = (userAnswer: string, compoundName: string, compoundType: CompoundType): string => {
     // Ensure that the user has entered an answer

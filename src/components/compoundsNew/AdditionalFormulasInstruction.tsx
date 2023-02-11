@@ -1,4 +1,4 @@
-import { PracticeType } from "../common/configurations/types";
+import { PracticeType } from "../common/configurations/commonTypes";
 
 // Always on display for "formulas" practiceType questions, indicating the format needed to write a compound formula
 // Called from /compounds/CompoundsPractice.tsx
