@@ -13,7 +13,7 @@ import { CompoundType } from "../../common/configurations/types";
  * @returns A random cation as an "Ion" object
  */
 export const getRandomCation = (compoundType: CompoundType): Ion => {
-    // Since there is only one polyatomic cation, there is an 80% chance of changing the "compoundType" for the caiton to "ionic-main"
+    // Since there is only one polyatomic cation, there is an 80% chance of changing the "compoundType" for the cation to "ionic-main"
     if (compoundType === "ionic-polyatomic") {
         const randomNumber = Math.random();
 

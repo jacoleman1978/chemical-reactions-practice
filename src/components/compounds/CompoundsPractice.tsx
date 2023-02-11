@@ -1,6 +1,7 @@
 import Title from "../common/Title";
 import InstructionsList from "../common/InstructionsList";
-import CompoundsQuestionsGroup from "./CompoundsQuestionsGroup";
+//import CompoundsQuestionsGroup from "./CompoundsQuestionsGroup";
+import CompoundsQuestionGroup from "../compoundsNew/CompoundsQuestionGroup";
 import AdditionalFormulasInstruction from "./AdditionalFormulasInstruction";
 import { getCompoundInstructions, getCompoundPracticeTitle } from "./helpers/getCompoundInformation";
 import { CompoundType, PracticeType } from "../common/configurations/types";
@@ -22,7 +23,8 @@ const CompoundsPractice = ({compoundType, practiceType}: CompoundsPracticeProps)
                 <Title title={title} />
                 <AdditionalFormulasInstruction practiceType={practiceType} />
                 <InstructionsList label="Background and Instructions:" instructionsList={instructionsList} />
-                <CompoundsQuestionsGroup compoundType={compoundType} practiceType={practiceType} />
+                {/* <CompoundsQuestionsGroup compoundType={compoundType} practiceType={practiceType} /> */}
+                <CompoundsQuestionGroup compoundType={compoundType} practiceType={practiceType} />
             </section>
         </div>
         

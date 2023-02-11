@@ -6,6 +6,11 @@ export type UseToggle = [
     handleToggle: () => void,
 ];
 
+export type UseFlag = [
+    flag: boolean,
+    handleSetFlag: (flag: boolean) => void,
+]
+
 export type UseCoefficientInputs = [
     coefficientInputs: CoefficientInputs,
     handleCoefficientInputs: (coefficientType: CoefficientType, coefficient: string) => void,
