@@ -13,11 +13,18 @@ interface CompoundsQuestionProps {
     practiceType: PracticeType;
 }
 
+/**
+ * Displays the question and answer input for the naming or formula depending on PracticeType type literal
+ * @param compound A Compound object
+ * @param practiceType A string indicating the PracticeType type literal 
+ * @returns ReactElement
+ */
 const CompoundsQuestion = ({compound, practiceType}: CompoundsQuestionProps) => {
     const [userAnswer, setUserAnswer] = useState<string>("");
     const [displayHint, setDisplayHint] = useFlag();
     const [hints, setHints] = useState<string>("");
 
+    // Resets the userAnswer and displayHint state when the compound changes
     useEffect(() => {
         setHints("");
         setDisplayHint(false);
@@ -28,6 +35,7 @@ const CompoundsQuestion = ({compound, practiceType}: CompoundsQuestionProps) => 
         setUserAnswer(answer);
     }
 
+    // Sets the hints state depending on the practiceType
     const handleHintsClick = () => {
         if (practiceType === "naming") {
             setHints(() => getNamingHints(userAnswer, compound.name, compound.type));

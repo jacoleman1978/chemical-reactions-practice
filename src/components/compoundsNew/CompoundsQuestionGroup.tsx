@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useFlag } from '../../customHooks/useFlag';
 import CompoundsQuestion from './CompoundsQuestion';
-import ToggleButton from './ToggleButton';
+import ToggleButton from '../common/ToggleButton';
 import { getCompoundsList } from './helpers/getCompoundsList';
 import { CompoundsPracticeProps, Compound } from './configurations/compoundInterfaces';
 
+/**
+ * A component that displays a group of CompoundsQuestion components
+ * @param compoundType A string indicating the CompoundType type literal
+ * @param practiceType A string indicating the PracticeType type literal 
+ * @returns ReactElement
+ */
 const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeProps) => {
     const [flag, handleSetFlag] = useFlag();
     const [compoundsList, setCompoundsList] = useState<Compound[]>([]);
 
+    // Gets a list of compounds from the server and sets the compoundsList state
     useEffect(() => {
         getCompoundsList(compoundType, 18).then((res) => {
             setCompoundsList(res.data.compoundList);

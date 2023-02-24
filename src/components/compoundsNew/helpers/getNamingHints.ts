@@ -1,6 +1,13 @@
 import { getTMNamingHints } from "./getTMNamingHints";
 import { CompoundType } from "../configurations/compoundTypes";
 
+/**
+ * Generates a hint for naming compounds for the first error encountered
+ * @param userAnswer A string representing the user's answer
+ * @param compoundName A string representing the correct name of the compound, including case, spacing and punctuation
+ * @param compoundType A string representing the type of compound as a type literal of CompoundType
+ * @returns 
+ */
 export const getNamingHints = (userAnswer: string, compoundName: string, compoundType: CompoundType): string => {
     // Ensure that the user has entered an answer
     if (userAnswer.trim() === "") {

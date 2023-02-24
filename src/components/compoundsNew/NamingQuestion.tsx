@@ -9,6 +9,14 @@ interface NamingQuestionProps {
     setDisplayHint: (flag: boolean) => void;
 }
 
+/**
+ * Displays the question and answer input for the naming of a compound
+ * @param compound A Compound object
+ * @param handleUserAnswer A function that sets the userAnswer state
+ * @param userAnswer A string that represents the user's answer
+ * @param setDisplayHint A function that sets the displayHint state 
+ * @returns ReactElement
+ */
 const NamingQuestion = ({compound, handleUserAnswer, userAnswer, setDisplayHint}: NamingQuestionProps) => {
   return (
     <>

@@ -11,8 +11,12 @@ interface CompoundsPracticeProps {
     practiceType: PracticeType
 }
 
-// Displays the different types of "naming" and "formula" practiceType title, instructions and question group
-// Called from App.tsx
+/**
+ * Displays the different types of "naming" and "formula" practiceType title, instructions and question group
+ * @param compoundType A string indicating the CompoundType type literal
+ * @param practiceType A string indicating the PracticeType type literal 
+ * @returns ReactElement
+ */
 const CompoundsPractice = ({compoundType, practiceType}: CompoundsPracticeProps) => {
     const title: string = getCompoundPracticeTitle(compoundType, practiceType);
     const instructionsList: string[] = getCompoundInstructions(compoundType, practiceType);

@@ -1,7 +1,8 @@
 import { compoundTitles } from "../configurations/compoundTitles";
 import { formulasInstructions, namingInstructions } from "../configurations/compoundInstructions"
 import { CompoundDescription, CompoundInstructions } from "../../compounds/configurations/interfaces";
-import { CompoundType, PracticeType } from "../../common/configurations/types";
+import { PracticeType } from "../../common/configurations/types";
+import { CompoundType } from "../configurations/compoundTypes";
 
 /**
  * Generates the compound practice title depending on the type and practiceType.

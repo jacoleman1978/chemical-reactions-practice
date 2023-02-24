@@ -1,7 +1,9 @@
 import { PracticeType } from "../common/configurations/commonTypes";
-
-// Always on display for "formulas" practiceType questions, indicating the format needed to write a compound formula
-// Called from /compounds/CompoundsPractice.tsx
+/** 
+ * Always on display for "formulas" practiceType questions, indicating the format needed to write a compound formula
+ * @param practiceType A string indicating the PracticeType type literal
+ * @returns ReactElement
+ */
 const AdditionalFormulasInstruction = ({practiceType}: {practiceType: PracticeType}) => {
     if (practiceType !== "formulas") {
         return <></>

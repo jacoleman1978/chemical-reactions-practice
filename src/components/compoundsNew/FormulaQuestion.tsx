@@ -9,6 +9,14 @@ interface NamingQuestionProps {
     setDisplayHint: (flag: boolean) => void;
 }
 
+/**
+ * Displays the question and answer input for writing the formula of a compound
+ * @param compound A Compound object
+ * @param handleUserAnswer A function that sets the userAnswer state
+ * @param userAnswer A string that represents the user's answer with subscripts surrounded by '/' characters
+ * @param setDisplayHint A function that sets the displayHint state 
+ * @returns ReactElement
+ */
 const FormulaQuestion = ({compound, handleUserAnswer, userAnswer, setDisplayHint}: NamingQuestionProps) => {
   return (
     <>

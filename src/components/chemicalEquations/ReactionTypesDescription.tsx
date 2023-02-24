@@ -1,9 +1,9 @@
 import { reactionTypesInfo } from "./configurations/reactionTypesInfo";
-import { InformationDisplay } from "./configurations/interfaces";
+import { InformationDisplay } from "./configurations/equationInterfaces";
 
 /**
  * Describes the different reaction types
- * @returns void
+ * @returns ReactElement
  */
 const ReactionTypesDescription = () => {
   return (

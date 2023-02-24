@@ -7,7 +7,7 @@ import PracticeTypes from './components/common/PracticeTypes';
 import CompoundDescriptions from './components/compounds/CompoundDescriptions';
 import CompoundsPractice from './components/compoundsNew/CompoundsPractice';
 import BalancingPractice from './components/balancing-equations/BalancingPractice';
-import ReactionTypesPractice from './components/reaction-types/ReactionTypesPractice';
+import ReactionTypesPractice from './components/chemicalEquations/ReactionTypesPractice';
 import PredictingProducts from './components/predicting-products/PredictingProducts';
 import { CompoundType, PracticeType } from './components/common/configurations/types';
 
