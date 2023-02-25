@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactElement } from "react";
+import { useState, useEffect } from "react";
 import { useFlag } from "../../customHooks/useFlag";
 import { getEquationsList } from "./helpers/getEquationsList";
 import ReactionTypeQuestion from "./ReactionTypeQuestion";

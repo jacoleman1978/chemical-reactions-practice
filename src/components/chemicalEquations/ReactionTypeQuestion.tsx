@@ -21,23 +21,23 @@ const ReactionTypeQuestion = ({toggleFlag, equation}: ReactionTypeQuestionProps)
     <section className="reaction-type-section med-gap border-bubble">
         <div className="reaction-type">
             <div className="flex-left-center reactants">
-                <DisplayEquationPart formattedFormula={R1.compound.formula} coefficient={R1.targetCoefficient} state={R1.state} />
+                <DisplayEquationPart formattedFormula={R1.formula} coefficient={R1.targetCoefficient} state={R1.state} />
 
                 {/* Since decomposition equations only have one reactant, don't display the "+" or a second reactant. */}
                 {reactionType !== "decomposition" ? <div>+</div> : null}
 
-                {reactionType !== "decomposition" ? <DisplayEquationPart formattedFormula={R2.compound.formula} coefficient={R2.targetCoefficient} state={R2.state} /> : null}
+                {reactionType !== "decomposition" ? <DisplayEquationPart formattedFormula={R2.formula} coefficient={R2.targetCoefficient} state={R2.state} /> : null}
             </div>
 
             <Arrow />
 
             <div className="flex-left-center products">
-                <DisplayEquationPart formattedFormula={P1.compound.formula} coefficient={P1.targetCoefficient} state={P1.state} />
+                <DisplayEquationPart formattedFormula={P1.formula} coefficient={P1.targetCoefficient} state={P1.state} />
 
                 {/* Since combination equations only have one product, don't display the "+" or a second product. */}
                 {reactionType !== "combination" ? <div>+</div> : null}
 
-                {reactionType !== "combination" ? <DisplayEquationPart formattedFormula={P2.compound.formula} coefficient={P2.targetCoefficient} state={P2.state} /> : null}
+                {reactionType !== "combination" ? <DisplayEquationPart formattedFormula={P2.formula} coefficient={P2.targetCoefficient} state={P2.state} /> : null}
             </div>
         </div>
 

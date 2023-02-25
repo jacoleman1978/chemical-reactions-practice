@@ -35,19 +35,13 @@ export interface CompoundPart {
     subscript: number;
 }
 
-export interface Compound {
-    type: CompoundType;
-    name: string;
-    formula: string;
-    molarMass: number;
-    numberOfParts: number;
-    firstPart: CompoundPart;
-    secondPart: CompoundPart;
-    thirdPart: CompoundPart;
-    coefficient: number;
-}
-
 export interface CompoundsPracticeProps {
     compoundType: CompoundType;
     practiceType: PracticeType;
+}
+
+export interface Compound {
+    name: string;
+    formula: string;
+    type: CompoundType;
 }
