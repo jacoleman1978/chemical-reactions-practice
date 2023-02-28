@@ -21,23 +21,25 @@ export interface InformationDisplay {
 }
 
 export interface EquationPart {
-    coefficientType: CoefficientType,
+    readonly coefficientType: CoefficientType,
     ariaLabel: string,
     coefficient: number,
-    targetCoefficient: number,
-    name: string,
-    formula: string,
-    compoundType: CompoundType,
-    state: State,
+    readonly targetCoefficient: number,
+    readonly name: string,
+    readonly formula: string,
+    readonly compoundType: CompoundType,
+    readonly state: State,
+    readonly inventory: {
+        [key: string]: number;
+    }
 }
 
 export interface Equation {
-    reactionType: ReactionType,
+    readonly reactionType: ReactionType,
     R1: EquationPart,
     R2: EquationPart,
     P1: EquationPart,
     P2: EquationPart,
-    balancingTable: BalancingTable,
 }
 
 export interface BalancingTable {
@@ -45,8 +47,4 @@ export interface BalancingTable {
         qtyInReactants: number;
         qtyInProducts: number;
     };
-}
-
-export interface BalancingTableKeys {
-    [key: string]: CoefficientType[];
 }

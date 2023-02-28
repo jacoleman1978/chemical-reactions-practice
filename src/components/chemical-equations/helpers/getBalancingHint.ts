@@ -1,6 +1,7 @@
 import { convertUserCoefficients } from "./convertUserCoefficients";
+import { makeBalancingTable } from "./makeBalancingTable";
 import { UserCoefficients, CoefficientInputs } from "../../../customHooks/configurations/interfaces";
-import { Equation } from "../configurations/equationInterfaces";
+import { Equation, BalancingTable } from "../configurations/equationInterfaces";
 
 /**
  * Evaluates the user-entered coefficients for the balanced equation form, giving specific feedback to the user.
@@ -36,9 +37,11 @@ export const getBalancingHint = (coefficientInputs: CoefficientInputs, equation:
     }
 
     // Check if a balancing component is odd on one side and even on the other side of the chemical equation.
-    for (let [part, {qtyInReactants, qtyInProducts}] of Object.entries(equation.balancingTable)) {
+    const balancingTable: BalancingTable = makeBalancingTable(equation);
+
+    for (let [part, {qtyInReactants, qtyInProducts}] of Object.entries(balancingTable)) {
         if (Math.max(qtyInReactants, qtyInProducts) % Math.min(qtyInReactants, qtyInProducts) !== 0) {
-            return `The ${part} is not balanced. It is even on one side and odd on the other. Try multiplying both sides of the equation by 2.`;
+            return `The ${part} is not balanced. It is even on one side and odd on the other. In some cases multiplying both sides of the equation by 2 will fix the issue.`;
         }
     }
 
