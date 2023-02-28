@@ -6,8 +6,7 @@ import NavMenus from './components/nav/NavMenus';
 import PracticeTypes from './components/common/PracticeTypes';
 import CompoundDescriptions from './components/compounds/CompoundDescriptions';
 import CompoundsPractice from './components/compounds/CompoundsPractice';
-import BalancingPractice from './components/chemical-equations/BalancingPractice';
-import ReactionTypesPractice from './components/chemical-equations/ReactionTypesPractice';
+import ChemicalEquationPractice from './components/chemical-equations/ChemicalEquationPractice';
 import PredictingProducts from './components/predicting-products/PredictingProducts';
 import { PracticeType } from './components/common/configurations/commonTypes';
 import { CompoundType } from './components/compounds/configurations/compoundTypes';
@@ -41,8 +40,8 @@ function App() {
           <Route path='/formulas/acids' element={<CompoundsPractice compoundType={"acids"} practiceType={practiceType} />} />
           <Route path='/formulas/molecular' element={<CompoundsPractice compoundType={"molecular"} practiceType={practiceType} />} />
           <Route path='/formulas/mixed' element={<CompoundsPractice compoundType={"mixed"} practiceType={practiceType} />} />
-          <Route path='/balancing' element={<BalancingPractice />} />
-          <Route path='/reaction-types' element={<ReactionTypesPractice />} />
+          <Route path='/balancing' element={<ChemicalEquationPractice practiceType={practiceType} />} />
+          <Route path='/reaction-types' element={<ChemicalEquationPractice practiceType={practiceType} />} />
           <Route path='/predicting-products' element={<PredictingProducts />} />
         </Routes>
       </main>
