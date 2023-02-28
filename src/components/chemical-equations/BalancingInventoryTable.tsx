@@ -1,5 +1,5 @@
 import { useState, useEffect, ReactElement } from 'react';
-import { BalancingTable } from '../reaction-types/configurations/interfaces';
+import { BalancingTable } from './configurations/equationInterfaces';
 import BalancingInventoryRow from './BalancingInventoryRow';
 
 const BalancingInventoryTable = ({balancingTable}: {balancingTable: BalancingTable}) => {
@@ -7,8 +7,8 @@ const BalancingInventoryTable = ({balancingTable}: {balancingTable: BalancingTab
 
     useEffect(() => {
         const rows: ReactElement[] = [];
-        for (let [key, {qtyReactants, qtyProducts}] of Object.entries(balancingTable)) {
-            rows.push(<BalancingInventoryRow key={key} equationComponent={key} qtyReactants={qtyReactants} qtyProducts={qtyProducts} />);
+        for (let [key, {qtyInReactants, qtyInProducts}] of Object.entries(balancingTable)) {
+            rows.push(<BalancingInventoryRow key={key} equationComponent={key} qtyReactants={qtyInReactants} qtyProducts={qtyInProducts} />);
         }
         setTableRows(rows);
     }, [balancingTable])

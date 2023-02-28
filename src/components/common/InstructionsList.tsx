@@ -1,6 +1,6 @@
 import SubTitle from "./SubTitle";
 import { useToggle } from "../../customHooks/useToggle";
-import { InstructionsListProps } from "./configurations/interfaces"
+import { InstructionsListProps } from "./configurations/commonInterfaces"
 
 // Displays the label as a subtitle with a clickable '+' or '-' to toggle the passed in instructionsList
 // Called from /compounds/CompoundsPractice.tsx

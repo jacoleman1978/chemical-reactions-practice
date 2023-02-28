@@ -1,5 +1,5 @@
 import { MenuLink } from "../configurations/interfaces";
-import { PracticeType } from "../../common/configurations/types";
+import { PracticeType } from "../../common/configurations/commonTypes";
 import { practiceTypes, namingCompoundTypes, formulaCompoundTypes } from "../configurations/navDropdowns";
 
 /**

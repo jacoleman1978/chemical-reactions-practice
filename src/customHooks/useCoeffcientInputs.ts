@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { UseCoefficientInputs, CoefficientType } from './configurations/types';
 import { CoefficientInputs, BackgroundColorStyle } from './configurations/interfaces';
-import { EquationParts } from '../components/reaction-types/configurations/interfaces';
+import { Equation } from "../components/chemical-equations/configurations/equationInterfaces";
 
 // Used to keep track of state for user-entered coefficients for balancing chemical equation, including the current background color for the input field
 export const useCoefficientInputs = (): UseCoefficientInputs => {
@@ -35,11 +35,17 @@ export const useCoefficientInputs = (): UseCoefficientInputs => {
     }, []) 
 
     // Updates the background color of the input field to palegreen if the user has entered the correct coefficients, or lightpink if the user has entered the incorrect coefficients
-    const handleUpdateInputColor = useCallback((coefficientInputs: CoefficientInputs, equationParts: EquationParts): void => {
-        if (coefficientInputs.R1 === equationParts.R1.targetCoefficient 
-            && coefficientInputs.R2 === equationParts.R2.targetCoefficient
-            && coefficientInputs.P1 === equationParts.P1.targetCoefficient 
-            && coefficientInputs.P2 === equationParts.P2.targetCoefficient) 
+    const handleUpdateInputColor = useCallback((coefficientInputs: CoefficientInputs, equation: Equation): void => {
+        const { R1, R2, P1, P2 } = equation;
+        const R1TargetCoefficient = R1.targetCoefficient === 1 ? "" : R1.targetCoefficient.toString();
+        const R2TargetCoefficient = R2.targetCoefficient === 1 ? "" : R2.targetCoefficient.toString();
+        const P1TargetCoefficient = P1.targetCoefficient === 1 ? "" : P1.targetCoefficient.toString();
+        const P2TargetCoefficient = P2.targetCoefficient === 1 ? "" : P2.targetCoefficient.toString();
+
+        if (coefficientInputs.R1 === R1TargetCoefficient 
+            && coefficientInputs.R2 === R2TargetCoefficient
+            && coefficientInputs.P1 === P1TargetCoefficient 
+            && coefficientInputs.P2 === P2TargetCoefficient) 
         {
             setInputColor({backgroundColor: "palegreen"});
         } else {

@@ -1,23 +1,23 @@
 import Title from "../common/Title";
-import ReactionTypesDescription from "./ReactionTypesDescription";
-import ReactionTypesQuestionsGroup from "./ReactionTypesQuestionsGroup";
+import BalancingInfo from "./BalancingInfo";
+import BalancingQuestionsGroup from "./BalancingQuestionsGroup";
 import { useToggle } from "../../customHooks/useToggle";
 
 // Container for the title, toggleable description and questions group
 // Called from App.tsx
-const ReactionTypesPractice = () => {
+const BalancingPractice = () => {
     const [toggleFlag, handleToggle] = useToggle();
-    
+
     return (
         <div className="full-width">
             <div className="flex-left-center med-gap" onClick={handleToggle}>
-                <Title title={"Reaction Types"} />
+                <Title title={"Balancing Equations"} />
                 <button className="toggle-btn">{(toggleFlag ? "-" : "+")}</button>
             </div>
-            {toggleFlag && <ReactionTypesDescription />}
-            <ReactionTypesQuestionsGroup />
+            {toggleFlag && <BalancingInfo />}
+            <BalancingQuestionsGroup />
         </div>
     )
 }
 
-export default ReactionTypesPractice;
+export default BalancingPractice;

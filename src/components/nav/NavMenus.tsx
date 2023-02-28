@@ -1,6 +1,6 @@
 import { Navbar, Nav } from "react-bootstrap";
 import NavDropdownMenu from "./NavDropdownMenu";
-import { PracticeType } from "../common/configurations/types";
+import { PracticeType } from "../common/configurations/commonTypes";
 
 // Displays the navbar menus
 // Called from App.tsx

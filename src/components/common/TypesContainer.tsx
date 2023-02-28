@@ -1,5 +1,5 @@
 import TypeDescription from "./TypeDescription";
-import { Description } from "./configurations/interfaces";
+import { Description } from "./configurations/commonInterfaces";
 
 // Displays the list of hyperlinked types with brief descriptions of the type
 // Called from /common/PracticeType.tsx

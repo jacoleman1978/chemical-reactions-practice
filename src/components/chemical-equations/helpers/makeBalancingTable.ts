@@ -17,16 +17,18 @@ export const makeBalancingTable = (equation: Equation): BalancingTable => {
         }
     }
 
-    // Add keys from R2.inventory to balancingTable, setting qtyInReactants to the subscript * R2.coefficient
-    for (let [part, subscript] of Object.entries(R2.inventory)) {
-        // If the part is already in the balancingTable, add the subscript * R2.coefficient to the qtyInReactants
-        if (reactionType === "combustion" && R1.inventory.hasOwnProperty(part)) {
-            balancingTable[part].qtyInReactants += subscript * R2.coefficient;
+    if (reactionType !== "decomposition") {
+        // Add keys from R2.inventory to balancingTable, setting qtyInReactants to the subscript * R2.coefficient
+        for (let [part, subscript] of Object.entries(R2.inventory)) {
+            // If the part is already in the balancingTable, add the subscript * R2.coefficient to the qtyInReactants
+            if (reactionType === "combustion" && R1.inventory.hasOwnProperty(part)) {
+                balancingTable[part].qtyInReactants += subscript * R2.coefficient;
 
-        } else {
-            balancingTable[part] = {
-                qtyInReactants: subscript * R2.coefficient,
-                qtyInProducts: 0,
+            } else {
+                balancingTable[part] = {
+                    qtyInReactants: subscript * R2.coefficient,
+                    qtyInProducts: 0,
+                }
             }
         }
     }
@@ -36,14 +38,16 @@ export const makeBalancingTable = (equation: Equation): BalancingTable => {
         balancingTable[part].qtyInProducts = subscript * P1.coefficient;
     }
 
-    // Add keys from P2.inventory to balancingTable, setting qtyInProducts to the subscript * P2.coefficient
-    for (let [part, subscript] of Object.entries(P2.inventory)) {
-        // If the part is already in the balancingTable, add the subscript * P2.coefficient to the qtyInProducts
-        if (reactionType === "combustion" && P2.inventory.hasOwnProperty(part)) {
-            balancingTable[part].qtyInProducts += subscript * P2.coefficient;
-            
-        } else {
-            balancingTable[part].qtyInProducts = subscript * P2.coefficient;
+    if (reactionType !== "combination") {
+        // Add keys from P2.inventory to balancingTable, setting qtyInProducts to the subscript * P2.coefficient
+        for (let [part, subscript] of Object.entries(P2.inventory)) {
+            // If the part is already in the balancingTable, add the subscript * P2.coefficient to the qtyInProducts
+            if (reactionType === "combustion" && P2.inventory.hasOwnProperty(part)) {
+                balancingTable[part].qtyInProducts += subscript * P2.coefficient;
+                
+            } else {
+                balancingTable[part].qtyInProducts = subscript * P2.coefficient;
+            }
         }
     }
 

@@ -6,22 +6,19 @@ import CoefficientInput from "./CoefficientInput";
 import BalancingInventoryTable from "./BalancingInventoryTable";
 import { useCoefficientInputs } from "../../customHooks/useCoeffcientInputs";
 import { convertUserCoefficients } from "./helpers/convertUserCoefficients";
-import { makeEquationParts } from "../reaction-types/helpers/makeEquationParts";
 import { getBalancingHint } from "./helpers/getBalancingHint";
 import { makeBalancingTable } from "./helpers/makeBalancingTable";
-import { ReactionTypeList } from "../common/configurations/types";
-import { EquationParts, BalancingTable } from "../reaction-types/configurations/interfaces";
+import { Equation, BalancingTable } from "./configurations/equationInterfaces";
 import { UserCoefficients } from "../../customHooks/configurations/interfaces";
 
 /**
  * 
  * @param toggleFlag boolean, indicating whether should reset all question state
- * @param equation an object with a ReactionTypeList interface, containing all of the components for creating and balancing a chemical equation of a specific type
+ * @param equation an object with a Equation interface, containing all of the components for creating and balancing a chemical equation of a specific type
  * @returns Display of an individual balancing chemical equation question with inputs for each coefficient and a "Check Answer" button
  */
-const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: ReactionTypeList}) => {
-  // Make convert the equation objects into a uniform object used to display and evaluate a chemical equation
-  const equationParts: EquationParts = useMemo(() => makeEquationParts(equation), [equation]);
+const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equation: Equation}) => {
+  const { reactionType, R1, R2, P1, P2 } = equation;
 
   // Used in the "Check Answer" button and as a flag to display hints if user answer is incorrect
   const [answerCheckFlag, setAnswerCheckFlag] = useToggle();
@@ -33,7 +30,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
   const userCoefficients: UserCoefficients = useMemo(() => convertUserCoefficients(coefficientInputs), [coefficientInputs]);
 
   // Make Balancing Table object to display the reactants and products of the equation
-  const balancingTable: BalancingTable = useMemo(() => makeBalancingTable(userCoefficients, equationParts), [equationParts, userCoefficients]);
+  const balancingTable: BalancingTable = useMemo(() => makeBalancingTable(equation), [equation]);
   
   // Used to reset state for the question
   useEffect(() => {
@@ -48,18 +45,18 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
           <div className="balancing">
             <div className="flex-left-center sm-gap reactants">
               <CoefficientInput 
-                equationPart={equationParts.R1} 
+                equationPart={R1} 
                 formStyle={inputColor} 
                 userAnswer={coefficientInputs.R1} 
                 handleCoefficientChange={handleCoefficientInputs} 
               />
 
               {/* Since decomposition equations only have one reactant, don't display the "+" or a second reactant. */}
-              {equation.type !== "decomposition" ? <div>+</div> : null}
+              {reactionType !== "decomposition" ? <div>+</div> : null}
 
-              {equation.type !== "decomposition" ? 
+              {reactionType !== "decomposition" ? 
                 <CoefficientInput 
-                  equationPart={equationParts.R2} 
+                  equationPart={R2} 
                   formStyle={inputColor} 
                   userAnswer={coefficientInputs.R2} 
                   handleCoefficientChange={handleCoefficientInputs} 
@@ -72,18 +69,18 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
 
             <div className="flex-left-center sm-gap products">
               <CoefficientInput 
-                equationPart={equationParts.P1} 
+                equationPart={P1} 
                 formStyle={inputColor} 
                 userAnswer={coefficientInputs.P1} 
                 handleCoefficientChange={handleCoefficientInputs} 
               />
 
               {/* Since combination equations only have one product, don't display the "+" or a second product. */}
-              {equation.type !== "combination" ? <div>+</div> : null}
+              {reactionType !== "combination" ? <div>+</div> : null}
 
-              {equation.type !== "combination" ? 
+              {reactionType !== "combination" ? 
                 <CoefficientInput 
-                  equationPart={equationParts.P2} 
+                  equationPart={P2} 
                   formStyle={inputColor} 
                   userAnswer={coefficientInputs.P2} 
                   handleCoefficientChange={handleCoefficientInputs} 
@@ -95,7 +92,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
 
           {/* Display a hint to the user if the "Check Answer" button clicked and the answer is incorrect */}
           {answerCheckFlag && inputColor.backgroundColor === "lightpink" 
-            ? <p className="hint-text">{getBalancingHint(coefficientInputs, equationParts)}</p> 
+            ? <p className="hint-text">{getBalancingHint(coefficientInputs, equation)}</p> 
             : null
           }
         </div>
@@ -104,7 +101,7 @@ const BalancingQuestion = ({toggleFlag, equation}: {toggleFlag: boolean, equatio
             <Button 
               variant="success" 
               className="flex-center-center check-answer-btn" 
-              onClick={() => {handleUpdateInputColor(coefficientInputs, equationParts)
+              onClick={() => {handleUpdateInputColor(coefficientInputs, equation)
                               setAnswerCheckFlag()}}
             >
                 Check Answer

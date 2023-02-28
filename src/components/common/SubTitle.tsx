@@ -1,4 +1,4 @@
-import { SubtitleProps } from "./configurations/interfaces";
+import { SubtitleProps } from "./configurations/commonInterfaces";
 
 // Makes the Subtitle and the '+' or '-' clickable to toggle the instructions display
 // Called from /common/InstructionsList.tsx

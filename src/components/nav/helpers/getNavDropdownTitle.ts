@@ -1,4 +1,4 @@
-import { PracticeType } from "../../common/configurations/types"
+import { PracticeType } from "../../common/configurations/commonTypes"
 
 /**
  * Returns a nav dropdown title depending on practiceType

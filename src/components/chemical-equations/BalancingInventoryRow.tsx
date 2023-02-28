@@ -1,4 +1,4 @@
-import DisplayUsersFormula from '../compounds/DisplayUsersFormula';
+import DisplayCompoundFormula from '../compoundsNew/DisplayCompoundFormula';
 
 interface BalancingInventoryRowProps {
     key: string;
@@ -15,7 +15,7 @@ const BalancingInventoryRow = ({equationComponent, qtyReactants, qtyProducts}: B
   return (
     <tr key={equationComponent + Math.random()} style={qtyBackgroundStyle}>
         <td>{qtyReactants}</td>
-        <th className="th-rap"><DisplayUsersFormula usersFormula={equationComponent} /></th>
+        <th className="th-rap"><DisplayCompoundFormula formattedFormula={equationComponent} /></th>
         <td>{qtyProducts}</td>
     </tr>
   );

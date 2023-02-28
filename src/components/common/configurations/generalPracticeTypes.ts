@@ -1,4 +1,4 @@
-import { Description } from "./interfaces"
+import { Description } from "./commonInterfaces"
 
 // Briefly describes each of the type of practice available, giving both the title and base url path for each of the types
 // Called by /common/TypesContainer.tsx

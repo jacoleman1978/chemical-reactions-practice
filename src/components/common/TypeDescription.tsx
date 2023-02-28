@@ -1,4 +1,4 @@
-import { Description } from "./configurations/interfaces";
+import { Description } from "./configurations/commonInterfaces";
 
 // Displays a type as a hyperlink and includes a brief description of the type
 // Called from /common/TypesContainer.tsx

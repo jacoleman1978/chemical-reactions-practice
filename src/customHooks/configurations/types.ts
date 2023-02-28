@@ -1,5 +1,5 @@
 import { CoefficientInputs, BackgroundColorStyle } from "./interfaces";
-import { EquationParts } from "../../components/reaction-types/configurations/interfaces";
+import { Equation } from "../../components/chemical-equations/configurations/equationInterfaces";
 
 export type UseToggle = [
     displayToggle: boolean,
@@ -15,7 +15,7 @@ export type UseCoefficientInputs = [
     coefficientInputs: CoefficientInputs,
     handleCoefficientInputs: (coefficientType: CoefficientType, coefficient: string) => void,
     inputColor: BackgroundColorStyle,
-    handleUpdateInputColor: (coefficientInputs: CoefficientInputs, equationParts: EquationParts) => void,
+    handleUpdateInputColor: (coefficientInputs: CoefficientInputs, equation: Equation) => void,
 ];
 
 export type CoefficientType = "R1" | "R2" | "P1" | "P2" | "all";

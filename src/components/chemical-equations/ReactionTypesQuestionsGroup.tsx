@@ -18,18 +18,18 @@ const ReactionTypesQuestionsGroup = () => {
       getEquationsList(true, 10).then((res) => {
           setEquationsList(res.data.equationList);
       })
-  }, [flag])
+    }, [flag])
 
-  return (
-    <div className="flex-column med-gap">
-        <div className="reaction-type-group">
-            {equationsList.map((equation, i) => {
-                return <ReactionTypeQuestion key={`question-${i}`} toggleFlag={flag} equation={equation} />
-            })}
+    return (
+        <div className="flex-column med-gap">
+            <div className="reaction-type-group">
+                {equationsList.map((equation, i) => {
+                    return <ReactionTypeQuestion key={`question-${i}`} toggleFlag={flag} equation={equation} />
+                })}
+            </div>
+            
+            <ToggleButton toggleFlag={flag} handleToggle={handleSetFlag} buttonText={"More Practice"}/>
         </div>
-        
-        <ToggleButton toggleFlag={flag} handleToggle={handleSetFlag} buttonText={"More Practice"}/>
-    </div>
-  )
+    )
 }
 export default ReactionTypesQuestionsGroup
