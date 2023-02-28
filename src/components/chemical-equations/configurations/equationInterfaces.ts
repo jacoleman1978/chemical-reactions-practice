@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { CompoundType } from "../../compoundsNew/configurations/compoundTypes";
+import { CompoundType } from "../../compounds/configurations/compoundTypes";
 import { ReactionType } from "./equationTypes";
 import { CoefficientType, State } from "./equationTypes";
 

@@ -1,4 +1,4 @@
-import DisplayCompoundFormula from "../compoundsNew/DisplayCompoundFormula";
+import DisplayCompoundFormula from "../compounds/DisplayCompoundFormula";
 import { State } from "./configurations/equationTypes";
 
 interface DisplayEquationPartProps {

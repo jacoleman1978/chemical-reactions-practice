@@ -4,13 +4,13 @@ import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import NavMenus from './components/nav/NavMenus';
 import PracticeTypes from './components/common/PracticeTypes';
-import CompoundDescriptions from './components/compoundsNew/CompoundDescriptions';
-import CompoundsPractice from './components/compoundsNew/CompoundsPractice';
+import CompoundDescriptions from './components/compounds/CompoundDescriptions';
+import CompoundsPractice from './components/compounds/CompoundsPractice';
 import BalancingPractice from './components/chemical-equations/BalancingPractice';
 import ReactionTypesPractice from './components/chemical-equations/ReactionTypesPractice';
 import PredictingProducts from './components/predicting-products/PredictingProducts';
 import { PracticeType } from './components/common/configurations/commonTypes';
-import { CompoundType } from './components/compoundsNew/configurations/compoundTypes';
+import { CompoundType } from './components/compounds/configurations/compoundTypes';
 
 function App() {
   let { pathname } = useLocation();

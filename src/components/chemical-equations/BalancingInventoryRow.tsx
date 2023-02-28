@@ -1,4 +1,4 @@
-import DisplayCompoundFormula from '../compoundsNew/DisplayCompoundFormula';
+import DisplayCompoundFormula from '../compounds/DisplayCompoundFormula';
 
 interface BalancingInventoryRowProps {
     key: string;
