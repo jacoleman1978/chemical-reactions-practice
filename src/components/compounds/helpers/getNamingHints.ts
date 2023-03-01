@@ -9,6 +9,10 @@ import { CompoundType } from "../configurations/compoundTypes";
  * @returns 
  */
 export const getNamingHints = (userAnswer: string, compoundName: string, compoundType: CompoundType): string => {
+    if (userAnswer === compoundName) {
+        return "The name of the compound is correct."
+    }
+
     // Ensure that the user has entered an answer
     if (userAnswer.trim() === "") {
         return "Please enter a name for the compound.";
@@ -17,8 +21,8 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
     // Give hints for 'ionic-transition' compounds
     if (compoundType === "ionic-transition") {
         return getTMNamingHints(userAnswer, compoundName);
-    }
-
+    } 
+    
     // Ensure that therea are no capital letters in the user's answer
     if (userAnswer.toLowerCase() !== userAnswer) {
         return "The name of the compound should be written in lower case unless it is the first word in a sentence.";
@@ -35,10 +39,6 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
     // Ensure that there is only one space in the user's answer
     if (userAnswer.split(" ").length > 2) {
         return "There can only be one space between the two parts of the name.";
-    }
-
-    if (secondUserAnswerPart === "") {
-        return "The name of the compound should have two parts.";
     }
 
     // Give hints for 'ionic-main' compounds

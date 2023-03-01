@@ -41,20 +41,34 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
 
     // Parentheses present, but cation name is missing
     if (decomposedUserAnswer.cationNameWithoutRomanNum === "") {
-        return "The name of the cation is missing.";
+        return "The name of the cation should be written first.";
     }
-    
-    // Check the cation name for correctness
-    if (decomposedUserAnswer.cationNameWithoutRomanNum !== decomposedCorrectAnswer.cationNameWithoutRomanNum) {
-        // Ensure that the cation name is written in lower case
-        if (decomposedUserAnswer.cationNameWithoutRomanNum.toLowerCase() !== decomposedUserAnswer.cationNameWithoutRomanNum) {
-            return "The name of the transition metal should be written in lower case. Capital letters should only be used for roman numerals.";
-        }
 
-        return `The name of the transition metal is incorrect.`;
+    // Check for presence of anion name
+    if (lastParenthesisIndex === userAnswer.length - 1) {
+        return "The name of the anion is missing.";
     }
 
     decomposedUserAnswer.romanNum = userAnswer.slice(firstParenthesisIndex + 1, lastParenthesisIndex);
+
+    const userAnswerSplitBySpaces = userAnswer.split(" ");
+    if (userAnswer.slice(firstParenthesisIndex -1, firstParenthesisIndex) === " ") {
+        return "There should not be a space between the cation name and the Roman numeral in parentheses.";
+    }
+
+    // Ensure that there is one and only one space between the Roman numeral and the anion
+    if (userAnswerSplitBySpaces.length > 2) {
+        return "There can only be one space between the two parts of the name located between the Roman numerals in parentheses and the name of the anion.";
+    }
+
+    // Ensure that there is a space between the Roman numeral and the anion
+    if (userAnswer.slice(lastParenthesisIndex + 1, lastParenthesisIndex + 2) !== " ") {
+        if (userAnswer.slice(lastParenthesisIndex + 2, lastParenthesisIndex + 3) === " ") {
+            return "There can only be one space between the two parts of the name located between the Roman numerals in parentheses and the name of the anion."
+        }
+
+        return "There must be one space between the two parts of the name located between the Roman numerals in parentheses and the name of the anion.";
+    }
 
     // Check the Roman numeral for correctness
     if (decomposedUserAnswer.romanNum !== decomposedCorrectAnswer.romanNum) {
@@ -71,22 +85,17 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
         return `The Roman numeral indicating the cation's charge is incorrect.`;
     }
 
-    // Ensure that there is a space between the Roman numeral and the anion
-    if (userAnswer.slice(lastParenthesisIndex + 1, lastParenthesisIndex + 2) !== " ") {
-        return "There should be a space between the Roman numeral and the anion.";
+    // Check the cation name for correctness
+    if (decomposedUserAnswer.cationNameWithoutRomanNum !== decomposedCorrectAnswer.cationNameWithoutRomanNum) {
+        // Ensure that the cation name is written in lower case
+        if (decomposedUserAnswer.cationNameWithoutRomanNum.toLowerCase() !== decomposedUserAnswer.cationNameWithoutRomanNum) {
+            return "The name of the transition metal should be written in lower case. Capital letters should only be used for roman numerals.";
+        }
+
+        return `The name of the transition metal is incorrect. The cation is name of the element on the periodic table followed by the Roman numeral indicating the cation's charge.`;
     }
 
-    // Ensure that there is one and only one space between the Roman numeral and the anion
-    if (userAnswer.split(" ").length > 2) {
-        return "There can only be one space between the two parts of the name.";
-    }
-
-    decomposedUserAnswer.anionName = userAnswer.slice(lastParenthesisIndex + 1).trim();
-
-    // Check for presence of anion name
-    if (decomposedUserAnswer.anionName === "") {
-        return "The name of the anion is missing.";
-    }
+    decomposedUserAnswer.anionName = userAnswer.slice(lastParenthesisIndex + 1);
 
     // Check the anion name for correctness
     if (decomposedUserAnswer.anionName !== decomposedCorrectAnswer.anionName) {
