@@ -8,7 +8,7 @@ interface DecomposedTMName {
  * Generates a hint for the first error encountered when naming transition metal compounds
  * @param userAnswer A string representing the user's answer
  * @param compoundName A string representing the correct name of the compound, including case, spacing and punctuation
- * @returns 
+ * @returns A string indicating the first error encountered
  */
 export const getTMNamingHints = (userAnswer: string, compoundName: string): string => {
     // Decompose the correct name into its parts
