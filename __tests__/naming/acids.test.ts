@@ -7,7 +7,7 @@ describe("Acid Naming hints", () => {
     const acidAteAnion = "phosphoric acid";
     const compoundType = "acids";
 
-    test("Acids with anions ending in '-ide'", () => {
+    test("Hints for: Acids with anions ending in '-ide'", () => {
         expect(getNamingHints("hydroiodic acid", acidIdeAnion, compoundType)).toBe("The name of the compound is correct.");
 
         expect(getNamingHints("", acidIdeAnion, compoundType)).toBe("Please enter a name for the compound.");
@@ -33,7 +33,7 @@ describe("Acid Naming hints", () => {
         expect(getNamingHints("hydroiodidic acid", acidIdeAnion, compoundType)).toBe("The root name of the anion is incorrect. If the anion ends with 'ide', the acid should follow the format 'hydro (anion root name)ic acid'.");
     });
 
-    test("Acids with anions ending in '-ite'", () => {
+    test("Hints for: Acids with anions ending in '-ite'", () => {
         expect(getNamingHints("sulfurous acid", acidIteAnion, compoundType)).toBe("The name of the compound is correct.");
 
         expect(getNamingHints("", acidIteAnion, compoundType)).toBe("Please enter a name for the compound.");
@@ -59,7 +59,7 @@ describe("Acid Naming hints", () => {
         expect(getNamingHints("nitrogenous acid", "nitrous acid", compoundType)).toBe("Acids are named depending on the suffix of the anion. If the anion ends with 'ite', the acid is named with the suffix 'ous acid'.");
     });
 
-    test("Acids with anions ending in '-ate'", () => {
+    test("Hints for: Acids with anions ending in '-ate'", () => {
         expect(getNamingHints("phosphoric acid", acidAteAnion, compoundType)).toBe("The name of the compound is correct.");
 
         expect(getNamingHints("", acidAteAnion, compoundType)).toBe("Please enter a name for the compound.");
