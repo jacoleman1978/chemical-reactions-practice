@@ -1,7 +1,7 @@
 import { describe, test, expect } from "@jest/globals";
 import { getNamingHints } from "../../src/components/compounds/helpers/getNamingHints";
 
-describe("Main group naming", () => {
+describe("Main group naming hints", () => {
     const compoundName = "sodium phosphide";
     const compoundType = "ionic-main";
 

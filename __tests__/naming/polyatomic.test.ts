@@ -1,7 +1,7 @@
 import { describe, test, expect } from "@jest/globals";
 import { getNamingHints } from "../../src/components/compounds/helpers/getNamingHints";
 
-describe("Polyatomic naming", () => {
+describe("Polyatomic naming hints", () => {
     const compoundName = "ammonium sulfite";
     const compoundType = "ionic-polyatomic";
 
