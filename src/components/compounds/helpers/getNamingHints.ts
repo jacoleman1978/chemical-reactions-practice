@@ -11,6 +11,8 @@ import { CompoundType } from "../configurations/compoundTypes";
  * @returns A string indicating the first error encountered
  */
 export const getNamingHints = (userAnswer: string, compoundName: string, compoundType: CompoundType): string => {
+    let hint: string = "";
+
     if (userAnswer === compoundName) {
         return "The name of the compound is correct."
     }
@@ -21,11 +23,16 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
     }
 
     // Give hints for 'ionic-transition' compounds
-    if (compoundType === "ionic-transition") {
-        return getTMNamingHints(userAnswer, compoundName);
+    if (compoundType === "ionic-transition" || compoundType === "ionic-mixed") {
+        hint = getTMNamingHints(userAnswer, compoundName);
+
+        if (hint !== "") {
+            return hint;
+        }
     } 
     
     // Ensure that therea are no capital letters in the user's answer
+    if (compoundType !== "ionic-transition" && compoundType !== "ionic-mixed")
     if (userAnswer.toLowerCase() !== userAnswer) {
         return "The name of the compound should be written in lower case unless it is the first word in a sentence.";
     }
@@ -63,7 +70,7 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
     }
 
     // Give hints for 'ionic-polyatomic' compounds
-    if (compoundType === "ionic-polyatomic") {
+    if (compoundType === "ionic-polyatomic" || compoundType === "ionic-mixed") {
         // Ensure that the first part of the name is the name of the cation
         if (firstUserAnswerPart !== firstCorrectAnswerPart) {
             return `The name of the cation is incorrect. It should be the name of the element on the periodic table.`;
@@ -81,12 +88,20 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
 
     // Give hints for 'acids' compounds
     if (compoundType === "acids") {
-        return getAcidNamingHints(userAnswer, compoundName);
+        hint = getAcidNamingHints(userAnswer, compoundName);
+
+        if (hint !== "") {
+            return hint;
+        }
     }
 
     // Give hints for 'molecular' compounds
     if (compoundType === "molecular") {
-        return getMolecularNamingHints(userAnswer, compoundName);
+        hint = getMolecularNamingHints(userAnswer, compoundName);
+
+        if (hint !== "") {
+            return hint;
+        }
     }
     
     return "The name of the compound is correct."

@@ -40,7 +40,7 @@ const CompoundsQuestion = ({compound, practiceType}: CompoundsQuestionProps) => 
         if (practiceType === "naming") {
             setHints(() => getNamingHints(userAnswer, compound.name, compound.type));
         } else if (practiceType === "formulas") {
-            setHints(() => getFormulaHints(userAnswer, compound.formula));
+            setHints(() => getFormulaHints(userAnswer, compound.formula, compound.type));
         }
         setDisplayHint(!displayHint);
     }

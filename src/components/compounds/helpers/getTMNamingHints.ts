@@ -103,8 +103,6 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
         if (decomposedUserAnswer.anionName.toLowerCase() !== decomposedUserAnswer.anionName) {
             return "The name of the anion should be written in lower case. Capital letters should only be used for roman numerals.";
         }
-
-        return `The name of the anion is incorrect.`;
     }
 
     return "";
