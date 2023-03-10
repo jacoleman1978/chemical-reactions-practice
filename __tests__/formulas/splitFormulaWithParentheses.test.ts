@@ -1,9 +1,9 @@
 import { describe, test, expect } from "@jest/globals";
-import { splitFormulaWithParentheses } from "../../src/components/compounds/helpers/splitFormulaWithParentheses";
+import { splitByParentheses } from "../../src/components/compounds/helpers/splitFormula";
 
 describe("Test for formulas with parentheses", () => {
     test("Ammonium ion", () => {
-        const [cation, cationSubscript, anion, anionSubscript] = splitFormulaWithParentheses("(NH/4/)/3/PO/4/");
+        const [cation, cationSubscript, anion, anionSubscript] = splitByParentheses("(NH/4/)/3/PO/4/");
 
         expect(cation).toBe("NH/4/");
         expect(cationSubscript).toBe("3");
@@ -12,7 +12,7 @@ describe("Test for formulas with parentheses", () => {
     });
 
     test("Anion is in parentheses", () => {
-        const [cation, cationSubscript, anion, anionSubscript] = splitFormulaWithParentheses("Ca(NO/3/)/2/");
+        const [cation, cationSubscript, anion, anionSubscript] = splitByParentheses("Ca(NO/3/)/2/");
 
         expect(cation).toBe("Ca");
         expect(cationSubscript).toBe("1");
@@ -21,11 +21,15 @@ describe("Test for formulas with parentheses", () => {
     });
 
     test("Cation not ammonium and has subscript", () => {
-        const [cation, cationSubscript, anion, anionSubscript] = splitFormulaWithParentheses("Fe/2/(SO/4/)/3/");
+        const [cation, cationSubscript, anion, anionSubscript] = splitByParentheses("Fe/2/(SO/4/)/3/");
 
         expect(cation).toBe("Fe");
         expect(cationSubscript).toBe("2");
         expect(anion).toBe("SO/4/");
         expect(anionSubscript).toBe("3");
+    });
+
+    test("No parentheses", () => {
+        expect(splitByParentheses("FeSO/4/")).toStrictEqual([]);
     });
 });

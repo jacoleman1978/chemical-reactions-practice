@@ -2,7 +2,7 @@ export const getUpperCaseIndex = (formula: string): number => {
     const length: number = formula.length;
 
     for (let i = 0; i < length; i++) {
-        if (formula[i] === formula[i].toUpperCase()) {
+        if (/[A-Z]/.test(formula[i])) {
             return i;
         }
     }
@@ -16,10 +16,11 @@ export const countUpperCaseCharacters = (formula: string): number => {
     let count: number = 0;
 
     for (let i = 0; i < length; i++) {
-        if (formula[i] === formula[i].toUpperCase()) {
+        if (/[A-Z]/.test(formula[i])) {
             count++;
         }
     }
 
     return count;
 };
+

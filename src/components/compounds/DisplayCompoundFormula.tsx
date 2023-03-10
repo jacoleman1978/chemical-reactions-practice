@@ -1,4 +1,4 @@
-import { splitFormulaIntoParts } from "./helpers/splitFormulaIntoParts";
+import { splitBySlashes } from "./helpers/splitFormula";
 
 /**
  * Formats and displays formulas of a compound formatted with subscripts surrounded by '/'.
@@ -7,7 +7,7 @@ import { splitFormulaIntoParts } from "./helpers/splitFormulaIntoParts";
  */
 const DisplayCompoundFormula = ({formattedFormula}: {formattedFormula: string}) => {
     // Split the formula into an array of strings, including the subscripts
-    const formulaParts: string[] = splitFormulaIntoParts(formattedFormula);
+    const formulaParts: string[] = splitBySlashes(formattedFormula);
 
     // Map over the array and display the formula with odd numbered indexes as subscripts
     let formulaDisplay = formulaParts.map((part, i) => {
