@@ -4,6 +4,7 @@ import { CompoundType } from "../configurations/compoundTypes";
 import { getTMFormulaHints } from "./getTMFormulaHints";
 import { getPolyatomicFormulaHints } from "./getPolyatomicFormulaHints";
 import { getAcidFormulaHints } from "./getAcidFormulaHints";
+import { countUpperCaseCharacters } from "./getUpperCaseIndex";
 
 export const getFormulaHints = (userAnswer: string, compoundFormula: string, compoundType: CompoundType): string => {
     let hint: string = "";
@@ -100,6 +101,13 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
 
         if (hint !== "") {
             return hint;
+        }
+    }
+
+    // Give hints for 'ionic-main' compounds
+    if (compoundType === "ionic-main") {
+        if (anion !== userAnion && countUpperCaseCharacters(userAnion) > 1) {
+            return "Anion names ending in 'ide' are not polyatomic, except for cyanide and hydroxide.";
         }
     }
 
