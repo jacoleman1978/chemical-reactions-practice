@@ -24,3 +24,18 @@ export const countUpperCaseCharacters = (formula: string): number => {
     return count;
 };
 
+export const getFirstElement = (formula: string): string => {
+    return formula.slice(0, getUpperCaseIndex(formula) + 1);
+};
+
+
+export const getFirstTwoElements = (formula: string): string => {
+    if (countUpperCaseCharacters(formula) < 2) {
+        return ""
+    } else {
+        const upperCaseIndex: number = getUpperCaseIndex(formula);
+        const upperCaseIndex2: number = getUpperCaseIndex(formula.slice(upperCaseIndex + 1)) + upperCaseIndex + 1;
+
+        return formula.slice(0, upperCaseIndex2);
+    }
+};

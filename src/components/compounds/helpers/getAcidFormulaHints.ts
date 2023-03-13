@@ -1,4 +1,5 @@
 import { areSubscriptsLCM } from "./getFormulaHints";
+import { getFirstElement, getFirstTwoElements } from "./getUpperCaseIndex";
 import { splitFormula } from "./splitFormula";
 
 export const getAcidFormulaHints = (userAnswer: string, compoundFormula: string): string => {
@@ -22,17 +23,21 @@ export const getAcidFormulaHints = (userAnswer: string, compoundFormula: string)
         return "Check the subscript for the cation. Since the cation for all acids is 'H' with a +1 charge, the charge of the anion will determine the subscript for 'H'."
     }
 
-    // TODO: Add a check for the first part of the polyatomic anion
     if (userAnion !== anion) {
-        if (ateAcidAnions.includes(anion) && !ateAcidAnions.includes(userAnion)) {
+        const firstTwoElements: string = getFirstTwoElements(anion);
+        const firstTwoUserElements: string = getFirstTwoElements(userAnion);
+
+        if (ateAcidAnions.includes(anion) && firstTwoElements === firstTwoUserElements) {
             return "Check the anion formula. If the name has the pattern of ____ic acid, without a 'hydro' prefix, then the anion will end in 'ate'."
 
-        } else if (iteAcidAnions.includes(anion) && !iteAcidAnions.includes(userAnion)) {
+        } else if (iteAcidAnions.includes(anion) && firstTwoElements === firstTwoUserElements) {
             return "Check the anion formula. If the name has the pattern of ____ous acid, then the anion will end in 'ite'."
             
-        } else if (ideAcidAnions.includes(anion) && !ideAcidAnions.includes(userAnion)) {
+        } else if (ideAcidAnions.includes(anion) && getFirstElement(anion) === getFirstElement(userAnion)) {
             return "Check the anion formula. If the name has the pattern of hydro____ic acid, then the anion will end in 'ide'."
         }
+
+        return "Check the formula for the anion."
     }
 
     return "Don't escape me!"

@@ -30,18 +30,18 @@ describe("Test hints for acids", () => {
 
     test("Ate anions", () => {
         expect(getFormulaHints("HNO", nitricAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ic acid, without a 'hydro' prefix, then the anion will end in 'ate'.");
-        expect(getFormulaHints("HClO", perchloricAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ic acid, without a 'hydro' prefix, then the anion will end in 'ate'.");
+        expect(getFormulaHints("HClO/3/", perchloricAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ic acid, without a 'hydro' prefix, then the anion will end in 'ate'.");
         expect(getFormulaHints("H/2/SO", sulfuricAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ic acid, without a 'hydro' prefix, then the anion will end in 'ate'.");
     });
 
     test("Ite anions", () => {
-        // expect(getFormulaHints("HNO", nitrousAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ous acid, then the anion will end in 'ite'.");
-        // expect(getFormulaHints("HClO/2/", hypochlorousAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ous acid, then the anion will end in 'ite'.");
+        expect(getFormulaHints("HNO", nitrousAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ous acid, then the anion will end in 'ite'.");
+        expect(getFormulaHints("HClO/2/", hypochlorousAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ous acid, then the anion will end in 'ite'.");
         expect(getFormulaHints("H/2/SO", sulfurousAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of ____ous acid, then the anion will end in 'ite'.");
     });
 
     test("Ide anions", () => {
         expect(getFormulaHints("HClO", hydrochloricAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of hydro____ic acid, then the anion will end in 'ide'.");
-        expect(getFormulaHints("HAs", hydrocyanicAcid, "acids")).toBe("Check the anion formula. If the name has the pattern of hydro____ic acid, then the anion will end in 'ide'.");
+        expect(getFormulaHints("HAs", hydrocyanicAcid, "acids")).toBe("Check the formula for the anion.");
     });
 });
