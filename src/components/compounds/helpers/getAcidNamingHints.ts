@@ -5,7 +5,10 @@
  * @returns A string indicating the first error encountered
  */
 export const getAcidNamingHints = (userAnswer: string, compoundName: string): string  => {
+    // Split the name into its words
     const [firstUserAnswerPart, secondUserAnswerPart] = userAnswer.split(" ");
+
+    // Acids all have the same second name, 'acid', so the only difference should be in the first part of the name.
     const firstCorrectAnswerPart = compoundName.split(" ")[0];
     
     // Ensure the name ends with 'acid'
@@ -74,12 +77,15 @@ export const getAcidNamingHints = (userAnswer: string, compoundName: string): st
 
     // Check that the user has entered the correct root name for the anion
     if (correctAnionRootName !== userAnionRootName) {
+        // Anions ending in 'ide' should follow the pattern 'hydro ________ic acid'
         if (anionSuffix === "ide") {
             return "The root name of the anion is incorrect. If the anion ends with 'ide', the acid should follow the format 'hydro (anion root name)ic acid'.";
 
+        // Anions ending in 'ate' should follow the pattern '_______ic acid'
         } else if (anionSuffix === "ate") {
             return "Acids are named depending on the suffix of the anion. If the anion ends with 'ate', the acid is named with the suffix 'ic acid'.";
         
+        // Anions ending in 'ite' should follow the pattern '_______ous acid'
         } else if (anionSuffix === "ite") {
             return "Acids are named depending on the suffix of the anion. If the anion ends with 'ite', the acid is named with the suffix 'ous acid'.";
         }

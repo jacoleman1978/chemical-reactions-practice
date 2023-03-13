@@ -2,22 +2,32 @@ import { CompoundType } from "../configurations/compoundTypes";
 import { areSubscriptsLCM } from "./getFormulaHints";
 import { splitFormula } from "./splitFormula";
 
+/**
+ * Get the first hint for a user's polyatomic formula answer from a given compound name
+ * @param userAnswer A string representing the user's answer to a compound formula
+ * @param compoundFormula A string representing the correct compound formula
+ * @param compoundType A string as a CompoundType type literal, indicating the type of compound
+ * @returns The first hint encountered
+ */
 export const getPolyatomicFormulaHints = (userAnswer: string, compoundFormula: string, compoundType: CompoundType): string => {
     // Split both the user and correct formulas into their parts: [cation, cationSubscript, anion, anionSubscript]
     const [userCation, userCationSubscript, userAnion, userAnionSubscript] = splitFormula(userAnswer, compoundType);
     const [cation, cationSubscript, anion, anionSubscript] = splitFormula(compoundFormula, compoundType);
 
+    // Check that the subscripts are in the lowest whole number ratio
     const subscriptsAreLCM: boolean = areSubscriptsLCM(userCationSubscript, userAnionSubscript);
 
+    // Check that if there is an opening parenthesis, there is also a closing parenthesis
     if (userAnswer.includes("(") || userAnswer.includes(")")) {
         if (!userAnswer.includes("(")) {
             return "Parentheses come in pairs. You are missing an opening parenthesis.";
         } 
     }
 
-    // Check for parentheses
+    // Check if the correct answer has parentheses, then check the subscripts for both the cation and anion
     if (compoundFormula.includes("(")) {
         if (cationSubscript !== userCationSubscript) {
+            // Check that the subscripts are in the lowest whole number ratio
             if (!subscriptsAreLCM) {
                 return "The subscripts are not in the lowest whole number ratio.";
             }

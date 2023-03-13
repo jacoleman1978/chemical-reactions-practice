@@ -1,6 +1,11 @@
 import { CompoundType } from "../configurations/compoundTypes";
 import { countUpperCaseCharacters } from "./getUpperCaseIndex";
 
+/**
+ * Split a chemical formula into an array of strings, including the subscripts, which were surrounded by slashes
+ * @param formattedFormula A string representing the user's answer to a compound formula
+ * @returns A string array containing the formula for the cation, the subscript for the cation, the formula for the anion, and the subscript for the anion
+ */
 export const splitBySlashes = (formattedFormula: string): string[] => {
     // Check if the last character is a '/' and remove it if it is
     const length = formattedFormula.length;
@@ -12,7 +17,11 @@ export const splitBySlashes = (formattedFormula: string): string[] => {
     return formattedFormula.split("/");
 };
 
-
+/**
+ * Split a chemical formula containing parentheses into an array of strings
+ * @param formula A string representing the user's answer to a compound formula
+ * @returns A string array containing the formula for the cation, the subscript for the cation, the formula for the anion, and the subscript for the anion
+ */
 export const splitByParentheses = (formula: string): string[] => {
     const firstOpenIndex: number = formula.indexOf("(");
     const firstCloseIndex: number = formula.indexOf(")");
@@ -92,6 +101,11 @@ export const splitByParentheses = (formula: string): string[] => {
     return []
 };
 
+/**
+ * Split a formula into an array of strings, each representing an element
+ * @param formula A string representing the user's answer to a compound formula
+ * @returns A string array containing the elements in the formula
+ */
 export const splitByElement = (formula: string): string[] => {
     const length: number = formula.length;
     if (length === 0) {
@@ -105,6 +119,7 @@ export const splitByElement = (formula: string): string[] => {
     const elementParts: string[] = [];
     let wasLastCharacterUpperCase: boolean = false;
 
+    // Elements are represented by one uppercase character and may have one lowercase character following it
     for (let i = 0; i < length; i++) {
         if (formula[i] === formula[i].toUpperCase()) {
             if (wasLastCharacterUpperCase) {
@@ -127,31 +142,45 @@ export const splitByElement = (formula: string): string[] => {
     return elementParts;
 };
 
+/**
+ * Split a formula of a binary compound into an array of strings, each representing a part of the formula
+ * @param formula 
+ * @returns 
+ */
 export const splitBinaryFormula = (formula: string): [string, string, string, string] => {
     const length: number = formula.length;
 
     const formulaSplitBySlashes: string[] = splitBySlashes(formula);
 
+    // There are no subscripts written, so the subscript for each element is `1`
     if (formulaSplitBySlashes.length === 1) {
         const formulaSplitByElement: string[] = splitByElement(formula);
 
         return [formulaSplitByElement[0], "1", formulaSplitByElement[1], "1"];
 
+    // There is only one subscript written and it must be for the anion
     } else if (formulaSplitBySlashes.length === 2) {
         const formulaSplitByElement: string[] = splitByElement(formulaSplitBySlashes[0]);
 
         return [formulaSplitByElement[0], "1", formulaSplitByElement[1], formulaSplitBySlashes[1]];
 
+    // There is only one subscript written and it must be for the cation
     } else if (formulaSplitBySlashes.length === 3) {
         return [formulaSplitBySlashes[0], formulaSplitBySlashes[1], formulaSplitBySlashes[2], "1"];
 
+    // There are two subscripts written
     } else {
         return [formulaSplitBySlashes[0], formulaSplitBySlashes[1], formulaSplitBySlashes[2], formulaSplitBySlashes[3]];
     }
 };
 
+/**
+ * Split a formula into an array of strings, each representing a part of the formula
+ * @param formula A string representing a compound formula
+ * @param compoundType A string of literal type CompoundType representing the type of compound
+ * @returns A string array containing the parts of the formula: [cation, cationSubscript, anion, anionSubscript]
+ */
 export const splitFormula = (formula: string, compoundType: CompoundType): [string, string, string, string] => {
-    // Split formulas into parts
     let cation: string = "";
     let cationSubscript: string = "";
     let anion: string = "";
@@ -161,9 +190,11 @@ export const splitFormula = (formula: string, compoundType: CompoundType): [stri
     if (formula.includes("(") && formula.includes(")")) {
         [cation, cationSubscript, anion, anionSubscript] = splitByParentheses(formula);
 
+    // If there are only two uppercase characters, the formula is a binary compound, so split it into parts
     } else if (countUpperCaseCharacters(formula) === 2) {
         [cation, cationSubscript, anion, anionSubscript] = splitBinaryFormula(formula);
 
+    // If the second character is a '/', the H has a subscript, otherwise it does not
     } else if (compoundType === "acids") {
         if (formula[1] === "/") {
             [cation, cationSubscript, anion, anionSubscript] = [formula[0], formula[2], formula.slice(4), "1"];
@@ -172,6 +203,7 @@ export const splitFormula = (formula: string, compoundType: CompoundType): [stri
             [cation, cationSubscript, anion, anionSubscript] = [formula[0], "1", formula.slice(1), "1"];
         }
 
+    // The formula contains an ammonium ion, but does not have parentheses around it, so the ammonium has a subscript of 1
     } else if (formula.includes("NH/4/")) {
         [cation, cationSubscript, anion, anionSubscript] = ["NH/4/", "1", formula.slice(5), "1"];
         
@@ -181,7 +213,7 @@ export const splitFormula = (formula: string, compoundType: CompoundType): [stri
         cation = compoundFirstPartElements[0];
         cationSubscript = compoundFirstPartElements.length === 1 ? compoundFirstPartElements[1] : "1";
         const cationCharLength: number = cation.length;
-        if (Number(cationSubscript) === 1) {
+        if (cationSubscript === "1") {
             anion = formula.slice(cationCharLength);
         } else {
             anion = formula.slice(cationCharLength + 3);

@@ -1,4 +1,11 @@
+/**
+ * Get the first hint for a user's molecular naming answer from a given chemical formula
+ * @param userAnswer A string representing the user's answer to a molecular naming question
+ * @param compoundName A string representing the correct molecular naming answer
+ * @returns The first hint encountered
+ */
 export const getMolecularNamingHints = (userAnswer: string, compoundName: string): string => {
+    // Split both the user and correct names into their words
     const [firstUserAnswerPart, secondUserAnswerPart] = userAnswer.split(" ");
     const [firstCorrectAnswerPart, secondCorrectAnswerPart] = compoundName.split(" ");
 

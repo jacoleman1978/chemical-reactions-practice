@@ -1,5 +1,11 @@
 import { splitFormula } from "./splitFormula";
 
+/**
+ * Get the first hint for a user's molecular formula answer from a given compound name
+ * @param userAnswer A string representing the user's answer to a molecular formula
+ * @param compoundFormula A string representing the correct molecular formula
+ * @returns The first hint encountered
+ */
 export const getMolecularFormulaHints = (userAnswer: string, compoundFormula: string): string => {
     // Split both the user and correct formulas into their parts: [cation, cationSubscript, anion, anionSubscript]
     const [userCation, userCationSubscript, userAnion, userAnionSubscript] = splitFormula(userAnswer, "molecular");
@@ -13,6 +19,7 @@ export const getMolecularFormulaHints = (userAnswer: string, compoundFormula: st
         return "Check the formula for the second element."
     }
 
+    // Check that the subscripts match the Greek prefixes for both the cation and anion
     if (cationSubscript !== userCationSubscript) {
         if (cationSubscript === "1") {
             return "When no Greek prefix is present for the first element in a molecular compound, that indicates that there is only one of that element."
@@ -25,9 +32,14 @@ export const getMolecularFormulaHints = (userAnswer: string, compoundFormula: st
         return `The Greek prefix for the second element indicates what number to use for the subscript. The prefix '${convertToGreekPrefix(anionSubscript)}' does not equal ${userAnionSubscript}.`
     }
 
-    return "Don't escape me!";
+    return "";
 };
 
+/**
+ * Convert a number as a string into its Greek prefix
+ * @param number A string representing a number
+ * @returns The Greek prefix for that number
+ */
 const convertToGreekPrefix = (number: string): string => {
     switch (number) {
         case "1":

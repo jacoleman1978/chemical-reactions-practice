@@ -37,8 +37,8 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
         return "The name of the compound should be written in lower case unless it is the first word in a sentence.";
     }
 
+    // Check that the name has one and only one space between the two parts of the name
     const firstSpaceIndex = userAnswer.indexOf(" ");
-
     if (userAnswer.slice(firstSpaceIndex + 1, firstSpaceIndex + 2) === " ") {
         return "There can only be one space between the two parts of the name.";
     }
@@ -48,6 +48,7 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
         return "The name must have a space between the two parts of the name.";
     }
 
+    // Split the user's answer and the correct answer into two words
     const [firstUserAnswerPart, secondUserAnswerPart] = userAnswer.split(" ");
     const [firstCorrectAnswerPart, secondCorrectAnswerPart] = compoundName.split(" ");
 

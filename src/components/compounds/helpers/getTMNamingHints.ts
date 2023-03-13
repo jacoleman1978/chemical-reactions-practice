@@ -11,7 +11,7 @@ interface DecomposedTMName {
  * @returns A string indicating the first error encountered
  */
 export const getTMNamingHints = (userAnswer: string, compoundName: string): string => {
-    // Decompose the correct name into its parts
+    // Decompose the correct name into its parts, Roman numeral, cation name without Roman numeral, and anion name
     const firstParenthesisIndexCorrect = compoundName.indexOf("(");
     const lastParenthesisIndexCorrect = compoundName.indexOf(")");
 
@@ -51,6 +51,7 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
 
     decomposedUserAnswer.romanNum = userAnswer.slice(firstParenthesisIndex + 1, lastParenthesisIndex);
 
+    // Check that there are no spaces in the cation name or Roman numeral
     const userAnswerSplitBySpaces = userAnswer.split(" ");
     if (userAnswer.slice(firstParenthesisIndex -1, firstParenthesisIndex) === " ") {
         return "There should not be a space between the cation name and the Roman numeral in parentheses.";
@@ -81,8 +82,8 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
         if (decomposedUserAnswer.romanNum.toUpperCase() !== decomposedUserAnswer.romanNum) {
             return "The Roman numeral indicating the cation's charge should be written in upper case.";
         }
-    
-        return `The Roman numeral indicating the cation's charge is incorrect.`;
+
+        return "The Roman numeral indicating the cation's charge is incorrect.";
     }
 
     // Check the cation name for correctness
@@ -92,7 +93,7 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
             return "The name of the transition metal should be written in lower case. Capital letters should only be used for roman numerals.";
         }
 
-        return `The name of the transition metal is incorrect. The cation is name of the element on the periodic table followed by the Roman numeral indicating the cation's charge.`;
+        return "The name of the transition metal is incorrect. The cation is name of the element on the periodic table followed by the Roman numeral indicating the cation's charge.";
     }
 
     decomposedUserAnswer.anionName = userAnswer.slice(lastParenthesisIndex + 1);

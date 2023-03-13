@@ -6,6 +6,13 @@ import { getPolyatomicFormulaHints } from "./getPolyatomicFormulaHints";
 import { getAcidFormulaHints } from "./getAcidFormulaHints";
 import { countUpperCaseCharacters } from "./getUpperCaseIndex";
 
+/**
+ * Get the first hint for a user's compound formula answer from a given compound name
+ * @param userAnswer A string representing the user's answer to a compound formula
+ * @param compoundFormula A string representing the correct compound formula
+ * @param compoundType A string as a CompoundType type literal, indicating the type of compound
+ * @returns A string indicating the first error encountered
+ */
 export const getFormulaHints = (userAnswer: string, compoundFormula: string, compoundType: CompoundType): string => {
     let hint: string = "";
 
@@ -130,9 +137,16 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
     return "Still need to build out"
 };
 
+/**
+ * Check if the subscripts are in the lowest common multiple
+ * @param userCationSubscript A string representing the user's cation subscript
+ * @param userAnionSubscript A string representing the user's anion subscript
+ * @returns A boolean indicating if the subscripts are in the lowest common multiple
+ */
 export const areSubscriptsLCM = (userCationSubscript: string, userAnionSubscript: string): boolean => {
     let isLCM: boolean = true;
 
+    // Check if both subscripts are exactly divisible by 2, 3, or 5
     [2, 3, 5].forEach((num) => {                    
         if (Number(userCationSubscript) % num === 0 && Number(userAnionSubscript) % num === 0) {
             isLCM = false;
