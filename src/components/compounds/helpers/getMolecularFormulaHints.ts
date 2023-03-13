@@ -1,47 +1,37 @@
-export const getMolecularFormulaHints = (correctFormulaParts: string[], userFormulaParts: string[]): string => {
-    let hint: string = "";
+import { splitFormula } from "./splitFormula";
 
-    correctFormulaParts.forEach((part, i) => {
-        if (i % 2 === 0) {
-            if (part !== userFormulaParts[i]) {
-                if (part.length === userFormulaParts[i].length) {
-                    let elementSymbol: string = "";
+export const getMolecularFormulaHints = (userAnswer: string, compoundFormula: string): string => {
+    // Split both the user and correct formulas into their parts: [cation, cationSubscript, anion, anionSubscript]
+    const [userCation, userCationSubscript, userAnion, userAnionSubscript] = splitFormula(userAnswer, "molecular");
+    const [cation, cationSubscript, anion, anionSubscript] = splitFormula(compoundFormula, "molecular");
 
-                    for (let j = 0; j < part.length; j++) {
-                        if (part[j] !== userFormulaParts[i][j]) {
-                            if (userFormulaParts[i][j] === userFormulaParts[i][j].toUpperCase()) {
-                                // TODO: Need to check if j+1 or j+2 is out of bounds
-                                if (userFormulaParts[i][j+1] !== userFormulaParts[i][j+1].toUpperCase()) {
-                                    elementSymbol = userFormulaParts[i][j];
-                                } else {
-                                    elementSymbol = userFormulaParts[i].slice(j, j+2);
-                                }
-                                
-                            } else {
-                                elementSymbol = userFormulaParts[i].slice(j-1, j+1);
-                            }
+    if (cation !== userCation) {
+        return "Check the formula for the first element."
+    }
 
-                            break;
-                        }
-                    }
+    if (anion !== userAnion) {
+        return "Check the formula for the second element."
+    }
 
-                    hint = `There is something incorrect with '${elementSymbol}'.`;
-                }
-
-                
-            }
-        } else {
-            if (part !== userFormulaParts[i]) {
-                hint = `The subscript ${userFormulaParts[i]} after '${userFormulaParts[i-1]}' is incorrect. What number does '${convertToGreekPrefix(part)}' represent?`;
-            }
+    if (cationSubscript !== userCationSubscript) {
+        if (cationSubscript === "1") {
+            return "When no Greek prefix is present for the first element in a molecular compound, that indicates that there is only one of that element."
         }
-    })
 
-    return hint;
+        return `The Greek prefix for the first element indicates what number to use for the subscript. The prefix '${convertToGreekPrefix(cationSubscript)}' does not equal ${userCationSubscript}.`
+    }
+
+    if (anionSubscript !== userAnionSubscript) {
+        return `The Greek prefix for the second element indicates what number to use for the subscript. The prefix '${convertToGreekPrefix(anionSubscript)}' does not equal ${userAnionSubscript}.`
+    }
+
+    return "Don't escape me!";
 };
 
 const convertToGreekPrefix = (number: string): string => {
     switch (number) {
+        case "1":
+            return "mono";
         case "2":
             return "di";
         case "3":

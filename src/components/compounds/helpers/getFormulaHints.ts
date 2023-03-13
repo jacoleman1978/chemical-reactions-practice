@@ -94,14 +94,14 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
         }
     }
 
-    // // Give hints for 'molecular' compounds
-    // if (compoundType === "molecular") {
-    //     hint = getMolecularFormulaHints(correctFormulaParts, userFormulaParts);
+    // Give hints for 'molecular' compounds
+    if (compoundType === "molecular") {
+        hint = getMolecularFormulaHints(userAnswer, compoundFormula);
 
-    //     if (hint !== "") {
-    //         return hint;
-    //     }
-    // }
+        if (hint !== "") {
+            return hint;
+        }
+    }
 
     if (cation !== userCation) {
         return "Check the formula for the cation."

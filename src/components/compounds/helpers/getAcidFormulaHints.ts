@@ -40,5 +40,5 @@ export const getAcidFormulaHints = (userAnswer: string, compoundFormula: string)
         return "Check the formula for the anion."
     }
 
-    return "Don't escape me!"
+    return ""
 };
