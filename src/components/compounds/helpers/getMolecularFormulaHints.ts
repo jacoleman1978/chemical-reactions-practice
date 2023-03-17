@@ -21,8 +21,14 @@ export const getMolecularFormulaHints = (userAnswer: string, compoundFormula: st
 
     // Check that the subscripts match the Greek prefixes for both the cation and anion
     if (cationSubscript !== userCationSubscript) {
+        // User used the Greek prefix as a charge instead of a subscript
+        if (userCationSubscript === anionSubscript && userAnionSubscript === cationSubscript) {
+            return "The Greek prefixes indicate how many of the element directly after it is in the compound. The prefix is NOT the charge."
+        }
+
+        // When no Greek prefix is present for the first element in a molecular compound, that indicates that there is only one of that element
         if (cationSubscript === "1") {
-            return "When no Greek prefix is present for the first element in a molecular compound, that indicates that there is only one of that element."
+            return "When no Greek prefix is present for the first element in a molecular compound, that indicates that there is only one of that element. Remove the subscript for the first element."
         }
 
         return `The Greek prefix for the first element indicates what number to use for the subscript. The prefix '${convertToGreekPrefix(cationSubscript)}' does not equal ${userCationSubscript}.`

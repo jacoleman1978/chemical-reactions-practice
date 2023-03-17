@@ -25,7 +25,7 @@ export const getAcidFormulaHints = (userAnswer: string, compoundFormula: string)
 
     // Check that the anion subscript is 1, since the +1 charge of the hydrogen ion will determine the subscript
     if (Number(userAnionSubscript) > 1) {
-        return "All acid formulas begin with 'H', which has a charge of +1. As a result there will only be one acid anion in the formula."
+        return "All acid formulas begin with 'H', which has a charge of +1. As a result there will only be one acid anion in the formula. Remove the anion subscript or select the correct polyatomic anion."
     }
 
     // Check that the cation subscript is equal to the charge of the anion
@@ -38,17 +38,19 @@ export const getAcidFormulaHints = (userAnswer: string, compoundFormula: string)
         // Get the first two elements of the anion and userAnion to determine if the user entered a different oxyanion
         const firstTwoElements: string = getFirstTwoElements(anion);
         const firstTwoUserElements: string = getFirstTwoElements(userAnion);
+        const firstElement: string = getFirstElement(anion);
+        const firstUserElement: string = getFirstElement(userAnion);
 
         // If the name of the acid followed the pattern of ____ic acid, then the 'ate' oxyanion is used.
-        if (ateAcidAnions.includes(anion) && firstTwoElements === firstTwoUserElements) {
+        if (ateAcidAnions.includes(anion) && (firstTwoElements === firstTwoUserElements || firstElement === firstUserElement)) {
             return "Check the anion formula. If the name has the pattern of ____ic acid, without a 'hydro' prefix, then the anion will end in 'ate'."
 
         // If the name of the acid followed the pattern of ____ous acid, then the 'ite' oxyanion is used.
-        } else if (iteAcidAnions.includes(anion) && firstTwoElements === firstTwoUserElements) {
+        } else if (iteAcidAnions.includes(anion) && (firstTwoElements === firstTwoUserElements || firstElement === firstUserElement)) {
             return "Check the anion formula. If the name has the pattern of ____ous acid, then the anion will end in 'ite'."
         
         // If the name of the acid followed the pattern of hydro____ic acid, then the 'ide' oxyanion is used.
-        } else if (ideAcidAnions.includes(anion) && getFirstElement(anion) === getFirstElement(userAnion)) {
+        } else if (ideAcidAnions.includes(anion) && firstElement === firstUserElement) {
             return "Check the anion formula. If the name has the pattern of hydro____ic acid, then the anion will end in 'ide'."
         }
 

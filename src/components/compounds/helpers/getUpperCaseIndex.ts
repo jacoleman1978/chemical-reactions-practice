@@ -21,6 +21,10 @@ export const getUpperCaseIndex = (formula: string): number => {
  * @returns A number representing the number of uppercase characters in the string
  */
 export const countUpperCaseCharacters = (formula: string): number => {
+    if (formula === undefined) {
+        return 0;
+    }
+
     const length: number = formula.length;
 
     let count: number = 0;

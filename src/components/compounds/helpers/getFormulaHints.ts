@@ -40,8 +40,13 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
         return "Subscripts of 1 are never written.";
     }
 
-    // Check that subscripts are surrounded by slashes, so there must be an even number of slashes
+    // Check user answers with '/' in them
     if (userAnswer.includes("/")) {
+        // Check for '/d+/d+/, where d is a number
+        if (/\/\d+\/\d+\//.test(userAnswer)) {
+            return "There should be no numbers next to each other in a formula. Usually this can be fixed by putting the polyatomic ion in parentheses.";
+        }
+        // Check that subscripts are surrounded by slashes, so there must be an even number of slashes
         let numberOfSlashes: number = 0;
         for (let i = 0; i < userAnswer.length; i++) {
             if (userAnswer[i] === "/") {
@@ -52,11 +57,22 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
         if (numberOfSlashes % 2 !== 0) {
             return "Subscripts must be surrounded by '/' characters.";
         }
+
+        // Check that the odd indexes (subscript) are numbers
+        const splitUserAnswer: string[] = userAnswer.split("/");
+        for (let i = 1; i < splitUserAnswer.length; i++) {
+            if (i % 2 === 1 && (!/\d+/.test(splitUserAnswer[i]) || /[a-zA-Z]/.test(splitUserAnswer[i]))) {
+                return "Subscripts must be a number. Check that a number is written between the '/' characters, or remove the slashes.";
+            }
+        }
+    // Check that numbers are not written unless there are subscripts, determined by the presence of '/'
+    } else if (/\d/.test(userAnswer)) {
+        return "Numbers in a formula are subscripts, which must be surrounded by '/' characters.";
     }
 
     // Check if the user included parentheses, but the correct formula does not
     if ((userAnswer.includes("(") || userAnswer.includes(")")) && !compoundFormula.includes("(")) {
-        return "Parentheses are only used for compounds with more than one of a polyatomic ion.";
+        return "There should not be parentheses. Parentheses are only used for compounds with more than one of a polyatomic ion.";
     }
 
     // Check for two subscripts next to each other by checking for "//"
@@ -64,16 +80,14 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
         return "Two subscripts can not be written next to each other. Usually this can be fixed by putting the polyatomic ion in parentheses.";
     } 
 
+    // Ensure that the first character of the user's answer is a capital letter
+    if (/[a-z]/.test(userAnswer[0])) {
+        return "All elements begin with a capital letter. Check the formula for the cation.";
+    }
+
     // Split both the user and correct formulas into their parts: [cation, cationSubscript, anion, anionSubscript]
     const [userCation, userCationSubscript, userAnion, userAnionSubscript] = splitFormula(userAnswer, compoundType);
     const [cation, cationSubscript, anion, anionSubscript] = splitFormula(compoundFormula, compoundType);
-
-    // Check for subscripts in lowest common multiple for ionic compounds without parentheses
-    if (compoundType === "ionic-main") {
-        if (!areSubscriptsLCM(userCationSubscript, userAnionSubscript)) {
-            return "The subscripts are not in the lowest whole number ratio.";
-        }
-    }
 
     // Tests for compounds containing transition metals. They must be on the list below
     if (compoundType === "ionic-transition" || compoundType === "ionic-mixed") {
@@ -113,16 +127,39 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
 
     // Give hints for 'ionic-main' compounds
     if (compoundType === "ionic-main") {
+        // Check that the subscripts are in the lowest whole number ratio
+        if (!areSubscriptsLCM(userCationSubscript, userAnionSubscript)) {
+            return "The subscripts are not in the lowest whole number ratio.";
+        }
+
+        // Check for user entering 'P' for potassium
+        if (cation === "K" && userCation === "P") {
+            return "The symbol for potassium is not 'P', which is the symbol for phosphorus.";
+        }
+
+        // Check for user entering 'S' for sodium
+        if (cation === "Na" && userCation === "S") {
+            return "The symbol for sodium is not 'S', which is the symbol for sulfur.";
+        }
+
+        // 'ionic-main' compounds should not have polyatomic ions
         if (anion !== userAnion && countUpperCaseCharacters(userAnion) > 1) {
             return "Anion names ending in 'ide' are not polyatomic, except for cyanide and hydroxide.";
         }
     }
 
+    // Check that the user's cation is the same as the correct cation
     if (cation !== userCation) {
         return "Check the formula for the cation."
     }
 
+    // Check that the user's anion is the same as the correct anion
     if (anion !== userAnion) {
+        // Check that the user's anion begins with a capital letter
+        if (/[a-z]/.test(userAnion[0])) {
+            return "All elements begin with a capital letter. Check the formula for the anion.";
+        }
+
         return "Check the formula for the anion."
     }
 
@@ -134,7 +171,7 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
         return "Check the subscript for the anion."
     }
     
-    return "Still need to build out"
+    return ""
 };
 
 /**

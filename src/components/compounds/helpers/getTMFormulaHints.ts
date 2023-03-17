@@ -33,6 +33,11 @@ export const getTMFormulaHints = (userAnswer: string, compoundFormula: string, c
     });
 
     if (cation !== userCation) {
+        // Check for mistakes with elements that have symbols based upon their Latin names
+        if (["Cu", "Au", "Fe", "Sn", "Hg", "Pb", "W"].includes(cation)) {
+            return "Check the formula for the cation. The symbol is based on its Latin name, not its English name.";
+        }
+
         if (!isCationInTmSymbolList) {
             return "Check the formula for the cation. A name with parentheses and Roman numerals indicates a transition metal cation.";
         }
@@ -41,6 +46,11 @@ export const getTMFormulaHints = (userAnswer: string, compoundFormula: string, c
     }
     
     if (anion !== userAnion && compoundType === "ionic-transition") {
+        // Check that the first letter of the anion is capitalized
+        if (/[a-z]/.test(userAnion[0])) {
+            return "All elements begin with a capital letter. Check the formula for the anion.";
+        }
+
         // If the anion has more than one uppercase character or element, it is not a polyatomic ion
         if (countUpperCaseCharacters(userAnion) > 1) {
             return "Any ion name ending in '-ide', indicates a monatomic anion, except for hydroxide or cyanide. Check the formula for the anion."
@@ -60,6 +70,7 @@ export const getTMFormulaHints = (userAnswer: string, compoundFormula: string, c
         return "Check the subscript for the anion. Keep in mind that the Roman numeral after the cation name indicates the charge of the cation and is frequently the subscript for the anion.";
     }
 
+    // Check that the subscripts are in the lowest common multiple
     if (!subscriptsAreLCM) {
         return "The subscripts are not in the lowest whole number ratio.";
     }
