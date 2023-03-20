@@ -44,7 +44,7 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
     if (userAnswer.includes("/")) {
         // Check for '/d+/d+/, where d is a number
         if (/\/\d+\/\d+\//.test(userAnswer)) {
-            return "There should be no numbers next to each other in a formula. Usually this can be fixed by putting the polyatomic ion in parentheses.";
+            return "Two subscripts can not be written next to each other. Usually this can be fixed by putting the polyatomic ion in parentheses.";
         }
         // Check that subscripts are surrounded by slashes, so there must be an even number of slashes
         let numberOfSlashes: number = 0;
@@ -111,18 +111,14 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
     if (compoundType === "acids") {
         hint = getAcidFormulaHints(userAnswer, compoundFormula);
 
-        if (hint !== "") {
-            return hint;
-        }
+        return hint;
     }
 
     // Give hints for 'molecular' compounds
     if (compoundType === "molecular") {
         hint = getMolecularFormulaHints(userAnswer, compoundFormula);
 
-        if (hint !== "") {
-            return hint;
-        }
+        return hint;
     }
 
     // Give hints for 'ionic-main' compounds
@@ -167,11 +163,7 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
         return "Check the subscript for the cation."
     }
 
-    if (anionSubscript !== userAnionSubscript) {
-        return "Check the subscript for the anion."
-    }
-    
-    return ""
+    return "Check the subscript for the anion."
 };
 
 /**

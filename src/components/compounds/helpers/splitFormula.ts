@@ -69,36 +69,33 @@ export const splitByParentheses = (formula: string): string[] => {
         }
         
         // If there is only one uppercase character, the second part is a monatomic anion. If there is not a slash, the subscript must be `1`
-        if (upperCaseCount === 1) {
-            if (firstSlashIndex === -1) {
-                anion = secondPart;
-                anionSubscript = "1";
-
-                return [cation, cationSubscript, anion, anionSubscript];
-            }
-
-            [anion, anionSubscript] = splitBySlashes(secondPart);
+        if (firstSlashIndex === -1) {
+            anion = secondPart;
+            anionSubscript = "1";
 
             return [cation, cationSubscript, anion, anionSubscript];
-        } 
-    // Formula does not start with "(", indicating that contents of the parentheses are the anion
-    } else if (firstOpenIndex > 0) {
-        const firstPart: string = formula.slice(0, firstOpenIndex);
-        
-        if (firstPart.indexOf("/") === -1) {
-            cation = firstPart;
-            cationSubscript = "1";
-        } else {
-            [cation, cationSubscript] = firstPart.split("/");
         }
 
-        anion = formula.slice(firstOpenIndex + 1, firstCloseIndex);
-        anionSubscript = formula.slice(firstCloseIndex + 2, -1);
+        [anion, anionSubscript] = splitBySlashes(secondPart);
 
         return [cation, cationSubscript, anion, anionSubscript];
     }
 
-    return []
+    // Formula does not start with "(", indicating that contents of the parentheses are the anion
+    const firstPart: string = formula.slice(0, firstOpenIndex);
+    
+    if (firstPart.indexOf("/") === -1) {
+        cation = firstPart;
+        cationSubscript = "1";
+    } else {
+        [cation, cationSubscript] = firstPart.split("/");
+    }
+
+    anion = formula.slice(firstOpenIndex + 1, firstCloseIndex);
+    anionSubscript = formula.slice(firstCloseIndex + 2, -1);
+
+    return [cation, cationSubscript, anion, anionSubscript];
+    
 };
 
 /**
@@ -121,7 +118,7 @@ export const splitByElement = (formula: string): string[] => {
 
     // Elements are represented by one uppercase character and may have one lowercase character following it
     for (let i = 0; i < length; i++) {
-        if (formula[i] === formula[i].toUpperCase()) {
+        if (/[A-Z]/.test(formula[i])) {
             if (wasLastCharacterUpperCase) {
                 elementParts.push(formula[i-1]);
 
@@ -133,7 +130,7 @@ export const splitByElement = (formula: string): string[] => {
                 elementParts.push(formula[i]);
             }
 
-        } else if (formula[i] === formula[i].toLowerCase()) {
+        } else {
             elementParts.push(formula.slice(i-1, i+1));
             wasLastCharacterUpperCase = false;
         }

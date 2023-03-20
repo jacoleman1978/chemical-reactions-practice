@@ -1,5 +1,6 @@
 import { describe, test, expect } from "@jest/globals";
 import { getFormulaHints } from "../../src/components/compounds/helpers/getFormulaHints";
+import { splitFormula } from "../../src/components/compounds/helpers/splitFormula";
 
 describe("Test hints for formulas with polyatomic ions", () => {
     // "ionic-polyatomic" compound types
@@ -7,11 +8,16 @@ describe("Test hints for formulas with polyatomic ions", () => {
     const ammoniumSulfate: string = "(NH/4/)/2/SO/4/";
     const calciumPhosphate: string = "Ca/3/(PO/4/)/2/";
     const sodiumPhosphate: string = "Na/2/(PO/4/)/3/";
+    const ammoniumChloride: string = "NH/4/Cl";
 
     // "ionic-mixed" compound type
     const ironIIISulfite: string = "Fe/3/(SO/3/)/2/";
 
-    const compoundList: string[] = [ammoniumSulfide, ammoniumSulfate, calciumPhosphate, ironIIISulfite, sodiumPhosphate];
+    const compoundList: string[] = [ammoniumSulfide, ammoniumSulfate, calciumPhosphate, ironIIISulfite, sodiumPhosphate, ammoniumChloride];
+
+    test("Split ammonium chloride formula into parts", () => {
+        expect(splitFormula(ammoniumChloride, "ionic-polyatomic")).toStrictEqual(["NH/4/", "1", "Cl", "1"]);
+    });
 
     test("Formula is correct", () => {
         compoundList.forEach(compound => {
@@ -75,6 +81,8 @@ describe("Test hints for formulas with polyatomic ions", () => {
 
         expect(getFormulaHints("(NH/3//2/S", compoundFormula, "ionic-polyatomic")).toBe("Two subscripts can not be written next to each other. Usually this can be fixed by putting the polyatomic ion in parentheses.");
 
+        expect(getFormulaHints("(NH/3/2/S", compoundFormula, "ionic-polyatomic")).toBe("Two subscripts can not be written next to each other. Usually this can be fixed by putting the polyatomic ion in parentheses.");
+
         expect(getFormulaHints("(NH/4/)/4/S/2/", compoundFormula, "ionic-polyatomic")).toBe("The subscripts are not in the lowest whole number ratio.");
     });
 
@@ -131,7 +139,7 @@ describe("Test hints for formulas with polyatomic ions", () => {
 
         expect(getFormulaHints("Fe/3/(SO/3/)/2/", compoundFormula, "ionic-mixed")).toBe("Check the subscript for the cation.");
 
-        expect(getFormulaHints("F/2/(SO/3/)/3/", compoundFormula, "ionic-mixed")).toBe("Check the formula for the cation. A name with parentheses and Roman numerals indicates a transition metal cation.");
+        expect(getFormulaHints("F/2/(SO/3/)/3/", compoundFormula, "ionic-mixed")).toBe("Check the formula for the cation. The symbol is based on its Latin name, not its English name.");
 
         expect(getFormulaHints("Fe/2/(SO/4/)/3/", compoundFormula, "ionic-mixed")).toBe("Check the number of oxygens in the formula using the oxyanion naming pattern.");
 
@@ -145,8 +153,20 @@ describe("Test hints for formulas with polyatomic ions", () => {
 
         expect(getFormulaHints("Na/3/PO/4//1/", compoundFormula, "ionic-polyatomic")).toBe("Subscripts of 1 are never written.");
 
-        expect(getFormulaHints("Na/3/(PO/4/)", compoundFormula, "ionic-polyatomic")).toBe("Parentheses are only used for compounds with more than one of a polyatomic ion.");
+        expect(getFormulaHints("Na/3/(PO/4/)", compoundFormula, "ionic-polyatomic")).toBe("There should not be parentheses. Parentheses are only used for compounds with more than one of a polyatomic ion.");
 
-        expect(getFormulaHints("(Na)/3/PO/4/", compoundFormula, "ionic-polyatomic")).toBe("Parentheses are only used for compounds with more than one of a polyatomic ion.");
+        expect(getFormulaHints("(Na)/3/PO/4/", compoundFormula, "ionic-polyatomic")).toBe("There should not be parentheses. Parentheses are only used for compounds with more than one of a polyatomic ion.");
+    });
+
+    test("Hints for sodium bicarbonate", () => {
+        const compoundFormula: string = "NaHCO/3/";
+
+        expect(getFormulaHints("NaCO/3/", compoundFormula, "ionic-polyatomic")).toBe("Anion names starting with the 'bi' prefix indicate that the anion has an 'H' at the beginning of its formula. Please do not confuse it with the Greek prefix 'di' for molecular compounds.");
+    });
+
+    test("Hints for oxyanion naming pattern", () => {
+        const compoundFormula: string = "Na/2/SO/3/";
+
+        expect(getFormulaHints("Na/2/S", compoundFormula, "ionic-polyatomic")).toBe("Any ion name ending in '-ite' or '-ate', indicates a polyatomic anion. Check the formula for the anion.");
     });
 });

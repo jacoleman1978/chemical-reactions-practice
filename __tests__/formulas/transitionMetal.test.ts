@@ -9,6 +9,7 @@ describe("Test hints for formulas with transition metals", () => {
     const copperIIOxide: string = "CuO";
     const ironIIIOxide: string = "Fe/2/O/3/";
     const leadIVOxide: string = "PbO/2/";
+    const manganeseIVOxide: string = "MnO/2/";
 
     const compoundList: string[] = [copperICloride, copperISulfide, copperIIIodide, copperIIOxide, ironIIIOxide, leadIVOxide];
 
@@ -52,9 +53,11 @@ describe("Test hints for formulas with transition metals", () => {
     });
 
     test("Cation is a transition metal", () => {
-        expect(getFormulaHints("CI/2/", copperIIIodide, "ionic-transition")).toBe("Check the formula for the cation. A name with parentheses and Roman numerals indicates a transition metal cation.");
+        expect(getFormulaHints("CI/2/", copperIIIodide, "ionic-transition")).toBe("Check the formula for the cation. The symbol is based on its Latin name, not its English name.");
 
-        expect(getFormulaHints("CoI/2/", copperIIIodide, "ionic-transition")).toBe("Check the formula for the cation.");
+        expect(getFormulaHints("CoI/2/", copperIIIodide, "ionic-transition")).toBe("Check the formula for the cation. The symbol is based on its Latin name, not its English name.");
+
+        expect(getFormulaHints("MgO/2/", manganeseIVOxide, "ionic-transition")).toBe("Check the formula for the cation.");
     });
 
     test("Anions with 'ionic-transition'", () => {
@@ -69,5 +72,13 @@ describe("Test hints for formulas with transition metals", () => {
         expect(getFormulaHints("CuI", copperIIIodide, "ionic-transition")).toBe("Check the subscript for the anion. Keep in mind that the Roman numeral after the cation name indicates the charge of the cation and is frequently the subscript for the anion.");
 
         expect(getFormulaHints("Cu/2/I/4/", copperIIIodide, "ionic-transition")).toBe("The subscripts are not in the lowest whole number ratio.");
+    });
+
+    test("Check capitalization", () => {
+        expect(getFormulaHints("Cui/2/", copperIIIodide, "ionic-transition")).toBe("All elements begin with a capital letter. Check the formula for the anion.");
+
+        expect(getFormulaHints("cuI/2/", copperIIIodide, "ionic-transition")).toBe("All elements begin with a capital letter. Check the formula for the cation.");
+
+        expect(getFormulaHints("cui/2/", copperIIIodide, "ionic-transition")).toBe("All elements begin with a capital letter. Check the formula for the cation.");
     });
 });

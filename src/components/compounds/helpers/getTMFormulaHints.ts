@@ -25,21 +25,10 @@ export const getTMFormulaHints = (userAnswer: string, compoundFormula: string, c
         }
     }
 
-    // Check that the cation is on the list of transition metals
-    const tmSymbolList: string[] = ["Cu", "Au", "Ti", "Fe", "Co", "Ni", "Pd", "Sn", "Pt", "Hg", "Pb", "Sc", "V", "Cr", "Mn", "Ru", "Re", "Mo", "W", "Os"];
-
-    const isCationInTmSymbolList: boolean = tmSymbolList.some((tmSymbol) => {
-        return userCation.includes(tmSymbol);
-    });
-
     if (cation !== userCation) {
         // Check for mistakes with elements that have symbols based upon their Latin names
         if (["Cu", "Au", "Fe", "Sn", "Hg", "Pb", "W"].includes(cation)) {
             return "Check the formula for the cation. The symbol is based on its Latin name, not its English name.";
-        }
-
-        if (!isCationInTmSymbolList) {
-            return "Check the formula for the cation. A name with parentheses and Roman numerals indicates a transition metal cation.";
         }
 
         return "Check the formula for the cation.";

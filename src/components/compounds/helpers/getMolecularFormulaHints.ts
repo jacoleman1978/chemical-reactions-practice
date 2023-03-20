@@ -46,7 +46,7 @@ export const getMolecularFormulaHints = (userAnswer: string, compoundFormula: st
  * @param number A string representing a number
  * @returns The Greek prefix for that number
  */
-const convertToGreekPrefix = (number: string): string => {
+export const convertToGreekPrefix = (number: string): string => {
     switch (number) {
         case "1":
             return "mono";

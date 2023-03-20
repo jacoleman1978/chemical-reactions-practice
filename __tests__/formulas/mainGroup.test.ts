@@ -14,13 +14,15 @@ describe("Test hints for formulas with only main group ions.", () => {
     const cadmiumNitride: string = "Cd/3/N/2/";
 
     test("Hints for the cation.", () => {
-        expect(getFormulaHints("SI/2/", sodiumIodide, "ionic-main")).toBe("Check the formula for the cation.");
-        expect(getFormulaHints("PO", potassiumOxide, "ionic-main")).toBe("Check the formula for the cation.");
+        expect(getFormulaHints("SI/2/", sodiumIodide, "ionic-main")).toBe("The symbol for sodium is not 'S', which is the symbol for sulfur.");
+        expect(getFormulaHints("PO", potassiumOxide, "ionic-main")).toBe("The symbol for potassium is not 'P', which is the symbol for phosphorus.");
         expect(getFormulaHints("MaS", magnesiumSulfide, "ionic-main")).toBe("Check the formula for the cation.");
     });
 
     test("Hints for the anion.", () => {
         expect(getFormulaHints("BaC/2/", bariumChloride, "ionic-main")).toBe("Check the formula for the anion.");
+        expect(getFormulaHints("Ba2Cl", bariumChloride, "ionic-main")).toBe("Numbers in a formula are subscripts, which must be surrounded by '/' characters.");
+        expect(getFormulaHints("Bacl/2/", bariumChloride, "ionic-main")).toBe("All elements begin with a capital letter. Check the formula for the anion.");
         expect(getFormulaHints("AlFl/3/", aluminumFluoride, "ionic-main")).toBe("Check the formula for the anion.");
         expect(getFormulaHints("Al/2/Ox/3/", aluminumOxide, "ionic-main")).toBe("Check the formula for the anion.");
     });
@@ -29,6 +31,7 @@ describe("Test hints for formulas with only main group ions.", () => {
         expect(getFormulaHints("Al/3/P/3/", aluminumPhosphide, "ionic-main")).toBe("The subscripts are not in the lowest whole number ratio.");
         expect(getFormulaHints("Al/3/P", aluminumPhosphide, "ionic-main")).toBe("Check the subscript for the cation.");
         expect(getFormulaHints("AgS/2/", silverSulfide, "ionic-main")).toBe("Check the subscript for the cation.");
+        expect(getFormulaHints("AgS/two/", silverSulfide, "ionic-main")).toBe("Subscripts must be a number. Check that a number is written between the '/' characters, or remove the slashes.");
     });
 
     test("Hints for the anion subscript.", () => {
