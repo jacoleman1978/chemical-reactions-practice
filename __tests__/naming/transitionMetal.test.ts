@@ -60,7 +60,7 @@ describe("Transition metal naming hints", () => {
 
         expect(getNamingHints("lead(IV) oXide", compoundName, compoundType)).toBe("The name of the anion should be written in lower case. Capital letters should only be used for roman numerals.");
 
-        expect(getNamingHints("lead(IV) oxygen", compoundName, compoundType)).toBe("The name of the anion is incorrect.");
+        expect(getNamingHints("lead(IV) oxygen", compoundName, compoundType)).toBe("The second part of the name is incorrect.");
     });
     
 });

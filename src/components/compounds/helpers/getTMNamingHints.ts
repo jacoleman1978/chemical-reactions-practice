@@ -64,13 +64,9 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
 
     // Ensure that there is a space between the Roman numeral and the anion
     if (userAnswer.slice(lastParenthesisIndex + 1, lastParenthesisIndex + 2) !== " ") {
-        if (userAnswer.slice(lastParenthesisIndex + 2, lastParenthesisIndex + 3) === " ") {
-            return "There can only be one space between the two parts of the name located between the Roman numerals in parentheses and the name of the anion."
-        }
-
         return "There must be one space between the two parts of the name located between the Roman numerals in parentheses and the name of the anion.";
     }
-
+    
     // Check the Roman numeral for correctness
     if (decomposedUserAnswer.romanNum !== decomposedCorrectAnswer.romanNum) {
         // Check for missing Roman numerals in the parentheses
@@ -98,12 +94,9 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
 
     decomposedUserAnswer.anionName = userAnswer.slice(lastParenthesisIndex + 1);
 
-    // Check the anion name for correctness
-    if (decomposedUserAnswer.anionName !== decomposedCorrectAnswer.anionName) {
-        // Ensure that the anion name is written in lower case
-        if (decomposedUserAnswer.anionName.toLowerCase() !== decomposedUserAnswer.anionName) {
-            return "The name of the anion should be written in lower case. Capital letters should only be used for roman numerals.";
-        }
+    // Ensure that the anion name is written in lower case
+    if (decomposedUserAnswer.anionName.toLowerCase() !== decomposedUserAnswer.anionName) {
+        return "The name of the anion should be written in lower case. Capital letters should only be used for roman numerals.";
     }
 
     return "";

@@ -65,9 +65,7 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
         }
 
         // Ensure that the second part of the name is the name of the monatomic anion
-        if (secondUserAnswerPart !== secondCorrectAnswerPart) {
-            return `The name of the anion is incorrect. It should be the root name of the element on the periodic table with the suffix -ide.`;
-        }
+        return `The name of the anion is incorrect. It should be the root name of the element on the periodic table with the suffix -ide.`;
     }
 
     // Give hints for 'ionic-polyatomic' compounds
@@ -78,32 +76,22 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
         }
 
         // Ensure that the second part of the name is the name of the correct polyatomic anion
-        if (secondUserAnswerPart !== secondCorrectAnswerPart) {
-            if (secondUserAnswerPart.slice(0, -3) === secondCorrectAnswerPart.slice(0, -3)) {
-                return `The root name of the anion is correct. However, the suffix is incorrect.`;
-            }
-
-            return `The root name of the anion is incorrect.`;
+        if (secondUserAnswerPart.slice(0, -3) === secondCorrectAnswerPart.slice(0, -3)) {
+            return `The root name of the anion is correct. However, the suffix is incorrect.`;
         }
+
+        return `The root name of the anion is incorrect.`;
     }
 
     // Give hints for 'acids' compounds
     if (compoundType === "acids") {
-        hint = getAcidNamingHints(userAnswer, compoundName);
-
-        if (hint !== "") {
-            return hint;
-        }
+        return getAcidNamingHints(userAnswer, compoundName);
     }
 
     // Give hints for 'molecular' compounds
     if (compoundType === "molecular") {
-        hint = getMolecularNamingHints(userAnswer, compoundName);
-
-        if (hint !== "") {
-            return hint;
-        }
+        return getMolecularNamingHints(userAnswer, compoundName);
     }
-    
-    return "The name of the compound is correct."
+
+    return `The second part of the name is incorrect.`;
 };

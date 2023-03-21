@@ -54,7 +54,7 @@ export const getAcidNamingHints = (userAnswer: string, compoundName: string): st
         userAnionRootName = firstUserAnswerPart.slice(0, -3);
 
     // For acids with anions ending in 'ate'
-    } else if (compoundName.includes("ic acid")) {
+    } else {
         correctAnionRootName = firstCorrectAnswerPart.slice(0, -2);
         anionSuffix = "ate";
 
@@ -76,20 +76,15 @@ export const getAcidNamingHints = (userAnswer: string, compoundName: string): st
     }
 
     // Check that the user has entered the correct root name for the anion
-    if (correctAnionRootName !== userAnionRootName) {
-        // Anions ending in 'ide' should follow the pattern 'hydro ________ic acid'
-        if (anionSuffix === "ide") {
-            return "The root name of the anion is incorrect. If the anion ends with 'ide', the acid should follow the format 'hydro (anion root name)ic acid'.";
+    // Anions ending in 'ide' should follow the pattern 'hydro ________ic acid'
+    if (anionSuffix === "ide") {
+        return "The root name of the anion is incorrect. If the anion ends with 'ide', the acid should follow the format 'hydro (anion root name)ic acid'.";
 
-        // Anions ending in 'ate' should follow the pattern '_______ic acid'
-        } else if (anionSuffix === "ate") {
-            return "Acids are named depending on the suffix of the anion. If the anion ends with 'ate', the acid is named with the suffix 'ic acid'.";
-        
-        // Anions ending in 'ite' should follow the pattern '_______ous acid'
-        } else if (anionSuffix === "ite") {
-            return "Acids are named depending on the suffix of the anion. If the anion ends with 'ite', the acid is named with the suffix 'ous acid'.";
-        }
+    // Anions ending in 'ate' should follow the pattern '_______ic acid'
+    } else if (anionSuffix === "ate") {
+        return "Acids are named depending on the suffix of the anion. If the anion ends with 'ate', the acid is named with the suffix 'ic acid'.";
     }
 
-    return ""
+    // Anions ending in 'ite' should follow the pattern '_______ous acid'
+    return "Acids are named depending on the suffix of the anion. If the anion ends with 'ite', the acid is named with the suffix 'ous acid'.";
 };
