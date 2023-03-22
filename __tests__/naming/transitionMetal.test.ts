@@ -56,11 +56,13 @@ describe("Transition metal naming hints", () => {
     test("Hint for: Incorrect anion name", () => {
         expect(getNamingHints("lead(IV)", compoundName, compoundType)).toBe("The name of the anion is missing.");
 
-        expect(getNamingHints("lead(IV) Oxide", compoundName, compoundType)).toBe("The name of the anion should be written in lower case. Capital letters should only be used for roman numerals.");
+        expect(getNamingHints("lead(IV) Oxide", compoundName, compoundType)).toBe("The name of the anion should be written in lower case.");
 
-        expect(getNamingHints("lead(IV) oXide", compoundName, compoundType)).toBe("The name of the anion should be written in lower case. Capital letters should only be used for roman numerals.");
+        expect(getNamingHints("lead(IV) oXide", compoundName, compoundType)).toBe("The name of the anion should be written in lower case.");
 
-        expect(getNamingHints("lead(IV) oxygen", compoundName, compoundType)).toBe("The second part of the name is incorrect.");
+        expect(getNamingHints("lead(IV) oxygen", compoundName, compoundType)).toBe("The name of the anion is incorrect. It should be the root name of the element on the periodic table followed by the suffix -ide.");
+
+        expect(getNamingHints("lead(4) oxide", compoundName, compoundType)).toBe("The number in parentheses after the cation name should be a Roman numeral.");
     });
     
 });

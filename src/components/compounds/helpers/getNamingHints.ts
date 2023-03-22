@@ -32,9 +32,14 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
     } 
     
     // Ensure that therea are no capital letters in the user's answer
-    if (compoundType !== "ionic-transition" && compoundType !== "ionic-mixed")
-    if (userAnswer.toLowerCase() !== userAnswer) {
-        return "The name of the compound should be written in lower case unless it is the first word in a sentence.";
+    if (compoundType !== "ionic-transition" && compoundType !== "ionic-mixed") {
+        if (userAnswer.includes("(")) {
+            return "Only compounds containing transition metals should have parentheses in their names."
+        }
+
+        if (userAnswer.toLowerCase() !== userAnswer) {
+            return "The name of the compound should be written in lower case unless it is the first word in a sentence.";
+        }
     }
 
     // Check that the name has one and only one space between the two parts of the name
@@ -72,6 +77,10 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
     if (compoundType === "ionic-polyatomic" || compoundType === "ionic-mixed") {
         // Ensure that the first part of the name is the name of the cation
         if (firstUserAnswerPart !== firstCorrectAnswerPart) {
+            if (firstCorrectAnswerPart === "ammonium") {
+                return `The name of the cation is incorrect. It is a polyatomic cation.`;
+            }
+
             return `The name of the cation is incorrect. It should be the name of the element on the periodic table.`;
         }
 
@@ -93,5 +102,5 @@ export const getNamingHints = (userAnswer: string, compoundName: string, compoun
         return getMolecularNamingHints(userAnswer, compoundName);
     }
 
-    return `The second part of the name is incorrect.`;
+    return `The name of the anion is incorrect. It should be the root name of the element on the periodic table followed by the suffix -ide.`;
 };

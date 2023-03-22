@@ -16,13 +16,10 @@ export const getAcidNamingHints = (userAnswer: string, compoundName: string): st
         return "The name of the compound should end with 'acid'. Use the acid naming rules.";
     }
 
-    let correctAnionRootName: string = "";
-    let userAnionRootName: string = "";
     let anionSuffix: string = "";
 
     // For acids with anions ending in 'ide'
     if (firstCorrectAnswerPart.includes("hydro") && compoundName.includes("ic acid")) {
-        correctAnionRootName = firstCorrectAnswerPart.slice(5, -2);
         anionSuffix = "ide";
 
         // Check that the user has entered the correct suffix
@@ -35,15 +32,12 @@ export const getAcidNamingHints = (userAnswer: string, compoundName: string): st
             return "Acids are named depending on the suffix of the anion. If the anion ends with 'ide', the acid is named with the prefix 'hydro'.";
         }
 
-        userAnionRootName = firstUserAnswerPart.slice(5, -2);
-
     // Acids with anions that don't end in 'ide' should not have a 'hydro' prefix
     } else if (firstUserAnswerPart.includes("hydro")) {
         return "Acids are named depending on the suffix of the anion. Only acids with anions ending in 'ide' should have a 'hydro' prefix.";
 
     // For acids with anions ending in 'ite'
     } else if (compoundName.includes("ous acid")) {
-        correctAnionRootName = firstCorrectAnswerPart.slice(0, -3);
         anionSuffix = "ite";
 
         // Check that the user has entered the correct suffix
@@ -51,19 +45,14 @@ export const getAcidNamingHints = (userAnswer: string, compoundName: string): st
             return "Acids are named depending on the suffix of the anion. If the anion ends with 'ite', the acid is named with the suffix 'ous acid'.";
         }
 
-        userAnionRootName = firstUserAnswerPart.slice(0, -3);
-
     // For acids with anions ending in 'ate'
     } else {
-        correctAnionRootName = firstCorrectAnswerPart.slice(0, -2);
         anionSuffix = "ate";
 
         // Check that the user has entered the correct suffix
         if (!userAnswer.includes("ic acid")) {
             return "Acids are named depending on the suffix of the anion. If the anion ends with 'ate', the acid is named with the suffix 'ic acid'.";
         }
-
-        userAnionRootName = firstUserAnswerPart.slice(0, -2);
     }
 
     // Check that the user has entered the correct root name for non-standard anions with sulfur or phosphorus based anions

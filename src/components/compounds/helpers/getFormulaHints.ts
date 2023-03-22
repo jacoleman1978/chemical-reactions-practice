@@ -87,7 +87,10 @@ export const getFormulaHints = (userAnswer: string, compoundFormula: string, com
 
     // Split both the user and correct formulas into their parts: [cation, cationSubscript, anion, anionSubscript]
     const [userCation, userCationSubscript, userAnion, userAnionSubscript] = splitFormula(userAnswer, compoundType);
-    const [cation, cationSubscript, anion, anionSubscript] = splitFormula(compoundFormula, compoundType);
+    const splitCorrectFormula: string[] = splitFormula(compoundFormula, compoundType);
+    const cation: string = splitCorrectFormula[0];
+    const cationSubscript: string = splitCorrectFormula[1];
+    const anion: string = splitCorrectFormula[2];
 
     // Tests for compounds containing transition metals. They must be on the list below
     if (compoundType === "ionic-transition" || compoundType === "ionic-mixed") {

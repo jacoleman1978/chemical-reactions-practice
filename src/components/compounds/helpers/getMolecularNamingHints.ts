@@ -36,81 +36,103 @@ export const getMolecularNamingHints = (userAnswer: string, compoundName: string
     }
 
     // Ensure that the second part of the name is the name of the second element and includes Greek prefixes
-    if (secondCorrectAnswerPart.slice(0, 4) === "mono" && secondUserAnswerPart.slice(0, 4) !== "mono") {
-        return "The prefix for a subscript of 1 should be used for the second part of the name.";
+    const twoCorrectAnswerLetters = secondCorrectAnswerPart.slice(0, 2);
+    const threeCorrectAnswerLetters = secondCorrectAnswerPart.slice(0, 3);
+    const fourCorrectAnswerLetters = secondCorrectAnswerPart.slice(0, 4);
+    const fourUserAnswerLetters = secondUserAnswerPart.slice(0, 4);
+    const fiveUserAnswerLetters = secondUserAnswerPart.slice(0, 5);
 
-    } else if (secondCorrectAnswerPart.slice(0, 2) === "di" && secondUserAnswerPart.slice(0, 2) !== "di") {
+    if (fourCorrectAnswerLetters === "mono") {
+        if(fiveUserAnswerLetters === "monoo") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+
+        } else if (fourUserAnswerLetters !== "mono") {
+            return "The prefix for a subscript of 1 should be used for the second part of the name.";
+        }
+
+    } else if (twoCorrectAnswerLetters === "di") {
         return "The prefix for a subscript of 2 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "tri" && secondUserAnswerPart.slice(0, 3) !== "tri") {
+    } else if (threeCorrectAnswerLetters === "tri") {
         return "The prefix for a subscript of 3 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 5) === "tetra" && secondUserAnswerPart.slice(0, 5) !== "tetra") {
-        return "The prefix for a subscript of 4 should be used for the second part of the name.";
+    } else if (fourCorrectAnswerLetters === "tetr") {
+        if (secondCorrectAnswerPart[4] === "a" && fiveUserAnswerLetters !== "tetra") {
+            return "The prefix for a subscript of 4 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 5) === "penta" && secondUserAnswerPart.slice(0, 5) !== "penta") {
-        return "The prefix for a subscript of 5 should be used for the second part of the name.";
+        } else if (fiveUserAnswerLetters === "tetra") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "hexa" && secondUserAnswerPart.slice(0, 4) !== "hexa") {
-        return "The prefix for a subscript of 6 should be used for the second part of the name.";
+        } else {
+            return "The prefix for a subscript of 4 should be used for the second part of the name.";
+        }
 
-    } else if (secondCorrectAnswerPart.slice(0, 5) === "hepta" && secondUserAnswerPart.slice(0, 5) !== "hepta") {
-        return "The prefix for a subscript of 7 should be used for the second part of the name.";
-    
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "octa" && secondUserAnswerPart.slice(0, 4) !== "octa") {
-        return "The prefix for a subscript of 8 should be used for the second part of the name.";
+    } else if (fourCorrectAnswerLetters === "pent") {
+        if (secondCorrectAnswerPart[4] === "a" && fiveUserAnswerLetters !== "penta") {
+            return "The prefix for a subscript of 5 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "nona" && secondUserAnswerPart.slice(0, 4) !== "nona") {
-        return "The prefix for a subscript of 9 should be used for the second part of the name.";
+        } else if (fiveUserAnswerLetters === "penta") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "deca" && secondUserAnswerPart.slice(0, 4) !== "deca") {
-        return "The prefix for a subscript of 10 should be used for the second part of the name.";
+        } else {
+            return "The prefix for a subscript of 5 should be used for the second part of the name.";
+        }
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "mono" && secondUserAnswerPart.slice(0, 5) === "monoo") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+    } else if (threeCorrectAnswerLetters === "hex") {
+        if (secondCorrectAnswerPart[3] === "a" && fourUserAnswerLetters !== "hexa") {
+            return "The prefix for a subscript of 6 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "tetr" && secondUserAnswerPart.slice(0, 5) === "tetra") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+        } else if (fourUserAnswerLetters === "hexa") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "tetr" && secondUserAnswerPart.slice(0, 4) !== "tetr") {
-        return "The prefix for a subscript of 4 should be used for the second part of the name.";
+        } else {
+            return "The prefix for a subscript of 6 should be used for the second part of the name.";
+        }
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "pent" && secondUserAnswerPart.slice(0, 4) === "pent") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+    } else if (fourCorrectAnswerLetters === "hept") {
+        if (secondCorrectAnswerPart[4] === "a" && fiveUserAnswerLetters !== "hepta") {
+            return "The prefix for a subscript of 7 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "pent" && secondUserAnswerPart.slice(0, 4) !== "pent") {
-        return "The prefix for a subscript of 5 should be used for the second part of the name.";
+        } else if (fiveUserAnswerLetters === "hepta") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "hex" && secondUserAnswerPart.slice(0, 4) === "hexa") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+        } else {
+            return "The prefix for a subscript of 7 should be used for the second part of the name.";
+        }
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "hex" && secondUserAnswerPart.slice(0, 3) !== "hex") {
-        return "The prefix for a subscript of 6 should be used for the second part of the name.";
+    } else if (threeCorrectAnswerLetters === "oct") {
+        if (secondCorrectAnswerPart[3] === "a" && fourUserAnswerLetters !== "octa") {
+            return "The prefix for a subscript of 8 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "hept" && secondUserAnswerPart.slice(0, 5) === "hepta") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+        } else if (fourUserAnswerLetters === "octa") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 4) === "hept" && secondUserAnswerPart.slice(0, 4) !== "hept") {
-        return "The prefix for a subscript of 7 should be used for the second part of the name.";
-    
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "oct" && secondUserAnswerPart.slice(0, 4) === "octa") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+        } else {
+            return "The prefix for a subscript of 8 should be used for the second part of the name.";
+        }
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "oct" && secondUserAnswerPart.slice(0, 3) !== "oct") {
-        return "The prefix for a subscript of 8 should be used for the second part of the name.";
+    } else if (threeCorrectAnswerLetters === "non") {
+        if (secondCorrectAnswerPart[3] === "a" && fourUserAnswerLetters !== "nona") {
+            return "The prefix for a subscript of 9 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "non" && secondUserAnswerPart.slice(0, 4) === "nona") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+        } else if (fourUserAnswerLetters === "nona") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "non" && secondUserAnswerPart.slice(0, 3) !== "non") {
-        return "The prefix for a subscript of 9 should be used for the second part of the name.";
+        } else {
+            return "The prefix for a subscript of 9 should be used for the second part of the name.";
+        }
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "dec" && secondUserAnswerPart.slice(0, 4) === "deca") {
-        return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+    } else {
+        if (secondCorrectAnswerPart[3] === "a" && fourUserAnswerLetters !== "deca") {
+            return "The prefix for a subscript of 10 should be used for the second part of the name.";
 
-    } else if (secondCorrectAnswerPart.slice(0, 3) === "dec" && secondUserAnswerPart.slice(0, 3) !== "dec") {
-        return "The prefix for a subscript of 10 should be used for the second part of the name.";
+        } else if (fourUserAnswerLetters === "deca") {
+            return "When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.";
+
+        } else {
+            return "The prefix for a subscript of 10 should be used for the second part of the name.";
+        }
     }
 
-    return `The anion name of the element from the periodic table is used after any Greek prefix for the second part of the name.`;
+    return `The Greek prefix for the second part is correct, however the name of the element should be the root of the name of the element with 'ide' as the suffix.`;
 };

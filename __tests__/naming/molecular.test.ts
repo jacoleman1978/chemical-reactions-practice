@@ -32,7 +32,7 @@ describe("Molecular naming hints", () => {
 
         expect(getNamingHints("carbide monoxide", "carbon monoxide", compoundType)).toBe(`The name of the element from the periodic table is used after any Greek prefix for the first part of the name.`);
 
-        expect(getNamingHints("carbon monoxygen", "carbon monoxide", compoundType)).toBe(`The anion name of the element from the periodic table is used after any Greek prefix for the second part of the name.`);
+        expect(getNamingHints("carbon monoxygen", "carbon monoxide", compoundType)).toBe(`The Greek prefix for the second part is correct, however the name of the element should be the root of the name of the element with 'ide' as the suffix.`);
 
         expect(getNamingHints("carbon monooxide", "carbon monoxide", compoundType)).toBe("When the Greek prefix ends in 'a' or 'o' and the element name begins with an 'o', remove the last letter of the prefix.");
     });

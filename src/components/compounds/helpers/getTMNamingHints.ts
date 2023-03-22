@@ -73,6 +73,10 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
         if (decomposedUserAnswer.romanNum === "") {
             return "The Roman numeral indicating the cation's charge is missing.";
         }
+
+        if (/[0-9]/.test(decomposedUserAnswer.romanNum)) {
+            return "The number in parentheses after the cation name should be a Roman numeral.";
+        }
     
         // Ensure that the Roman numeral is written in upper case
         if (decomposedUserAnswer.romanNum.toUpperCase() !== decomposedUserAnswer.romanNum) {
@@ -96,7 +100,7 @@ export const getTMNamingHints = (userAnswer: string, compoundName: string): stri
 
     // Ensure that the anion name is written in lower case
     if (decomposedUserAnswer.anionName.toLowerCase() !== decomposedUserAnswer.anionName) {
-        return "The name of the anion should be written in lower case. Capital letters should only be used for roman numerals.";
+        return "The name of the anion should be written in lower case.";
     }
 
     return "";

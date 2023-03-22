@@ -145,8 +145,6 @@ export const splitByElement = (formula: string): string[] => {
  * @returns 
  */
 export const splitBinaryFormula = (formula: string): [string, string, string, string] => {
-    const length: number = formula.length;
-
     const formulaSplitBySlashes: string[] = splitBySlashes(formula);
 
     // There are no subscripts written, so the subscript for each element is `1`

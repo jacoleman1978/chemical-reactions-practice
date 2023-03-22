@@ -26,7 +26,8 @@ describe("Polyatomic naming hints", () => {
     });
 
     test("Hint for: Incorrect cation name", () => {
-        expect(getNamingHints("aluminum sulfite", compoundName, compoundType)).toBe("The name of the cation is incorrect. It should be the name of the element on the periodic table.");
+        expect(getNamingHints("aluminum sulfite", compoundName, compoundType)).toBe("The name of the cation is incorrect. It is a polyatomic cation.");
+        expect(getNamingHints("ammonium nitrate", "aluminum nitrate", compoundType)).toBe("The name of the cation is incorrect. It should be the name of the element on the periodic table.");
     });
 
     test("Hint for: Incorrect anion suffix", () => {
@@ -35,5 +36,9 @@ describe("Polyatomic naming hints", () => {
 
     test("Hint for: Incorrect anion root", () => {
         expect(getNamingHints("ammonium sulfurite", compoundName, compoundType)).toBe("The root name of the anion is incorrect.");
+    });
+
+    test("Hint for: Parentheses in name", () => {
+        expect(getNamingHints("ammonium(I) sulfite", compoundName, compoundType)).toBe("Only compounds containing transition metals should have parentheses in their names.")
     });
 });
