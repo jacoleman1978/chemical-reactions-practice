@@ -14,6 +14,15 @@ export const getPolyatomicFormulaHints = (userAnswer: string, compoundFormula: s
     const [userCation, userCationSubscript, userAnion, userAnionSubscript] = splitFormula(userAnswer, compoundType);
     const [cation, cationSubscript, anion, anionSubscript] = splitFormula(compoundFormula, compoundType);
 
+    // Check that the cation does not contain numbers, except for ammonium ions
+    if (cation !== "NH/4/" && /[0-9]+/.test(userCation)) {
+        return "Numbers should be written as subscripts, surrounded by '/'.";
+    }
+    
+    if (userAnswer[0] === "(" && compoundFormula.slice(0, 8) !== "(NH/4/)/") {
+        return "Only polyatomic ions should be surrounded by parentheses."
+    }
+
     // Check that the subscripts are in the lowest whole number ratio
     const subscriptsAreLCM: boolean = areSubscriptsLCM(userCationSubscript, userAnionSubscript);
 
@@ -21,7 +30,9 @@ export const getPolyatomicFormulaHints = (userAnswer: string, compoundFormula: s
     if (userAnswer.includes("(") || userAnswer.includes(")")) {
         if (!userAnswer.includes("(")) {
             return "Parentheses come in pairs. You are missing an opening parenthesis.";
-        } 
+        } else if (!userAnswer.includes(")")) {
+            return "Parentheses come in pairs. You are missing a closing parenthesis.";
+        }
     }
 
     // Check if the correct answer has parentheses, then check the subscripts for both the cation and anion

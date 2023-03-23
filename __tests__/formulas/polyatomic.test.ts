@@ -123,9 +123,15 @@ describe("Test hints for formulas with polyatomic ions", () => {
 
         expect(getFormulaHints("Ca/3/PO/4/)/2/", compoundFormula, "ionic-polyatomic")).toBe("Parentheses come in pairs. You are missing an opening parenthesis.");
 
+        expect(getFormulaHints("Ca/3/(PO/4/", compoundFormula, "ionic-polyatomic")).toBe("Parentheses come in pairs. You are missing a closing parenthesis.");
+
         expect(getFormulaHints("Ca/3/(PO/4//2/", compoundFormula, "ionic-polyatomic")).toBe("Two subscripts can not be written next to each other. Usually this can be fixed by putting the polyatomic ion in parentheses.");
 
         expect(getFormulaHints("Ca/6/(PO/4/)/4/", compoundFormula, "ionic-polyatomic")).toBe("The subscripts are not in the lowest whole number ratio.");
+
+        expect(getFormulaHints("Ca3(PO/4/)/2/", compoundFormula, "ionic-polyatomic")).toBe("Numbers should be written as subscripts, surrounded by '/'.");
+
+        expect(getFormulaHints("(Ca)/3/(PO/4/)/2/", compoundFormula, "ionic-polyatomic")).toBe("Only polyatomic ions should be surrounded by parentheses.");
     });
 
     test("Hints for iron(III) sulfite", () => {
