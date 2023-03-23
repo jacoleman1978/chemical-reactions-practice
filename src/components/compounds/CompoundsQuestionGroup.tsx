@@ -25,13 +25,15 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
 
   return (
     <div className="flex-column med-gap full-width">
-        <div className="compound-questions med-gap">
-            {compoundsList.map((compound, i) => {
-                return <CompoundsQuestion key={`question-${i}`} compound={compound} practiceType={practiceType} />
-            })}
-        </div>
+        <div className="flex-around-center med-gap">
+            <div className="compound-questions med-gap full-width">
+                {compoundsList.map((compound, i) => {
+                    return <CompoundsQuestion key={`question-${i}`} compound={compound} practiceType={practiceType} />
+                })}
+            </div>
 
-        <PolyatomicIonTable />
+            {!["ionic-main", "ionic-transition", "molecular"].includes(compoundType) ? <PolyatomicIonTable /> : null}
+        </div>
 
         <ToggleButton toggleFlag={flag} handleToggle={handleSetFlag} buttonText={"More Practice"}/>
     </div>

@@ -1,6 +1,6 @@
 const PolyatomicIonTable = () => {
   return (
-    <table className="flex-center-center flex-column">
+    <table className="flex-center-center flex-column border-bubble">
         <div>
             <thead>
                 <tr>

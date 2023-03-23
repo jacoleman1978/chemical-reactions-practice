@@ -30,8 +30,8 @@ input:focus {
 
 table {
   border-collapse: collapse !important;
-  width: 100%;
-  border: 1px solid #ddd;
+
+
 }
 
 td, th {
@@ -40,7 +40,7 @@ td, th {
 }
 
 .border-thick {
-  border-top: 2px solid black !important;
+  border-top: 4px solid black !important;
 }
 
 thead {
