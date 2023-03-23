@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useFlag } from '../../customHooks/useFlag';
 import CompoundsQuestion from './CompoundsQuestion';
 import ToggleButton from '../common/ToggleButton';
+import PolyatomicIonTable from './PolyatomicIonTable';
 import { getCompoundsList } from './helpers/getCompoundsList';
 import { CompoundsPracticeProps, Compound } from './configurations/compoundInterfaces';
 
@@ -29,6 +30,8 @@ const CompoundsQuestionGroup = ({compoundType, practiceType}: CompoundsPracticeP
                 return <CompoundsQuestion key={`question-${i}`} compound={compound} practiceType={practiceType} />
             })}
         </div>
+
+        <PolyatomicIonTable />
 
         <ToggleButton toggleFlag={flag} handleToggle={handleSetFlag} buttonText={"More Practice"}/>
     </div>

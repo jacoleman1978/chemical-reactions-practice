@@ -39,6 +39,10 @@ td, th {
   border: 1px solid black !important;
 }
 
+.border-thick {
+  border-top: 2px solid black !important;
+}
+
 thead {
   background-color: rgb(179, 222, 242);
 }
@@ -47,6 +51,19 @@ th.th-rap div {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.oxyanion {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.center-table-header {
+  text-align: center;
 }
 
 .center-text {
