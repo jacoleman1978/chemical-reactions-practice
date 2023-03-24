@@ -47,6 +47,16 @@ thead {
   background-color: rgb(179, 222, 242);
 }
 
+.thead {
+  background-color: rgb(179, 222, 242);
+
+}
+
+.thead:hover {
+  background-color: lightcoral;
+  color: white;
+}
+
 th.th-rap div {
   display: flex;
   justify-content: center;
@@ -60,6 +70,12 @@ th.th-rap div {
 .oxyanion {
   font-weight: bold;
   text-decoration: underline;
+}
+
+.vertical-text {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  rotate: 180deg;
 }
 
 .center-table-header {
@@ -344,8 +360,22 @@ h1 {
 .hint-text {
   font-size: x-small;
   font-style: italic;
-  color: red;
+  color: green;
   margin: 0;
+}
+
+.solubility-row:hover {
+  background-color: lightcoral;
+  color: white;
+}
+
+.highlighted {
+  background-color: lightcoral !important;
+  color: white;
+}
+
+.highlighted-focus {
+  background-color: red;
 }
 
 @media (min-width: 360px) {

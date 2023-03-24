@@ -6,6 +6,7 @@ import BalancingQuestion from "./BalancingQuestion";
 import ToggleButton from "../common/ToggleButton";
 import { Equation } from "./configurations/equationInterfaces";
 import { PracticeType } from "../common/configurations/commonTypes"
+import SolubilityTable from "./SolubilityTable";
 
 const ChemicalEquationQuestionsGroup = ({practiceType}: {practiceType: PracticeType}) => {
     const [flag, handleSetFlag] = useFlag();
@@ -45,6 +46,8 @@ const ChemicalEquationQuestionsGroup = ({practiceType}: {practiceType: PracticeT
                     }
                 })}
             </div>
+
+            <SolubilityTable />
             
             <ToggleButton toggleFlag={flag} handleToggle={handleSetFlag} buttonText={"More Practice"}/>
         </div>
