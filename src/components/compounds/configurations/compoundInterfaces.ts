@@ -45,3 +45,15 @@ export interface Compound {
     formula: string;
     type: CompoundType;
 }
+
+export interface CompoundDemo {
+    type: CompoundType;
+    cationName: string;
+    cationFormula: string;
+    cationCharge: number;
+    cationSubscript: number;
+    anionName: string;
+    anionFormula: string;
+    anionCharge: number;
+    anionSubscript: number;
+}

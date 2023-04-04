@@ -1,13 +1,8 @@
 const PolyatomicIonTable = () => {
   return (
-    <table className="flex-center-center flex-column border-bubble">
-        <div>
-            <thead>
-                <tr>
-                    <th className="center-table-header">Ion Name</th>
-                    <th className="center-table-header">Ion Formula</th>
-                </tr>
-            </thead>
+    <div className="border-bubble">
+        <h3>Polyatomic Ions</h3>
+        <table className="flex-column border-bubble">
             <tbody>
                 <tr>
                     <td>ammonium</td>
@@ -109,8 +104,9 @@ const PolyatomicIonTable = () => {
                     <td>PO<sub>4</sub><sup>3-</sup></td>
                 </tr>
             </tbody>
-        </div>
-    </table>
+        </table>
+    </div>
+    
   )
 }
 export default PolyatomicIonTable

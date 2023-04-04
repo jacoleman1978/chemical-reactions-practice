@@ -5,6 +5,7 @@ import ToggleButton from '../common/ToggleButton';
 import PolyatomicIonTable from './PolyatomicIonTable';
 import { getCompoundsList } from './helpers/getCompoundsList';
 import { CompoundsPracticeProps, Compound } from './configurations/compoundInterfaces';
+import FormulaDemo from './FormulaDemo';
 
 /**
  * A component that displays a group of CompoundsQuestion components

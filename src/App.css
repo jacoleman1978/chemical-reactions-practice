@@ -78,10 +78,6 @@ th.th-rap div {
   rotate: 180deg;
 }
 
-.center-table-header {
-  text-align: center;
-}
-
 .center-text {
   text-align: center;
 }
@@ -274,6 +270,23 @@ h1 {
   display: flex;
   flex: 3 0 8rem;
   max-width: 300px;
+}
+
+.formula-demo-area {
+  height: 300px;
+  width: 300px;
+}
+
+.formula-demo-shape-area {
+  height: 300px;
+  width: 50px;
+  position: relative;
+}
+
+.draggable-ion-template {
+  color: white;
+  border: solid black 1px;
+  border-radius: 0.75rem;
 }
 
 .fancy-btn {
