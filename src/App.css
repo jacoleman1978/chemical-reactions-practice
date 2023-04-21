@@ -150,6 +150,12 @@ th.th-rap div {
   font-size: x-large;
 }
 
+.subtitle {
+  font-style: italic;
+  text-decoration: underline;
+  font-size: large;
+}
+
 .sm-text {
   font-size: small;
 }

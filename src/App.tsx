@@ -1,19 +1,28 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useLocation } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams, useLocation } from 'react-router-dom';
 import NavMenus from './components/nav/NavMenus';
 import PracticeTypes from './components/common/PracticeTypes';
 import CompoundDescriptions from './components/compounds/CompoundDescriptions';
 import CompoundsPractice from './components/compounds/CompoundsPractice';
 import ChemicalEquationPractice from './components/chemical-equations/ChemicalEquationPractice';
 import PredictingProducts from './components/predicting-products/PredictingProducts';
+import QuizList from './components/quizzes/QuizList';
 import { PracticeType } from './components/common/configurations/commonTypes';
 import { CompoundType } from './components/compounds/configurations/compoundTypes';
+import CompoundsQuiz from './components/compounds/CompoundsQuiz';
 
 function App() {
   let { pathname } = useLocation();
-  const practiceType = pathname.split("/")[1] as PracticeType;
+  const splitPath: string[] = pathname.split("/");
+  const practiceType = splitPath[1] as PracticeType;
+
+  let compoundType: CompoundType = "ionic-main";
+
+  if (practiceType === "quiz") {
+    compoundType = splitPath[3] as CompoundType;
+  }
+
 
   return (
     <>
@@ -43,6 +52,9 @@ function App() {
           <Route path='/balancing' element={<ChemicalEquationPractice practiceType={practiceType} />} />
           <Route path='/reaction-types' element={<ChemicalEquationPractice practiceType={practiceType} />} />
           <Route path='/predicting-products' element={<PredictingProducts />} />
+          <Route path='/quiz/list' element={<QuizList />} />
+          <Route path='/quiz/naming/:type' element={<CompoundsQuiz practiceType={"naming"} compoundType={compoundType} />} />
+          <Route path='/quiz/formulas/:type' element={<CompoundsQuiz practiceType={"formulas"} compoundType={compoundType} />} />
         </Routes>
       </main>
     </>

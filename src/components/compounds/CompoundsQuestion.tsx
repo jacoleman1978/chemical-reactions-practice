@@ -46,8 +46,8 @@ const CompoundsQuestion = ({compound, practiceType}: CompoundsQuestionProps) => 
     }
 
   return (
-    <section className="flex-column border-bubble med-gap">
-        <div className="flex-center-center med-gap ">
+    <section className="flex-column border-bubble">
+        <div className="flex-center-center med-gap">
             {practiceType === "naming" ? <NamingQuestion compound={compound} handleUserAnswer={handleUserAnswer} userAnswer={userAnswer} setDisplayHint={setDisplayHint} /> : null}
 
             {practiceType === "formulas" ? <FormulaQuestion compound={compound} handleUserAnswer={handleUserAnswer} userAnswer={userAnswer} setDisplayHint={setDisplayHint} /> : null}

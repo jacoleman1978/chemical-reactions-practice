@@ -46,6 +46,17 @@ export interface Compound {
     type: CompoundType;
 }
 
+export interface CompoundQuizQuestion {
+    name: string;
+    formula: string;
+    type: CompoundType;
+    answer: string;
+}
+
+export interface CompoundQuiz {
+    [key: string]: CompoundQuizQuestion;
+}
+
 export interface CompoundDemo {
     type: CompoundType;
     cationName: string;

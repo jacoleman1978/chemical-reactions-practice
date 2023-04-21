@@ -5,6 +5,7 @@ import AdditionalFormulasInstruction from "./AdditionalFormulasInstruction";
 import { getCompoundInstructions, getCompoundPracticeTitle } from "./helpers/getCompoundInformation";
 import { CompoundType } from "./configurations/compoundTypes";
 import { PracticeType } from "../common/configurations/commonTypes";
+import CompoundsQuiz from "./CompoundsQuiz";
 
 interface CompoundsPracticeProps {
     compoundType: CompoundType,
@@ -28,6 +29,7 @@ const CompoundsPractice = ({compoundType, practiceType}: CompoundsPracticeProps)
                 <AdditionalFormulasInstruction practiceType={practiceType} />
                 <InstructionsList label="Background and Instructions:" instructionsList={instructionsList} />
                 <CompoundsQuestionGroup compoundType={compoundType} practiceType={practiceType} />
+                <CompoundsQuiz compoundType={compoundType} practiceType={practiceType} />
             </section>
         </div>
         
