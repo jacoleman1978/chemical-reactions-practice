@@ -9,7 +9,7 @@ const NavMenus = ({practiceType}: {practiceType: PracticeType}) => {
         <Navbar>
             <Navbar.Brand href="/">Home</Navbar.Brand>
             <Nav variant="pills">
-                <NavDropdownMenu key="practice-types" practiceType={"main"} />
+                {practiceType !== "quiz" ? <NavDropdownMenu key="practice-types" practiceType={"main"} /> : null}
                 {(practiceType === "formulas" || practiceType === "naming" ) ? <NavDropdownMenu key="naming-types" practiceType={practiceType} /> : null}
             </Nav>
             <Nav.Link href="/quiz/list">Quizzes</Nav.Link>

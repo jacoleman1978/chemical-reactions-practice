@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import Title from "../common/Title";
-import PolyatomicIonTable from './PolyatomicIonTable';
+import PolyatomicIonTable from '../compounds/PolyatomicIonTable';
 import NamingQuizQuestion from './NamingQuizQuestion';
 import FormulaQuizQuestion from './FormulaQuizQuestion';
-import { getCompoundPracticeTitle } from "./helpers/getCompoundInformation"
-import { getCompoundQuiz } from './helpers/getCompoundQuiz';
-import { analyzeCompoundQuiz } from './helpers/analyzeCompoundQuiz';
-import { CompoundType } from "./configurations/compoundTypes";
+import { getCompoundPracticeTitle } from "../compounds/helpers/getCompoundInformation"
+import { getCompoundQuiz } from '../compounds/helpers/getCompoundQuiz';
+import { analyzeCompoundQuiz } from '../compounds/helpers/analyzeCompoundQuiz';
+import { CompoundType } from "../compounds/configurations/compoundTypes";
 import { PracticeType } from "../common/configurations/commonTypes";
-import { Compound, CompoundQuizQuestion, CompoundQuiz } from './configurations/compoundInterfaces';
+import { Compound, CompoundQuiz } from '../compounds/configurations/compoundInterfaces';
+import { checkFormulaFormat } from './helpers/checkInputFormat';
+import FormatIssues from './FormatIssues';
 
 interface CompoundsQuizProps {
     compoundType: CompoundType,
@@ -19,6 +21,7 @@ const CompoundsQuiz = ({compoundType, practiceType}: CompoundsQuizProps) => {
     const title: string = getCompoundPracticeTitle(compoundType, practiceType);
     const [compoundsList, setCompoundsList] = useState<Compound[]>([]);
     const [userQuiz, setUserQuiz] = useState<CompoundQuiz>({});
+    const [formatIssues, setFormatIssues] = useState<string[]>([]);
     const [results, setResults] = useState<CompoundQuiz>({});
 
     // Gets a list of compounds from the server and sets the compoundsList state
@@ -31,8 +34,9 @@ const CompoundsQuiz = ({compoundType, practiceType}: CompoundsQuizProps) => {
             });
             setUserQuiz(quiz);
             setCompoundsList(quizQuestions);
+            setFormatIssues([]);
         })
-    }, [compoundType])
+    }, [compoundType]);
 
     const handleUserAnswer = (answer: string, compoundName: string) => {
         setUserQuiz({...userQuiz, [compoundName]: {...userQuiz[compoundName], answer: answer}});
@@ -40,11 +44,26 @@ const CompoundsQuiz = ({compoundType, practiceType}: CompoundsQuizProps) => {
 
     const handleSubmitAnswers = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        analyzeCompoundQuiz(userQuiz, compoundType).then((res) => {
-            const results: CompoundQuiz = res.data;
-            console.log(results)
-            setResults(results);
-        })
+        const newIssues: string[] = [];
+        for(const question in userQuiz) {
+            const issues: string[] = checkFormulaFormat(userQuiz[question].answer, question);
+
+            if (issues.length > 0) {
+                newIssues.push(...issues);
+            }
+        }
+
+        if (newIssues.length > 0) {
+            setFormatIssues(newIssues);
+        }
+
+        if (formatIssues.length === 0) {
+            analyzeCompoundQuiz(userQuiz, compoundType).then((res) => {
+                const results: CompoundQuiz = res.data;
+                console.log(results)
+                setResults(results);
+            })
+        }
     }
     
     return (
@@ -55,13 +74,15 @@ const CompoundsQuiz = ({compoundType, practiceType}: CompoundsQuizProps) => {
                     <form className="compound-questions med-gap full-width" onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmitAnswers(e)}>
                         {compoundsList.map((compound, i) => {
                             if (practiceType === "naming") {
-                                return <NamingQuizQuestion key={compound.name} compound={compound} handleUserAnswer={handleUserAnswer} userAnswer={userQuiz[compound.name].answer} />
+                                return <NamingQuizQuestion key={compound.name} compound={compound} handleUserAnswer={handleUserAnswer} userAnswer={userQuiz[compound.name].answer} formatIssues={formatIssues} />
                             } else if (practiceType === "formulas") {
-                                return <FormulaQuizQuestion key={compound.name} compound={compound} handleUserAnswer={handleUserAnswer} userAnswer={userQuiz[compound.name].answer} />
+                                return <FormulaQuizQuestion key={compound.name} compound={compound} handleUserAnswer={handleUserAnswer} userAnswer={userQuiz[compound.name].answer} formatIssues={formatIssues}/>
                             }
 
                             return null;
                         })}
+
+                        {formatIssues.length > 0 ? <FormatIssues issues={formatIssues} /> : null}
                         <div className="flex-center-center">
                             <button type="submit">Submit Answers</button>
                         </div>

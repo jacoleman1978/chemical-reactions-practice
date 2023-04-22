@@ -1,7 +1,4 @@
-import CompoundsQuiz from "../compounds/CompoundsQuiz";
 import Title from "../common/Title";
-import { PracticeType } from "../common/configurations/commonTypes";
-import { CompoundType } from "../compounds/configurations/compoundTypes";
 
 const QuizList = () => {
   return (

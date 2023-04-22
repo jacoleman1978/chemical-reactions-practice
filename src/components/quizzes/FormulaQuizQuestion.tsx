@@ -1,11 +1,12 @@
 import { ChangeEvent } from 'react';
-import DisplayCompoundFormula from './DisplayCompoundFormula';
-import { Compound } from "./configurations/compoundInterfaces"
+import DisplayCompoundFormula from '../compounds/DisplayCompoundFormula';
+import { Compound } from "../compounds/configurations/compoundInterfaces"
 
 interface NamingQuizQuestionProps {
     compound: Compound;
     handleUserAnswer: (answer: string, compoundName: string) => void;
     userAnswer: string;
+    formatIssues: string[];
 }
 
 /**
@@ -15,7 +16,7 @@ interface NamingQuizQuestionProps {
  * @param userAnswer A string that represents the user's answer with subscripts surrounded by '/' characters
  * @returns ReactElement
  */
-const FormulaQuizQuestion = ({compound, handleUserAnswer, userAnswer}: NamingQuizQuestionProps) => {
+const FormulaQuizQuestion = ({compound, handleUserAnswer, userAnswer, formatIssues}: NamingQuizQuestionProps) => {
   return (
     <div className="flex-center-center border-bubble">
         <label htmlFor={compound.name} className="flex-formula-label">
