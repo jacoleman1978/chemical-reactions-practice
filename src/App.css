@@ -30,8 +30,6 @@ input:focus {
 
 table {
   border-collapse: collapse !important;
-
-
 }
 
 td, th {
@@ -49,7 +47,6 @@ thead {
 
 .thead {
   background-color: rgb(179, 222, 242);
-
 }
 
 .thead:hover {
@@ -82,6 +79,10 @@ th.th-rap div {
   text-align: center;
 }
 
+.flex {
+  display: flex;
+}
+
 .flex-center-center {
   display: flex;
   justify-content: center;
@@ -111,6 +112,12 @@ th.th-rap div {
   flex-direction: column;
 }
 
+.flex-center-left {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+}
+
 .compound-questions {
   display: flex;
   flex-direction: column;
@@ -138,6 +145,11 @@ th.th-rap div {
 
 .no-bottom-margin {
   margin-bottom: 0rem;
+}
+
+.border-with-padding {
+  border: 1px solid black;
+  padding: 0.5rem;
 }
 
 .sm-radius {
@@ -216,8 +228,8 @@ h1 {
   grid-template-columns: 1fr 4.75fr;
 }
 
-.wrap {
-  flex-wrap: wrap;
+.no-wrap {
+  flex-wrap: nowrap;
 }
 
 .rxn-type-select {
@@ -229,6 +241,20 @@ h1 {
   border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: aliceblue;
+}
+
+.border-bubble-correct {
+  border: 0.75px lightgray solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: lightgreen;
+}
+
+.border-bubble-incorrect {
+  border: 0.75px lightgray solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgb(233, 161, 161);
 }
 
 .coefficient-input {

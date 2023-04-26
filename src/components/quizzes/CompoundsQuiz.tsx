@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Title from "../common/Title";
 import PolyatomicIonTable from '../compounds/PolyatomicIonTable';
 import NamingQuizQuestion from './NamingQuizQuestion';
 import FormulaQuizQuestion from './FormulaQuizQuestion';
 import { getCompoundPracticeTitle } from "../compounds/helpers/getCompoundInformation"
 import { getCompoundQuiz } from '../compounds/helpers/getCompoundQuiz';
-import { analyzeCompoundQuiz } from '../compounds/helpers/analyzeCompoundQuiz';
+import { analyzeCompoundQuiz } from './helpers/analyzeCompoundQuiz';
 import { CompoundType } from "../compounds/configurations/compoundTypes";
 import { PracticeType } from "../common/configurations/commonTypes";
-import { Compound, CompoundQuiz } from '../compounds/configurations/compoundInterfaces';
+import { Compound, CompoundQuiz, CompoundQuizResults } from '../compounds/configurations/compoundInterfaces';
 import { checkFormulaFormat } from './helpers/checkInputFormat';
 import FormatIssues from './FormatIssues';
+import { FormulaStats } from './configurations/quizInterfaces';
 
 interface CompoundsQuizProps {
     compoundType: CompoundType,
@@ -18,11 +20,12 @@ interface CompoundsQuizProps {
 }
 
 const CompoundsQuiz = ({compoundType, practiceType}: CompoundsQuizProps) => {
+    const navigate = useNavigate();
     const title: string = getCompoundPracticeTitle(compoundType, practiceType);
+
     const [compoundsList, setCompoundsList] = useState<Compound[]>([]);
     const [userQuiz, setUserQuiz] = useState<CompoundQuiz>({});
     const [formatIssues, setFormatIssues] = useState<string[]>([]);
-    const [results, setResults] = useState<CompoundQuiz>({});
 
     // Gets a list of compounds from the server and sets the compoundsList state
     useEffect(() => {
@@ -55,13 +58,16 @@ const CompoundsQuiz = ({compoundType, practiceType}: CompoundsQuizProps) => {
 
         if (newIssues.length > 0) {
             setFormatIssues(newIssues);
-        }
 
-        if (formatIssues.length === 0) {
+        } else if (newIssues.length === 0) {
+            setFormatIssues([]);
             analyzeCompoundQuiz(userQuiz, compoundType).then((res) => {
-                const results: CompoundQuiz = res.data;
-                console.log(results)
-                setResults(results);
+                let results: CompoundQuizResults = res.data.results;
+                let stats: FormulaStats = res.data.stats;
+                console.log(stats)
+                const resultsUrl: string = `/quiz/results/${practiceType}/${compoundType}`;
+
+                navigate(resultsUrl, {state: {results, compoundType, practiceType}});
             })
         }
     }

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { CompoundType } from "../configurations/compoundTypes";
-import { CompoundQuiz } from "../configurations/compoundInterfaces";
+import { CompoundType } from "../../compounds/configurations/compoundTypes";
+import { CompoundQuiz } from "../../compounds/configurations/compoundInterfaces";
 
 /**
  * Generates a list of compounds of a given type

@@ -57,6 +57,16 @@ export interface CompoundQuiz {
     [key: string]: CompoundQuizQuestion;
 }
 
+export interface QuestionResults {
+    isCorrect: boolean;
+    question: CompoundQuizQuestion;
+    comments: string[];
+}
+
+export interface CompoundQuizResults {
+    [key: string]: QuestionResults;
+}
+
 export interface CompoundDemo {
     type: CompoundType;
     cationName: string;

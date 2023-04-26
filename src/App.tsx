@@ -11,11 +11,12 @@ import QuizList from './components/quizzes/QuizList';
 import { PracticeType } from './components/common/configurations/commonTypes';
 import { CompoundType } from './components/compounds/configurations/compoundTypes';
 import CompoundsQuiz from './components/quizzes/CompoundsQuiz';
+import CompoundsQuizResults from './components/quizzes/CompoundsQuizResults';
 
 function App() {
   let { pathname } = useLocation();
   const splitPath: string[] = pathname.split("/");
-  const practiceType = splitPath[1] as PracticeType;
+  let practiceType = splitPath[1] as PracticeType;
 
   let compoundType: CompoundType = "ionic-main";
 
@@ -24,6 +25,11 @@ function App() {
 
   } else if (practiceType === "quiz") {
     compoundType = splitPath[3] as CompoundType;
+
+    if (splitPath[2] === "results") {
+      practiceType = splitPath[3] as PracticeType;
+      compoundType = splitPath[4] as CompoundType;
+    }
   } 
 
 
@@ -46,6 +52,7 @@ function App() {
           <Route path='/quiz/list' element={<QuizList />} />
           <Route path='/quiz/naming/:type' element={<CompoundsQuiz practiceType={"naming"} compoundType={compoundType} />} />
           <Route path='/quiz/formulas/:type' element={<CompoundsQuiz practiceType={"formulas"} compoundType={compoundType} />} />
+          <Route path='quiz/results/:practiceType/:type' element={<CompoundsQuizResults practiceType={practiceType} />} />
         </Routes>
       </main>
     </>
