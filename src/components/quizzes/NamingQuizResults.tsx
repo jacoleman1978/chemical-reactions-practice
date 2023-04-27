@@ -1,4 +1,4 @@
-import { CompoundQuizResults } from "../compounds/configurations/compoundInterfaces"
+import { CompoundQuizResults } from "./configurations/quizInterfaces"
 
 const NamingQuizResults = ({results}: {results: CompoundQuizResults}) => {
   return (

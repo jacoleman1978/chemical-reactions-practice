@@ -168,6 +168,11 @@ th.th-rap div {
   font-size: large;
 }
 
+.sm-title {
+  font-weight: bold;
+  font-size: medium;
+}
+
 .sm-text {
   font-size: small;
 }
@@ -255,6 +260,13 @@ h1 {
   border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: rgb(233, 161, 161);
+}
+
+.border-bubble-highlight {
+  border: 0.75px lightgray solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: lightgoldenrodyellow;
 }
 
 .coefficient-input {

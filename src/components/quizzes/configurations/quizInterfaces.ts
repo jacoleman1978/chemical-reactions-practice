@@ -1,3 +1,26 @@
+import { CompoundType } from "../../compounds/configurations/compoundTypes";
+
+export interface CompoundQuizQuestion {
+    name: string;
+    formula: string;
+    type: CompoundType;
+    answer: string;
+}
+
+export interface CompoundQuiz {
+    [key: string]: CompoundQuizQuestion;
+}
+
+export interface QuestionResults {
+    isCorrect: boolean;
+    question: CompoundQuizQuestion;
+    comments: string[];
+}
+
+export interface CompoundQuizResults {
+    [key: string]: QuestionResults;
+}
+
 export interface NumberOfTypes {
     overall: number;
     main: number;
@@ -11,57 +34,30 @@ export interface NumberOfTypes {
 export interface FormulaStats {
     askedByType: NumberOfTypes;
     correctByType: NumberOfTypes;
-    spaces: number;
-    capitalization: number;
-    elementSwaps: {
-        AlAndAmmonium: number;
-        NaAndS: number;
-        KAndP: number;
-        CoAndCu: number;
-        MgAndMn: number;
-    };
-    parentheses: {
-        needed: number;
-        notNeeded: number;
-        unpaired: number;
-    };
-    lcm: {
-        needed: number;
-        notNeeded: number;
-    };
-    oneAsSubscript: number;
-    cationSubscript: number;
-    anionSubscript: number;
-    numNotInSubscript: number;
-    cationFormula: {
-        hydrogen: number;
-        ammonium: number;
-        monatomic: number;
-    };
-    anionFormula: {
-        ide: number;
-        bi: number;
-        hypoIte: number;
-        ite: number;
-        ate: number;
-        perAte: number;
-        generalOxyanion: number;
-    };
-    greekPrefixes: {
-        mono: number;
-        di: number;
-        tri: number;
-        tetra: number;
-        penta: number;
-        hexa: number;
-        hepta: number;
-        octa: number;
-        nona: number;
-        deca: number;
-    };
-    acids: {
-        hydroIc: number;
-        ous: number;
-        ic: number;
-    };
+    capitalization: string[];
+    elementSwaps: string[];
+    parentheses: string[];
+    subscripts: string[];
+    monatomicIons: string[];
+    polyatomicIons: string[];
+    greekPrefixes: string[];
+    acids: string[];
+}
+
+export interface NamingStats {
+    askedByType: NumberOfTypes;
+    correctByType: NumberOfTypes;
+    capitalization: string[];
+    elementSwaps: string[];
+    parentheses: string[];
+    subscripts: string[];
+    monatomicIons: string[];
+    polyatomicIons: string[];
+    greekPrefixes: string[];
+    acids: string[];
+}
+
+export interface CompoundStats {
+    formulas: FormulaStats;
+    naming: NamingStats;
 }

@@ -1,19 +1,16 @@
+import { useMemo } from "react";
 import FormulaQuizResult from "./FormulaQuizResult";
-import { CompoundQuizResults } from "../compounds/configurations/compoundInterfaces";
-import { FormulaStats } from "./configurations/quizInterfaces";
-
-// interface FormulaQuizResultsProps {
-//     results: CompoundQuizResults;
-//     stats: FormulaStats;
-// }
-
+import { sortResultsByComments } from "./helpers/sortResultsByComments";
+import { CompoundQuizResults, QuestionResults } from "./configurations/quizInterfaces";
 
 const FormulaQuizResults = ({results}: {results: CompoundQuizResults}) => {
+    const sortedResults = useMemo(() => sortResultsByComments(results), [results]);
+
     return (
         <>
-            {Object.keys(results).map((compound: string) => {
+            {sortedResults.map((compound: QuestionResults) => {
                 return (
-                    <FormulaQuizResult key={compound} result={results[compound]} />)
+                    <FormulaQuizResult key={compound.question.formula} result={results[compound.question.formula]} />)
             })}
         </>
   )

@@ -1,5 +1,5 @@
-import { QuestionResults } from "../compounds/configurations/compoundInterfaces"
-import DisplayCompoundFormula from "../compounds/DisplayCompoundFormula"
+import { QuestionResults } from "./configurations/quizInterfaces";
+import DisplayCompoundFormula from "../compounds/DisplayCompoundFormula";
 
 const FormulaQuizResult = ({result}: {result: QuestionResults}) => {
     const defaultClass: string = "flex-column full-width";

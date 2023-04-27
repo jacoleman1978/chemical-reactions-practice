@@ -9,10 +9,11 @@ import { getCompoundQuiz } from '../compounds/helpers/getCompoundQuiz';
 import { analyzeCompoundQuiz } from './helpers/analyzeCompoundQuiz';
 import { CompoundType } from "../compounds/configurations/compoundTypes";
 import { PracticeType } from "../common/configurations/commonTypes";
-import { Compound, CompoundQuiz, CompoundQuizResults } from '../compounds/configurations/compoundInterfaces';
+import { Compound } from '../compounds/configurations/compoundInterfaces';
+import { CompoundQuiz, CompoundQuizResults } from './configurations/quizInterfaces';
 import { checkFormulaFormat } from './helpers/checkInputFormat';
 import FormatIssues from './FormatIssues';
-import { FormulaStats } from './configurations/quizInterfaces';
+import { CompoundStats } from './configurations/quizInterfaces';
 
 interface CompoundsQuizProps {
     compoundType: CompoundType,
@@ -63,11 +64,11 @@ const CompoundsQuiz = ({compoundType, practiceType}: CompoundsQuizProps) => {
             setFormatIssues([]);
             analyzeCompoundQuiz(userQuiz, compoundType).then((res) => {
                 let results: CompoundQuizResults = res.data.results;
-                let stats: FormulaStats = res.data.stats;
-                console.log(stats)
+                let stats: CompoundStats = res.data.stats;
+
                 const resultsUrl: string = `/quiz/results/${practiceType}/${compoundType}`;
 
-                navigate(resultsUrl, {state: {results, compoundType, practiceType}});
+                navigate(resultsUrl, {state: {results, compoundType, stats}});
             })
         }
     }

@@ -46,27 +46,6 @@ export interface Compound {
     type: CompoundType;
 }
 
-export interface CompoundQuizQuestion {
-    name: string;
-    formula: string;
-    type: CompoundType;
-    answer: string;
-}
-
-export interface CompoundQuiz {
-    [key: string]: CompoundQuizQuestion;
-}
-
-export interface QuestionResults {
-    isCorrect: boolean;
-    question: CompoundQuizQuestion;
-    comments: string[];
-}
-
-export interface CompoundQuizResults {
-    [key: string]: QuestionResults;
-}
-
 export interface CompoundDemo {
     type: CompoundType;
     cationName: string;
